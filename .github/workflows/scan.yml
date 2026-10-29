@@ -15,6 +15,8 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
+    env:
+      PYTHONUNBUFFERED: "1"
     timeout-minutes: 90        # 第一次回補歷史資料約 20–40 分鐘
     steps:
       - uses: actions/checkout@v5
