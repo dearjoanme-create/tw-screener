@@ -1,0 +1,38 @@
+name: 盤中突破檢查
+
+on:
+  schedule:
+    - cron: "55 2 * * 1-5"    # 台灣時間 10:55（排程常會晚幾分鐘，所以提早一點）
+    - cron: "55 4 * * 1-5"    # 台灣時間 12:55
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: 檢查並推播
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: python check.py
+      - name: 存檔
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add docs
+          git diff --cached --quiet || git commit -m "check $(date -u +%F_%H%M)"
+          git pull --rebase && git push
