@@ -12,6 +12,7 @@ import config
 DATA_FILE = os.path.join(os.path.dirname(__file__), "data", "prices.csv.gz")
 HEADERS = {"User-Agent": "Mozilla/5.0 (tw-screener)"}
 SLEEP = 3.5  # 證交所有流量限制，太快會被暫時封鎖 IP
+OTC_REFILL_MAX = 15  # 每次執行最多補抓幾天缺漏的上櫃資料
 
 COLS = ["date", "code", "name", "market", "open", "high", "low", "close", "volume"]
 
@@ -81,25 +82,25 @@ def fetch_twse(day: dt.date):
     return []
 
 
-def fetch_tpex(day: dt.date):
-    """上櫃：櫃買中心每日收盤行情。先試新版網址，失敗再試舊版。"""
-    # 新版
-    try:
-        url = "https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQ"
-        params = {"date": day.strftime("%Y/%m/%d"), "type": "EW", "response": "json"}
-        j = requests.get(url, params=params, headers=HEADERS, timeout=30).json()
-        for t in j.get("tables") or []:
-            fields = t.get("fields") or []
-            if _find_col(fields, "代號") is not None and _find_col(fields, "收盤") is not None:
-                rows = _rows_from_table(fields, t.get("data") or [], day, "otc")
-                if rows:
-                    return rows
-    except Exception as e:  # noqa: BLE001
-        print("TPEx 新版網址失敗，改試舊版：", e)
-    # 舊版（民國年）
+def _tpex_new(day, method):
+    url = "https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQ"
+    params = {"date": day.strftime("%Y/%m/%d"), "type": "EW", "response": "json"}
+    if method == "post":
+        r = requests.post(url, data=params, headers=HEADERS, timeout=60)
+    else:
+        r = requests.get(url, params=params, headers=HEADERS, timeout=60)
+    j = r.json()
+    for t in j.get("tables") or []:
+        fields = t.get("fields") or []
+        if _find_col(fields, "代號") is not None and _find_col(fields, "收盤") is not None:
+            return _rows_from_table(fields, t.get("data") or [], day, "otc")
+    return []
+
+
+def _tpex_old(day):
     roc = f"{day.year - 1911}/{day.month:02d}/{day.day:02d}"
     url = "https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php"
-    j = requests.get(url, params={"l": "zh-tw", "d": roc, "se": "EW"}, headers=HEADERS, timeout=30).json()
+    j = requests.get(url, params={"l": "zh-tw", "d": roc, "se": "EW"}, headers=HEADERS, timeout=60).json()
     data = j.get("aaData") or []
     if not data and j.get("tables"):
         t = j["tables"][0]
@@ -109,17 +110,38 @@ def fetch_tpex(day: dt.date):
     return _rows_from_table(fields, [r[:9] for r in data], day, "otc")
 
 
+def fetch_tpex(day: dt.date, tries=3):
+    """上櫃：櫃買中心每日收盤行情。新版（POST/GET）、舊版輪流試，最多 tries 輪。"""
+    errors = []
+    for attempt in range(tries):
+        for name, fn in (("新版POST", lambda: _tpex_new(day, "post")),
+                         ("舊版", lambda: _tpex_old(day)),
+                         ("新版GET", lambda: _tpex_new(day, "get"))):
+            try:
+                rows = fn()
+                if rows:
+                    return rows
+                errors.append(f"{name}:無資料")
+            except Exception as e:  # noqa: BLE001
+                errors.append(f"{name}:{type(e).__name__}")
+            time.sleep(2)
+        time.sleep(SLEEP * (attempt + 2))  # 越失敗等越久
+    print(f"{day} 上櫃資料抓取失敗（{', '.join(errors[-3:])}），下次執行會再補抓")
+    return []
+
+
 def fetch_day(day: dt.date):
     """抓某一天上市＋上櫃。回傳 DataFrame；休市回傳空表。"""
     rows = fetch_twse(day)
     time.sleep(SLEEP)
     if not rows:  # 上市沒資料 = 休市，上櫃就不用抓了
         return pd.DataFrame(columns=COLS)
-    try:
-        rows += fetch_tpex(day)
-    except Exception as e:  # noqa: BLE001
-        print(f"{day} 上櫃資料抓取失敗：{e}")
+    rows += fetch_tpex(day)
     time.sleep(SLEEP)
+    return _frame(rows)
+
+
+def _frame(rows):
     df = pd.DataFrame(rows, columns=COLS)
     df["date"] = pd.to_datetime(df["date"])
     return df
@@ -161,12 +183,24 @@ def update(today: dt.date):
             try:
                 part = fetch_day(d)
                 if len(part):
-                    print(f"{d} 取得 {len(part)} 檔")
+                    n_otc = (part["market"] == "otc").sum()
+                    print(f"{d} 取得 {len(part)} 檔（上櫃 {n_otc}）")
                     new.append(part)
             except Exception as e:  # noqa: BLE001
                 print(f"{d} 抓取失敗：{e}")
                 time.sleep(SLEEP * 3)
         d += dt.timedelta(days=1)
+
+    # 補抓：有上市資料、但上櫃缺的日子（最近的優先，每次最多補 OTC_REFILL_MAX 天）
+    if len(df):
+        otc_days = set(df.loc[df["market"] == "otc", "date"].dt.date)
+        missing = sorted((x for x in have if x not in otc_days), reverse=True)[:OTC_REFILL_MAX]
+        for d in missing:
+            rows = fetch_tpex(d, tries=1)
+            time.sleep(SLEEP)
+            if rows:
+                print(f"{d} 補抓上櫃 {len(rows)} 檔")
+                new.append(_frame(rows))
 
     if new:
         df = pd.concat([df] + new, ignore_index=True)

@@ -117,7 +117,8 @@ def main():
     with open(checks, "w", encoding="utf-8") as f:
         json.dump({"for_data_date": payload["data_date"], "runs": []}, f, ensure_ascii=False)
 
-    line_push.push(message(results, last_date))
+    if not line_push.push(message(results, last_date)):
+        sys.exit(1)  # 讓 GitHub 顯示紅叉提醒你，但資料已經存好了
 
 
 if __name__ == "__main__":

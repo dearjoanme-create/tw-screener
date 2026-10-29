@@ -2,6 +2,7 @@
 import datetime as dt
 import json
 import os
+import sys
 import time
 from zoneinfo import ZoneInfo
 
@@ -128,7 +129,8 @@ def main():
     with open(path, "w", encoding="utf-8") as f:
         json.dump(checks, f, ensure_ascii=False, indent=1)
 
-    line_push.push("\n".join(lines))
+    if not line_push.push("\n".join(lines)):
+        sys.exit(1)  # 讓 GitHub 顯示紅叉提醒你，但結果已經存好了
 
 
 if __name__ == "__main__":
