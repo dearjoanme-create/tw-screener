@@ -18,8 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -30,9 +30,10 @@ jobs:
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
         run: python check.py
       - name: 存檔
+        if: always()   # 前面出錯也要把已經抓到的資料存起來
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add docs
+          if [ -e docs ]; then git add docs; fi
           git diff --cached --quiet || git commit -m "check $(date -u +%F_%H%M)"
           git pull --rebase && git push
