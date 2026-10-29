@@ -1,0 +1,37 @@
+name: 晚上選股掃描
+
+on:
+  schedule:
+    - cron: "17 12 * * 1-5"   # 台灣時間 週一到五 20:17（GitHub 用 UTC，所以寫 12）
+  workflow_dispatch:           # 可以在 Actions 頁面手動按「Run workflow」
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90        # 第一次回補歷史資料約 20–40 分鐘
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: 掃描並推播
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: python scan.py ${{ github.event_name == 'workflow_dispatch' && '--force' || '' }}
+      - name: 存檔
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add data docs
+          git diff --cached --quiet || git commit -m "scan $(date -u +%F)"
+          git pull --rebase && git push
