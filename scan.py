@@ -9,6 +9,8 @@ import os
 import sys
 from zoneinfo import ZoneInfo
 
+import pandas as pd
+
 import config
 import data
 import line_push
@@ -26,50 +28,69 @@ def load_exclude():
         return {ln.split("#")[0].strip() for ln in f if ln.split("#")[0].strip()}
 
 
+def rs_rank(df, last_date):
+    """相對強度：近 RS_DAYS 天漲幅在全市場的百分位（0–100）。"""
+    rets = {}
+    for code, g in df.groupby("code"):
+        if g["date"].iloc[-1] != last_date or len(g) <= config.RS_DAYS:
+            continue
+        c = g["close"].to_numpy(float)
+        rets[code] = c[-1] / c[-1 - config.RS_DAYS] - 1
+    s = pd.Series(rets, dtype=float)
+    return (s.rank(pct=True) * 100).round().astype(int).to_dict()
+
+
 def screen(df, last_date):
     exclude = load_exclude()
+    df = df.sort_values(["code", "date"])
+    rs = rs_rank(df, last_date)
     results = {k: [] for k in PATTERNS}
     for code, g in df.groupby("code"):
-        g = g.sort_values("date")
         if code in exclude or g["date"].iloc[-1] != last_date:
             continue  # 今天沒交易（停牌等）就跳過
         last = g.iloc[-1]
         vol5 = g["volume"].tail(5).mean()
         if last["close"] < config.MIN_PRICE or vol5 < config.MIN_AVG_VOL_LOTS:
             continue
+        r = rs.get(code)
+        if r is None:
+            continue
         for key, (_, fn) in PATTERNS.items():
+            if r < config.RS_MIN[key]:
+                continue
             try:
                 hit = fn(g)
             except Exception as e:  # noqa: BLE001
                 print(f"{code} {key} 判斷錯誤：{e}")
                 continue
-            if hit:
-                results[key].append({
-                    "code": code,
-                    "name": last["name"],
-                    "market": last["market"],
-                    "close": round(float(last["close"]), 2),
-                    "trigger": hit["trigger"],
-                    "gap_pct": round((hit["trigger"] / last["close"] - 1) * 100, 2),
-                    "vol5": int(round(vol5)),
-                    "vol_ratio": hit["vol_ratio"],
-                    "note": hit["note"],
-                    "score": hit["score"],
-                })
+            if not hit or hit["trigger"] / last["close"] - 1 > config.MAX_GAP:
+                continue
+            results[key].append({
+                "code": code,
+                "name": last["name"],
+                "market": last["market"],
+                "close": round(float(last["close"]), 2),
+                "trigger": hit["trigger"],
+                "gap_pct": round((hit["trigger"] / last["close"] - 1) * 100, 2),
+                "vol5": int(round(vol5)),
+                "vol_ratio": hit["vol_ratio"],
+                "rs": r,
+                "note": hit["note"],
+            })
     for key in results:
-        results[key].sort(key=lambda x: x["score"])
-        for r in results[key]:
-            r.pop("score")
+        results[key].sort(key=lambda x: (-x["rs"], x["gap_pct"]))  # 強度高的排前面
     return results
 
 
 def message(results, last_date):
-    lines = [f"📊 選股清單（{last_date:%m/%d} 收盤）", "明天盤中 11:00、13:00 會自動檢查是否突破"]
+    total = sum(len(v) for v in results.values())
+    lines = [f"📊 選股清單（{last_date:%m/%d} 收盤）共 {total} 檔",
+             f"每類列強度前 {config.LINE_TOP_N} 名；明天 11:00、13:00 自動檢查突破"]
     for key, (title, _) in PATTERNS.items():
         items = results[key]
         lines.append(f"\n【{title}】共 {len(items)} 檔")
         for r in items[:config.LINE_TOP_N]:
-            lines.append(f"{r['code']} {r['name']} 收{r['close']:g} → 觸發 {r['trigger']:g}（+{r['gap_pct']:.1f}%）")
+            lines.append(f"{r['code']} {r['name']}｜強度{r['rs']}\n  收{r['close']:g}→觸發{r['trigger']:g}（+{r['gap_pct']:.1f}%）")
         if len(items) > config.LINE_TOP_N:
             lines.append(f"…其餘 {len(items) - config.LINE_TOP_N} 檔看網頁")
     url = line_push.dashboard_url()

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>台股型態選股</title>
+<style>
+  /* 配色：#7F9AC8 主藍、#AEBAD4 淡藍紫、#C4C8D7 灰紫、#D9DBDA 淺灰、#E7D2C6 奶茶 */
+  :root { --bg:#ECEEF2; --card:#FFFFFF; --ink:#2B3550; --mute:#6F7894; --line:#C4C8D7;
+          --head:#4D72AE; --accent:#7F9AC8; --chip:#E4E8F1; --chip-ink:#4D5E85;
+          --up:#C25B5B; --up-bg:#F6E3E1; --warn:#9A6A4F; --warn-bg:#E7D2C6;
+          --no-bg:#ECEEF2; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1A1E29; --card:#232836; --ink:#E3E7F0; --mute:#9AA3BC; --line:#363D52;
+            --head:#AEBAD4; --accent:#7F9AC8; --chip:#2D3446; --chip-ink:#C4C8D7;
+            --up:#EE9A94; --up-bg:#3D2A30; --warn:#E7D2C6; --warn-bg:#43383A;
+            --no-bg:#2A3040; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:15px/1.5 -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+  header { padding:20px 16px 8px; max-width:960px; margin:auto; }
+  h1 { font-size:22px; margin:0 0 4px; color:var(--head); letter-spacing:.5px; }
+  .meta { color:var(--mute); font-size:13px; }
+  nav { display:flex; gap:6px; padding:8px 16px; max-width:960px; margin:auto; overflow-x:auto; }
+  nav button { border:1px solid transparent; background:var(--chip); color:var(--chip-ink);
+               padding:8px 14px; border-radius:999px; font-size:14px; white-space:nowrap; cursor:pointer; }
+  nav button.on { background:var(--accent); color:#fff; font-weight:600; }
+  main { max-width:960px; margin:auto; padding:8px 16px 40px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden;
+          box-shadow:0 2px 10px rgba(77,114,174,.08); }
+  table { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
+  th, td { padding:10px 8px; border-bottom:1px solid var(--line); text-align:right; }
+  th { font-size:12px; color:var(--mute); font-weight:500; white-space:nowrap; position:sticky; top:0; background:var(--card); }
+  td:first-child, th:first-child { text-align:left; }
+  tr:last-child td { border-bottom:0; }
+  .code { font-weight:600; }
+  .name { color:var(--mute); font-size:13px; }
+  .note { display:block; color:var(--mute); font-size:12px; text-align:left; }
+  .tag { display:inline-block; white-space:nowrap; font-size:12px; padding:2px 9px; border-radius:999px; font-weight:600; }
+  .hit { color:var(--up); background:var(--up-bg); }
+  .back { color:var(--warn); background:var(--warn-bg); }
+  .no { color:var(--mute); background:var(--no-bg); font-weight:500; }
+  td b { color:var(--head); }
+  .hide-sm { }
+  @media (max-width:560px) { .hide-sm { display:none; } th, td { padding:9px 6px; } }
+  .empty { padding:24px; text-align:center; color:var(--mute); }
+  footer { color:var(--mute); font-size:12px; max-width:960px; margin:auto; padding:0 16px 32px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>台股型態選股</h1>
+  <div class="meta" id="meta">載入中…</div>
+</header>
+<nav id="tabs"></nav>
+<main><div class="card" id="table"></div></main>
+<footer>觸發價是「明天價格要站上」的位置。盤中狀態依最近一次檢查（11:00／13:00）。僅供參考，不構成投資建議。</footer>
+<script>
+const fmt = n => (n == null ? "–" : Number(n).toLocaleString("zh-TW", {maximumFractionDigits: 2}));
+let cand, checks, cur;
+try { cur = localStorage.getItem("tab"); } catch (e) {}
+
+async function load(name) {
+  const r = await fetch(name + "?t=" + Date.now());
+  if (!r.ok) throw new Error(name);
+  return r.json();
+}
+
+function latestStatus(key) {
+  const runs = (checks && checks.for_data_date === cand.data_date) ? checks.runs : [];
+  if (!runs.length) return { time: null, map: {} };
+  const run = runs[runs.length - 1];
+  const map = {};
+  (run.results[key] || []).forEach(x => map[x.code] = x);
+  return { time: run.time, map };
+}
+
+function render() {
+  const keys = Object.keys(cand.patterns);
+  if (!keys.includes(cur)) cur = keys[0];
+  document.getElementById("tabs").innerHTML = keys.map(k =>
+    `<button class="${k === cur ? "on" : ""}" data-k="${k}">${cand.titles[k]}（${cand.patterns[k].length}）</button>`).join("");
+  document.querySelectorAll("nav button").forEach(b => b.onclick = () => {
+    cur = b.dataset.k; try { localStorage.setItem("tab", cur); } catch (e) {} render();
+  });
+
+  const { time, map } = latestStatus(cur);
+  const items = cand.patterns[cur];
+  if (!items.length) { document.getElementById("table").innerHTML = '<div class="empty">今天沒有符合的股票</div>'; return; }
+  const rows = items.map(r => {
+    const s = map[r.code];
+    let st = '<span class="tag no">待檢查</span>';
+    if (s) {
+      const cls = s.status === "突破" ? "hit" : s.status === "曾突破拉回" ? "back" : "no";
+      const label = s.status === "突破" ? "已突破" : s.status === "曾突破拉回" ? "拉回" : "未突破";
+      const warn = s.status !== "未突破" && !s.vol_ok ? "<br>量不足" : "";
+      st = `<span class="tag ${cls}">${label}</span><span class="note" style="text-align:right">現 ${fmt(s.price)}${warn}</span>`;
+    }
+    const mk = r.market === "otc" ? "上櫃" : "上市";
+    return `<tr>
+      <td><span class="code">${r.code}</span> <span class="name">${r.name}・${mk}</span><span class="note">${r.rs != null ? "強度 " + r.rs + "・" : ""}${r.note}</span></td>
+      <td>${fmt(r.close)}</td>
+      <td><b>${fmt(r.trigger)}</b><span class="note" style="text-align:right">+${r.gap_pct.toFixed(1)}%</span></td>
+      <td class="hide-sm">${fmt(r.vol5)}</td>
+      <td>${st}</td></tr>`;
+  }).join("");
+  document.getElementById("table").innerHTML = `<table>
+    <thead><tr><th>股票</th><th>收盤</th><th>觸發價</th><th class="hide-sm">5日均量(張)</th><th>盤中${time ? " " + time : ""}</th></tr></thead>
+    <tbody>${rows}</tbody></table>`;
+}
+
+(async () => {
+  try {
+    cand = await load("candidates.json");
+    try { checks = await load("checks.json"); } catch (e) { checks = null; }
+    document.getElementById("meta").textContent =
+      `${cand.data_date} 收盤資料・產生於 ${cand.generated_at}`;
+    render();
+  } catch (e) {
+    document.getElementById("meta").textContent = "還沒有資料，等第一次晚上掃描完成後就會出現。";
+  }
+})();
+</script>
+</body>
+</html>

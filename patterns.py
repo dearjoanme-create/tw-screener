@@ -52,7 +52,7 @@ def pullback(df):
         return None
 
     # 前一天回到 5MA 附近或跌破，且量縮
-    if c[-1] > ma5 * (1 + C.PB_MA5_TOLERANCE):
+    if c[-1] > ma5 * (1 + C.PB_MA5_TOLERANCE) or c[-1] < ma5 * (1 - C.PB_MA5_MAX_BELOW):
         return None
     if v[-1] >= _ma(v, 5):
         return None
@@ -115,7 +115,7 @@ def trendline(df):
 # 型態 3：突破盤整區間
 # ------------------------------------------------------------------
 def consolidation(df):
-    c, h, l = (df[k].to_numpy(float) for k in ("close", "high", "low"))
+    c, h, l, v = (df[k].to_numpy(float) for k in ("close", "high", "low", "volume"))
     if len(c) < C.RG_MAX_DAYS + 1:
         return None
     found = None
@@ -130,6 +130,8 @@ def consolidation(df):
     n, hi, lo = found
     if c[-1] < hi * (1 - C.RG_NEAR_TOP):
         return None
+    if C.RG_VOL_DRYUP and v[-5:].mean() >= v[-n:].mean():
+        return None  # 盤整期間沒有量縮
     width = hi / lo - 1
     return {
         "trigger": round(float(hi), 2),
