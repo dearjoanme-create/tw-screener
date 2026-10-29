@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90        # 第一次回補歷史資料約 20–40 分鐘
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -29,9 +29,10 @@ jobs:
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
         run: python scan.py ${{ github.event_name == 'workflow_dispatch' && '--force' || '' }}
       - name: 存檔
+        if: always()   # 前面出錯也要把已經抓到的資料存起來
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add data docs
+          for p in data docs; do if [ -e "$p" ]; then git add "$p"; fi; done
           git diff --cached --quiet || git commit -m "scan $(date -u +%F)"
           git pull --rebase && git push
