@@ -253,6 +253,259 @@
      }
     ]
    }
+  },
+  {
+   "time": "13:44",
+   "results": {
+    "pullback": [
+     {
+      "code": "3354",
+      "name": "律勝",
+      "trigger": 51.2,
+      "price": 47.3,
+      "high": 49.95,
+      "status": "未突破",
+      "vol": 554,
+      "proj_vol": 554,
+      "vol_ok": true
+     },
+     {
+      "code": "6179",
+      "name": "亞通",
+      "trigger": 38.5,
+      "price": 38.05,
+      "high": 38.4,
+      "status": "未突破",
+      "vol": 3001,
+      "proj_vol": 3001,
+      "vol_ok": true
+     },
+     {
+      "code": "6234",
+      "name": "高僑",
+      "trigger": 48.95,
+      "price": 53.2,
+      "high": 53.2,
+      "status": "突破",
+      "vol": 11522,
+      "proj_vol": 11522,
+      "vol_ok": true
+     },
+     {
+      "code": "8213",
+      "name": "志超",
+      "trigger": 41.36,
+      "price": 41.2,
+      "high": 41.75,
+      "status": "曾突破拉回",
+      "vol": 4163,
+      "proj_vol": 4163,
+      "vol_ok": true
+     },
+     {
+      "code": "4533",
+      "name": "協易機",
+      "trigger": 28.86,
+      "price": 29.5,
+      "high": 30.25,
+      "status": "突破",
+      "vol": 4375,
+      "proj_vol": 4375,
+      "vol_ok": true
+     },
+     {
+      "code": "3045",
+      "name": "台灣大",
+      "trigger": 135.5,
+      "price": 133.0,
+      "high": 135.5,
+      "status": "曾突破拉回",
+      "vol": 9606,
+      "proj_vol": 9606,
+      "vol_ok": true
+     },
+     {
+      "code": "1101",
+      "name": "台泥",
+      "trigger": 28.45,
+      "price": 28.1,
+      "high": 28.8,
+      "status": "曾突破拉回",
+      "vol": 47265,
+      "proj_vol": 47265,
+      "vol_ok": true
+     },
+     {
+      "code": "1102",
+      "name": "亞泥",
+      "trigger": 38.05,
+      "price": 38.1,
+      "high": 38.45,
+      "status": "突破",
+      "vol": 5430,
+      "proj_vol": 5430,
+      "vol_ok": true
+     },
+     {
+      "code": "2890",
+      "name": "永豐金",
+      "trigger": 46.7,
+      "price": 45.8,
+      "high": 46.75,
+      "status": "曾突破拉回",
+      "vol": 33917,
+      "proj_vol": 33917,
+      "vol_ok": true
+     },
+     {
+      "code": "3029",
+      "name": "零壹",
+      "trigger": 126.5,
+      "price": 123.5,
+      "high": 127.5,
+      "status": "曾突破拉回",
+      "vol": 1994,
+      "proj_vol": 1994,
+      "vol_ok": true
+     }
+    ],
+    "trendline": [
+     {
+      "code": "6805",
+      "name": "富世達",
+      "trigger": 2449.72,
+      "price": 2350.0,
+      "high": 2405.0,
+      "status": "未突破",
+      "vol": 1225,
+      "proj_vol": 1225,
+      "vol_ok": false
+     },
+     {
+      "code": "2436",
+      "name": "偉詮電",
+      "trigger": 69.1,
+      "price": 65.9,
+      "high": 67.6,
+      "status": "未突破",
+      "vol": 1661,
+      "proj_vol": 1661,
+      "vol_ok": false
+     },
+     {
+      "code": "5904",
+      "name": "寶雅*",
+      "trigger": 72.54,
+      "price": 73.3,
+      "high": 73.5,
+      "status": "突破",
+      "vol": 2088,
+      "proj_vol": 2088,
+      "vol_ok": false
+     },
+     {
+      "code": "2392",
+      "name": "正崴",
+      "trigger": 38.57,
+      "price": 37.85,
+      "high": 38.25,
+      "status": "未突破",
+      "vol": 982,
+      "proj_vol": 982,
+      "vol_ok": false
+     },
+     {
+      "code": "8112",
+      "name": "至上",
+      "trigger": 83.5,
+      "price": 81.7,
+      "high": 82.1,
+      "status": "未突破",
+      "vol": 2445,
+      "proj_vol": 2445,
+      "vol_ok": false
+     }
+    ],
+    "range": [
+     {
+      "code": "2881",
+      "name": "富邦金",
+      "trigger": 164.5,
+      "price": 159.5,
+      "high": 163.0,
+      "status": "未突破",
+      "vol": 19504,
+      "proj_vol": 19504,
+      "vol_ok": false
+     },
+     {
+      "code": "5521",
+      "name": "工信",
+      "trigger": 11.6,
+      "price": 11.4,
+      "high": 11.4,
+      "status": "未突破",
+      "vol": 1542,
+      "proj_vol": 1542,
+      "vol_ok": false
+     },
+     {
+      "code": "2887",
+      "name": "台新新光金",
+      "trigger": 43.5,
+      "price": 41.7,
+      "high": 42.45,
+      "status": "未突破",
+      "vol": 45821,
+      "proj_vol": 45821,
+      "vol_ok": false
+     },
+     {
+      "code": "2027",
+      "name": "大成鋼",
+      "trigger": 51.3,
+      "price": 50.3,
+      "high": 50.8,
+      "status": "未突破",
+      "vol": 7305,
+      "proj_vol": 7305,
+      "vol_ok": false
+     },
+     {
+      "code": "1102",
+      "name": "亞泥",
+      "trigger": 38.7,
+      "price": 38.1,
+      "high": 38.45,
+      "status": "未突破",
+      "vol": 5430,
+      "proj_vol": 5430,
+      "vol_ok": false
+     },
+     {
+      "code": "2890",
+      "name": "永豐金",
+      "trigger": 47.5,
+      "price": 45.8,
+      "high": 46.75,
+      "status": "未突破",
+      "vol": 33917,
+      "proj_vol": 33917,
+      "vol_ok": false
+     },
+     {
+      "code": "2889",
+      "name": "國票金",
+      "trigger": 17.25,
+      "price": 16.85,
+      "high": 17.1,
+      "status": "未突破",
+      "vol": 5915,
+      "proj_vol": 5915,
+      "vol_ok": false
+     }
+    ]
+   }
   }
  ]
 }
