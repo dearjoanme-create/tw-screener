@@ -1,1 +1,313 @@
-{"for_data_date": "2026-11-02", "runs": []}
+{
+ "for_data_date": "2026-11-02",
+ "runs": [
+  {
+   "time": "11:34",
+   "results": {
+    "pullback": [
+     {
+      "code": "6108",
+      "name": "競國",
+      "trigger": 31.29,
+      "price": 29.65,
+      "high": 30.7,
+      "status": "未突破",
+      "vol": 1517,
+      "proj_vol": 2659,
+      "vol_ok": true
+     },
+     {
+      "code": "4720",
+      "name": "德淵",
+      "trigger": 29.7,
+      "price": 30.7,
+      "high": 32.6,
+      "status": "突破",
+      "vol": 24312,
+      "proj_vol": 42624,
+      "vol_ok": true
+     },
+     {
+      "code": "6179",
+      "name": "亞通",
+      "trigger": 38.46,
+      "price": 38.25,
+      "high": 40.0,
+      "status": "曾突破拉回",
+      "vol": 6510,
+      "proj_vol": 11413,
+      "vol_ok": true
+     },
+     {
+      "code": "8213",
+      "name": "志超",
+      "trigger": 41.75,
+      "price": 40.2,
+      "high": 41.6,
+      "status": "未突破",
+      "vol": 1786,
+      "proj_vol": 3131,
+      "vol_ok": true
+     },
+     {
+      "code": "9933",
+      "name": "中鼎",
+      "trigger": 46.85,
+      "price": 46.7,
+      "high": 47.15,
+      "status": "曾突破拉回",
+      "vol": 3102,
+      "proj_vol": 5438,
+      "vol_ok": true
+     },
+     {
+      "code": "3045",
+      "name": "台灣大",
+      "trigger": 135.5,
+      "price": 132.5,
+      "high": 134.5,
+      "status": "未突破",
+      "vol": 4206,
+      "proj_vol": 7374,
+      "vol_ok": true
+     },
+     {
+      "code": "6415",
+      "name": "矽力*-KY",
+      "trigger": 513.0,
+      "price": 491.0,
+      "high": 510.0,
+      "status": "未突破",
+      "vol": 5419,
+      "proj_vol": 9500,
+      "vol_ok": true
+     },
+     {
+      "code": "1102",
+      "name": "亞泥",
+      "trigger": 38.45,
+      "price": 37.95,
+      "high": 38.35,
+      "status": "未突破",
+      "vol": 3417,
+      "proj_vol": 5990,
+      "vol_ok": true
+     },
+     {
+      "code": "2880",
+      "name": "華南金",
+      "trigger": 51.0,
+      "price": 49.65,
+      "high": 50.1,
+      "status": "未突破",
+      "vol": 6395,
+      "proj_vol": 11212,
+      "vol_ok": true
+     },
+     {
+      "code": "2027",
+      "name": "大成鋼",
+      "trigger": 50.8,
+      "price": 49.2,
+      "high": 49.95,
+      "status": "未突破",
+      "vol": 4549,
+      "proj_vol": 7975,
+      "vol_ok": true
+     },
+     {
+      "code": "5521",
+      "name": "工信",
+      "trigger": 11.4,
+      "price": 11.15,
+      "high": 11.4,
+      "status": "曾突破拉回",
+      "vol": 1641,
+      "proj_vol": 2877,
+      "vol_ok": true
+     },
+     {
+      "code": "4904",
+      "name": "遠傳",
+      "trigger": 116.0,
+      "price": 112.5,
+      "high": 115.0,
+      "status": "未突破",
+      "vol": 3031,
+      "proj_vol": 5314,
+      "vol_ok": true
+     },
+     {
+      "code": "3005",
+      "name": "神基",
+      "trigger": 125.0,
+      "price": 122.5,
+      "high": 126.0,
+      "status": "曾突破拉回",
+      "vol": 1345,
+      "proj_vol": 2358,
+      "vol_ok": true
+     },
+     {
+      "code": "1808",
+      "name": "潤隆",
+      "trigger": 36.41,
+      "price": 34.95,
+      "high": 35.3,
+      "status": "未突破",
+      "vol": 290,
+      "proj_vol": 508,
+      "vol_ok": true
+     }
+    ],
+    "trendline": [
+     {
+      "code": "3324",
+      "name": "雙鴻",
+      "trigger": 1426.88,
+      "price": 1340.0,
+      "high": 1445.0,
+      "status": "曾突破拉回",
+      "vol": 4495,
+      "proj_vol": 7880,
+      "vol_ok": true
+     },
+     {
+      "code": "3491",
+      "name": "昇達科",
+      "trigger": 1325.0,
+      "price": 1305.0,
+      "high": 1330.0,
+      "status": "曾突破拉回",
+      "vol": 551,
+      "proj_vol": 966,
+      "vol_ok": false
+     },
+     {
+      "code": "1560",
+      "name": "中砂",
+      "trigger": 873.57,
+      "price": 792.0,
+      "high": 852.0,
+      "status": "未突破",
+      "vol": 1366,
+      "proj_vol": 2394,
+      "vol_ok": true
+     },
+     {
+      "code": "5608",
+      "name": "四維航",
+      "trigger": 16.49,
+      "price": 15.55,
+      "high": 16.3,
+      "status": "未突破",
+      "vol": 2152,
+      "proj_vol": 3772,
+      "vol_ok": true
+     },
+     {
+      "code": "4167",
+      "name": "松瑞藥",
+      "trigger": 20.05,
+      "price": 19.5,
+      "high": 20.05,
+      "status": "曾突破拉回",
+      "vol": 794,
+      "proj_vol": 1392,
+      "vol_ok": false
+     },
+     {
+      "code": "2392",
+      "name": "正崴",
+      "trigger": 38.34,
+      "price": 36.95,
+      "high": 37.6,
+      "status": "未突破",
+      "vol": 629,
+      "proj_vol": 1102,
+      "vol_ok": false
+     },
+     {
+      "code": "2354",
+      "name": "鴻準",
+      "trigger": 61.36,
+      "price": 58.5,
+      "high": 59.9,
+      "status": "未突破",
+      "vol": 1507,
+      "proj_vol": 2642,
+      "vol_ok": false
+     },
+     {
+      "code": "8112",
+      "name": "至上",
+      "trigger": 83.16,
+      "price": 79.4,
+      "high": 81.7,
+      "status": "未突破",
+      "vol": 3942,
+      "proj_vol": 6911,
+      "vol_ok": true
+     }
+    ],
+    "range": [
+     {
+      "code": "1102",
+      "name": "亞泥",
+      "trigger": 38.7,
+      "price": 37.95,
+      "high": 38.35,
+      "status": "未突破",
+      "vol": 3417,
+      "proj_vol": 5990,
+      "vol_ok": false
+     },
+     {
+      "code": "5904",
+      "name": "寶雅*",
+      "trigger": 75.3,
+      "price": 72.8,
+      "high": 74.5,
+      "status": "未突破",
+      "vol": 1701,
+      "proj_vol": 2982,
+      "vol_ok": false
+     },
+     {
+      "code": "2027",
+      "name": "大成鋼",
+      "trigger": 51.3,
+      "price": 49.2,
+      "high": 49.95,
+      "status": "未突破",
+      "vol": 4549,
+      "proj_vol": 7975,
+      "vol_ok": false
+     },
+     {
+      "code": "5521",
+      "name": "工信",
+      "trigger": 11.6,
+      "price": 11.15,
+      "high": 11.4,
+      "status": "未突破",
+      "vol": 1641,
+      "proj_vol": 2877,
+      "vol_ok": true
+     },
+     {
+      "code": "2889",
+      "name": "國票金",
+      "trigger": 17.25,
+      "price": 16.75,
+      "high": 16.95,
+      "status": "未突破",
+      "vol": 3096,
+      "proj_vol": 5428,
+      "vol_ok": false
+     }
+    ]
+   }
+  }
+ ]
+}
