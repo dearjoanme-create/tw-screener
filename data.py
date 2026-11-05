@@ -212,6 +212,97 @@ def fetch_yahoo_otc(codes_names, days):
     return _frame(out) if out else pd.DataFrame(columns=COLS)
 
 
+# ------------------------------------------------------------------
+# 加權指數（判斷大盤多空、資金水位用）
+# ------------------------------------------------------------------
+INDEX_FILE = os.path.join(os.path.dirname(__file__), "data", "taiex.csv")
+INDEX_COLS = ["date", "open", "high", "low", "close"]
+
+
+def _roc_date(s):
+    """'115/11/04' → date(2026, 11, 4)"""
+    y, m, d = (int(x) for x in str(s).strip().split("/"))
+    return dt.date(y + 1911 if y < 1911 else y, m, d)
+
+
+def fetch_index_month(month: dt.date):
+    """證交所：某個月每天的加權指數開高低收。"""
+    url = "https://www.twse.com.tw/rwd/zh/TAIEX/MI_5MINS_HIST"
+    params = {"date": month.strftime("%Y%m01"), "response": "json"}
+    j = requests.get(url, params=params, headers=HEADERS, timeout=30).json()
+    if j.get("stat") != "OK":
+        return []
+    fields = j.get("fields") or []
+    idx = [_find_col(fields, "日期"), _find_col(fields, "開盤"), _find_col(fields, "最高"),
+           _find_col(fields, "最低"), _find_col(fields, "收盤")]
+    if None in idx:
+        return []
+    rows = []
+    for r in j.get("data") or []:
+        vals = [_num(r[i]) for i in idx[1:]]
+        if None in vals:
+            continue
+        rows.append([_roc_date(r[idx[0]])] + vals)
+    return rows
+
+
+def fetch_index_yahoo(start: dt.date, end: dt.date):
+    import yfinance as yf
+
+    raw = yf.download("^TWII", start=start.isoformat(), end=(end + dt.timedelta(days=1)).isoformat(),
+                      interval="1d", auto_adjust=False, progress=False)
+    if raw is None or raw.empty:
+        return []
+    if isinstance(raw.columns, pd.MultiIndex):
+        raw.columns = raw.columns.get_level_values(0)
+    raw = raw.dropna(subset=["Open", "High", "Low", "Close"])
+    return [[pd.Timestamp(ts).date(), float(r["Open"]), float(r["High"]), float(r["Low"]), float(r["Close"])]
+            for ts, r in raw.iterrows()]
+
+
+def update_index(today: dt.date):
+    """更新加權指數到 today。只重抓這個月和上個月，其他月份用存檔。抓不到就用 Yahoo。"""
+    old = pd.DataFrame(columns=INDEX_COLS)
+    if os.path.exists(INDEX_FILE):
+        old = pd.read_csv(INDEX_FILE, parse_dates=["date"])
+    have_months = set(old["date"].dt.strftime("%Y%m")) if len(old) else set()
+    start = today - dt.timedelta(days=int(config.HISTORY_DAYS * 1.5) + 10)
+    months, m = [], dt.date(start.year, start.month, 1)
+    while m <= today:
+        months.append(m)
+        m = dt.date(m.year + (m.month == 12), m.month % 12 + 1, 1)
+    recent = {months[-1].strftime("%Y%m"), months[-2].strftime("%Y%m") if len(months) > 1 else ""}
+    todo = [m for m in months if m.strftime("%Y%m") not in have_months or m.strftime("%Y%m") in recent]
+    rows, failed = [], False
+    for m in todo:
+        try:
+            got = fetch_index_month(m)
+            if not got and m.strftime("%Y%m") not in have_months:
+                failed = True
+            rows += got
+        except Exception as e:  # noqa: BLE001
+            print(f"加權指數 {m:%Y-%m} 抓取失敗：{type(e).__name__}")
+            failed = True
+        time.sleep(SLEEP)
+    if failed:
+        try:
+            rows += fetch_index_yahoo(start, today)
+            print("加權指數改用 Yahoo 補")
+        except Exception as e:  # noqa: BLE001
+            print(f"加權指數 Yahoo 也失敗：{e}")
+    new = pd.DataFrame(rows, columns=INDEX_COLS)
+    if len(new):
+        new["date"] = pd.to_datetime(new["date"])
+    df = pd.concat([old, new], ignore_index=True) if len(old) else new
+    if not len(df):
+        return df
+    df = df.drop_duplicates("date", keep="last").sort_values("date")
+    df = df[df["date"] >= pd.Timestamp(start)]
+    os.makedirs(os.path.dirname(INDEX_FILE), exist_ok=True)
+    df.to_csv(INDEX_FILE, index=False, float_format="%.2f")
+    return df.reset_index(drop=True)
+
+
 def load():
     if os.path.exists(DATA_FILE):
         df = pd.read_csv(DATA_FILE, dtype={"code": str}, parse_dates=["date"])

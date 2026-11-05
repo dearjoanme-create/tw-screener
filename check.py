@@ -1,4 +1,11 @@
-"""盤中執行（11:00、13:00）：抓前一晚候選股的即時報價，看有沒有突破觸發價。"""
+"""盤中執行：抓前一晚預備名單的即時報價，看今天是不是正在走出合格的進場 K。
+  11:00 左右 → 預警（還早，僅供參考）
+  13:10 左右 → 確認（離收盤 20 分鐘，判斷最接近收盤結果）
+朱家泓的進場以「收盤確認」為準，盤中結果仍要看 13:30 收盤價。
+
+同一個時段（預警／確認）同一天只推一次，所以外部定時器和 GitHub 排程可以同時開著當備援。
+手動重跑：python check.py --force
+"""
 import datetime as dt
 import json
 import os
@@ -8,13 +15,15 @@ from zoneinfo import ZoneInfo
 
 import requests
 
+import config as C
 import line_push
-from patterns import PATTERNS
+from indicators import next_k
 
 TW = ZoneInfo("Asia/Taipei")
 DOCS = os.path.join(os.path.dirname(__file__), "docs")
 MIS = "https://mis.twse.com.tw/stock/api/getStockInfo.jsp"
 HEADERS = {"User-Agent": "Mozilla/5.0 (tw-screener)", "Referer": "https://mis.twse.com.tw/stock/index.jsp"}
+TRADING_MIN = 265  # 09:00～13:25 連續交易的分鐘數（13:25～13:30 是收盤集合競價）
 
 
 def _f(s):
@@ -40,7 +49,10 @@ def fetch_quotes(stocks):
             price = _f(q.get("z")) or _f(q.get("b")) or _f(q.get("a"))  # 沒成交就用買價
             out[q["c"]] = {
                 "price": price,
+                "open": _f(q.get("o")),
                 "high": _f(q.get("h")),
+                "low": _f(q.get("l")),
+                "prev": _f(q.get("y")),
                 "vol": _f(q.get("v")) or 0,  # 累計成交量（張）
                 "date": q.get("d"),
                 "time": q.get("t"),
@@ -49,73 +61,63 @@ def fetch_quotes(stocks):
     return out
 
 
+def judge(r, q, elapsed):
+    """一檔預備股，用目前報價判斷今天的 K 棒是否合格。回傳 (狀態, 未符合的條件, 預估量)。"""
+    side = 1 if r["side"] == "long" else -1
+    price, op = q["price"], q["open"] or q["price"]
+    hi, lo = q["high"] or price, q["low"] or price
+    prev = q["prev"] or r["close"]
+    proj = q["vol"] * TRADING_MIN / elapsed
+    rng = hi - lo
+    chg = price / prev - 1
+    miss = []
+    if side > 0:
+        reached = price >= r["trigger"]
+        touched = hi >= r["trigger"]
+        if chg < C.ENTRY_MIN_CHG:
+            miss.append(f"漲幅 {chg:+.1%} 不到 2%")
+        if price <= op:
+            miss.append("不是紅K")
+        if rng > 0 and (hi - max(op, price)) / rng > C.MAX_SHADOW:
+            miss.append("上影線超過一半")
+    else:
+        reached = price <= r["trigger"]
+        touched = lo <= r["trigger"]
+        if chg > -C.ENTRY_MIN_CHG:
+            miss.append(f"跌幅 {chg:+.1%} 不到 2%")
+        if price >= op:
+            miss.append("不是黑K")
+        if rng > 0 and (min(op, price) - lo) / rng > C.MAX_SHADOW:
+            miss.append("下影線超過一半")
+    ref = r.get("ref") or {}
+    if "k" in ref:
+        k2 = next_k(ref["k"], ref["low_n1"], ref["high_n1"], price, lo, hi)
+        if side > 0 and k2 <= ref["k"]:
+            miss.append("K值沒有向上")
+        if side < 0 and k2 >= ref["k"]:
+            miss.append("K值沒有向下")
+    if r.get("need_vol") and proj < r["need_vol"] * r["vol5"]:
+        miss.append(f"預估量 {proj / max(r['vol5'], 1):.1f} 倍，不到 {r['need_vol']} 倍")
+    if reached and not miss:
+        status = "成形"
+    elif reached:
+        status = "價到條件不足"
+    elif touched:
+        status = "曾到拉回"
+    else:
+        status = "未到"
+    return status, miss, proj
+
+
 def main():
+    force = "--force" in sys.argv
     now = dt.datetime.now(TW)
     with open(os.path.join(DOCS, "candidates.json"), encoding="utf-8") as f:
         cand = json.load(f)
     if cand["data_date"] >= now.strftime("%Y-%m-%d"):
-        print("候選清單是今天收盤後才產生的，不是給今天用的，跳過。")
+        print("預備名單是今天收盤後才產生的，不是給今天用的，跳過。")
         return
-
-    stocks = {}
-    for items in cand["patterns"].values():
-        for r in items:
-            stocks[r["code"]] = r["market"]
-    if not stocks:
-        print("沒有候選股。")
-        return
-
-    quotes = fetch_quotes(list(stocks.items()))
-    today = now.strftime("%Y%m%d")
-    if not any(q["date"] == today for q in quotes.values()):
-        print("今天沒有開盤（假日或颱風假），跳過。")
-        return
-
-    # 開盤到現在經過幾分鐘（09:00–13:30 共 270 分鐘），用來預估全日量
-    elapsed = (now.hour * 60 + now.minute) - 9 * 60
-    elapsed = min(max(elapsed, 1), 270)
-
-    run = {"time": now.strftime("%H:%M"), "results": {}}
-    lines = [f"⏰ {now:%m/%d %H:%M} 突破檢查"]
-    total_hits = 0
-    for key, (title, _) in PATTERNS.items():
-        hits, rows = [], []
-        for r in cand["patterns"][key]:
-            q = quotes.get(r["code"])
-            if not q or not q["price"]:
-                continue
-            proj = q["vol"] * 270 / elapsed
-            need = r["vol_ratio"] * r["vol5"]
-            vol_ok = r["vol_ratio"] == 0 or proj >= need
-            if q["price"] >= r["trigger"]:
-                status = "突破"
-            elif q["high"] and q["high"] >= r["trigger"]:
-                status = "曾突破拉回"
-            else:
-                status = "未突破"
-            row = {
-                "code": r["code"], "name": r["name"], "trigger": r["trigger"],
-                "price": q["price"], "high": q["high"], "status": status,
-                "vol": int(q["vol"]), "proj_vol": int(proj), "vol_ok": vol_ok,
-            }
-            rows.append(row)
-            if status != "未突破":
-                hits.append(row)
-        run["results"][key] = rows
-        if hits:
-            total_hits += len(hits)
-            lines.append(f"\n【{title}】")
-            for h in sorted(hits, key=lambda x: (x["status"] != "突破", not x["vol_ok"])):
-                mark = "✅" if h["status"] == "突破" else "↩️"
-                vol = "量OK" if h["vol_ok"] else "⚠️量不足"
-                lines.append(f"{mark}{h['code']} {h['name']} 現{h['price']:g}／觸發{h['trigger']:g} {vol}")
-
-    if total_hits == 0:
-        lines.append("目前沒有候選股突破觸發價。")
-    lines.append("\n✅已突破 ↩️曾突破但拉回；量能是依目前成交量推估全日量")
-    url = line_push.dashboard_url()
-    if url:
-        lines.append(url)
+    slot = "預警" if now.hour < 12 else "確認"
 
     path = os.path.join(DOCS, "checks.json")
     try:
@@ -125,6 +127,59 @@ def main():
         checks = {"runs": []}
     if checks.get("for_data_date") != cand["data_date"]:
         checks = {"for_data_date": cand["data_date"], "runs": []}
+    if not force and any(x.get("slot") == slot for x in checks["runs"]):
+        print(f"今天的「{slot}」已經推過了，跳過（避免重複通知）。要重跑請加 --force")
+        return
+
+    mkt = cand.get("market") or {}
+    sides = [s for s in ("long", "short") if mkt.get(f"allow_{s}", True)]
+    items = [r for s in sides for r in cand.get(s, [])]
+    if not items:
+        print("沒有預備股。")
+        return
+
+    quotes = fetch_quotes(list({r["code"]: r["market"] for r in items}.items()))
+    today = now.strftime("%Y%m%d")
+    if not any(q["date"] == today for q in quotes.values()):
+        print("今天沒有開盤（假日或颱風假），跳過。")
+        return
+
+    elapsed = min(max((now.hour * 60 + now.minute) - 9 * 60, 1), TRADING_MIN)
+    run = {"time": now.strftime("%H:%M"), "slot": slot, "results": []}
+    groups = {"成形": [], "價到條件不足": [], "曾到拉回": []}
+    for r in items:
+        q = quotes.get(r["code"])
+        if not q or not q["price"]:
+            continue
+        status, miss, proj = judge(r, q, elapsed)
+        row = {"code": r["code"], "name": r["name"], "side": r["side"], "title": r["title"],
+               "trigger": r["trigger"], "price": q["price"], "status": status, "miss": miss,
+               "proj_vol": int(proj), "stop": r["stop"]["fixed"]}
+        run["results"].append(row)
+        if status in groups:
+            groups[status].append(row)
+
+    head = "⏰ {:%m/%d %H:%M} {}".format(now, "預警（還早，僅供參考）" if slot == "預警" else "確認（以 13:30 收盤為準）")
+    lines = [head]
+    mark = {"成形": "✅", "價到條件不足": "⚠️", "曾到拉回": "↩️"}
+    for status, rows in groups.items():
+        if not rows:
+            continue
+        lines.append(f"\n{mark[status]} {status}")
+        for x in rows:
+            side = "多" if x["side"] == "long" else "空"
+            extra = f"｜{'、'.join(x['miss'])}" if x["miss"] else ""
+            lines.append(f"{x['code']} {x['name']} {side} 現{x['price']:g}／觸發{x['trigger']:g}{extra}")
+            if status == "成形":
+                lines.append(f"  停損 {x['stop']:g}")
+    if not any(groups.values()):
+        lines.append("目前沒有預備股接近進場條件。")
+    lines.append("\n✅條件都符合 ⚠️價格到了但K線或量不合格 ↩️曾到觸發價又拉回")
+    lines.append("量能是依目前成交量推估全日量，早盤通常偏高")
+    url = line_push.dashboard_url()
+    if url:
+        lines.append(url)
+
     checks["runs"].append(run)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(checks, f, ensure_ascii=False, indent=1)
