@@ -1,6 +1,6 @@
 {
- "data_date": "2026-11-04",
- "generated_at": "2026-11-04 21:28",
+ "data_date": "2026-11-05",
+ "generated_at": "2026-11-05 21:33",
  "titles": {
   "pullback": "多頭回檔再上漲",
   "trendline": "突破下降切線",
@@ -9,128 +9,92 @@
  "patterns": {
   "pullback": [
    {
-    "code": "6234",
-    "name": "高僑",
+    "code": "1216",
+    "name": "統一",
+    "market": "tse",
+    "close": 80.9,
+    "trigger": 82.6,
+    "gap_pct": 2.1,
+    "vol5": 13330,
+    "vol_ratio": 0,
+    "rs": 89,
+    "note": "5MA 80.7／20MA 78.6，量縮回檔"
+   },
+   {
+    "code": "3703",
+    "name": "欣陸",
+    "market": "tse",
+    "close": 20.85,
+    "trigger": 21.35,
+    "gap_pct": 2.4,
+    "vol5": 1245,
+    "vol_ratio": 0,
+    "rs": 79,
+    "note": "5MA 20.9／20MA 20.5，量縮回檔"
+   }
+  ],
+  "trendline": [
+   {
+    "code": "6538",
+    "name": "倉和",
     "market": "otc",
-    "close": 49.95,
-    "trigger": 50.1,
-    "gap_pct": 0.3,
-    "vol5": 7405,
-    "vol_ratio": 0,
-    "rs": 97,
-    "note": "5MA 49.5／20MA 45.8，量縮回檔"
+    "close": 272.5,
+    "trigger": 280.29,
+    "gap_pct": 2.86,
+    "vol5": 3554,
+    "vol_ratio": 1.2,
+    "rs": 99,
+    "note": "切線 468.0→322.0（27 天前起）"
    },
    {
-    "code": "2603",
-    "name": "長榮",
-    "market": "tse",
-    "close": 268.0,
-    "trigger": 270.12,
-    "gap_pct": 0.79,
-    "vol5": 12162,
-    "vol_ratio": 0,
-    "rs": 94,
-    "note": "5MA 268.3／20MA 257.3，量縮回檔"
+    "code": "4167",
+    "name": "松瑞藥",
+    "market": "otc",
+    "close": 18.9,
+    "trigger": 19.15,
+    "gap_pct": 1.32,
+    "vol5": 1260,
+    "vol_ratio": 1.2,
+    "rs": 81,
+    "note": "切線 23.9→21.2（16 天前起）"
    },
    {
-    "code": "8213",
-    "name": "志超",
+    "code": "9921",
+    "name": "巨大",
     "market": "tse",
-    "close": 39.7,
-    "trigger": 40.7,
-    "gap_pct": 2.52,
-    "vol5": 4217,
-    "vol_ratio": 0,
-    "rs": 94,
-    "note": "5MA 40.6／20MA 39.5，量縮回檔"
+    "close": 89.3,
+    "trigger": 91.33,
+    "gap_pct": 2.27,
+    "vol5": 1318,
+    "vol_ratio": 1.2,
+    "rs": 70,
+    "note": "切線 113.5→96.0（57 天前起）"
    },
    {
-    "code": "4904",
-    "name": "遠傳",
+    "code": "5871",
+    "name": "中租-KY",
     "market": "tse",
-    "close": 114.0,
-    "trigger": 114.0,
-    "gap_pct": 0.0,
-    "vol5": 7931,
-    "vol_ratio": 0,
-    "rs": 87,
-    "note": "5MA 113.4／20MA 110.7，量縮回檔"
-   },
-   {
-    "code": "2891",
-    "name": "中信金",
-    "market": "tse",
-    "close": 73.2,
-    "trigger": 74.55,
-    "gap_pct": 1.84,
-    "vol5": 45566,
-    "vol_ratio": 0,
-    "rs": 86,
-    "note": "5MA 74.7／20MA 72.4，量縮回檔"
-   },
+    "close": 104.5,
+    "trigger": 106.05,
+    "gap_pct": 1.48,
+    "vol5": 8179,
+    "vol_ratio": 1.2,
+    "rs": 59,
+    "note": "切線 117.5→108.0（47 天前起）"
+   }
+  ],
+  "range": [
    {
     "code": "1216",
     "name": "統一",
     "market": "tse",
     "close": 80.9,
-    "trigger": 82.5,
-    "gap_pct": 1.98,
-    "vol5": 12064,
-    "vol_ratio": 0,
-    "rs": 85,
-    "note": "5MA 80.4／20MA 78.2，量縮回檔"
-   }
-  ],
-  "trendline": [
-   {
-    "code": "2061",
-    "name": "風青",
-    "market": "otc",
-    "close": 61.3,
-    "trigger": 62.68,
-    "gap_pct": 2.25,
-    "vol5": 1855,
-    "vol_ratio": 1.2,
-    "rs": 88,
-    "note": "切線 71.8→64.6（19 天前起）"
-   },
-   {
-    "code": "5904",
-    "name": "寶雅*",
-    "market": "otc",
-    "close": 73.2,
-    "trigger": 73.97,
-    "gap_pct": 1.05,
-    "vol5": 3999,
-    "vol_ratio": 1.2,
-    "rs": 87,
-    "note": "切線 92.3→75.3（55 天前起）"
-   }
-  ],
-  "range": [
-   {
-    "code": "5904",
-    "name": "寶雅*",
-    "market": "otc",
-    "close": 73.2,
-    "trigger": 75.3,
-    "gap_pct": 2.87,
-    "vol5": 3999,
+    "trigger": 83.0,
+    "gap_pct": 2.6,
+    "vol5": 13330,
     "vol_ratio": 1.5,
-    "rs": 87,
-    "note": "盤整 18 天，區間 68.6–75.3（9.8%）"
-   },
-   {
-    "code": "2023",
-    "name": "燁輝",
-    "market": "tse",
-    "close": 15.05,
-    "trigger": 15.25,
-    "gap_pct": 1.33,
-    "vol5": 1409,
-    "vol_ratio": 1.5,
-    "rs": 85,
-    "note": "盤整 16 天，區間 13.9–15.2（9.7%）"
+    "rs": 89,
+    "note": "盤整 15 天，區間 76.6–83.0（8.4%）"
    }
   ]
  }
