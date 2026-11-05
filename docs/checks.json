@@ -1,1 +1,126 @@
-{"for_data_date": "2026-11-04", "runs": []}
+{
+ "for_data_date": "2026-11-04",
+ "runs": [
+  {
+   "time": "11:38",
+   "results": {
+    "pullback": [
+     {
+      "code": "6234",
+      "name": "高僑",
+      "trigger": 50.1,
+      "price": 46.75,
+      "high": 49.65,
+      "status": "未突破",
+      "vol": 2050,
+      "proj_vol": 3503,
+      "vol_ok": true
+     },
+     {
+      "code": "2603",
+      "name": "長榮",
+      "trigger": 270.12,
+      "price": 261.0,
+      "high": 269.5,
+      "status": "未突破",
+      "vol": 5666,
+      "proj_vol": 9682,
+      "vol_ok": true
+     },
+     {
+      "code": "8213",
+      "name": "志超",
+      "trigger": 40.7,
+      "price": 39.2,
+      "high": 40.45,
+      "status": "未突破",
+      "vol": 1479,
+      "proj_vol": 2527,
+      "vol_ok": true
+     },
+     {
+      "code": "4904",
+      "name": "遠傳",
+      "trigger": 114.0,
+      "price": 113.0,
+      "high": 117.0,
+      "status": "曾突破拉回",
+      "vol": 3800,
+      "proj_vol": 6493,
+      "vol_ok": true
+     },
+     {
+      "code": "2891",
+      "name": "中信金",
+      "trigger": 74.55,
+      "price": 73.4,
+      "high": 74.8,
+      "status": "曾突破拉回",
+      "vol": 24334,
+      "proj_vol": 41583,
+      "vol_ok": true
+     },
+     {
+      "code": "1216",
+      "name": "統一",
+      "trigger": 82.5,
+      "price": 80.7,
+      "high": 82.6,
+      "status": "曾突破拉回",
+      "vol": 6351,
+      "proj_vol": 10852,
+      "vol_ok": true
+     }
+    ],
+    "trendline": [
+     {
+      "code": "2061",
+      "name": "風青",
+      "trigger": 62.68,
+      "price": 60.4,
+      "high": 61.8,
+      "status": "未突破",
+      "vol": 849,
+      "proj_vol": 1450,
+      "vol_ok": false
+     },
+     {
+      "code": "5904",
+      "name": "寶雅*",
+      "trigger": 73.97,
+      "price": 74.2,
+      "high": 75.0,
+      "status": "突破",
+      "vol": 3772,
+      "proj_vol": 6445,
+      "vol_ok": true
+     }
+    ],
+    "range": [
+     {
+      "code": "5904",
+      "name": "寶雅*",
+      "trigger": 75.3,
+      "price": 74.2,
+      "high": 75.0,
+      "status": "未突破",
+      "vol": 3772,
+      "proj_vol": 6445,
+      "vol_ok": true
+     },
+     {
+      "code": "2023",
+      "name": "燁輝",
+      "trigger": 15.25,
+      "price": 15.0,
+      "high": 15.4,
+      "status": "曾突破拉回",
+      "vol": 1241,
+      "proj_vol": 2120,
+      "vol_ok": true
+     }
+    ]
+   }
+  }
+ ]
+}
