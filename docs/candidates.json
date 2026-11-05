@@ -1,101 +1,5850 @@
 {
+ "version": 2,
  "data_date": "2026-11-05",
- "generated_at": "2026-11-05 21:33",
- "titles": {
-  "pullback": "多頭回檔再上漲",
-  "trendline": "突破下降切線",
-  "range": "突破盤整區間"
+ "generated_at": "2026-11-05 23:05",
+ "market": {
+  "date": "2026-11-05",
+  "close": 41574.72,
+  "chg_pct": -3.2,
+  "ma20": 46640.0,
+  "ma20_dir": "下彎",
+  "trend": "空頭",
+  "label": "空頭確認",
+  "capital": "4 成",
+  "above_ma20": false,
+  "allow_long": false,
+  "allow_short": true
  },
- "patterns": {
-  "pullback": [
-   {
-    "code": "1216",
-    "name": "統一",
-    "market": "tse",
-    "close": 80.9,
-    "trigger": 82.6,
-    "gap_pct": 2.1,
-    "vol5": 13330,
-    "vol_ratio": 0,
-    "rs": 89,
-    "note": "5MA 80.7／20MA 78.6，量縮回檔"
+ "titles": {
+  "L1": "打底完成突破",
+  "L2": "回後買上漲",
+  "L3": "突破盤整上頸線",
+  "L4": "橫盤／一字底突破",
+  "L5": "突破大量黑K",
+  "L6": "ABC修正突破切線",
+  "L7": "假跌破真上漲",
+  "S1": "盤頭確認",
+  "S2": "彈後空下跌",
+  "S3": "跌破盤整下頸線",
+  "S4": "跌破橫盤／一字底",
+  "S5": "反彈後跌破紅K低點",
+  "S6": "假突破真下跌"
+ },
+ "long": [
+  {
+   "code": "2603",
+   "name": "長榮",
+   "market": "tse",
+   "side": "long",
+   "key": "L2",
+   "title": "回後買上漲",
+   "note": "回檔低點 257，前低 254",
+   "close": 259.0,
+   "trigger": 269.5,
+   "gap_pct": 4.05,
+   "need_vol": 1.0,
+   "vol5": 13530,
+   "ref": {
+    "k": 56.16,
+    "low_n1": 254.0,
+    "high_n1": 274.5,
+    "ma20": 258.52
    },
-   {
-    "code": "3703",
-    "name": "欣陸",
-    "market": "tse",
-    "close": 20.85,
-    "trigger": 21.35,
-    "gap_pct": 2.4,
-    "vol5": 1245,
-    "vol_ratio": 0,
-    "rs": 79,
-    "note": "5MA 20.9／20MA 20.5，量縮回檔"
-   }
-  ],
-  "trendline": [
-   {
-    "code": "6538",
-    "name": "倉和",
-    "market": "otc",
-    "close": 272.5,
-    "trigger": 280.29,
-    "gap_pct": 2.86,
-    "vol5": 3554,
-    "vol_ratio": 1.2,
-    "rs": 99,
-    "note": "切線 468.0→322.0（27 天前起）"
+   "stop": {
+    "fixed": 256.0,
+    "trend": 257.0
    },
-   {
-    "code": "4167",
-    "name": "松瑞藥",
-    "market": "otc",
-    "close": 18.9,
-    "trigger": 19.15,
-    "gap_pct": 1.32,
-    "vol5": 1260,
-    "vol_ratio": 1.2,
-    "rs": 81,
-    "note": "切線 23.9→21.2（16 天前起）"
+   "position": "主升段",
+   "trend": "多頭",
+   "rs": 95,
+   "score": 71,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+44%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（4天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 56 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ]
+  },
+  {
+   "code": "5880",
+   "name": "合庫金",
+   "market": "tse",
+   "side": "long",
+   "key": "L2",
+   "title": "回後買上漲",
+   "note": "回檔低點 28.2，前低 27.3",
+   "close": 28.5,
+   "trigger": 29.15,
+   "gap_pct": 2.28,
+   "need_vol": 1.0,
+   "vol5": 20308,
+   "ref": {
+    "k": 58.09,
+    "low_n1": 28.2,
+    "high_n1": 29.5,
+    "ma20": 27.86
    },
-   {
-    "code": "9921",
-    "name": "巨大",
-    "market": "tse",
-    "close": 89.3,
-    "trigger": 91.33,
-    "gap_pct": 2.27,
-    "vol5": 1318,
-    "vol_ratio": 1.2,
-    "rs": 70,
-    "note": "切線 113.5→96.0（57 天前起）"
+   "stop": {
+    "fixed": 27.65,
+    "trend": 28.2
    },
-   {
-    "code": "5871",
-    "name": "中租-KY",
-    "market": "tse",
-    "close": 104.5,
-    "trigger": 106.05,
-    "gap_pct": 1.48,
-    "vol5": 8179,
-    "vol_ratio": 1.2,
-    "rs": 59,
-    "note": "切線 117.5→108.0（47 天前起）"
-   }
-  ],
-  "range": [
-   {
-    "code": "1216",
-    "name": "統一",
-    "market": "tse",
-    "close": 80.9,
-    "trigger": 83.0,
-    "gap_pct": 2.6,
-    "vol5": 13330,
-    "vol_ratio": 1.5,
-    "rs": 89,
-    "note": "盤整 15 天，區間 76.6–83.0（8.4%）"
-   }
-  ]
- }
+   "position": "主升段",
+   "trend": "多頭",
+   "rs": 87,
+   "score": 70,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+26%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "調節量（12天前）、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 58 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ]
+  },
+  {
+   "code": "3045",
+   "name": "台灣大",
+   "market": "tse",
+   "side": "long",
+   "key": "L2",
+   "title": "回後買上漲",
+   "note": "回檔低點 132，前低 131.5",
+   "close": 132.5,
+   "trigger": 136.5,
+   "gap_pct": 3.02,
+   "need_vol": 1.0,
+   "vol5": 10025,
+   "ref": {
+    "k": 65.41,
+    "low_n1": 131.0,
+    "high_n1": 136.5,
+    "ma20": 129.85
+   },
+   "stop": {
+    "fixed": 129.5,
+    "trend": 132.0
+   },
+   "position": "主升段",
+   "trend": "多頭",
+   "rs": 93,
+   "score": 70,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第3波，+25%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（11天前）、調節量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 65 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ]
+  }
+ ],
+ "short": [
+  {
+   "code": "6244",
+   "name": "茂迪",
+   "market": "otc",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 19",
+   "close": 19.4,
+   "trigger": 19.0,
+   "gap_pct": 2.06,
+   "need_vol": 0,
+   "vol5": 5931,
+   "ref": {
+    "k": 18.81,
+    "low_n1": 19.0,
+    "high_n1": 22.15,
+    "ma20": 21.35
+   },
+   "stop": {
+    "fixed": 19.95,
+    "trend": 21.9
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 15,
+   "score": 83,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-43%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 19 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ]
+  },
+  {
+   "code": "2539",
+   "name": "櫻花建",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 30",
+   "close": 30.4,
+   "trigger": 29.75,
+   "gap_pct": 2.14,
+   "need_vol": 0,
+   "vol5": 1107,
+   "ref": {
+    "k": 8.98,
+    "low_n1": 29.9,
+    "high_n1": 32.95,
+    "ma20": 32.59
+   },
+   "stop": {
+    "fixed": 31.25,
+    "trend": 31.05
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 6,
+   "score": 77,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-38%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 9 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ]
+  },
+  {
+   "code": "4123",
+   "name": "晟德",
+   "market": "otc",
+   "side": "short",
+   "key": "S3",
+   "title": "跌破盤整下頸線",
+   "note": "下頸線 27.75／上頸線 31.6",
+   "close": 28.9,
+   "trigger": 27.75,
+   "gap_pct": 3.98,
+   "need_vol": 1.2,
+   "vol5": 1433,
+   "ref": {
+    "k": 26.71,
+    "low_n1": 27.75,
+    "high_n1": 30.15,
+    "ma20": 30.05
+   },
+   "stop": {
+    "fixed": 29.15,
+    "trend": 27.75
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 13,
+   "score": 73,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第4波，-30%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 27 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ]
+  },
+  {
+   "code": "5534",
+   "name": "長虹",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 66.8",
+   "close": 67.0,
+   "trigger": 65.6,
+   "gap_pct": 2.09,
+   "need_vol": 0,
+   "vol5": 1015,
+   "ref": {
+    "k": 21.23,
+    "low_n1": 65.6,
+    "high_n1": 70.0,
+    "ma20": 69.49
+   },
+   "stop": {
+    "fixed": 68.9,
+    "trend": 67.9
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 31,
+   "score": 71,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第3波，-23%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 21 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ]
+  },
+  {
+   "code": "3026",
+   "name": "禾伸堂",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 526",
+   "close": 528.0,
+   "trigger": 517.0,
+   "gap_pct": 2.08,
+   "need_vol": 0,
+   "vol5": 11326,
+   "ref": {
+    "k": 8.15,
+    "low_n1": 526.0,
+    "high_n1": 783.0,
+    "ma20": 749.25
+   },
+   "stop": {
+    "fixed": 543.0,
+    "trend": 595.0
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 38,
+   "score": 55,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-50%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 8 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ]
+  }
+ ],
+ "confirmed": [
+  {
+   "code": "2439",
+   "name": "美律",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 70.5",
+   "close": 69.7,
+   "trigger": 70.5,
+   "gap_pct": 2.08,
+   "need_vol": 0,
+   "vol5": 1728,
+   "ref": {
+    "k": 15.84,
+    "low_n1": 70.5,
+    "high_n1": 82.2,
+    "ma20": 78.42
+   },
+   "stop": {
+    "fixed": 73.2,
+    "kline": 72.0,
+    "trend": 73.3
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 33,
+   "score": 73,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第4波，-24%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（6天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 16 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ],
+   "entry": 69.7,
+   "chg_pct": -3.19
+  },
+  {
+   "code": "2208",
+   "name": "台船",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 17.15",
+   "close": 17.0,
+   "trigger": 17.05,
+   "gap_pct": 2.01,
+   "need_vol": 0,
+   "vol5": 2510,
+   "ref": {
+    "k": 17.34,
+    "low_n1": 17.15,
+    "high_n1": 18.25,
+    "ma20": 18.06
+   },
+   "stop": {
+    "fixed": 17.85,
+    "kline": 17.7,
+    "trend": 17.55
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 40,
+   "score": 72,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-24%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 17 向上（進場日要轉下），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ],
+   "entry": 17.0,
+   "chg_pct": -2.3
+  },
+  {
+   "code": "2891",
+   "name": "中信金",
+   "market": "tse",
+   "side": "long",
+   "key": "L2",
+   "title": "回後買上漲",
+   "note": "回檔低點 72.2，前低 71.5",
+   "close": 74.9,
+   "trigger": 74.7,
+   "gap_pct": 2.05,
+   "need_vol": 1.0,
+   "vol5": 45566,
+   "ref": {
+    "k": 52.2,
+    "low_n1": 72.2,
+    "high_n1": 76.9,
+    "ma20": 72.42
+   },
+   "stop": {
+    "fixed": 71.1,
+    "kline": 73.1,
+    "trend": 72.2
+   },
+   "position": "主升段",
+   "trend": "多頭",
+   "rs": 92,
+   "score": 71,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第3波，+43%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "調節量（12天前）、換手量（14天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 52 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ],
+   "entry": 74.9,
+   "chg_pct": 2.32
+  },
+  {
+   "code": "2548",
+   "name": "華固",
+   "market": "tse",
+   "side": "long",
+   "key": "L4",
+   "title": "橫盤／一字底突破",
+   "note": "一字底 20 天，89.5–92.7",
+   "close": 93.4,
+   "trigger": 92.7,
+   "gap_pct": 2.66,
+   "need_vol": 1.2,
+   "vol5": 1106,
+   "ref": {
+    "k": 25.06,
+    "low_n1": 89.5,
+    "high_n1": 92.7,
+    "ma20": 91.44
+   },
+   "stop": {
+    "fixed": 88.7,
+    "kline": 90.7,
+    "trend": 89.5
+   },
+   "position": "初升段",
+   "trend": "空頭",
+   "rs": 67,
+   "score": 66,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初升段（第1波，+1%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 25 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": true,
+     "text": "通過"
+    }
+   ],
+   "entry": 93.4,
+   "chg_pct": 3.43
+  }
+ ],
+ "excluded": [
+  {
+   "code": "3141",
+   "name": "晶宏",
+   "market": "otc",
+   "side": "short",
+   "key": "S1",
+   "title": "盤頭確認",
+   "note": "頸線 71.1，頭 75.4→77.5",
+   "close": 72.0,
+   "trigger": 70.5,
+   "gap_pct": 2.08,
+   "need_vol": 1.2,
+   "vol5": 1773,
+   "ref": {
+    "k": 41.27,
+    "low_n1": 67.8,
+    "high_n1": 77.5,
+    "ma20": 75.4
+   },
+   "stop": {
+    "fixed": 74.1,
+    "trend": 77.5
+   },
+   "position": "初跌段",
+   "trend": "多頭",
+   "rs": 63,
+   "score": 81,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": false,
+     "text": "多頭（轉折中）"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初跌段（第1波，-34%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 41 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 63 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 63 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "1201",
+   "name": "味全",
+   "market": "tse",
+   "side": "long",
+   "key": "L5",
+   "title": "突破大量黑K",
+   "note": "黑K高點 13（今天）",
+   "close": 12.8,
+   "trigger": 13.3,
+   "gap_pct": 3.91,
+   "need_vol": 1.2,
+   "vol5": 7441,
+   "ref": {
+    "k": 66.32,
+    "low_n1": 11.45,
+    "high_n1": 14.25,
+    "ma20": 12.01
+   },
+   "stop": {
+    "fixed": 12.6,
+    "trend": 12.65
+   },
+   "position": "初升段",
+   "trend": "盤整",
+   "rs": 85,
+   "score": 81,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": false,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初升段（第1波，+13%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量縮、換手量（4天前）、調節量（11天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 66 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律6：回檔已跌破前低"
+    }
+   ],
+   "why": [
+    "戒律6：回檔已跌破前低"
+   ]
+  },
+  {
+   "code": "2645",
+   "name": "長榮航太",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 153",
+   "close": 154.0,
+   "trigger": 150.5,
+   "gap_pct": 2.27,
+   "need_vol": 0,
+   "vol5": 1181,
+   "ref": {
+    "k": 11.32,
+    "low_n1": 153.0,
+    "high_n1": 171.0,
+    "ma20": 167.7
+   },
+   "stop": {
+    "fixed": 158.5,
+    "trend": 159.0
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 16,
+   "score": 78,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-40%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 11 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 148 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 148 不到 5%"
+   ]
+  },
+  {
+   "code": "2614",
+   "name": "東森",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 13.25",
+   "close": 13.35,
+   "trigger": 13.05,
+   "gap_pct": 2.25,
+   "need_vol": 0,
+   "vol5": 1341,
+   "ref": {
+    "k": 7.8,
+    "low_n1": 13.25,
+    "high_n1": 14.65,
+    "ma20": 14.61
+   },
+   "stop": {
+    "fixed": 13.75,
+    "trend": 13.95
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 9,
+   "score": 77,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第3波，-37%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 8 向下，MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "位階：末跌段不做"
+    }
+   ],
+   "why": [
+    "位階：末跌段不做"
+   ]
+  },
+  {
+   "code": "3209",
+   "name": "全科",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 42.1",
+   "close": 42.15,
+   "trigger": 41.3,
+   "gap_pct": 2.02,
+   "need_vol": 0,
+   "vol5": 1036,
+   "ref": {
+    "k": 11.23,
+    "low_n1": 42.1,
+    "high_n1": 46.75,
+    "ma20": 45.67
+   },
+   "stop": {
+    "fixed": 43.4,
+    "trend": 43.95
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 6,
+   "score": 74,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第4波，-50%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 11 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 40.3 不到 5%；位階：末跌段不做"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 40.3 不到 5%",
+    "位階：末跌段不做"
+   ]
+  },
+  {
+   "code": "6547",
+   "name": "高端疫苗",
+   "market": "otc",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 47.4",
+   "close": 47.55,
+   "trigger": 46.55,
+   "gap_pct": 2.1,
+   "need_vol": 0,
+   "vol5": 1479,
+   "ref": {
+    "k": 10.05,
+    "low_n1": 47.4,
+    "high_n1": 51.3,
+    "ma20": 53.03
+   },
+   "stop": {
+    "fixed": 48.9,
+    "trend": 49.35
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 44,
+   "score": 74,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-34%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 10 向下，MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 45.05 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 45.05 不到 5%"
+   ]
+  },
+  {
+   "code": "6962",
+   "name": "奕力-KY",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 29.25",
+   "close": 29.3,
+   "trigger": 28.7,
+   "gap_pct": 2.05,
+   "need_vol": 0,
+   "vol5": 2606,
+   "ref": {
+    "k": 22.67,
+    "low_n1": 28.8,
+    "high_n1": 32.3,
+    "ma20": 31.18
+   },
+   "stop": {
+    "fixed": 30.15,
+    "trend": 30.65
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 52,
+   "score": 73,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第3波，-29%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 23 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 28.6 不到 5%；強度 52 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 28.6 不到 5%",
+    "強度 52 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "3033",
+   "name": "威健",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 38.3",
+   "close": 38.55,
+   "trigger": 37.75,
+   "gap_pct": 2.08,
+   "need_vol": 0,
+   "vol5": 2717,
+   "ref": {
+    "k": 14.4,
+    "low_n1": 38.3,
+    "high_n1": 42.55,
+    "ma20": 41.57
+   },
+   "stop": {
+    "fixed": 39.65,
+    "trend": 40.05
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 18,
+   "score": 72,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第3波，-35%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 14 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "位階：末跌段不做"
+    }
+   ],
+   "why": [
+    "位階：末跌段不做"
+   ]
+  },
+  {
+   "code": "9908",
+   "name": "大台北",
+   "market": "tse",
+   "side": "long",
+   "key": "L4",
+   "title": "橫盤／一字底突破",
+   "note": "一字底 20 天，28.75–29.2",
+   "close": 28.8,
+   "trigger": 29.4,
+   "gap_pct": 2.08,
+   "need_vol": 1.2,
+   "vol5": 2259,
+   "ref": {
+    "k": 33.78,
+    "low_n1": 28.75,
+    "high_n1": 29.1,
+    "ma20": 28.96
+   },
+   "stop": {
+    "fixed": 27.9,
+    "trend": 28.75
+   },
+   "position": "初升段",
+   "trend": "空頭",
+   "rs": 71,
+   "score": 72,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初升段（第1波，+0%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量縮、換手量（4天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 34 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 29.95 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 29.95 不到 5%"
+   ]
+  },
+  {
+   "code": "9904",
+   "name": "寶成",
+   "market": "tse",
+   "side": "long",
+   "key": "L3",
+   "title": "突破盤整上頸線",
+   "note": "上頸線 26.8／下頸線 25.05",
+   "close": 26.0,
+   "trigger": 26.8,
+   "gap_pct": 3.08,
+   "need_vol": 1.2,
+   "vol5": 15341,
+   "ref": {
+    "k": 46.49,
+    "low_n1": 25.05,
+    "high_n1": 26.55,
+    "ma20": 25.82
+   },
+   "stop": {
+    "fixed": 25.45,
+    "trend": 26.8
+   },
+   "position": "主升段",
+   "trend": "盤整",
+   "rs": 88,
+   "score": 72,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+12%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 46 向上，MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 26.9 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 26.9 不到 5%"
+   ]
+  },
+  {
+   "code": "2903",
+   "name": "遠百",
+   "market": "tse",
+   "side": "long",
+   "key": "L4",
+   "title": "橫盤／一字底突破",
+   "note": "一字底 20 天，21.5–22.6",
+   "close": 21.7,
+   "trigger": 22.6,
+   "gap_pct": 4.15,
+   "need_vol": 1.2,
+   "vol5": 1349,
+   "ref": {
+    "k": 24.25,
+    "low_n1": 21.5,
+    "high_n1": 22.15,
+    "ma20": 22.04
+   },
+   "stop": {
+    "fixed": 21.45,
+    "trend": 21.5
+   },
+   "position": "初升段",
+   "trend": "盤整",
+   "rs": 71,
+   "score": 72,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初升段（第1波，+1%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（13天前）、調節量（16天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 24 向上，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 22.65 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 22.65 不到 5%"
+   ]
+  },
+  {
+   "code": "2548",
+   "name": "華固",
+   "market": "tse",
+   "side": "long",
+   "key": "L4",
+   "title": "橫盤／一字底突破",
+   "note": "一字底 20 天，89.5–94.6",
+   "close": 93.4,
+   "trigger": 95.3,
+   "gap_pct": 2.03,
+   "need_vol": 1.2,
+   "vol5": 1640,
+   "ref": {
+    "k": 42.2,
+    "low_n1": 89.5,
+    "high_n1": 94.6,
+    "ma20": 91.54
+   },
+   "stop": {
+    "fixed": 90.5,
+    "trend": 89.5
+   },
+   "position": "初升段",
+   "trend": "盤整",
+   "rs": 67,
+   "score": 71,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初升段（第1波，+4%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、進貨量、搶反彈量（1天前）、調節量（6天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 42 向上，MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 98.3 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 98.3 不到 5%"
+   ]
+  },
+  {
+   "code": "1785",
+   "name": "光洋科",
+   "market": "otc",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 76.3",
+   "close": 77.4,
+   "trigger": 75.8,
+   "gap_pct": 2.07,
+   "need_vol": 0,
+   "vol5": 11635,
+   "ref": {
+    "k": 9.73,
+    "low_n1": 76.3,
+    "high_n1": 97.0,
+    "ma20": 95.4
+   },
+   "stop": {
+    "fixed": 79.6,
+    "trend": 83.3
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 5,
+   "score": 70,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第4波，-58%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 10 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律9：連續急跌的大量長黑K低檔；位階：末跌段不做"
+    }
+   ],
+   "why": [
+    "戒律9：連續急跌的大量長黑K低檔",
+    "位階：末跌段不做"
+   ]
+  },
+  {
+   "code": "3653",
+   "name": "健策",
+   "market": "tse",
+   "side": "short",
+   "key": "S1",
+   "title": "盤頭確認",
+   "note": "頸線 5800，頭 6655→6595",
+   "close": 5805.0,
+   "trigger": 5685.0,
+   "gap_pct": 2.07,
+   "need_vol": 1.2,
+   "vol5": 2058,
+   "ref": {
+    "k": 32.2,
+    "low_n1": 5710.0,
+    "high_n1": 6655.0,
+    "ma20": 6557.25
+   },
+   "stop": {
+    "fixed": 5970.0,
+    "trend": 6595.0
+   },
+   "position": "初跌段",
+   "trend": "盤整",
+   "rs": 96,
+   "score": 70,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整（轉折中）"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初跌段（第1波，-22%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 32 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 96 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 96 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "1210",
+   "name": "大成",
+   "market": "tse",
+   "side": "short",
+   "key": "S4",
+   "title": "跌破橫盤／一字底",
+   "note": "一字橫盤 20 天，50.5–52.2",
+   "close": 50.5,
+   "trigger": 49.45,
+   "gap_pct": 2.08,
+   "need_vol": 1.2,
+   "vol5": 1450,
+   "ref": {
+    "k": 15.04,
+    "low_n1": 50.5,
+    "high_n1": 52.2,
+    "ma20": 51.18
+   },
+   "stop": {
+    "fixed": 52.0,
+    "trend": 52.2
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 45,
+   "score": 70,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第3波，-15%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 15 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律2：明天是下跌第3根以上，勿殺低"
+    }
+   ],
+   "why": [
+    "戒律2：明天是下跌第3根以上，勿殺低"
+   ]
+  },
+  {
+   "code": "1722",
+   "name": "台肥",
+   "market": "tse",
+   "side": "short",
+   "key": "S4",
+   "title": "跌破橫盤／一字底",
+   "note": "一字橫盤 20 天，40.55–42.6",
+   "close": 40.55,
+   "trigger": 39.7,
+   "gap_pct": 2.1,
+   "need_vol": 1.2,
+   "vol5": 2283,
+   "ref": {
+    "k": 22.97,
+    "low_n1": 40.55,
+    "high_n1": 42.45,
+    "ma20": 41.67
+   },
+   "stop": {
+    "fixed": 41.7,
+    "trend": 42.6
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 40,
+   "score": 70,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第3波，-22%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 23 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律2：明天是下跌第3根以上，勿殺低"
+    }
+   ],
+   "why": [
+    "戒律2：明天是下跌第3根以上，勿殺低"
+   ]
+  },
+  {
+   "code": "2886",
+   "name": "兆豐金",
+   "market": "tse",
+   "side": "long",
+   "key": "L5",
+   "title": "突破大量黑K",
+   "note": "大量黑K高點 54.4（2 天前）",
+   "close": 54.0,
+   "trigger": 56.0,
+   "gap_pct": 3.7,
+   "need_vol": 1.2,
+   "vol5": 24294,
+   "ref": {
+    "k": 44.42,
+    "low_n1": 52.4,
+    "high_n1": 56.0,
+    "ma20": 52.79
+   },
+   "stop": {
+    "fixed": 53.2,
+    "trend": 52.4
+   },
+   "position": "主升段",
+   "trend": "空頭",
+   "rs": 86,
+   "score": 70,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": false,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第3波，+41%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 44 向上，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律2：明天是上漲第3根以上，勿追高；戒律6：回檔已跌破前低；戒律8：一般空頭的反彈"
+    }
+   ],
+   "why": [
+    "戒律2：明天是上漲第3根以上，勿追高",
+    "戒律6：回檔已跌破前低",
+    "戒律8：一般空頭的反彈"
+   ]
+  },
+  {
+   "code": "2812",
+   "name": "台中銀",
+   "market": "tse",
+   "side": "short",
+   "key": "S4",
+   "title": "跌破橫盤／一字底",
+   "note": "一字橫盤 20 天，18–18.95",
+   "close": 18.05,
+   "trigger": 17.65,
+   "gap_pct": 2.22,
+   "need_vol": 1.2,
+   "vol5": 18236,
+   "ref": {
+    "k": 12.12,
+    "low_n1": 18.0,
+    "high_n1": 18.7,
+    "ma20": 18.57
+   },
+   "stop": {
+    "fixed": 18.55,
+    "trend": 18.95
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 66,
+   "score": 69,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-15%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 12 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 66 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 66 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "6451",
+   "name": "訊芯-KY",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 264.5",
+   "close": 269.0,
+   "trigger": 263.5,
+   "gap_pct": 2.04,
+   "need_vol": 0,
+   "vol5": 1967,
+   "ref": {
+    "k": 13.28,
+    "low_n1": 264.5,
+    "high_n1": 376.5,
+    "ma20": 360.45
+   },
+   "stop": {
+    "fixed": 277.0,
+    "trend": 305.0
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 1,
+   "score": 68,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第3波，-64%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 13 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律9：連續急跌的大量長黑K低檔；位階：末跌段不做"
+    }
+   ],
+   "why": [
+    "戒律9：連續急跌的大量長黑K低檔",
+    "位階：末跌段不做"
+   ]
+  },
+  {
+   "code": "9939",
+   "name": "宏全",
+   "market": "tse",
+   "side": "short",
+   "key": "S2",
+   "title": "彈後空下跌",
+   "note": "反彈高點 125，前高 128.5",
+   "close": 122.5,
+   "trigger": 120.0,
+   "gap_pct": 2.04,
+   "need_vol": 0,
+   "vol5": 2178,
+   "ref": {
+    "k": 26.58,
+    "low_n1": 119.0,
+    "high_n1": 128.5,
+    "ma20": 125.15
+   },
+   "stop": {
+    "fixed": 126.0,
+    "trend": 125.0
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 31,
+   "score": 68,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-16%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 27 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 116.5 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 116.5 不到 5%"
+   ]
+  },
+  {
+   "code": "3703",
+   "name": "欣陸",
+   "market": "tse",
+   "side": "long",
+   "key": "L3",
+   "title": "突破盤整上頸線",
+   "note": "上頸線 21.75／下頸線 19.3",
+   "close": 20.85,
+   "trigger": 21.75,
+   "gap_pct": 4.32,
+   "need_vol": 1.2,
+   "vol5": 1245,
+   "ref": {
+    "k": 39.09,
+    "low_n1": 20.5,
+    "high_n1": 21.75,
+    "ma20": 20.48
+   },
+   "stop": {
+    "fixed": 20.65,
+    "trend": 21.75
+   },
+   "position": "主升段",
+   "trend": "盤整",
+   "rs": 79,
+   "score": 68,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+9%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "止跌量（4天前）、調節量（11天前）、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 39 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 22.35 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 22.35 不到 5%"
+   ]
+  },
+  {
+   "code": "2880",
+   "name": "華南金",
+   "market": "tse",
+   "side": "long",
+   "key": "L5",
+   "title": "突破大量黑K",
+   "note": "大量黑K高點 50.1（2 天前）",
+   "close": 49.6,
+   "trigger": 50.8,
+   "gap_pct": 2.42,
+   "need_vol": 1.2,
+   "vol5": 19584,
+   "ref": {
+    "k": 55.43,
+    "low_n1": 47.8,
+    "high_n1": 51.0,
+    "ma20": 48.83
+   },
+   "stop": {
+    "fixed": 48.25,
+    "trend": 47.8
+   },
+   "position": "末升段",
+   "trend": "盤整",
+   "rs": 90,
+   "score": 67,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": false,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末升段（第4波，+68%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量、調節量（13天前）、換手量（15天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 55 向上，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律6：回檔已跌破前低；位階：末升段不做"
+    }
+   ],
+   "why": [
+    "戒律6：回檔已跌破前低",
+    "位階：末升段不做"
+   ]
+  },
+  {
+   "code": "2884",
+   "name": "玉山金",
+   "market": "tse",
+   "side": "long",
+   "key": "L5",
+   "title": "突破大量黑K",
+   "note": "大量黑K高點 49.05（2 天前）",
+   "close": 47.95,
+   "trigger": 49.15,
+   "gap_pct": 2.5,
+   "need_vol": 1.2,
+   "vol5": 32476,
+   "ref": {
+    "k": 37.37,
+    "low_n1": 46.55,
+    "high_n1": 50.1,
+    "ma20": 47.91
+   },
+   "stop": {
+    "fixed": 46.65,
+    "trend": 46.55
+   },
+   "position": "末升段",
+   "trend": "盤整",
+   "rs": 95,
+   "score": 67,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": false,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末升段（第5波，+56%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "調節量（13天前）、換手量（14天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 37 向上，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律2：明天是上漲第3根以上，勿追高；戒律4：週線壓力 50.1 不到 5%；戒律6：回檔已跌破前低；位階：末升段不做"
+    }
+   ],
+   "why": [
+    "戒律2：明天是上漲第3根以上，勿追高",
+    "戒律4：週線壓力 50.1 不到 5%",
+    "戒律6：回檔已跌破前低",
+    "位階：末升段不做"
+   ]
+  },
+  {
+   "code": "2882",
+   "name": "國泰金",
+   "market": "tse",
+   "side": "long",
+   "key": "L5",
+   "title": "突破大量黑K",
+   "note": "大量黑K高點 114（1 天前）",
+   "close": 112.0,
+   "trigger": 115.0,
+   "gap_pct": 2.68,
+   "need_vol": 1.2,
+   "vol5": 26760,
+   "ref": {
+    "k": 38.95,
+    "low_n1": 110.0,
+    "high_n1": 117.5,
+    "ma20": 113.6
+   },
+   "stop": {
+    "fixed": 109.0,
+    "trend": 110.0
+   },
+   "position": "主升段",
+   "trend": "多頭",
+   "rs": 91,
+   "score": 67,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+62%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（7天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 39 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 117 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 117 不到 5%"
+   ]
+  },
+  {
+   "code": "2880",
+   "name": "華南金",
+   "market": "tse",
+   "side": "long",
+   "key": "L3",
+   "title": "突破盤整上頸線",
+   "note": "上頸線 51／下頸線 47.8",
+   "close": 49.6,
+   "trigger": 51.0,
+   "gap_pct": 2.82,
+   "need_vol": 1.2,
+   "vol5": 19584,
+   "ref": {
+    "k": 55.43,
+    "low_n1": 47.8,
+    "high_n1": 51.0,
+    "ma20": 48.83
+   },
+   "stop": {
+    "fixed": 48.45,
+    "trend": 51.0
+   },
+   "position": "末升段",
+   "trend": "盤整",
+   "rs": 90,
+   "score": 67,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末升段（第4波，+68%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量、調節量（13天前）、換手量（15天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 55 向上，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "位階：末升段不做"
+    }
+   ],
+   "why": [
+    "位階：末升段不做"
+   ]
+  },
+  {
+   "code": "9939",
+   "name": "宏全",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 119",
+   "close": 122.5,
+   "trigger": 119.0,
+   "gap_pct": 2.86,
+   "need_vol": 0,
+   "vol5": 2178,
+   "ref": {
+    "k": 26.58,
+    "low_n1": 119.0,
+    "high_n1": 128.5,
+    "ma20": 125.15
+   },
+   "stop": {
+    "fixed": 125.0,
+    "trend": 125.0
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 31,
+   "score": 67,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-16%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 27 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 116.5 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 116.5 不到 5%"
+   ]
+  },
+  {
+   "code": "2903",
+   "name": "遠百",
+   "market": "tse",
+   "side": "short",
+   "key": "S4",
+   "title": "跌破橫盤／一字底",
+   "note": "一字橫盤 20 天，21.5–22.6",
+   "close": 21.7,
+   "trigger": 21.25,
+   "gap_pct": 2.07,
+   "need_vol": 1.2,
+   "vol5": 1349,
+   "ref": {
+    "k": 24.25,
+    "low_n1": 21.5,
+    "high_n1": 22.15,
+    "ma20": 22.04
+   },
+   "stop": {
+    "fixed": 22.35,
+    "trend": 22.6
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 71,
+   "score": 66,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第3波，-11%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（13天前）、調節量（16天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 24 向上（進場日要轉下），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 21.15 不到 5%；強度 71 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 21.15 不到 5%",
+    "強度 71 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2892",
+   "name": "第一金",
+   "market": "tse",
+   "side": "long",
+   "key": "L2",
+   "title": "回後買上漲",
+   "note": "回檔低點 41.8，前低 40.45",
+   "close": 42.25,
+   "trigger": 43.75,
+   "gap_pct": 3.55,
+   "need_vol": 1.0,
+   "vol5": 25326,
+   "ref": {
+    "k": 53.14,
+    "low_n1": 41.8,
+    "high_n1": 44.8,
+    "ma20": 41.58
+   },
+   "stop": {
+    "fixed": 41.55,
+    "trend": 41.8
+   },
+   "position": "末升段",
+   "trend": "多頭",
+   "rs": 93,
+   "score": 66,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末升段（第3波，+55%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（7天前）、調節量（12天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 53 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "位階：末升段不做"
+    }
+   ],
+   "why": [
+    "位階：末升段不做"
+   ]
+  },
+  {
+   "code": "2646",
+   "name": "星宇航空",
+   "market": "tse",
+   "side": "long",
+   "key": "L4",
+   "title": "橫盤／一字底突破",
+   "note": "一字底 20 天，19.35–20.45",
+   "close": 19.7,
+   "trigger": 20.45,
+   "gap_pct": 3.81,
+   "need_vol": 1.2,
+   "vol5": 5271,
+   "ref": {
+    "k": 23.67,
+    "low_n1": 19.35,
+    "high_n1": 20.2,
+    "ma20": 20.01
+   },
+   "stop": {
+    "fixed": 19.4,
+    "trend": 19.35
+   },
+   "position": "初升段",
+   "trend": "空頭",
+   "rs": 51,
+   "score": 66,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初升段（第1波，+2%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 24 向上，MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 20.8 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 20.8 不到 5%"
+   ]
+  },
+  {
+   "code": "9910",
+   "name": "豐泰",
+   "market": "tse",
+   "side": "long",
+   "key": "L1",
+   "title": "打底完成突破",
+   "note": "頸線 70.3，底 68.8→66.9",
+   "close": 69.2,
+   "trigger": 70.6,
+   "gap_pct": 2.02,
+   "need_vol": 1.2,
+   "vol5": 1501,
+   "ref": {
+    "k": 40.61,
+    "low_n1": 66.9,
+    "high_n1": 72.2,
+    "ma20": 68.49
+   },
+   "stop": {
+    "fixed": 67.0,
+    "trend": 66.9
+   },
+   "position": "主升段",
+   "trend": "空頭",
+   "rs": 71,
+   "score": 65,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": false,
+     "text": "空頭（轉折中）"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+5%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "調節量（12天前）、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 41 向上，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 73.2 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 73.2 不到 5%"
+   ]
+  },
+  {
+   "code": "2886",
+   "name": "兆豐金",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 52.4",
+   "close": 54.0,
+   "trigger": 52.4,
+   "gap_pct": 2.96,
+   "need_vol": 0,
+   "vol5": 24294,
+   "ref": {
+    "k": 44.42,
+    "low_n1": 52.4,
+    "high_n1": 56.0,
+    "ma20": 52.79
+   },
+   "stop": {
+    "fixed": 55.1,
+    "trend": 56.0
+   },
+   "position": "初跌段",
+   "trend": "空頭",
+   "rs": 86,
+   "score": 65,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初跌段（第1波，-4%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 44 向上（進場日要轉下），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 86 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 86 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2884",
+   "name": "玉山金",
+   "market": "tse",
+   "side": "long",
+   "key": "L3",
+   "title": "突破盤整上頸線",
+   "note": "上頸線 50.1／下頸線 45",
+   "close": 47.95,
+   "trigger": 50.1,
+   "gap_pct": 4.48,
+   "need_vol": 1.2,
+   "vol5": 32476,
+   "ref": {
+    "k": 37.37,
+    "low_n1": 46.55,
+    "high_n1": 50.1,
+    "ma20": 47.91
+   },
+   "stop": {
+    "fixed": 47.55,
+    "trend": 50.1
+   },
+   "position": "末升段",
+   "trend": "盤整",
+   "rs": 95,
+   "score": 65,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末升段（第5波，+56%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "調節量（13天前）、換手量（14天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 37 向上，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律2：明天是上漲第3根以上，勿追高；位階：末升段不做"
+    }
+   ],
+   "why": [
+    "戒律2：明天是上漲第3根以上，勿追高",
+    "位階：末升段不做"
+   ]
+  },
+  {
+   "code": "2646",
+   "name": "星宇航空",
+   "market": "tse",
+   "side": "short",
+   "key": "S4",
+   "title": "跌破橫盤／一字底",
+   "note": "一字橫盤 20 天，19.35–20.45",
+   "close": 19.7,
+   "trigger": 19.3,
+   "gap_pct": 2.03,
+   "need_vol": 1.2,
+   "vol5": 5271,
+   "ref": {
+    "k": 23.67,
+    "low_n1": 19.35,
+    "high_n1": 20.2,
+    "ma20": 20.01
+   },
+   "stop": {
+    "fixed": 20.3,
+    "trend": 20.45
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 51,
+   "score": 64,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-12%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 24 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 51 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 51 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "3518",
+   "name": "柏騰",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 30.25",
+   "close": 30.8,
+   "trigger": 30.1,
+   "gap_pct": 2.27,
+   "need_vol": 0,
+   "vol5": 1461,
+   "ref": {
+    "k": 10.13,
+    "low_n1": 30.1,
+    "high_n1": 39.3,
+    "ma20": 40.27
+   },
+   "stop": {
+    "fixed": 31.65,
+    "trend": 32.55
+   },
+   "position": "初跌段",
+   "trend": "空頭",
+   "rs": 93,
+   "score": 63,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初跌段（第1波，-41%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 10 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 93 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 93 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2633",
+   "name": "台灣高鐵",
+   "market": "tse",
+   "side": "long",
+   "key": "L3",
+   "title": "突破盤整上頸線",
+   "note": "上頸線 26.65／下頸線 25.55",
+   "close": 25.85,
+   "trigger": 26.65,
+   "gap_pct": 3.09,
+   "need_vol": 1.2,
+   "vol5": 3616,
+   "ref": {
+    "k": 20.27,
+    "low_n1": 25.85,
+    "high_n1": 26.65,
+    "ma20": 26.11
+   },
+   "stop": {
+    "fixed": 25.3,
+    "trend": 26.65
+   },
+   "position": "主升段",
+   "trend": "盤整",
+   "rs": 74,
+   "score": 63,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+4%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "調節量（12天前）、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 20 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 26.9 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 26.9 不到 5%"
+   ]
+  },
+  {
+   "code": "2633",
+   "name": "台灣高鐵",
+   "market": "tse",
+   "side": "long",
+   "key": "L4",
+   "title": "橫盤／一字底突破",
+   "note": "一字底 20 天，25.55–26.65",
+   "close": 25.85,
+   "trigger": 26.65,
+   "gap_pct": 3.09,
+   "need_vol": 1.2,
+   "vol5": 3616,
+   "ref": {
+    "k": 20.27,
+    "low_n1": 25.85,
+    "high_n1": 26.65,
+    "ma20": 26.11
+   },
+   "stop": {
+    "fixed": 25.3,
+    "trend": 25.55
+   },
+   "position": "主升段",
+   "trend": "盤整",
+   "rs": 74,
+   "score": 63,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+4%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "調節量（12天前）、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 20 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 26.9 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 26.9 不到 5%"
+   ]
+  },
+  {
+   "code": "1101",
+   "name": "台泥",
+   "market": "tse",
+   "side": "long",
+   "key": "L2",
+   "title": "回後買上漲",
+   "note": "回檔低點 26.8，前低 26.55",
+   "close": 27.2,
+   "trigger": 28.3,
+   "gap_pct": 4.04,
+   "need_vol": 1.0,
+   "vol5": 49052,
+   "ref": {
+    "k": 44.49,
+    "low_n1": 26.8,
+    "high_n1": 28.8,
+    "ma20": 27.12
+   },
+   "stop": {
+    "fixed": 26.85,
+    "trend": 26.8
+   },
+   "position": "主升段",
+   "trend": "多頭",
+   "rs": 89,
+   "score": 63,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+21%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "調節量（14天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 44 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 28.8 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 28.8 不到 5%"
+   ]
+  },
+  {
+   "code": "2812",
+   "name": "台中銀",
+   "market": "tse",
+   "side": "long",
+   "key": "L4",
+   "title": "橫盤／一字底突破",
+   "note": "一字底 20 天，18–18.95",
+   "close": 18.05,
+   "trigger": 18.95,
+   "gap_pct": 4.99,
+   "need_vol": 1.2,
+   "vol5": 18236,
+   "ref": {
+    "k": 12.12,
+    "low_n1": 18.0,
+    "high_n1": 18.7,
+    "ma20": 18.57
+   },
+   "stop": {
+    "fixed": 18.0,
+    "trend": 18.0
+   },
+   "position": "初升段",
+   "trend": "空頭",
+   "rs": 66,
+   "score": 63,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初升段（第1波，+0%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 12 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 19.7 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 19.7 不到 5%"
+   ]
+  },
+  {
+   "code": "1210",
+   "name": "大成",
+   "market": "tse",
+   "side": "long",
+   "key": "L4",
+   "title": "橫盤／一字底突破",
+   "note": "一字底 20 天，50.5–52.2",
+   "close": 50.5,
+   "trigger": 52.2,
+   "gap_pct": 3.37,
+   "need_vol": 1.2,
+   "vol5": 1450,
+   "ref": {
+    "k": 15.04,
+    "low_n1": 50.5,
+    "high_n1": 52.2,
+    "ma20": 51.18
+   },
+   "stop": {
+    "fixed": 49.55,
+    "trend": 50.5
+   },
+   "position": "初升段",
+   "trend": "盤整",
+   "rs": 45,
+   "score": 62,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初升段（第1波，+0%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 15 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 52.8 不到 5%；強度 45 太弱，做多要強勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 52.8 不到 5%",
+    "強度 45 太弱，做多要強勢股"
+   ]
+  },
+  {
+   "code": "3162",
+   "name": "精確",
+   "market": "otc",
+   "side": "short",
+   "key": "S1",
+   "title": "盤頭確認",
+   "note": "頸線 70，頭 76.9→74.8",
+   "close": 71.3,
+   "trigger": 69.8,
+   "gap_pct": 2.1,
+   "need_vol": 1.2,
+   "vol5": 1174,
+   "ref": {
+    "k": 23.6,
+    "low_n1": 69.6,
+    "high_n1": 80.1,
+    "ma20": 78.0
+   },
+   "stop": {
+    "fixed": 73.3,
+    "trend": 74.8
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 87,
+   "score": 61,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整（轉折中）"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第3波，-27%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 24 向下，MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 87 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 87 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "6873",
+   "name": "泓德能源",
+   "market": "tse",
+   "side": "short",
+   "key": "S2",
+   "title": "彈後空下跌",
+   "note": "反彈高點 48.95，前高 66.6",
+   "close": 47.25,
+   "trigger": 45.5,
+   "gap_pct": 3.7,
+   "need_vol": 0,
+   "vol5": 1578,
+   "ref": {
+    "k": 17.7,
+    "low_n1": 41.45,
+    "high_n1": 51.7,
+    "ma20": 57.76
+   },
+   "stop": {
+    "fixed": 47.8,
+    "trend": 48.95
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 1,
+   "score": 61,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第3波，-54%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "搶反彈量（2天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 18 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "位階：末跌段不做"
+    }
+   ],
+   "why": [
+    "位階：末跌段不做"
+   ]
+  },
+  {
+   "code": "2483",
+   "name": "百容",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 29.85",
+   "close": 30.05,
+   "trigger": 29.35,
+   "gap_pct": 2.33,
+   "need_vol": 0,
+   "vol5": 1549,
+   "ref": {
+    "k": 16.75,
+    "low_n1": 28.85,
+    "high_n1": 37.25,
+    "ma20": 35.02
+   },
+   "stop": {
+    "fixed": 30.85,
+    "trend": 34.05
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 18,
+   "score": 60,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第3波，-59%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 17 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "位階：末跌段不做"
+    }
+   ],
+   "why": [
+    "位階：末跌段不做"
+   ]
+  },
+  {
+   "code": "1708",
+   "name": "東鹼",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 45.6",
+   "close": 46.5,
+   "trigger": 45.55,
+   "gap_pct": 2.04,
+   "need_vol": 0,
+   "vol5": 1446,
+   "ref": {
+    "k": 15.46,
+    "low_n1": 45.6,
+    "high_n1": 50.7,
+    "ma20": 51.62
+   },
+   "stop": {
+    "fixed": 47.85,
+    "trend": 48.25
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 52,
+   "score": 59,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-28%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 15 向下，MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 52 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 52 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "6933",
+   "name": "AMAX-KY",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 338",
+   "close": 343.5,
+   "trigger": 336.5,
+   "gap_pct": 2.04,
+   "need_vol": 0,
+   "vol5": 2119,
+   "ref": {
+    "k": 18.42,
+    "low_n1": 332.5,
+    "high_n1": 425.5,
+    "ma20": 384.8
+   },
+   "stop": {
+    "fixed": 353.5,
+    "trend": 377.5
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 99,
+   "score": 59,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-25%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、出貨量、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 18 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 99 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 99 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2023",
+   "name": "燁輝",
+   "market": "tse",
+   "side": "long",
+   "key": "L3",
+   "title": "突破盤整上頸線",
+   "note": "上頸線 15.25／下頸線 14.25",
+   "close": 14.9,
+   "trigger": 15.4,
+   "gap_pct": 3.36,
+   "need_vol": 1.2,
+   "vol5": 1657,
+   "ref": {
+    "k": 58.21,
+    "low_n1": 14.25,
+    "high_n1": 15.4,
+    "ma20": 14.6
+   },
+   "stop": {
+    "fixed": 14.6,
+    "trend": 15.25
+   },
+   "position": "主升段",
+   "trend": "盤整",
+   "rs": 86,
+   "score": 59,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+12%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 58 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 16 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 16 不到 5%"
+   ]
+  },
+  {
+   "code": "2023",
+   "name": "燁輝",
+   "market": "tse",
+   "side": "long",
+   "key": "L5",
+   "title": "突破大量黑K",
+   "note": "大量黑K高點 15.4（今天）",
+   "close": 14.9,
+   "trigger": 15.4,
+   "gap_pct": 3.36,
+   "need_vol": 1.2,
+   "vol5": 1657,
+   "ref": {
+    "k": 58.21,
+    "low_n1": 14.25,
+    "high_n1": 15.4,
+    "ma20": 14.6
+   },
+   "stop": {
+    "fixed": 14.6,
+    "trend": 14.85
+   },
+   "position": "主升段",
+   "trend": "盤整",
+   "rs": 86,
+   "score": 59,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": false,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+12%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 58 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 16 不到 5%；戒律6：回檔已跌破前低"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 16 不到 5%",
+    "戒律6：回檔已跌破前低"
+   ]
+  },
+  {
+   "code": "3597",
+   "name": "映興",
+   "market": "otc",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 36.95",
+   "close": 38.5,
+   "trigger": 36.95,
+   "gap_pct": 4.03,
+   "need_vol": 0,
+   "vol5": 1626,
+   "ref": {
+    "k": 18.35,
+    "low_n1": 35.25,
+    "high_n1": 51.3,
+    "ma20": 42.65
+   },
+   "stop": {
+    "fixed": 38.8,
+    "trend": 42.6
+   },
+   "position": "初跌段",
+   "trend": "空頭",
+   "rs": 98,
+   "score": 59,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初跌段（第1波，-28%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、出貨量、換手量（15天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 18 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 98 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 98 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2328",
+   "name": "廣宇",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 46.65",
+   "close": 47.25,
+   "trigger": 46.3,
+   "gap_pct": 2.01,
+   "need_vol": 0,
+   "vol5": 7958,
+   "ref": {
+    "k": 30.28,
+    "low_n1": 46.65,
+    "high_n1": 57.5,
+    "ma20": 50.65
+   },
+   "stop": {
+    "fixed": 48.65,
+    "trend": 53.2
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 82,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第3波，-27%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、換手量（9天前）、調節量（14天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 30 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 45.4 不到 5%；強度 82 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 45.4 不到 5%",
+    "強度 82 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2637",
+   "name": "慧洋-KY",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 96.6",
+   "close": 98.6,
+   "trigger": 96.6,
+   "gap_pct": 2.03,
+   "need_vol": 0,
+   "vol5": 2440,
+   "ref": {
+    "k": 35.45,
+    "low_n1": 96.6,
+    "high_n1": 103.0,
+    "ma20": 100.28
+   },
+   "stop": {
+    "fixed": 101.5,
+    "trend": 103.0
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 92,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-9%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、調節量（19天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 35 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 95 不到 5%；強度 92 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 95 不到 5%",
+    "強度 92 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2393",
+   "name": "億光",
+   "market": "tse",
+   "side": "short",
+   "key": "S3",
+   "title": "跌破盤整下頸線",
+   "note": "下頸線 62.1／上頸線 70.4",
+   "close": 62.7,
+   "trigger": 61.4,
+   "gap_pct": 2.07,
+   "need_vol": 1.2,
+   "vol5": 1592,
+   "ref": {
+    "k": 12.78,
+    "low_n1": 62.5,
+    "high_n1": 70.4,
+    "ma20": 67.36
+   },
+   "stop": {
+    "fixed": 64.5,
+    "trend": 62.1
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 78,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第4波，-16%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（20天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 13 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 61 不到 5%；強度 78 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 61 不到 5%",
+    "強度 78 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "9908",
+   "name": "大台北",
+   "market": "tse",
+   "side": "short",
+   "key": "S4",
+   "title": "跌破橫盤／一字底",
+   "note": "一字橫盤 20 天，28.75–29.2",
+   "close": 28.8,
+   "trigger": 28.2,
+   "gap_pct": 2.08,
+   "need_vol": 1.2,
+   "vol5": 2259,
+   "ref": {
+    "k": 33.78,
+    "low_n1": 28.75,
+    "high_n1": 29.1,
+    "ma20": 28.96
+   },
+   "stop": {
+    "fixed": 29.65,
+    "trend": 29.2
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 71,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-5%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量縮、換手量（4天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 34 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 71 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 71 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "9908",
+   "name": "大台北",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 28.75",
+   "close": 28.8,
+   "trigger": 28.2,
+   "gap_pct": 2.08,
+   "need_vol": 0,
+   "vol5": 2259,
+   "ref": {
+    "k": 33.78,
+    "low_n1": 28.75,
+    "high_n1": 29.1,
+    "ma20": 28.96
+   },
+   "stop": {
+    "fixed": 29.65,
+    "trend": 29.0
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 71,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-5%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量縮、換手量（4天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 34 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 71 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 71 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "9933",
+   "name": "中鼎",
+   "market": "tse",
+   "side": "short",
+   "key": "S1",
+   "title": "盤頭確認",
+   "note": "頸線 44.85，頭 48.5→48.3",
+   "close": 45.4,
+   "trigger": 44.45,
+   "gap_pct": 2.09,
+   "need_vol": 1.2,
+   "vol5": 6963,
+   "ref": {
+    "k": 60.46,
+    "low_n1": 44.0,
+    "high_n1": 48.5,
+    "ma20": 44.59
+   },
+   "stop": {
+    "fixed": 46.7,
+    "trend": 48.3
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 94,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整（轉折中）"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-7%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（7天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 60 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 94 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 94 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "6112",
+   "name": "邁達特",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 47.5",
+   "close": 47.7,
+   "trigger": 46.7,
+   "gap_pct": 2.1,
+   "need_vol": 0,
+   "vol5": 6067,
+   "ref": {
+    "k": 39.96,
+    "low_n1": 46.3,
+    "high_n1": 52.2,
+    "ma20": 47.63
+   },
+   "stop": {
+    "fixed": 49.05,
+    "trend": 51.7
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 83,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-10%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、調節量（12天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 40 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 45.15 不到 5%；強度 83 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 45.15 不到 5%",
+    "強度 83 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2504",
+   "name": "國產",
+   "market": "tse",
+   "side": "short",
+   "key": "S3",
+   "title": "跌破盤整下頸線",
+   "note": "下頸線 30.45／上頸線 35.05",
+   "close": 30.8,
+   "trigger": 30.15,
+   "gap_pct": 2.11,
+   "need_vol": 1.2,
+   "vol5": 1665,
+   "ref": {
+    "k": 10.92,
+    "low_n1": 30.7,
+    "high_n1": 35.05,
+    "ma20": 31.93
+   },
+   "stop": {
+    "fixed": 31.7,
+    "trend": 30.45
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 77,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第3波，-21%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（8天前）、調節量（17天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 11 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律2：明天是下跌第3根以上，勿殺低；強度 77 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律2：明天是下跌第3根以上，勿殺低",
+    "強度 77 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2836",
+   "name": "高雄銀",
+   "market": "tse",
+   "side": "short",
+   "key": "S4",
+   "title": "跌破橫盤／一字底",
+   "note": "一字橫盤 20 天，11.8–12.2",
+   "close": 11.85,
+   "trigger": 11.6,
+   "gap_pct": 2.11,
+   "need_vol": 1.2,
+   "vol5": 1035,
+   "ref": {
+    "k": 22.17,
+    "low_n1": 11.8,
+    "high_n1": 12.1,
+    "ma20": 12.02
+   },
+   "stop": {
+    "fixed": 12.2,
+    "trend": 12.2
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 74,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-9%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 22 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 11.55 不到 5%；強度 74 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 11.55 不到 5%",
+    "強度 74 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2633",
+   "name": "台灣高鐵",
+   "market": "tse",
+   "side": "short",
+   "key": "S4",
+   "title": "跌破橫盤／一字底",
+   "note": "一字橫盤 20 天，25.55–26.65",
+   "close": 25.85,
+   "trigger": 25.3,
+   "gap_pct": 2.13,
+   "need_vol": 1.2,
+   "vol5": 3616,
+   "ref": {
+    "k": 20.27,
+    "low_n1": 25.85,
+    "high_n1": 26.65,
+    "ma20": 26.11
+   },
+   "stop": {
+    "fixed": 26.6,
+    "trend": 26.65
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 74,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-4%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "調節量（12天前）、換手量（13天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 20 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律2：明天是下跌第3根以上，勿殺低；戒律4：週線支撐 25.2 不到 5%；強度 74 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律2：明天是下跌第3根以上，勿殺低",
+    "戒律4：週線支撐 25.2 不到 5%",
+    "強度 74 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "4770",
+   "name": "上品",
+   "market": "tse",
+   "side": "short",
+   "key": "S1",
+   "title": "盤頭確認",
+   "note": "頸線 266.5，頭 316→293",
+   "close": 272.5,
+   "trigger": 266.5,
+   "gap_pct": 2.2,
+   "need_vol": 1.2,
+   "vol5": 1107,
+   "ref": {
+    "k": 35.34,
+    "low_n1": 266.5,
+    "high_n1": 308.5,
+    "ma20": 282.7
+   },
+   "stop": {
+    "fixed": 280.0,
+    "trend": 293.0
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 95,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整（轉折中）"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-14%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（10天前）、調節量（17天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 35 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 263 不到 5%；強度 95 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 263 不到 5%",
+    "強度 95 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "6446",
+   "name": "藥華藥",
+   "market": "tse",
+   "side": "short",
+   "key": "S1",
+   "title": "盤頭確認",
+   "note": "頸線 1155，頭 1255→1270",
+   "close": 1185.0,
+   "trigger": 1155.0,
+   "gap_pct": 2.53,
+   "need_vol": 1.2,
+   "vol5": 2898,
+   "ref": {
+    "k": 52.62,
+    "low_n1": 1145.0,
+    "high_n1": 1270.0,
+    "ma20": 1195.0
+   },
+   "stop": {
+    "fixed": 1215.0,
+    "trend": 1270.0
+   },
+   "position": "主跌段",
+   "trend": "多頭",
+   "rs": 46,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": false,
+     "text": "多頭（轉折中）"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-28%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 53 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 1125 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 1125 不到 5%"
+   ]
+  },
+  {
+   "code": "1795",
+   "name": "美時",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 165",
+   "close": 168.0,
+   "trigger": 163.0,
+   "gap_pct": 2.98,
+   "need_vol": 0,
+   "vol5": 1817,
+   "ref": {
+    "k": 24.98,
+    "low_n1": 155.5,
+    "high_n1": 175.5,
+    "ma20": 174.07
+   },
+   "stop": {
+    "fixed": 171.5,
+    "trend": 174.5
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 39,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第3波，-31%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、進貨量、搶反彈量（1天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 25 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "位階：末跌段不做"
+    }
+   ],
+   "why": [
+    "位階：末跌段不做"
+   ]
+  },
+  {
+   "code": "1795",
+   "name": "美時",
+   "market": "tse",
+   "side": "short",
+   "key": "S2",
+   "title": "彈後空下跌",
+   "note": "反彈高點 174.5，前高 184.5",
+   "close": 168.0,
+   "trigger": 163.0,
+   "gap_pct": 2.98,
+   "need_vol": 0,
+   "vol5": 1817,
+   "ref": {
+    "k": 24.98,
+    "low_n1": 155.5,
+    "high_n1": 175.5,
+    "ma20": 174.07
+   },
+   "stop": {
+    "fixed": 171.5,
+    "trend": 174.5
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 39,
+   "score": 58,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第3波，-31%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、進貨量、搶反彈量（1天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 25 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "位階：末跌段不做"
+    }
+   ],
+   "why": [
+    "位階：末跌段不做"
+   ]
+  },
+  {
+   "code": "3543",
+   "name": "州巧",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 45",
+   "close": 45.1,
+   "trigger": 44.15,
+   "gap_pct": 2.11,
+   "need_vol": 0,
+   "vol5": 1721,
+   "ref": {
+    "k": 20.97,
+    "low_n1": 44.7,
+    "high_n1": 54.0,
+    "ma20": 51.17
+   },
+   "stop": {
+    "fixed": 46.4,
+    "trend": 49.35
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 94,
+   "score": 57,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-22%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（20天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 21 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 42.35 不到 5%；強度 94 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 42.35 不到 5%",
+    "強度 94 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2836",
+   "name": "高雄銀",
+   "market": "tse",
+   "side": "long",
+   "key": "L4",
+   "title": "橫盤／一字底突破",
+   "note": "一字底 20 天，11.8–12.2",
+   "close": 11.85,
+   "trigger": 12.2,
+   "gap_pct": 2.95,
+   "need_vol": 1.2,
+   "vol5": 1035,
+   "ref": {
+    "k": 22.17,
+    "low_n1": 11.8,
+    "high_n1": 12.1,
+    "ma20": 12.02
+   },
+   "stop": {
+    "fixed": 11.55,
+    "trend": 11.8
+   },
+   "position": "主升段",
+   "trend": "空頭",
+   "rs": 74,
+   "score": 57,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+3%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 22 向下（進場日要轉上），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線壓力 12.3 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線壓力 12.3 不到 5%"
+   ]
+  },
+  {
+   "code": "2406",
+   "name": "國碩",
+   "market": "tse",
+   "side": "short",
+   "key": "S2",
+   "title": "彈後空下跌",
+   "note": "反彈高點 31，前高 32.25",
+   "close": 29.3,
+   "trigger": 28.3,
+   "gap_pct": 3.41,
+   "need_vol": 0,
+   "vol5": 6386,
+   "ref": {
+    "k": 35.5,
+    "low_n1": 26.1,
+    "high_n1": 32.25,
+    "ma20": 29.43
+   },
+   "stop": {
+    "fixed": 29.75,
+    "trend": 31.0
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 44,
+   "score": 57,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-36%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、進貨量"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 35 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 28.15 不到 5%"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 28.15 不到 5%"
+   ]
+  },
+  {
+   "code": "9914",
+   "name": "美利達",
+   "market": "tse",
+   "side": "short",
+   "key": "S3",
+   "title": "跌破盤整下頸線",
+   "note": "下頸線 60.3／上頸線 70.5",
+   "close": 62.8,
+   "trigger": 60.3,
+   "gap_pct": 3.98,
+   "need_vol": 1.2,
+   "vol5": 2581,
+   "ref": {
+    "k": 21.8,
+    "low_n1": 60.3,
+    "high_n1": 64.5,
+    "ma20": 65.2
+   },
+   "stop": {
+    "fixed": 63.4,
+    "trend": 60.3
+   },
+   "position": "末跌段",
+   "trend": "盤整",
+   "rs": 16,
+   "score": 57,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第3波，-35%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 22 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "位階：末跌段不做"
+    }
+   ],
+   "why": [
+    "位階：末跌段不做"
+   ]
+  },
+  {
+   "code": "1402",
+   "name": "遠東新",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 28.05",
+   "close": 28.15,
+   "trigger": 27.55,
+   "gap_pct": 2.13,
+   "need_vol": 0,
+   "vol5": 6678,
+   "ref": {
+    "k": 29.75,
+    "low_n1": 27.7,
+    "high_n1": 29.2,
+    "ma20": 28.62
+   },
+   "stop": {
+    "fixed": 28.95,
+    "trend": 28.55
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 82,
+   "score": 56,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-8%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（16天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 30 向上（進場日要轉下），MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 27.5 不到 5%；強度 82 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 27.5 不到 5%",
+    "強度 82 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "3049",
+   "name": "精金",
+   "market": "tse",
+   "side": "short",
+   "key": "S1",
+   "title": "盤頭確認",
+   "note": "頸線 10.6，頭 12.15→12.15",
+   "close": 11.1,
+   "trigger": 10.6,
+   "gap_pct": 4.5,
+   "need_vol": 1.2,
+   "vol5": 3165,
+   "ref": {
+    "k": 29.68,
+    "low_n1": 10.6,
+    "high_n1": 12.15,
+    "ma20": 11.63
+   },
+   "stop": {
+    "fixed": 11.15,
+    "trend": 12.15
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 82,
+   "score": 56,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整（轉折中）"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-36%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 30 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 82 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 82 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "3443",
+   "name": "創意",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 6390",
+   "close": 6405.0,
+   "trigger": 6275.0,
+   "gap_pct": 2.03,
+   "need_vol": 0,
+   "vol5": 2893,
+   "ref": {
+    "k": 18.97,
+    "low_n1": 6390.0,
+    "high_n1": 8255.0,
+    "ma20": 7721.0
+   },
+   "stop": {
+    "fixed": 6590.0,
+    "trend": 7230.0
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 98,
+   "score": 55,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-27%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 19 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 98 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 98 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "8070",
+   "name": "長華*",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 44.65",
+   "close": 45.8,
+   "trigger": 44.65,
+   "gap_pct": 2.51,
+   "need_vol": 0,
+   "vol5": 2032,
+   "ref": {
+    "k": 18.99,
+    "low_n1": 44.65,
+    "high_n1": 52.1,
+    "ma20": 50.07
+   },
+   "stop": {
+    "fixed": 46.9,
+    "trend": 47.25
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 64,
+   "score": 55,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第3波，-31%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 19 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 43.7 不到 5%；位階：末跌段不做；強度 64 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 43.7 不到 5%",
+    "位階：末跌段不做",
+    "強度 64 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "8111",
+   "name": "立碁",
+   "market": "otc",
+   "side": "short",
+   "key": "S1",
+   "title": "盤頭確認",
+   "note": "頸線 71.2，頭 79.6→79.3",
+   "close": 74.0,
+   "trigger": 71.2,
+   "gap_pct": 3.78,
+   "need_vol": 1.2,
+   "vol5": 6676,
+   "ref": {
+    "k": 32.72,
+    "low_n1": 70.4,
+    "high_n1": 83.1,
+    "ma20": 81.89
+   },
+   "stop": {
+    "fixed": 74.8,
+    "trend": 79.3
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 92,
+   "score": 55,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整（轉折中）"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-26%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、換手量（20天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 33 向下，MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 92 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 92 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "8996",
+   "name": "高力",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 1275",
+   "close": 1290.0,
+   "trigger": 1260.0,
+   "gap_pct": 2.33,
+   "need_vol": 0,
+   "vol5": 4108,
+   "ref": {
+    "k": 17.03,
+    "low_n1": 1275.0,
+    "high_n1": 1620.0,
+    "ma20": 1553.75
+   },
+   "stop": {
+    "fixed": 1325.0,
+    "trend": 1435.0
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 91,
+   "score": 54,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-28%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 17 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 91 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 91 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "3374",
+   "name": "精材",
+   "market": "otc",
+   "side": "short",
+   "key": "S1",
+   "title": "盤頭確認",
+   "note": "頸線 399，頭 508→511",
+   "close": 402.5,
+   "trigger": 394.0,
+   "gap_pct": 2.11,
+   "need_vol": 1.2,
+   "vol5": 9951,
+   "ref": {
+    "k": 39.09,
+    "low_n1": 387.0,
+    "high_n1": 511.0,
+    "ma20": 465.73
+   },
+   "stop": {
+    "fixed": 414.0,
+    "trend": 511.0
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 95,
+   "score": 53,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整（轉折中）"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-24%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量縮、調節量（17天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 39 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 95 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 95 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "1319",
+   "name": "東陽",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 76",
+   "close": 77.7,
+   "trigger": 76.0,
+   "gap_pct": 2.19,
+   "need_vol": 0,
+   "vol5": 1311,
+   "ref": {
+    "k": 20.18,
+    "low_n1": 75.1,
+    "high_n1": 82.1,
+    "ma20": 80.42
+   },
+   "stop": {
+    "fixed": 79.8,
+    "trend": 79.2
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 77,
+   "score": 53,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-28%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量、換手量（18天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 20 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 73.3 不到 5%；強度 77 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 73.3 不到 5%",
+    "強度 77 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "1319",
+   "name": "東陽",
+   "market": "tse",
+   "side": "short",
+   "key": "S2",
+   "title": "彈後空下跌",
+   "note": "反彈高點 79.2，前高 81.6",
+   "close": 77.7,
+   "trigger": 76.0,
+   "gap_pct": 2.19,
+   "need_vol": 0,
+   "vol5": 1311,
+   "ref": {
+    "k": 20.18,
+    "low_n1": 75.1,
+    "high_n1": 82.1,
+    "ma20": 80.42
+   },
+   "stop": {
+    "fixed": 79.8,
+    "trend": 79.2
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 77,
+   "score": 53,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-28%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "攻擊量、進貨量、換手量（18天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 20 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 73.3 不到 5%；強度 77 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 73.3 不到 5%",
+    "強度 77 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "1709",
+   "name": "和益",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 44.75",
+   "close": 45.8,
+   "trigger": 44.75,
+   "gap_pct": 2.29,
+   "need_vol": 0,
+   "vol5": 19338,
+   "ref": {
+    "k": 16.09,
+    "low_n1": 43.7,
+    "high_n1": 58.2,
+    "ma20": 54.47
+   },
+   "stop": {
+    "fixed": 47.0,
+    "trend": 48.5
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 99,
+   "score": 53,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-31%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 16 向下，MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 99 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 99 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "6706",
+   "name": "惠特",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 110.5",
+   "close": 112.0,
+   "trigger": 109.5,
+   "gap_pct": 2.23,
+   "need_vol": 0,
+   "vol5": 1479,
+   "ref": {
+    "k": 12.11,
+    "low_n1": 110.5,
+    "high_n1": 145.0,
+    "ma20": 139.1
+   },
+   "stop": {
+    "fixed": 115.0,
+    "trend": 122.0
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 73,
+   "score": 51,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第2波，-50%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 12 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律4：週線支撐 107 不到 5%；位階：末跌段不做；強度 73 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律4：週線支撐 107 不到 5%",
+    "位階：末跌段不做",
+    "強度 73 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "3701",
+   "name": "大眾控",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 50.8",
+   "close": 52.4,
+   "trigger": 50.7,
+   "gap_pct": 3.24,
+   "need_vol": 0,
+   "vol5": 6091,
+   "ref": {
+    "k": 23.92,
+    "low_n1": 50.0,
+    "high_n1": 60.5,
+    "ma20": 58.17
+   },
+   "stop": {
+    "fixed": 53.3,
+    "trend": 57.6
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 93,
+   "score": 50,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第3波，-34%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、出貨量、調節量（18天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 24 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "位階：末跌段不做；強度 93 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "位階：末跌段不做",
+    "強度 93 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "4908",
+   "name": "前鼎",
+   "market": "otc",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 155",
+   "close": 158.0,
+   "trigger": 154.5,
+   "gap_pct": 2.22,
+   "need_vol": 0,
+   "vol5": 1705,
+   "ref": {
+    "k": 12.08,
+    "low_n1": 155.0,
+    "high_n1": 217.0,
+    "ma20": 207.82
+   },
+   "stop": {
+    "fixed": 162.5,
+    "trend": 173.5
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 58,
+   "score": 47,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第3波，-49%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 12 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律3：量價背離＋KD低檔＋乖離過大＋均線開口大；位階：末跌段不做；強度 58 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律3：量價背離＋KD低檔＋乖離過大＋均線開口大",
+    "位階：末跌段不做",
+    "強度 58 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "2548",
+   "name": "華固",
+   "market": "tse",
+   "side": "short",
+   "key": "S4",
+   "title": "跌破橫盤／一字底",
+   "note": "一字橫盤 20 天，89.5–94.6",
+   "close": 93.4,
+   "trigger": 89.5,
+   "gap_pct": 4.18,
+   "need_vol": 1.2,
+   "vol5": 1640,
+   "ref": {
+    "k": 42.2,
+    "low_n1": 89.5,
+    "high_n1": 94.6,
+    "ma20": 91.54
+   },
+   "stop": {
+    "fixed": 94.0,
+    "trend": 94.6
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 67,
+   "score": 46,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": false,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第4波，-30%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、進貨量、搶反彈量（1天前）、調節量（6天前）"
+    },
+    {
+     "step": "指標",
+     "ok": false,
+     "text": "K 42 向上（進場日要轉下），MACD柱增加"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "強度 67 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "強度 67 太強，做空要弱勢股"
+   ]
+  },
+  {
+   "code": "6715",
+   "name": "嘉基",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 353.5",
+   "close": 369.5,
+   "trigger": 353.5,
+   "gap_pct": 4.33,
+   "need_vol": 0,
+   "vol5": 1522,
+   "ref": {
+    "k": 15.64,
+    "low_n1": 353.5,
+    "high_n1": 510.0,
+    "ma20": 468.93
+   },
+   "stop": {
+    "fixed": 371.5,
+    "trend": 395.0
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 79,
+   "score": 42,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第4波，-35%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、換手量（15天前）、調節量（18天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 16 向下，MACD柱減少"
+    },
+    {
+     "step": "戒律",
+     "ok": false,
+     "text": "戒律3：量價背離＋KD低檔＋乖離過大＋均線開口大；戒律4：週線支撐 349 不到 5%；位階：末跌段不做；強度 79 太強，做空要弱勢股"
+    }
+   ],
+   "why": [
+    "戒律3：量價背離＋KD低檔＋乖離過大＋均線開口大",
+    "戒律4：週線支撐 349 不到 5%",
+    "位階：末跌段不做",
+    "強度 79 太強，做空要弱勢股"
+   ]
+  }
+ ]
 }
