@@ -2,8 +2,8 @@ name: 盤中突破檢查
 
 on:
   schedule:
-    - cron: "55 2 * * 1-5"    # 台灣時間 10:55（排程常會晚幾分鐘，所以提早一點）
-    - cron: "55 4 * * 1-5"    # 台灣時間 12:55
+       - cron: "55 2 * * 1-5"   # 10:55 預警的備援
+       - cron: "5 5 * * 1-5"    # 13:05 確認的備援（一定要在 13:00 之後）
   workflow_dispatch:
 
 permissions:
@@ -12,7 +12,6 @@ permissions:
 concurrency:
   group: repo-write
   cancel-in-progress: false
-
 jobs:
   check:
     runs-on: ubuntu-latest
