@@ -29,6 +29,9 @@ jobs:
         env:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+          HOLDINGS_URL: ${{ secrets.HOLDINGS_URL }}
+          HOLDINGS_SECRET: ${{ secrets.HOLDINGS_SECRET }}
+          LINE_SHARE_IDS: ${{ secrets.LINE_SHARE_IDS }}
         run: python check.py
       - name: 存檔
         if: always()   # 前面出錯也要把已經抓到的資料存起來
