@@ -27,6 +27,8 @@ jobs:
       - run: pip install -r requirements.txt
       - name: 掃描並推播
         env:
+          HOLDINGS_URL: ${{ secrets.HOLDINGS_URL }}
+          HOLDINGS_SECRET: ${{ secrets.HOLDINGS_SECRET }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
         run: python scan.py ${{ github.event_name == 'workflow_dispatch' && '--force' || '' }}
