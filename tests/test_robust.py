@@ -162,6 +162,7 @@ def test_push_failure_still_saves():
         with mock.patch.object(scan, "OUT", out), \
              mock.patch.object(scan.data, "update", return_value=(df, True)), \
              mock.patch.object(scan.data, "update_index", return_value=pd.DataFrame(columns=data.INDEX_COLS)), \
+             mock.patch.object(scan.data, "shortable", return_value={"tse": None, "otc": None}), \
              mock.patch.dict(os.environ, {"LINE_CHANNEL_ACCESS_TOKEN": "x", "LINE_USER_ID": "U1"}), \
              mock.patch.object(line_push.requests, "post", return_value=fake), \
              mock.patch("sys.argv", ["scan.py"]):

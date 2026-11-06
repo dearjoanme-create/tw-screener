@@ -213,6 +213,100 @@ def fetch_yahoo_otc(codes_names, days):
 
 
 # ------------------------------------------------------------------
+# 可不可以融券（做空用）
+# ------------------------------------------------------------------
+STOP_SHORT_MARKS = ("X", "停券", "停止融券")  # 證交所註記：O 停止融資、X 停止融券
+
+
+def _margin_table(fields, data):
+    """融資融券餘額表 → {代號: 可不可以融券}。
+    不在表裡＝不是信用交易標的；融券限額是 0 或註記停止融券＝不能融券。"""
+    ic = _find_col(fields, "代號")
+    if ic is None:
+        return {}
+    names = [str(f).replace(" ", "") for f in fields]
+    lim = [i for i, f in enumerate(names) if "券限額" in f]
+    if not lim:  # 證交所：融資、融券各有一欄「次一營業日限額」，第二個是融券
+        lim = [i for i, f in enumerate(names) if "限額" in f][1:2]
+    note = _find_col(fields, "註記", "備註")
+    out = {}
+    for r in data:
+        code = str(r[ic]).strip()
+        if not _is_common_stock(code):
+            continue
+        ok = True
+        if lim and len(r) > lim[0]:
+            v = _num(r[lim[0]])
+            if v is not None and v <= 0:
+                ok = False
+        if note is not None and len(r) > note and any(m in str(r[note]) for m in STOP_SHORT_MARKS):
+            ok = False
+        out[code] = ok
+    return out
+
+
+def fetch_margin_twse(day: dt.date):
+    url = "https://www.twse.com.tw/rwd/zh/marginTrading/MI_MARGN"
+    params = {"date": day.strftime("%Y%m%d"), "selectType": "ALL", "response": "json"}
+    j = requests.get(url, params=params, headers=HEADERS, timeout=30).json()
+    if j.get("stat") not in (None, "OK"):
+        return {}
+    for t in j.get("tables") or [{"fields": j.get("fields"), "data": j.get("data")}]:
+        fields = t.get("fields") or []
+        if _find_col(fields, "代號") is not None and len(t.get("data") or []) > 50:
+            return _margin_table(fields, t["data"])
+    return {}
+
+
+def fetch_margin_tpex(day: dt.date):
+    tries = [
+        ("get", "https://www.tpex.org.tw/www/zh-tw/margin/balance",
+         {"date": day.strftime("%Y/%m/%d"), "response": "json"}),
+        ("get", "https://www.tpex.org.tw/web/stock/margin_trading/margin_balance/margin_bal_result.php",
+         {"l": "zh-tw", "o": "json", "d": f"{day.year - 1911}/{day.month:02d}/{day.day:02d}"}),
+    ]
+    for _, url, params in tries:
+        try:
+            j = requests.get(url, params=params, headers=HEADERS, timeout=TPEX_TIMEOUT).json()
+        except Exception:  # noqa: BLE001
+            continue
+        for t in j.get("tables") or []:
+            fields = t.get("fields") or []
+            if _find_col(fields, "代號") is not None and len(t.get("data") or []) > 50:
+                return _margin_table(fields, t["data"])
+        data = j.get("aaData") or []
+        if len(data) > 50:  # 舊版固定欄位：代號,名稱,前資餘額,資買,資賣,現償,資餘額,資屬證金,資使用率,資限額,
+            fields = ["代號", "名稱", "前資餘額", "資買", "資賣", "現償", "資餘額", "資屬證金", "資使用率", "資限額",
+                      "前券餘額", "券賣", "券買", "券償", "券餘額", "券屬證金", "券使用率", "券限額", "資券相抵", "備註"]
+            return _margin_table(fields, data)
+        time.sleep(2)
+    return {}
+
+
+def shortable(last_date: dt.date, lookback=6):
+    """回傳 {代號: True/False}；某個市場抓不到就是 None（不過濾，請自行確認）。
+    晚上掃描時當天的融資融券可能還沒公布，往前找最近一天的資料（標的很少變動）。"""
+    out = {"tse": None, "otc": None}
+    for market, fn in (("tse", fetch_margin_twse), ("otc", fetch_margin_tpex)):
+        for back in range(lookback):
+            d = last_date - dt.timedelta(days=back)
+            if d.weekday() >= 5:
+                continue
+            try:
+                got = fn(d)
+            except Exception as e:  # noqa: BLE001
+                print(f"{d} {market} 融資融券抓取失敗：{type(e).__name__}")
+                got = {}
+            time.sleep(SLEEP)
+            if got:
+                out[market] = got
+                break
+        if out[market] is None:
+            print(f"{market} 融資融券資料抓不到，這次放空不過濾，請自行確認能否融券")
+    return out
+
+
+# ------------------------------------------------------------------
 # 加權指數（判斷大盤多空、資金水位用）
 # ------------------------------------------------------------------
 INDEX_FILE = os.path.join(os.path.dirname(__file__), "data", "taiex.csv")

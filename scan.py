@@ -22,6 +22,7 @@ TW = ZoneInfo("Asia/Taipei")
 OUT = os.path.join(os.path.dirname(__file__), "docs", "candidates.json")
 EXCLUDE_FILE = os.path.join(os.path.dirname(__file__), "exclude.txt")
 MAX_EXCLUDED = 80  # 網頁「被排除」最多列幾檔
+NO_SHORT = "不能融券（不是信用交易標的，或暫停融券）"
 
 
 def load_exclude():
@@ -45,7 +46,8 @@ def rs_rank(df, last_date):
     return (s.rank(pct=True) * 100).round().astype(int).to_dict()
 
 
-def screen(df, last_date):
+def screen(df, last_date, short_ok=None):
+    """short_ok：data.shortable() 的結果；某市場是 None 代表抓不到、不過濾。"""
     exclude = load_exclude()
     df = df.sort_values(["code", "date"])
     rs = rs_rank(df, last_date)
@@ -66,6 +68,12 @@ def screen(df, last_date):
             print(f"{code} 判斷錯誤：{type(e).__name__} {e}")
             continue
         base = {"code": code, "name": last["name"], "market": last["market"]}
+        table = (short_ok or {}).get(last["market"])
+        can_short = None if table is None else bool(table.get(code, False))
+        if res["short"] and can_short is False:
+            res["excluded"].append({**res["short"], "why": [NO_SHORT]})
+            res["short"] = None
+        conf = [x for x in conf if not (x["side"] == "short" and can_short is False)]
         for slot in ("long", "short"):
             if res[slot]:
                 out[slot].append({**base, **res[slot]})
@@ -85,7 +93,7 @@ def _n(x):
     return f"{x:,.2f}".rstrip("0").rstrip(".")
 
 
-def message(res, mkt, last_date):
+def message(res, mkt, last_date, short_ok=None):
     lines = [f"📊 {last_date:%m/%d} 收盤選股"]
     sides = ("long", "short")
     if mkt:
@@ -97,6 +105,8 @@ def message(res, mkt, last_date):
         items = res[side]
         name = "多方" if side == "long" else "空方"
         lines.append(f"\n【{name}預備】{len(items)} 檔｜明天 10:55 預警、13:00 確認")
+        if side == "short" and short_ok is not None and None in short_ok.values():
+            lines.append("⚠️ 今天融券資料抓不到，放空前請先確認能否融券")
         if not items:
             lines.append("今天沒有符合的股票")
         for i, r in enumerate(items[:config.LINE_TOP_N], 1):
@@ -153,7 +163,13 @@ def main():
         print(f"大盤資料有問題，這次不做大盤過濾：{e}")
         mkt = None
 
-    res = screen(df, last_date)
+    try:
+        short_ok = data.shortable(last_date.date())
+    except Exception as e:  # noqa: BLE001
+        print(f"融資融券資料有問題，這次放空不過濾：{e}")
+        short_ok = {"tse": None, "otc": None}
+
+    res = screen(df, last_date, short_ok)
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     payload = {
@@ -162,6 +178,7 @@ def main():
         "generated_at": dt.datetime.now(TW).strftime("%Y-%m-%d %H:%M"),
         "market": mkt,
         "titles": TITLES,
+        "short_checked": {k: v is not None for k, v in short_ok.items()},
         **res,
     }
     with open(OUT, "w", encoding="utf-8") as f:
@@ -172,7 +189,7 @@ def main():
         json.dump({"for_data_date": payload["data_date"], "runs": []}, f, ensure_ascii=False)
 
     print(f"多方 {len(res['long'])} 檔、空方 {len(res['short'])} 檔、今日確認 {len(res['confirmed'])} 檔")
-    if not line_push.push(message(res, mkt, last_date)):
+    if not line_push.push(message(res, mkt, last_date, short_ok)):
         sys.exit(1)  # 讓 GitHub 顯示紅叉提醒你，但資料已經存好了
 
 

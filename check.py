@@ -85,29 +85,29 @@ def judge(r, q, elapsed):
         reached = price >= r["trigger"]
         touched = hi >= r["trigger"]
         if chg < C.ENTRY_MIN_CHG:
-            miss.append(f"今天{'漲' if chg >= 0 else '跌'} {abs(chg):.1%}，做多要漲 2% 以上")
+            miss.append(f"今天{'漲' if chg >= 0 else '跌'} {abs(chg):.1%}，要漲 2% 以上")
         if price <= op:
-            miss.append("不是紅K")
+            miss.append("目前收黑K（要收紅K）")
         if rng > 0 and (hi - max(op, price)) / rng > C.MAX_SHADOW:
-            miss.append("上影線超過一半")
+            miss.append("上影線太長（衝上去又被賣下來）")
     else:
         reached = price <= r["trigger"]
         touched = lo <= r["trigger"]
         if chg > -C.ENTRY_MIN_CHG:
-            miss.append(f"今天{'跌' if chg < 0 else '漲'} {abs(chg):.1%}，放空要跌 2% 以上")
+            miss.append(f"今天{'跌' if chg < 0 else '漲'} {abs(chg):.1%}，要跌 2% 以上")
         if price >= op:
-            miss.append("不是黑K")
+            miss.append("目前收紅K（要收黑K）")
         if rng > 0 and (min(op, price) - lo) / rng > C.MAX_SHADOW:
-            miss.append("下影線超過一半")
+            miss.append("下影線太長（跌下去又被買回來）")
     ref = r.get("ref") or {}
     if "k" in ref:
         k2 = next_k(ref["k"], ref["low_n1"], ref["high_n1"], price, lo, hi)
         if side > 0 and k2 <= ref["k"]:
-            miss.append("K值沒有向上")
+            miss.append("KD 還沒轉強")
         if side < 0 and k2 >= ref["k"]:
-            miss.append("K值沒有向下")
+            miss.append("KD 還沒轉弱")
     if r.get("need_vol") and proj < r["need_vol"] * r["vol5"]:
-        miss.append(f"預估量 {proj / max(r['vol5'], 1):.1f} 倍，不到 {r['need_vol']} 倍")
+        miss.append(f"量能不夠（預估只有平常的 {proj / max(r['vol5'], 1):.1f} 倍，要 {r['need_vol']} 倍）")
     if reached and not miss:
         status = "成形"
     elif reached:
@@ -117,6 +117,43 @@ def judge(r, q, elapsed):
     else:
         status = "未到"
     return status, miss, proj
+
+
+def message(now, slot, groups, total):
+    """盤中通知：第一行就寫結論，原因用白話。"""
+    ok, near, back = groups["成形"], groups["價到條件不足"], groups["曾到拉回"]
+    title = {"預警": "盤中預警", "盤中": "盤中檢查", "確認": "收盤前確認"}[slot]
+    if slot == "確認":
+        verdict = (f"{len(ok)} 檔可以進場，收盤前下單；其他先不動" if ok
+                   else "今天沒有可以進場的股票，不用動作")
+        ok_head = "✅ 可以進場（收盤前下單）"
+    else:
+        verdict = (f"目前 {len(ok)} 檔符合條件，13:00 再確認，先不用下單" if ok
+                   else "目前沒有符合條件的股票，13:00 再看")
+        ok_head = "✅ 目前符合（13:00 再確認）"
+    lines = [f"⏰ {now:%m/%d %H:%M} {title}", f"📌 結論：{verdict}"]
+
+    def head(x):
+        return f"{x['code']} {x['name']}｜{'做多' if x['side'] == 'long' else '放空'}｜{x['title']}"
+
+    if ok:
+        lines.append(f"\n{ok_head}")
+        for x in ok:
+            word = "突破" if x["side"] == "long" else "跌破"
+            lines += [head(x), f"  現價 {x['price']:g}，已{word}觸發價 {x['trigger']:g}", f"  停損 {x['stop']:g}"]
+    if near:
+        lines.append("\n⚠️ 價格到了，但先不要進場")
+        for x in near:
+            lines += [head(x), f"  原因：{'、'.join(x['miss'])}"]
+    if back:
+        lines.append("\n↩️ 不進場：曾經到過觸發價又彈回")
+        for x in back:
+            lines.append(f"{head(x)}｜現價 {x['price']:g}（觸發 {x['trigger']:g}）")
+    rest = total - len(ok) - len(near) - len(back)
+    if rest > 0:
+        lines.append(f"\n其餘 {rest} 檔還沒到觸發價")
+    lines.append("\n以 13:30 收盤價為準" if slot == "確認" else "\n量能是用目前成交量推估全天，早盤通常偏高")
+    return lines
 
 
 def main():
@@ -169,22 +206,7 @@ def main():
         if status in groups:
             groups[status].append(row)
 
-    note = {"預警": "預警（還早，僅供參考）", "盤中": "盤中檢查", "確認": "確認（以 13:30 收盤為準）"}[slot]
-    lines = [f"⏰ {now:%m/%d %H:%M} {note}"]
-    label = {"成形": "✅ 可以進場（條件都符合）", "價到條件不足": "⚠️ 價格到了，但K棒不合格", "曾到拉回": "↩️ 曾經到過觸發價又彈回"}
-    for status, rows in groups.items():
-        if not rows:
-            continue
-        lines.append(f"\n{label[status]}")
-        for x in rows:
-            side = "多" if x["side"] == "long" else "空"
-            extra = f"｜{'、'.join(x['miss'])}" if x["miss"] else ""
-            lines.append(f"{x['code']} {x['name']} {side} 現{x['price']:g}／觸發{x['trigger']:g}{extra}")
-            if status == "成形":
-                lines.append(f"  停損 {x['stop']:g}")
-    if not any(groups.values()):
-        lines.append("目前沒有預備股接近進場條件。")
-    lines.append("\n量能是用目前成交量推估全天，早盤通常偏高")
+    lines = message(now, slot, groups, len(run["results"]))
     url = line_push.dashboard_url()
     if url:
         lines.append(url)

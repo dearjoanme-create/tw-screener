@@ -208,7 +208,39 @@ def test_screen_end_to_end():
     json.dumps(res, ensure_ascii=False)
 
 
+def test_shortable():
+    # 證交所格式：融資、融券各有一欄「次一營業日限額」，最後是註記
+    f = ["代號", "名稱", "買進", "賣出", "現金償還", "前日餘額", "今日餘額", "次一營業日限額",
+         "買進", "賣出", "現券償還", "前日餘額", "今日餘額", "次一營業日限額", "資券互抵", "註記"]
+    rows = [["2330", "台積電"] + ["1"] * 5 + ["1,000"] + ["1"] * 5 + ["1,000", "0", ""],
+            ["1101", "台泥"] + ["1"] * 5 + ["1,000"] + ["1"] * 5 + ["1,000", "0", "X"],   # 停止融券
+            ["2002", "中鋼"] + ["1"] * 5 + ["1,000"] + ["1"] * 5 + ["0", "0", ""],        # 融券限額 0
+            ["0050", "ETF"] + ["1"] * 5 + ["1,000"] + ["1"] * 5 + ["1,000", "0", ""]]
+    got = data._margin_table(f, rows)
+    assert got == {"2330": True, "1101": False, "2002": False}, got
+    # 櫃買格式：券限額、備註
+    f2 = ["代號", "名稱", "前資餘額", "資買", "資賣", "現償", "資餘額", "資屬證金", "資使用率", "資限額",
+          "前券餘額", "券賣", "券買", "券償", "券餘額", "券屬證金", "券使用率", "券限額", "資券相抵", "備註"]
+    rows2 = [["6488", "環球晶"] + ["1"] * 15 + ["500", "0", ""], ["5347", "世界"] + ["1"] * 15 + ["0", "0", ""]]
+    assert data._margin_table(f2, rows2) == {"6488": True, "5347": False}
+
+    # 選股：不能融券的空方移到「被排除」；抓不到資料（None）就不過濾
+    df = mirror(uptrend_pullback()).copy()
+    df["code"], df["name"], df["market"] = "2201", "測試", "tse"
+    last = df["date"].max()
+    with mock.patch.object(scan, "rs_rank", return_value={"2201": 10}):
+        res = scan.screen(df, last, {"tse": {"2201": False}, "otc": None})
+        assert not res["short"] and any(scan.NO_SHORT in e["why"] for e in res["excluded"])
+        res = scan.screen(df, last, {"tse": None, "otc": None})
+        assert res["short"]
+        msg = scan.message(res, market.status(mirror(uptrend_pullback()).drop(columns="volume")), last,
+                           {"tse": None, "otc": None})
+        assert "融券資料抓不到" in msg
+    print("可融券過濾 OK")
+
+
 if __name__ == "__main__":
+    test_shortable()
     test_parser()
     test_index_parser()
     test_turning_waves_follow_book()
