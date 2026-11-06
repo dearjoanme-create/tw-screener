@@ -1,1 +1,88 @@
-   {"for_data_date": "2026-11-05", "runs": []}
+{
+ "for_data_date": "2026-11-05",
+ "runs": [
+  {
+   "time": "13:23",
+   "slot": "確認",
+   "results": [
+    {
+     "code": "6244",
+     "name": "茂迪",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 19.0,
+     "price": 20.95,
+     "status": "曾到拉回",
+     "miss": [
+      "今天漲 8.0%，放空要跌 2% 以上",
+      "不是黑K",
+      "K值沒有向下"
+     ],
+     "proj_vol": 16702,
+     "stop": 19.95
+    },
+    {
+     "code": "2539",
+     "name": "櫻花建",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 29.75,
+     "price": 29.6,
+     "status": "價到條件不足",
+     "miss": [
+      "下影線超過一半",
+      "K值沒有向下"
+     ],
+     "proj_vol": 1922,
+     "stop": 31.25
+    },
+    {
+     "code": "4123",
+     "name": "晟德",
+     "side": "short",
+     "title": "跌破盤整下頸線",
+     "trigger": 27.75,
+     "price": 28.15,
+     "status": "曾到拉回",
+     "miss": [
+      "不是黑K",
+      "下影線超過一半",
+      "K值沒有向下"
+     ],
+     "proj_vol": 2551,
+     "stop": 29.15
+    },
+    {
+     "code": "5534",
+     "name": "長虹",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 65.6,
+     "price": 65.5,
+     "status": "價到條件不足",
+     "miss": [
+      "不是黑K",
+      "下影線超過一半",
+      "K值沒有向下"
+     ],
+     "proj_vol": 1903,
+     "stop": 68.9
+    },
+    {
+     "code": "3026",
+     "name": "禾伸堂",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 517.0,
+     "price": 475.5,
+     "status": "價到條件不足",
+     "miss": [
+      "不是黑K"
+     ],
+     "proj_vol": 7727,
+     "stop": 543.0
+    }
+   ]
+  }
+ ]
+}
