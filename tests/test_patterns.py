@@ -216,13 +216,14 @@ def test_shortable():
             ["1101", "台泥"] + ["1"] * 5 + ["1,000"] + ["1"] * 5 + ["1,000", "0", "X"],   # 停止融券
             ["2002", "中鋼"] + ["1"] * 5 + ["1,000"] + ["1"] * 5 + ["0", "0", ""],        # 融券限額 0
             ["0050", "ETF"] + ["1"] * 5 + ["1,000"] + ["1"] * 5 + ["1,000", "0", ""]]
-    got = data._margin_table(f, rows)
+    got = {k: v[0] for k, v in data._margin_table(f, rows).items()}
     assert got == {"2330": True, "1101": False, "2002": False}, got
+    assert data._margin_table(f, rows)["2330"][1:] == (1.0, 1.0)  # 融資、融券今日餘額
     # 櫃買格式：券限額、備註
     f2 = ["代號", "名稱", "前資餘額", "資買", "資賣", "現償", "資餘額", "資屬證金", "資使用率", "資限額",
           "前券餘額", "券賣", "券買", "券償", "券餘額", "券屬證金", "券使用率", "券限額", "資券相抵", "備註"]
     rows2 = [["6488", "環球晶"] + ["1"] * 15 + ["500", "0", ""], ["5347", "世界"] + ["1"] * 15 + ["0", "0", ""]]
-    assert data._margin_table(f2, rows2) == {"6488": True, "5347": False}
+    assert {k: v[0] for k, v in data._margin_table(f2, rows2).items()} == {"6488": True, "5347": False}
 
     # 選股：不能融券的空方移到「被排除」；抓不到資料（None）就不過濾
     df = mirror(uptrend_pullback()).copy()
@@ -239,7 +240,83 @@ def test_shortable():
     print("可融券過濾 OK")
 
 
+def test_chips():
+    # 證交所三大法人（單位：股 → 張）
+    f = ["證券代號", "證券名稱", "外陸資買進股數(不含外資自營商)", "外陸資賣出股數(不含外資自營商)",
+         "外陸資買賣超股數(不含外資自營商)", "外資自營商買賣超股數", "投信買進股數", "投信賣出股數", "投信買賣超股數",
+         "自營商買賣超股數", "三大法人買賣超股數"]
+    rows = [["2330", "台積電", "1", "1", "1,500,000", "0", "1", "1", "200,000", "-50,000", "1,650,000"]]
+    assert data._insti_table(f, rows)["2330"] == (1500.0, 200.0, -50.0, 1650.0)
+    # 籌碼摘要與可融券
+    d = pd.bdate_range(end="2026-11-06", periods=5)
+    ch = pd.DataFrame([[x, "2330", 100, 10, 0, 110 if i else -5, 1000 + i * 50, 10, 1] for i, x in enumerate(d)]
+                      + [[d[-1], "__tse__", None, None, None, None, None, None, 1]], columns=data.CHIPS_COLS)
+    s = data.chips_summary(ch)["2330"]
+    assert s["streak"] == 4 and s["total"] == 435 and abs(s["margin_chg"] - 0.2) < 1e-9, s
+    ok = data.shortable_from(ch, {"2330": "tse", "1101": "tse", "6488": "otc"})
+    assert ok["tse"] == {"2330": True, "1101": False} and ok["otc"] is None, ok
+    print("籌碼解析 OK")
+
+
+def test_holdings_rules():
+    import holdings as HD
+    df = uptrend_pullback()
+    a = analyze(df)
+    t = a.t
+    entry_day = df["date"].iloc[t - 25].strftime("%Y-%m-%d")
+    # 進場後漲超過 10%，今天收盤在 5 日線下 → 停利（守則 6）
+    r = HD.evaluate(a, {"code": "1101", "side": "long", "price": a.c[t] / 1.15, "date": entry_day, "mode": "短"})
+    assert r["level"] == "出場" and "守則 6" in r["text"], r
+    # 漲幅未達 10%、跌破 5 日線 → 續抱（守則 5）
+    r = HD.evaluate(a, {"code": "1101", "side": "long", "price": a.c[t] / 1.04, "date": entry_day, "mode": "短"})
+    assert r["level"] in ("續抱", "警示") and any("守則 5" in x for x in [r["text"]] + r["notes"]), r
+    # 跌破停損
+    r = HD.evaluate(a, {"code": "1101", "side": "long", "price": a.c[t] * 1.08, "date": entry_day, "mode": "短"})
+    assert r["level"] == "出場" and "停損" in r["text"], r
+    # 長線：沒跌破月線續抱
+    r = HD.evaluate(a, {"code": "1101", "side": "long", "price": a.c[t] / 1.04, "date": entry_day, "mode": "長"})
+    assert r["level"] in ("續抱", "警示") and "月線" in r["text"] + "".join(r["notes"]), r
+    # 放空：多頭圖上放空 → 已轉多頭回補
+    r = HD.evaluate(a, {"code": "1101", "side": "short", "price": a.c[t] * 1.02, "date": entry_day, "mode": "短"})
+    assert r["level"] == "出場", r
+    # 盤中檢查
+    h = {"code": "1101", "side": "long", "price": 100, "mode": "短", "advice": {"stop": 95, "sum4": 460}}
+    assert HD.live_check(h, 94)[0] == "出場"
+    assert HD.live_check(h, 112)[0] == "出場"        # +12%，5 日線 =(460+112)/5=114.4 → 跌破停利
+    assert HD.live_check(h, 96)[0] == "警示"
+    assert HD.live_check(h, 103) is None
+    lines = HD.push_section([r], {"1101": "台泥"})
+    assert "持股檢查" in lines[0]
+    print("持股守則 OK")
+
+
+def test_screen_with_context():
+    frames = []
+    for code, df in [("1101", uptrend_pullback()), ("1102", bull_box()), ("1103", bottom_base()),
+                     ("2201", mirror(uptrend_pullback()))]:
+        df = df.copy()
+        df["code"], df["name"], df["market"] = code, f"測試{code}", "tse"
+        frames.append(df)
+    all_df = pd.concat(frames)
+    ind = {"1101": "水泥", "1102": "水泥", "1103": "水泥", "2201": "食品"}
+    chips = {"1101": {"days": 5, "foreign": 800.0, "trust": 50.0, "total": 900.0, "streak": 3, "margin_chg": 0.02}}
+    with mock.patch.object(scan, "rs_rank", return_value={"1101": 90, "1102": 80, "1103": 70, "2201": 10}), \
+         mock.patch.object(scan, "sector_rank", return_value={"水泥": (1, 30), "食品": (30, 30)}):
+        res = scan.screen(all_df, all_df["date"].max(), None, {"chips": chips, "industry": ind, "held": ["1101"]})
+    r = next(x for x in res["long"] if x["code"] == "1101")
+    steps = {c["step"]: c for c in r["checks"]}
+    assert steps["籌碼"]["ok"] and steps["類股"]["ok"] and "水泥" in r["sector"], r["checks"]
+    assert set(res["records"]) == {"1101", "1102", "1103", "2201"} and "1101" in res["analyses"]
+    rec = res["records"]["1101"]
+    assert rec["setups"] and rec["chips"].startswith("法人") and "第 1 強" in rec["sector"]
+    json.dumps(res["records"], ensure_ascii=False)
+    print("籌碼、類股、個股摘要 OK")
+
+
 if __name__ == "__main__":
+    test_chips()
+    test_holdings_rules()
+    test_screen_with_context()
     test_shortable()
     test_parser()
     test_index_parser()

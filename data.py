@@ -213,13 +213,30 @@ def fetch_yahoo_otc(codes_names, days):
 
 
 # ------------------------------------------------------------------
-# 可不可以融券（做空用）
+# 籌碼：三大法人買賣超、融資融券餘額、可不可以融券（第 2 階段）
+# 每天存一份到 data/chips.csv，保留最近 CHIPS_DAYS 個交易日
 # ------------------------------------------------------------------
+CHIPS_FILE = os.path.join(os.path.dirname(__file__), "data", "chips.csv")
+CHIPS_COLS = ["date", "code", "foreign", "trust", "dealer", "total", "margin", "short", "short_ok"]
+CHIPS_DAYS = 20
 STOP_SHORT_MARKS = ("X", "停券", "停止融券")  # 證交所註記：O 停止融資、X 停止融券
 
 
+def _col_all(fields, must, exclude=()):
+    """欄位名稱同時包含 must 裡全部關鍵字的第一欄。"""
+    for i, f in enumerate(fields):
+        f = str(f).replace(" ", "")
+        if all(k in f for k in must) and not any(x in f for x in exclude):
+            return i
+    return None
+
+
+def _cols_named(fields, word):
+    return [i for i, f in enumerate(fields) if word in str(f).replace(" ", "")]
+
+
 def _margin_table(fields, data):
-    """融資融券餘額表 → {代號: 可不可以融券}。
+    """融資融券餘額表 → {代號: (可不可以融券, 融資餘額張, 融券餘額張)}。
     不在表裡＝不是信用交易標的；融券限額是 0 或註記停止融券＝不能融券。"""
     ic = _find_col(fields, "代號")
     if ic is None:
@@ -228,6 +245,9 @@ def _margin_table(fields, data):
     lim = [i for i, f in enumerate(names) if "券限額" in f]
     if not lim:  # 證交所：融資、融券各有一欄「次一營業日限額」，第二個是融券
         lim = [i for i, f in enumerate(names) if "限額" in f][1:2]
+    bal = _cols_named(fields, "今日餘額")  # 證交所：第一個融資、第二個融券
+    m_col = bal[0] if bal else _col_all(fields, ["資餘額"], exclude=("前",))
+    s_col = bal[1] if len(bal) > 1 else _col_all(fields, ["券餘額"], exclude=("前",))
     note = _find_col(fields, "註記", "備註")
     out = {}
     for r in data:
@@ -241,7 +261,9 @@ def _margin_table(fields, data):
                 ok = False
         if note is not None and len(r) > note and any(m in str(r[note]) for m in STOP_SHORT_MARKS):
             ok = False
-        out[code] = ok
+        mb = _num(r[m_col]) if m_col is not None and len(r) > m_col else None
+        sb = _num(r[s_col]) if s_col is not None and len(r) > s_col else None
+        out[code] = (ok, mb, sb)
     return out
 
 
@@ -258,14 +280,18 @@ def fetch_margin_twse(day: dt.date):
     return {}
 
 
+TPEX_MARGIN_OLD = ["代號", "名稱", "前資餘額", "資買", "資賣", "現償", "資餘額", "資屬證金", "資使用率", "資限額",
+                   "前券餘額", "券賣", "券買", "券償", "券餘額", "券屬證金", "券使用率", "券限額", "資券相抵", "備註"]
+
+
 def fetch_margin_tpex(day: dt.date):
     tries = [
-        ("get", "https://www.tpex.org.tw/www/zh-tw/margin/balance",
+        ("https://www.tpex.org.tw/www/zh-tw/margin/balance",
          {"date": day.strftime("%Y/%m/%d"), "response": "json"}),
-        ("get", "https://www.tpex.org.tw/web/stock/margin_trading/margin_balance/margin_bal_result.php",
+        ("https://www.tpex.org.tw/web/stock/margin_trading/margin_balance/margin_bal_result.php",
          {"l": "zh-tw", "o": "json", "d": f"{day.year - 1911}/{day.month:02d}/{day.day:02d}"}),
     ]
-    for _, url, params in tries:
+    for url, params in tries:
         try:
             j = requests.get(url, params=params, headers=HEADERS, timeout=TPEX_TIMEOUT).json()
         except Exception:  # noqa: BLE001
@@ -275,35 +301,227 @@ def fetch_margin_tpex(day: dt.date):
             if _find_col(fields, "代號") is not None and len(t.get("data") or []) > 50:
                 return _margin_table(fields, t["data"])
         data = j.get("aaData") or []
-        if len(data) > 50:  # 舊版固定欄位：代號,名稱,前資餘額,資買,資賣,現償,資餘額,資屬證金,資使用率,資限額,
-            fields = ["代號", "名稱", "前資餘額", "資買", "資賣", "現償", "資餘額", "資屬證金", "資使用率", "資限額",
-                      "前券餘額", "券賣", "券買", "券償", "券餘額", "券屬證金", "券使用率", "券限額", "資券相抵", "備註"]
-            return _margin_table(fields, data)
+        if len(data) > 50:
+            return _margin_table(TPEX_MARGIN_OLD, data)
         time.sleep(2)
     return {}
 
 
-def shortable(last_date: dt.date, lookback=6):
-    """回傳 {代號: True/False}；某個市場抓不到就是 None（不過濾，請自行確認）。
-    晚上掃描時當天的融資融券可能還沒公布，往前找最近一天的資料（標的很少變動）。"""
-    out = {"tse": None, "otc": None}
-    for market, fn in (("tse", fetch_margin_twse), ("otc", fetch_margin_tpex)):
-        for back in range(lookback):
-            d = last_date - dt.timedelta(days=back)
-            if d.weekday() >= 5:
-                continue
-            try:
-                got = fn(d)
-            except Exception as e:  # noqa: BLE001
-                print(f"{d} {market} 融資融券抓取失敗：{type(e).__name__}")
-                got = {}
-            time.sleep(SLEEP)
-            if got:
-                out[market] = got
-                break
-        if out[market] is None:
-            print(f"{market} 融資融券資料抓不到，這次放空不過濾，請自行確認能否融券")
+def _insti_table(fields, data):
+    """三大法人買賣超表 → {代號: (外資, 投信, 自營商, 合計)}，單位：張。"""
+    ic = _find_col(fields, "代號")
+    cf = _col_all(fields, ["外", "買賣超"])
+    ct = _col_all(fields, ["投信", "買賣超"])
+    cd = _col_all(fields, ["自營商", "買賣超"], exclude=("外",))
+    ca = _col_all(fields, ["三大法人", "買賣超"])
+    if ic is None or ca is None:
+        return {}
+    out = {}
+    for r in data:
+        code = str(r[ic]).strip()
+        if not _is_common_stock(code):
+            continue
+        vals = [(_num(r[i]) or 0) / 1000 if i is not None and len(r) > i else 0 for i in (cf, ct, cd, ca)]
+        out[code] = tuple(round(x, 1) for x in vals)
     return out
+
+
+def fetch_insti_twse(day: dt.date):
+    url = "https://www.twse.com.tw/rwd/zh/fund/T86"
+    params = {"date": day.strftime("%Y%m%d"), "selectType": "ALLBUT0999", "response": "json"}
+    j = requests.get(url, params=params, headers=HEADERS, timeout=30).json()
+    if j.get("stat") not in (None, "OK"):
+        return {}
+    for t in [{"fields": j.get("fields"), "data": j.get("data")}] + (j.get("tables") or []):
+        if t.get("fields") and len(t.get("data") or []) > 50:
+            got = _insti_table(t["fields"], t["data"])
+            if got:
+                return got
+    return {}
+
+
+def fetch_insti_tpex(day: dt.date):
+    tries = [
+        ("https://www.tpex.org.tw/www/zh-tw/insti/dailyTrade",
+         {"type": "Daily", "sect": "EW", "date": day.strftime("%Y/%m/%d"), "response": "json"}),
+        ("https://www.tpex.org.tw/web/stock/3insti/daily_trade/3itrade_hedge_result.php",
+         {"l": "zh-tw", "o": "json", "se": "EW", "t": "D", "d": f"{day.year - 1911}/{day.month:02d}/{day.day:02d}"}),
+    ]
+    for url, params in tries:
+        try:
+            j = requests.get(url, params=params, headers=HEADERS, timeout=TPEX_TIMEOUT).json()
+        except Exception:  # noqa: BLE001
+            continue
+        for t in j.get("tables") or []:
+            if t.get("fields") and len(t.get("data") or []) > 50:
+                got = _insti_table(t["fields"], t["data"])
+                if got:
+                    return got
+        data = j.get("aaData") or []
+        if len(data) > 50 and len(data[0]) >= 24:
+            # 舊版固定欄位：10 外資及陸資合計淨買、13 投信淨買、22 自營商合計淨買、23 三大法人合計
+            out = {}
+            for r in data:
+                code = str(r[0]).strip()
+                if _is_common_stock(code):
+                    out[code] = tuple(round((_num(r[i]) or 0) / 1000, 1) for i in (10, 13, 22, 23))
+            return out
+        time.sleep(2)
+    return {}
+
+
+def load_chips():
+    if os.path.exists(CHIPS_FILE):
+        df = pd.read_csv(CHIPS_FILE, dtype={"code": str}, parse_dates=["date"])
+        return df
+    return pd.DataFrame(columns=CHIPS_COLS)
+
+
+def update_chips(trade_dates, max_new=6):
+    """補抓最近幾個交易日的籌碼（第一次會補 max_new 天，之後每天 1 天）。
+    trade_dates：價格資料裡的交易日（由舊到新）。抓不到的部分留空，不影響選股。"""
+    old = load_chips()
+    # 融資融券表（證交所）抓到過的日子才算完成；晚上還沒公布的日子，下次執行會重抓
+    have = set(old.loc[old["code"] == "__tse__", "date"].dt.date) if len(old) else set()
+    want = [d for d in list(trade_dates)[-CHIPS_DAYS:] if d not in have][-max_new:]
+    rows = []
+    for d in want:
+        parts = {}
+        for name, fn in (("ti", fetch_insti_twse), ("oi", fetch_insti_tpex),
+                         ("tm", fetch_margin_twse), ("om", fetch_margin_tpex)):
+            try:
+                parts[name] = fn(d)
+            except Exception as e:  # noqa: BLE001
+                print(f"{d} 籌碼 {name} 抓取失敗：{type(e).__name__}")
+                parts[name] = {}
+            time.sleep(SLEEP)
+        insti = {**parts["ti"], **parts["oi"]}
+        marg = {**parts["tm"], **parts["om"]}
+        if not insti and not marg:
+            print(f"{d} 籌碼資料還沒公布或抓不到，下次再補")
+            continue
+        for code in set(insti) | set(marg):
+            f, t, de, tot = insti.get(code, (None,) * 4)
+            ok, mb, sb = marg.get(code, (None, None, None))
+            rows.append([pd.Timestamp(d), code, f, t, de, tot, mb, sb,
+                         None if ok is None else int(ok)])
+        # 有抓到融資融券表的市場，表上沒有的股票＝不是信用交易標的
+        for mk, tab in (("tse", parts["tm"]), ("otc", parts["om"])):
+            if tab:
+                rows.append([pd.Timestamp(d), f"__{mk}__", None, None, None, None, None, None, 1])
+    new = pd.DataFrame(rows, columns=CHIPS_COLS)
+    df = pd.concat([old, new], ignore_index=True) if len(old) else new
+    if not len(df):
+        return df
+    df = df.drop_duplicates(["date", "code"], keep="last")
+    keep = sorted(df["date"].unique())[-CHIPS_DAYS:]
+    df = df[df["date"].isin(keep)].sort_values(["date", "code"])
+    os.makedirs(os.path.dirname(CHIPS_FILE), exist_ok=True)
+    df.to_csv(CHIPS_FILE, index=False)
+    return df.reset_index(drop=True)
+
+
+def shortable_from(chips, markets):
+    """{代號: True/False}，依最近一天有融資融券資料的表；某市場沒資料 → None（不過濾）。
+    markets：{代號: "tse"/"otc"}。"""
+    out = {"tse": None, "otc": None}
+    if chips is None or not len(chips):
+        return out
+    for mk in ("tse", "otc"):
+        flag = chips[chips["code"] == f"__{mk}__"]
+        if not len(flag):
+            continue
+        d = flag["date"].max()
+        day = chips[(chips["date"] == d) & chips["short_ok"].notna() & ~chips["code"].str.startswith("__")]
+        ok = dict(zip(day["code"], day["short_ok"].astype(int) == 1))
+        out[mk] = {c: ok.get(c, False) for c, m in markets.items() if m == mk}
+    return out
+
+
+def chips_summary(chips, n=5):
+    """每檔近 n 天的籌碼摘要 → {代號: {...}}。"""
+    if chips is None or not len(chips):
+        return {}
+    df = chips[~chips["code"].str.startswith("__")]
+    dates = sorted(df["date"].unique())
+    if not dates:
+        return {}
+    recent = df[df["date"].isin(dates[-n:])]
+    out = {}
+    for code, g in recent.groupby("code"):
+        g = g.sort_values("date")
+        tot = g["total"].dropna()
+        streak = 0
+        for x in reversed(tot.tolist()):
+            if x > 0 and streak >= 0:
+                streak += 1
+            elif x < 0 and streak <= 0:
+                streak -= 1
+            else:
+                break
+        m = g["margin"].dropna()
+        mchg = (m.iloc[-1] / m.iloc[0] - 1) if len(m) >= 2 and m.iloc[0] > 0 else None
+        out[code] = {
+            "days": int(len(g)),
+            "foreign": round(float(g["foreign"].fillna(0).sum()), 1),
+            "trust": round(float(g["trust"].fillna(0).sum()), 1),
+            "total": round(float(g["total"].fillna(0).sum()), 1),
+            "streak": streak,              # 三大法人連續買超（正）／賣超（負）幾天
+            "margin_chg": None if mchg is None else round(float(mchg), 3),
+        }
+    return out
+
+
+# ------------------------------------------------------------------
+# 產業分類（類股強弱用），一週更新一次
+# ------------------------------------------------------------------
+INDUSTRY_FILE = os.path.join(os.path.dirname(__file__), "data", "industry.csv")
+INDUSTRY_NAMES = {
+    "01": "水泥", "02": "食品", "03": "塑膠", "04": "紡織纖維", "05": "電機機械", "06": "電器電纜",
+    "08": "玻璃陶瓷", "09": "造紙", "10": "鋼鐵", "11": "橡膠", "12": "汽車", "14": "建材營造",
+    "15": "航運", "16": "觀光餐旅", "17": "金融保險", "18": "貿易百貨", "19": "綜合", "20": "其他",
+    "21": "化學", "22": "生技醫療", "23": "油電燃氣", "24": "半導體", "25": "電腦及週邊", "26": "光電",
+    "27": "通信網路", "28": "電子零組件", "29": "電子通路", "30": "資訊服務", "31": "其他電子",
+    "32": "文化創意", "33": "農業科技", "34": "電子商務", "35": "綠能環保", "36": "數位雲端",
+    "37": "運動休閒", "38": "居家生活", "80": "管理股票",
+}
+
+
+def _industry_rows(items):
+    out = {}
+    for it in items or []:
+        if not isinstance(it, dict):
+            continue
+        code = next((str(v).strip() for k, v in it.items() if "代號" in k or "CompanyCode" in k), None)
+        ind = next((str(v).strip() for k, v in it.items() if "產業" in k or "IndustryCode" in k), None)
+        if code and ind and _is_common_stock(code):
+            ind = ind.zfill(2) if ind.isdigit() else ind
+            out[code] = INDUSTRY_NAMES.get(ind, ind)
+    return out
+
+
+def update_industry(today: dt.date):
+    """{代號: 產業名稱}。檔案一週內更新過就直接用。"""
+    if os.path.exists(INDUSTRY_FILE):
+        df = pd.read_csv(INDUSTRY_FILE, dtype=str)
+        age = (dt.datetime.now().timestamp() - os.path.getmtime(INDUSTRY_FILE)) / 86400
+        if age < 7 and len(df) > 500:
+            return dict(zip(df["code"], df["industry"]))
+    else:
+        df = pd.DataFrame(columns=["code", "industry"])
+    got = {}
+    for url in ("https://openapi.twse.com.tw/v1/opendata/t187ap03_L",
+                "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O"):
+        try:
+            got.update(_industry_rows(requests.get(url, headers=HEADERS, timeout=30).json()))
+        except Exception as e:  # noqa: BLE001
+            print(f"產業分類抓取失敗：{url.split('/')[2]} {type(e).__name__}")
+        time.sleep(1)
+    if len(got) > 500:
+        df = pd.DataFrame(sorted(got.items()), columns=["code", "industry"])
+        os.makedirs(os.path.dirname(INDUSTRY_FILE), exist_ok=True)
+        df.to_csv(INDUSTRY_FILE, index=False)
+    return dict(zip(df["code"], df["industry"]))
 
 
 # ------------------------------------------------------------------

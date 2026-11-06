@@ -162,7 +162,8 @@ def test_push_failure_still_saves():
         with mock.patch.object(scan, "OUT", out), \
              mock.patch.object(scan.data, "update", return_value=(df, True)), \
              mock.patch.object(scan.data, "update_index", return_value=pd.DataFrame(columns=data.INDEX_COLS)), \
-             mock.patch.object(scan.data, "shortable", return_value={"tse": None, "otc": None}), \
+             mock.patch.object(scan.data, "update_chips", return_value=pd.DataFrame(columns=data.CHIPS_COLS)), \
+             mock.patch.object(scan.data, "update_industry", return_value={}), \
              mock.patch.dict(os.environ, {"LINE_CHANNEL_ACCESS_TOKEN": "x", "LINE_USER_ID": "U1"}), \
              mock.patch.object(line_push.requests, "post", return_value=fake), \
              mock.patch("sys.argv", ["scan.py"]):
@@ -183,3 +184,18 @@ if __name__ == "__main__":
     test_incremental_save()
     test_push_failure_still_saves()
     print("\n穩定性測試通過 ✅")
+
+
+def test_share_push():
+    import line_push
+    calls = []
+    fake = lambda url, headers, json, timeout: calls.append(json["to"]) or mock.Mock(status_code=200)  # noqa: E731
+    env = {"LINE_CHANNEL_ACCESS_TOKEN": "t", "LINE_USER_ID": "Uowner", "LINE_SHARE_IDS": "Ufriend, Uowner"}
+    with mock.patch.dict(os.environ, env), mock.patch.object(line_push.requests, "post", side_effect=fake):
+        assert line_push.push("hi") and calls == ["Uowner"]
+        calls.clear()
+        assert line_push.push("hi", share=True) and calls == ["Uowner", "Ufriend"]
+    print("推播給朋友 OK")
+
+
+test_share_push()

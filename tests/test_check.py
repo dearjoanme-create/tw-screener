@@ -37,16 +37,21 @@ quotes = {
 }
 
 
-def run_at(d, hour, minute, force=False):
+shares = []
+
+
+def run_at(d, hour, minute, force=False, held=None):
     sent = []
     fake_now = dt.datetime(2026, 11, 5, hour, minute, tzinfo=check.TW)
     with mock.patch.object(check, "DOCS", d), \
          mock.patch.object(check, "fetch_quotes", return_value=quotes), \
-         mock.patch.object(check.line_push, "push", side_effect=lambda t: sent.append(t) or True), \
+         mock.patch.object(check.holdings, "fetch", return_value=held) as hf, \
+         mock.patch.object(check.line_push, "push", side_effect=lambda t, share=False: sent.append(t) or shares.append(share) or True), \
          mock.patch.object(check.dt, "datetime", wraps=dt.datetime) as m, \
          mock.patch("sys.argv", ["check.py"] + (["--force"] if force else [])):
         m.now.return_value = fake_now
         check.main()
+        run_at.fetched = hf.called
     return sent
 
 
@@ -89,6 +94,19 @@ def test():
         run_at(d, 13, 10)
         codes = {x["code"] for x in json.load(open(os.path.join(d, "checks.json")))["runs"][0]["results"]}
         assert "4401" not in codes
+        # 持股：放在 10:55 預警（只推給你）；13:00 確認推給朋友，不放持股
+        os.remove(os.path.join(d, "checks.json"))
+        held = [{"code": "1101", "name": "甲", "market": "tse", "side": "long", "price": 110, "mode": "短",
+                 "advice": {"stop": 105, "sum4": 440}},
+                {"code": "4401", "name": "丁", "market": "tse", "side": "long", "price": 70, "mode": "短",
+                 "advice": {"stop": 66.5, "sum4": 300}}]
+        shares.clear()
+        msg = run_at(d, 10, 55, held=held)[0]
+        print(msg)
+        assert run_at.fetched and "持股提醒" in msg and "跌破停損" in msg and shares[-1] is False
+        assert msg.index("持股提醒") < msg.index("目前符合")
+        msg = run_at(d, 13, 0, held=held)[0]
+        assert not run_at.fetched and "持股" not in msg and shares[-1] is True
     print("\n盤中檢查測試通過 ✅")
 
 

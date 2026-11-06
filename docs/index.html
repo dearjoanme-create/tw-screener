@@ -66,6 +66,7 @@
 <main class="wrap"><div class="list" id="list"></div></main>
 <footer class="wrap">
   「收盤要 ≥ / ≤」是明天收盤需要到的價位，另外還要是漲跌 2% 以上的實體 K 棒、量能足夠、K 值同方向。
+  鎖股名單是當天漲跌 3.5% 以上、趨勢方向一致的股票，先鎖定觀察，等出現進場位置再動作。
   盤中狀態依最近一次檢查（10:55 預警／13:00 確認），仍以 13:30 收盤為準。規則依朱家泓《活用技術分析寶典》整理，僅供參考，不構成投資建議。
 </footer>
 <script>
@@ -94,10 +95,26 @@ function tabs() {
     ["long", "多方預備" + (m.allow_long === false ? "・逆大盤" : ""), cand.long],
     ["short", "空方預備" + (m.allow_short === false ? "・逆大盤" : ""), cand.short],
     ["confirmed", "今日已確認", cand.confirmed],
+    ["watch", "鎖股名單", cand.watch || []],
     ["excluded", "被戒律排除", cand.excluded],
   ];
   if (!t.some(x => x[0] === cur)) cur = m.allow_short && !m.allow_long ? "short" : "long";
   return t;
+}
+
+function watchCard(r) {
+  const up = r.chg > 0;
+  const mk = r.market === "otc" ? "上櫃" : "上市";
+  return `<div class="card">
+    <div class="row"><div><span class="tag ${up ? "long" : "short"}">${up ? "強" : "弱"}</span>
+      <span class="code">${esc(r.code)}</span> <span class="name">${esc(r.name)}・${mk}</span></div>
+      <div class="score">${up ? "+" : ""}${r.chg}%</div></div>
+    <div class="row"><span class="title">收 ${fmt(r.close)}・${esc(r.trend)}</span><span class="small">${esc(r.sector || "")}${r.rs != null ? "・強度 " + r.rs : ""}</span></div>
+    <div class="checks">
+      <span class="chk">均線：${esc(r.ma)}</span><span class="chk">位階：${esc(r.pos)}</span>
+      <span class="chk">成交量：${esc(r.vol)}</span>${r.chips ? `<span class="chk">籌碼：${esc(r.chips)}</span>` : ""}
+    </div>
+  </div>`;
 }
 
 function card(r, mode, live) {
@@ -126,7 +143,7 @@ function card(r, mode, live) {
   return `<div class="card">
     <div class="row"><div>${sideTag} <span class="code">${esc(r.code)}</span> <span class="name">${esc(r.name)}・${mk}</span></div>
       <div class="score">${r.score} 分</div></div>
-    <div class="row"><span class="title">${esc(r.title)}</span><span class="small">${esc(r.position)}・${esc(r.trend)}${r.rs != null ? "・強度 " + r.rs : ""}</span></div>
+    <div class="row"><span class="title">${esc(r.title)}</span><span class="small">${esc(r.position)}・${esc(r.trend)}${r.sector ? "・" + esc(r.sector) : ""}${r.rs != null ? "・強度 " + r.rs : ""}</span></div>
     <div class="small">${esc(r.note)}</div>
     <div class="nums">${nums}</div>
     ${why}${lv}
@@ -146,7 +163,7 @@ function render() {
   const head = run && (cur === "long" || cur === "short")
     ? `<div class="small">盤中 ${run.time} ${run.slot || ""}結果已標在每檔上</div>` : "";
   document.getElementById("list").innerHTML = items.length
-    ? head + items.map(r => card(r, cur, map)).join("")
+    ? head + items.map(r => cur === "watch" ? watchCard(r) : card(r, cur, map)).join("")
     : '<div class="empty">今天沒有符合的股票</div>';
 }
 
