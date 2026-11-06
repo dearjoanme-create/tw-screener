@@ -187,7 +187,7 @@ def screen(df, last_date, short_ok=None, ctx=None):
                 out[slot].append({**base, **res[slot]})
         out["excluded"] += [{**base, **x} for x in res["excluded"]]
         out["confirmed"] += [{**base, **x} for x in conf]
-        # 鎖股名單（10-5）：當天漲跌 3.5% 以上、趨勢方向一致的強勢／弱勢股
+        # 鎖股名單：當天漲跌 3.5% 以上、趨勢方向一致的強勢／弱勢股
         rec = out["records"][code]
         if (rec["chg"] >= 3.5 and a.trend[a.t] == 1) or (rec["chg"] <= -3.5 and a.trend[a.t] == -1):
             out["watch"].append({**base, "close": rec["close"], "chg": rec["chg"], "trend": rec["trend"],

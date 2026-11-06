@@ -1,4 +1,4 @@
-"""大盤狀態與建議資金水位（11-1 投入資金的分配原則、10-5 進場做多／做空的前提）。"""
+"""大盤狀態與建議資金水位，以及今天要推多方還是空方。"""
 import config as C
 from indicators import BEAR, BULL, TREND_NAME, analyze, position
 

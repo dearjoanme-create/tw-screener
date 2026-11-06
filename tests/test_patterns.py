@@ -1,4 +1,4 @@
-"""用人工做出來的走勢測試朱家泓規則。執行：python -m tests.test_patterns"""
+"""用人工做出來的走勢測試選股規則。執行：python -m tests.test_patterns"""
 import datetime as dt
 import json
 from unittest import mock
@@ -16,7 +16,7 @@ from tests.charts import (add_bar, big_black, bottom_base, build, bull_box, down
 
 
 def test_turning_waves_follow_book():
-    # 書上的取點原則：跌破 5 日線取正價群（含當天）最高點；突破 5 日線取負價群（含當天）最低點
+    # 取點原則：跌破 5 日線取正價群（含當天）最高點；突破 5 日線取負價群（含當天）最低點
     df = build(flat(20) + [(6, 0.10), (4, -0.06), (6, 0.10), (4, -0.06)])
     h, l, c = (df[k].to_numpy(float) for k in ("high", "low", "close"))
     ma5 = sma(c, 5)
@@ -40,7 +40,7 @@ def test_trend_six_words():
     assert analyze(uptrend_pullback()).trend[-1] == BULL      # 頭頭高、底底高
     assert analyze(downtrend_rebound()).trend[-1] == BEAR     # 頭頭低、底底低
     assert analyze(bull_box()).trend[-1] == RANGE             # 頭頭低、底底高（收斂）＝盤整
-    print("趨勢 6 字口訣 OK")
+    print("趨勢判定 OK")
 
 
 def test_kd_and_next_k():
@@ -93,32 +93,32 @@ def test_short_setups_on_mirrored_charts():
 
 
 def test_rules():
-    # 戒律2：已經連漲 2 天，明天是第 3 根 → 勿追高
+    # 已經連漲 2 天，明天是第 3 根 → 勿追高
     df = bottom_base()
     c = df["close"].iloc[-1]
     df = add_bar(df, c, c * 1.012, c * 0.998, c * 1.01, 2000)
     df = add_bar(df, c * 1.01, c * 1.022, c * 1.008, c * 1.02, 2000)
     a = analyze(df)
     bad = P.rules_long(a, a.t, "L1", P.trigger(a, a.t, 1, None))
-    assert any(x.startswith("戒律2") for x in bad), bad
-    # 戒律1：觸發價在月線下 → 盤底還沒突破月線
+    assert any("上漲第3根" in x for x in bad), bad
+    # 觸發價在月線下 → 盤底還沒突破月線
     a = analyze(uptrend_pullback())
-    assert any(x.startswith("戒律1") for x in P.rules_long(a, a.t, "L2", a.ma[20][a.t] * 0.95))
-    # 戒律4：上方有週線壓力
+    assert any("盤底還沒突破月線" in x for x in P.rules_long(a, a.t, "L2", a.ma[20][a.t] * 0.95))
+    # 上方有週線壓力
     a.w_heads = [a.c[a.t] * 1.06]
     trig = P.trigger(a, a.t, 1, None)
-    assert any(x.startswith("戒律4") for x in P.rules_long(a, a.t, "L2", trig))
-    # 戒律8：空頭的反彈不做多
+    assert any("週線壓力" in x for x in P.rules_long(a, a.t, "L2", trig))
+    # 空頭的反彈不做多
     a = analyze(downtrend_rebound())
-    assert any(x.startswith("戒律8") for x in P.rules_long(a, a.t, "L3", a.c[a.t] * 1.03))
-    # 做空戒律8：多頭的回檔不做空
+    assert any("空頭的反彈" in x for x in P.rules_long(a, a.t, "L3", a.c[a.t] * 1.03))
+    # 多頭的回檔不做空
     a = analyze(uptrend_pullback())
-    assert any(x.startswith("戒律8") for x in P.rules_short(a, a.t, "S2", a.c[a.t] * 0.97))
+    assert any("多頭的回檔" in x for x in P.rules_short(a, a.t, "S2", a.c[a.t] * 0.97))
     # 強度：做多要強勢股
     a = analyze(uptrend_pullback())
     res = P.evaluate(a, a.t, rs=20)
     assert res["long"] is None and any("強度" in w for e in res["excluded"] for w in e["why"])
-    print("戒律與守則 OK")
+    print("排除條件 OK")
 
 
 def test_entry_bar_and_confirmed_today():
@@ -130,7 +130,7 @@ def test_entry_bar_and_confirmed_today():
     good = add_bar(df, c * 1.001, close * 1.003, c * 0.998, close, 2600)
     conf = P.confirmed_today(analyze(good), rs=80)
     assert conf and conf[0]["key"] == "L2" and conf[0]["entry"] == round(close, 2), conf
-    # 戒律10：價漲的黑K不進場（開高走低）
+    # 價漲的黑K不進場（開高走低）
     bad = add_bar(df, close * 1.01, close * 1.02, c * 0.999, close, 2600)
     ok, why = P.entry_bar_ok(analyze(bad), len(bad) - 1, 1, y["trigger"], y["need_vol"])
     assert not ok and any("黑K" in w for w in why), why
@@ -264,12 +264,12 @@ def test_holdings_rules():
     a = analyze(df)
     t = a.t
     entry_day = df["date"].iloc[t - 25].strftime("%Y-%m-%d")
-    # 進場後漲超過 10%，今天收盤在 5 日線下 → 停利（守則 6）
+    # 進場後漲超過 10%，今天收盤在 5 日線下 → 停利
     r = HD.evaluate(a, {"code": "1101", "side": "long", "price": a.c[t] / 1.15, "date": entry_day, "mode": "短"})
-    assert r["level"] == "出場" and "守則 6" in r["text"], r
-    # 漲幅未達 10%、跌破 5 日線 → 續抱（守則 5）
+    assert r["level"] == "出場" and "收盤跌破 5 日線" in r["text"] and "停利" in r["text"], r
+    # 漲幅未達 10%、跌破 5 日線 → 續抱
     r = HD.evaluate(a, {"code": "1101", "side": "long", "price": a.c[t] / 1.04, "date": entry_day, "mode": "短"})
-    assert r["level"] in ("續抱", "警示") and any("守則 5" in x for x in [r["text"]] + r["notes"]), r
+    assert r["level"] in ("續抱", "警示") and any("跌破 5 日線續抱" in x for x in [r["text"]] + r["notes"]), r
     # 跌破停損
     r = HD.evaluate(a, {"code": "1101", "side": "long", "price": a.c[t] * 1.08, "date": entry_day, "mode": "短"})
     assert r["level"] == "出場" and "停損" in r["text"], r
@@ -287,7 +287,7 @@ def test_holdings_rules():
     assert HD.live_check(h, 103) is None
     lines = HD.push_section([r], {"1101": "台泥"})
     assert "持股檢查" in lines[0]
-    print("持股守則 OK")
+    print("持股規則 OK")
 
 
 def test_screen_with_context():

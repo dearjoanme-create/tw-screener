@@ -1,4 +1,4 @@
-"""持股追蹤（第 4 階段）：依朱家泓 11-2 進場實戰操作 SOP 的短線／長線／飆股守則，判斷每檔持股該續抱、減碼還是出場。
+"""持股追蹤：依短線／長線／飆股／放空的操作規則，判斷每檔持股該續抱、減碼還是出場。
 
 持股紀錄存在 Google 試算表（透過 Apps Script），GitHub 用 HOLDINGS_URL + HOLDINGS_SECRET 讀寫：
   GET  ?action=holdings&secret=…   → 目前持股（含上一次的建議）
@@ -114,7 +114,7 @@ def evaluate(a, h):
             add("出場", "獲利超過 20%，大量長黑跌破前一日低點")
         base = float(a.l[max(0, t - 150):t + 1].min())
         if base > 0 and c / base - 1 >= C.LATE_GAIN:
-            add("警示", "股價已漲約 1 倍，不做長線（長線守則 8）")
+            add("警示", "股價已漲約 1 倍，不做長線")
         if not out:
             add("續抱", f"沒跌破月線 {_fmt(ma20)}，長線續抱")
 
@@ -133,35 +133,35 @@ def evaluate(a, h):
         if not out:
             add("續抱", "沒破前 2 日低、沒破 3 日均線、沒出黑K，續抱")
 
-    elif side > 0:  # 短線波段（11-2 短線波段操作守則）
+    elif side > 0:  # 短線波段
         long_reds = all(a.kbar(k)["long_red"] for k in range(t - 3, t))
         if (gain >= 0.20 or long_reds) and kb["long_black"] and vr >= C.BIG_VOL:
             if c < a.l[t - 1]:
-                add("出場", "獲利大、出現大量長黑跌破前一日低點，全部出場（守則 8）")
+                add("出場", "獲利大、出現大量長黑跌破前一日低點，全部出場")
             else:
-                add("減碼", "獲利大、出現大量長黑，先減碼一半，明天開低就全出（守則 7）")
+                add("減碼", "獲利大、出現大量長黑，先減碼一半，明天開低就全出")
         prev_red = a.c[t - 1] > a.o[t - 1]
         if kb["black"] and prev_red and c < (a.o[t - 1] + a.c[t - 1]) / 2 and a.k[t] < a.k[t - 1]:
-            add("減碼", "黑K吃掉前一根紅K一半以上、K值下彎，先賣一半（守則 11）")
+            add("減碼", "黑K吃掉前一根紅K一半以上、K值下彎，先賣一半")
         above = [x for x in a.w_heads if x > c]
         if c < ma5 and kb["black"] and above and min(above) / c - 1 <= C.WEEKLY_PRESSURE:
-            add("出場", f"接近週線壓力 {_fmt(min(above))}，黑K跌破 5 日線先出場（守則 19）")
+            add("出場", f"接近週線壓力 {_fmt(min(above))}，黑K跌破 5 日線先出場")
         if c < ma5:
             if gain >= 0.10:
-                add("出場", f"漲幅超過 10%，收盤跌破 5 日線 {_fmt(ma5)}，停利（守則 6）")
+                add("出場", f"漲幅超過 10%，收盤跌破 5 日線 {_fmt(ma5)}，停利")
             elif a.ma_down(60, t):
-                add("出場", "季線下彎，跌破 5 日線先出場（守則 20）")
+                add("出場", "季線下彎，跌破 5 日線先出場")
             elif kb["chg"] > -0.01 and vr < 1 and a.ma_up(20, t):
-                add("警示", "跌破 5 日線但跌幅小、量縮、月線上揚：今天續抱，明天再跌就賣（守則 15）")
+                add("警示", "跌破 5 日線但跌幅小、量縮、月線上揚：今天續抱，明天再跌就賣")
             else:
-                add("續抱", "漲幅未達 10%，跌破 5 日線續抱（守則 5）")
+                add("續抱", "漲幅未達 10%，跌破 5 日線續抱")
         if not out:
             if gain >= 0.10:
-                add("續抱", f"續抱，收盤跌破 5 日線 {_fmt(ma5)} 就停利（守則 6）")
+                add("續抱", f"續抱，收盤跌破 5 日線 {_fmt(ma5)} 就停利")
             else:
-                add("續抱", "沒有跌破停損，續抱（守則 4）")
+                add("續抱", "沒有跌破停損，續抱")
         if gain >= 0.10:
-            add("續抱", "漲幅已超過 10%，不宜加碼（守則 18）")
+            add("續抱", "漲幅已超過 10%，不宜加碼")
 
     else:  # 放空
         if c > ma5:

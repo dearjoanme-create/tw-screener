@@ -1,8 +1,8 @@
-"""進場位置判斷（朱家泓《活用技術分析寶典》11-1、12-1），加上做多／做空 10 大戒律與短線波段守則。
+"""進場位置判斷，加上做多／做空的排除條件。
 
 流程：
   find_setups(a, t)  → 第 t 天收盤後，明天可能出現的進場位置（只差最後一根進場 K）
-  evaluate(a, t, rs) → 算出明天的觸發條件、套用戒律、打分數，回傳多方／空方各一筆（或 None）
+  evaluate(a, t, rs) → 算出明天的觸發條件、套用排除條件、打分數，回傳多方／空方各一筆（或 None）
   confirmed_today(a, rs) → 昨天的預備名單，今天收盤是否已經走出進場 K
 """
 import math
@@ -272,7 +272,7 @@ def trigger(a, t, side, level):
 
 
 # ------------------------------------------------------------------
-# 戒律與守則
+# 排除條件
 # ------------------------------------------------------------------
 def _divergence(a, t, side):
     """量價背離：價格 3 天往同方向走，量卻縮。"""
@@ -282,36 +282,36 @@ def _divergence(a, t, side):
 
 
 def rules_long(a, t, key, trig):
-    """回傳違反的戒律／守則清單（空的＝通過）。"""
+    """回傳違反的排除條件（空的＝通過）。"""
     bad = []
     c, ma20 = a.c, a.ma[20][t]
     kb = a.kbar(t)
     if trig < ma20:
-        bad.append("戒律1：盤底還沒突破月線")
+        bad.append("盤底還沒突破月線")
     if a.up_streak(t) >= 2:
-        bad.append("戒律2：明天是上漲第3根以上，勿追高")
+        bad.append("明天是上漲第3根以上，勿追高")
     bias = c[t] / ma20 - 1
     spread = a.ma[5][t] / ma20 - 1
     if _divergence(a, t, 1) and a.k[t] >= C.KD_HIGH and bias >= C.BIAS_MAX and spread >= C.MA_SPREAD_MAX:
-        bad.append("戒律3：量價背離＋KD高檔＋乖離過大＋均線開口大")
+        bad.append("量價背離＋KD高檔＋乖離過大＋均線開口大")
     above = [x for x in a.w_heads if x > trig]
     if above and min(above) / trig - 1 <= C.WEEKLY_PRESSURE:
-        bad.append(f"戒律4：週線壓力 {f2(min(above))} 不到 5%")
+        bad.append(f"週線壓力 {f2(min(above))} 不到 5%")
     if not bad and (c[t - 10:t + 1] < a.ma[20][t - 10:t + 1]).any() and c[t] < ma20 and trig < ma20:
-        bad.append("戒律5：回檔跌破月線，還沒站回")
+        bad.append("回檔跌破月線，還沒站回")
     if key in ("L2", "L5") and a.trend[t] != BULL:
-        bad.append("戒律6：回檔已跌破前低")
+        bad.append("回檔已跌破前低")
     if a.trend[t] == BEAR and key not in ("L1", "L4", "L6"):
-        bad.append("戒律8：一般空頭的反彈")
+        bad.append("一般空頭的反彈")
     if a.high_zone[t] and c[t] / c[t - 5] - 1 >= 0.15 and kb["long_red"] and a.vol_ratio(t) >= C.BIG_VOL:
-        bad.append("戒律9：連續急漲的大量長紅K高檔")
-    # 短線守則 12：高檔爆量長上影線是壓力，離高點不到 5% 先等
+        bad.append("連續急漲的大量長紅K高檔")
+    # 高檔爆量長上影線是壓力，離高點不到 5% 先等
     for k in range(max(1, t - 20), t + 1):
         if a.high_zone[k] and a.vol_ratio(k) >= C.HUGE_VOL and a.kbar(k)["upper_ratio"] >= 0.5:
             if a.h[k] > trig and a.h[k] / trig - 1 < C.SHADOW_PRESSURE:
-                bad.append(f"守則12：上方 {f2(a.h[k])} 有爆量長上影線壓力")
+                bad.append(f"上方 {f2(a.h[k])} 有爆量長上影線壓力")
                 break
-    # 短線守則 14：高檔連 2 日爆量，回檔連 3 黑，回後買上漲不進
+    # 高檔連 2 日爆量，回檔連 3 黑，回後買上漲不進
     if key == "L2":
         st, gs = group(a, t)
         for k in range(max(1, gs - 10), gs + 1):
@@ -319,7 +319,7 @@ def rules_long(a, t, key, trig):
                 blacks = [a.kbar(j)["black"] for j in range(k + 1, t + 1)]
                 run = max((len(s) for s in "".join("b" if x else " " for x in blacks).split()), default=0)
                 if run >= 3:
-                    bad.append("守則14：高檔連2日爆量、回檔連3黑")
+                    bad.append("高檔連2日爆量、回檔連3黑")
                     break
     return bad
 
@@ -329,24 +329,24 @@ def rules_short(a, t, key, trig):
     c, ma20 = a.c, a.ma[20][t]
     kb = a.kbar(t)
     if trig > ma20:
-        bad.append("戒律1：盤頭還沒跌破月線")
+        bad.append("盤頭還沒跌破月線")
     if a.down_streak(t) >= 2:
-        bad.append("戒律2：明天是下跌第3根以上，勿殺低")
+        bad.append("明天是下跌第3根以上，勿殺低")
     bias = c[t] / ma20 - 1
     spread = a.ma[5][t] / ma20 - 1
     if _divergence(a, t, -1) and a.k[t] <= C.KD_LOW and bias <= -C.BIAS_MAX and spread <= -C.MA_SPREAD_MAX:
-        bad.append("戒律3：量價背離＋KD低檔＋乖離過大＋均線開口大")
+        bad.append("量價背離＋KD低檔＋乖離過大＋均線開口大")
     below = [x for x in a.w_lows if x < trig]
     if below and 1 - max(below) / trig <= C.WEEKLY_PRESSURE:
-        bad.append(f"戒律4：週線支撐 {f2(max(below))} 不到 5%")
+        bad.append(f"週線支撐 {f2(max(below))} 不到 5%")
     if not bad and (c[t - 10:t + 1] > a.ma[20][t - 10:t + 1]).any() and c[t] > ma20 and trig > ma20:
-        bad.append("戒律5：反彈突破月線，還沒跌破")
+        bad.append("反彈突破月線，還沒跌破")
     if key in ("S2", "S5") and a.trend[t] != BEAR:
-        bad.append("戒律6：反彈已突破前高")
+        bad.append("反彈已突破前高")
     if a.trend[t] == BULL and key not in ("S1", "S4"):
-        bad.append("戒律8：一般多頭的回檔")
+        bad.append("一般多頭的回檔")
     if a.low_zone[t] and 1 - c[t] / c[t - 5] >= 0.15 and kb["long_black"] and a.vol_ratio(t) >= C.BIG_VOL:
-        bad.append("戒律9：連續急跌的大量長黑K低檔")
+        bad.append("連續急跌的大量長黑K低檔")
     return bad
 
 
@@ -408,7 +408,7 @@ def _checks(a, t, side, key, pos, vol_today, vol_recent, bad):
         {"step": "指標", "ok": bool(a.k[t] > a.k[t - 1]) if side > 0 else bool(a.k[t] < a.k[t - 1]),
          "text": f"K {a.k[t]:.0f} {k_dir}" + ("" if (a.k[t] > a.k[t - 1]) == (side > 0) else "（進場日要轉" + ("上" if side > 0 else "下") + "）")
                  + f"，MACD柱{osc_dir}"},
-        {"step": "戒律", "ok": not bad, "text": "通過" if not bad else "；".join(bad)},
+        {"step": "排除條件", "ok": not bad, "text": "通過" if not bad else "；".join(bad)},
     ]
 
 
@@ -484,7 +484,7 @@ def entry_bar_ok(a, t, side, trig, need_vol):
         if not kb["solid_red"]:
             why.append("不是漲 2% 以上的實體紅K")
         if kb["up_black"]:
-            why.append("價漲的黑K（戒律10）")
+            why.append("價漲的黑K")
         if kb["upper_ratio"] > C.MAX_SHADOW:
             why.append("上影線超過一半")
         if a.k[t] <= a.k[t - 1]:
@@ -495,7 +495,7 @@ def entry_bar_ok(a, t, side, trig, need_vol):
         if not kb["solid_black"]:
             why.append("不是跌 2% 以上的實體黑K")
         if kb["down_red"]:
-            why.append("價跌的紅K（戒律10）")
+            why.append("價跌的紅K")
         if kb["lower_ratio"] > C.MAX_SHADOW:
             why.append("下影線超過一半")
         if a.k[t] >= a.k[t - 1]:

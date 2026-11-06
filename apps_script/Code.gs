@@ -109,7 +109,7 @@ function helpText() {
     '📖 可以用的指令',
     '2317　查個股分析',
     '買 2317 210　記錄做多（預設短線）',
-    '買 2317 210 長　用長線守則（飆＝飆股）',
+    '買 2317 210 長　用長線規則（飆＝飆股）',
     '空 2317 210　記錄放空',
     '賣 2317 230　平倉（不寫價格用目前價格）',
     '刪除 2317　刪掉打錯的紀錄',
@@ -278,7 +278,7 @@ function addHolding(code, side, price, mode) {
   return [
     '✅ 已記錄：' + (side === 'long' ? '做多 ' : '放空 ') + code + ' ' + r.name + ' ' + fmt(price) + '（' + MODE_NAME[mode] + '）',
     '停損：' + fmt(stop) + '（收盤' + (side === 'long' ? '跌破' : '突破') + '就出場，設好不改）',
-    '守則：', '・' + rules.join('\n・'),
+    '操作規則：', '・' + rules.join('\n・'),
     '每天晚上和 13:00 會幫你檢查，也可以隨時輸入「持股」查看。'
   ].join('\n');
 }
@@ -355,7 +355,7 @@ function holdingsText() {
     if (h.advice && h.advice.text) {
       lines.push('  ' + (ICON[h.advice.level] || '') + '昨晚判斷：' + h.advice.level + '｜' + h.advice.text);
     } else {
-      lines.push('  （今晚掃描後會有守則建議）');
+      lines.push('  （今晚掃描後會有操作建議）');
     }
   });
   return lines.join('\n');
@@ -378,8 +378,8 @@ function performanceText() {
     '總報酬（單筆相加）：' + pct(pn.reduce(function (s, x) { return s + x; }, 0)),
     '虧損超過 5% 的次數：' + bigLoss + (bigLoss ? '（停損要守住）' : ' ✅'),
     '—',
-    '朱老師的基本方程式：勝率 50%、停利 7%、停損 5% → 每筆期望值 +1.0%',
-    exp >= 0.01 ? '👍 已經達到基本方程式的水準' : '還沒達到基本方程式，檢討進場位置和停損紀律',
+    '參考基準：勝率 50%、停利 7%、停損 5% → 每筆期望值 +1.0%',
+    exp >= 0.01 ? '👍 已經達到參考基準' : '還沒達到參考基準，檢討進場位置和停損紀律',
     '（建議每 3 個月檢討一次：有沒有照計畫進出）'
   ].join('\n');
 }

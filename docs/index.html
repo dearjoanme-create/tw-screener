@@ -67,7 +67,7 @@
 <footer class="wrap">
   「收盤要 ≥ / ≤」是明天收盤需要到的價位，另外還要是漲跌 2% 以上的實體 K 棒、量能足夠、K 值同方向。
   鎖股名單是當天漲跌 3.5% 以上、趨勢方向一致的股票，先鎖定觀察，等出現進場位置再動作。
-  盤中狀態依最近一次檢查（10:55 預警／13:00 確認），仍以 13:30 收盤為準。規則依朱家泓《活用技術分析寶典》整理，僅供參考，不構成投資建議。
+  盤中狀態依最近一次檢查（10:55 預警／13:00 確認），仍以 13:30 收盤為準。僅供參考，不構成投資建議。
 </footer>
 <script>
 const fmt = n => (n == null ? "–" : Number(n).toLocaleString("zh-TW", {maximumFractionDigits: 2}));
@@ -96,7 +96,7 @@ function tabs() {
     ["short", "空方預備" + (m.allow_short === false ? "・逆大盤" : ""), cand.short],
     ["confirmed", "今日已確認", cand.confirmed],
     ["watch", "鎖股名單", cand.watch || []],
-    ["excluded", "被戒律排除", cand.excluded],
+    ["excluded", "被排除", cand.excluded],
   ];
   if (!t.some(x => x[0] === cur)) cur = m.allow_short && !m.allow_long ? "short" : "long";
   return t;
@@ -130,7 +130,7 @@ function card(r, mode, live) {
          + (r.need_vol ? `・量 ≥ ${r.need_vol} 倍（${fmt(Math.round(r.vol5 * r.need_vol))} 張）` : "")
          + `<br>停損 ${fmt(r.stop.fixed)}` + (r.stop.trend ? `・趨勢停損 ${fmt(r.stop.trend)}` : "");
   }
-  const chks = (r.checks || []).filter(c => !(mode === "excluded" && c.step === "戒律")).map(c =>
+  const chks = (r.checks || []).filter(c => !(mode === "excluded" && c.step === "排除條件")).map(c =>
     `<span class="chk ${c.ok ? "" : "bad"}">${c.ok ? "✓" : "✗"} ${esc(c.step)}：${esc(c.text)}</span>`).join("");
   let lv = "";
   const s = live && live[r.code + r.side];
