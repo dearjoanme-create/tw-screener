@@ -3,7 +3,11 @@ name: 晚上選股掃描
 on:
   schedule:
     - cron: "17 12 * * 1-5"   # 台灣時間 週一到五 20:17（GitHub 用 UTC，所以寫 12）
-  workflow_dispatch:           # 可以在 Actions 頁面手動按「Run workflow」
+    workflow_dispatch:
+      inputs:
+        force:
+          description: "同一天重跑也推播"
+          default: "true"
 
 permissions:
   contents: write
@@ -31,7 +35,7 @@ jobs:
           HOLDINGS_SECRET: ${{ secrets.HOLDINGS_SECRET }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
-        run: python scan.py ${{ github.event_name == 'workflow_dispatch' && '--force' || '' }}
+        run: python scan.py           run: python scan.py ${{ (github.event_name == 'workflow_dispatch' && inputs.force == 'true') && '--force' || '' }}
       - name: 存檔
         if: always()   # 前面出錯也要把已經抓到的資料存起來
         run: |
