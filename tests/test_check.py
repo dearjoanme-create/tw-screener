@@ -73,6 +73,14 @@ def test():
         assert len(run_at(d, 11, 0)) == 1
         assert [x["slot"] for x in json.load(open(os.path.join(d, "checks.json")))["runs"]] == ["確認", "確認", "預警"]
 
+        # 12 點多測試或補跑：算「盤中」，會推播，而且不會擋掉 13:00 的確認
+        os.remove(os.path.join(d, "checks.json"))
+        assert len(run_at(d, 12, 32)) == 1
+        assert len(run_at(d, 12, 40)) == 1
+        assert len(run_at(d, 13, 0)) == 1
+        assert run_at(d, 13, 5) == []   # GitHub 備援 13:05 → 確認已推過，跳過
+        assert [x["slot"] for x in json.load(open(os.path.join(d, "checks.json")))["runs"]] == ["盤中", "盤中", "確認"]
+
         # 大盤在月線上：空方不檢查
         c2 = {**cand, "market": {"allow_long": True, "allow_short": False}}
         with open(os.path.join(d, "candidates.json"), "w") as f:

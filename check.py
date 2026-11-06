@@ -1,9 +1,10 @@
 """盤中執行：抓前一晚預備名單的即時報價，看今天是不是正在走出合格的進場 K。
-  11:00 左右 → 預警（還早，僅供參考）
-  13:10 左右 → 確認（離收盤 20 分鐘，判斷最接近收盤結果）
+  10:55 → 預警（還早，僅供參考）
+  13:00 → 確認（離收盤 30 分鐘，可以準備下單）
+  12:00～12:59 執行的（測試或手動補跑）算「盤中」，不會影響 13:00 的確認
 朱家泓的進場以「收盤確認」為準，盤中結果仍要看 13:30 收盤價。
 
-同一個時段（預警／確認）同一天只推一次，所以外部定時器和 GitHub 排程可以同時開著當備援。
+預警、確認這兩個時段，同一天各只推一次，所以外部定時器和 GitHub 排程可以同時開著當備援。
 手動重跑：python check.py --force
 """
 import datetime as dt
@@ -61,6 +62,15 @@ def fetch_quotes(stocks):
     return out
 
 
+def slot_of(now):
+    """依執行時間分時段：12 點前預警、12 點那一小時算盤中、13 點後確認。"""
+    if now.hour < 12:
+        return "預警"
+    if now.hour == 12:
+        return "盤中"
+    return "確認"
+
+
 def judge(r, q, elapsed):
     """一檔預備股，用目前報價判斷今天的 K 棒是否合格。回傳 (狀態, 未符合的條件, 預估量)。"""
     side = 1 if r["side"] == "long" else -1
@@ -75,7 +85,7 @@ def judge(r, q, elapsed):
         reached = price >= r["trigger"]
         touched = hi >= r["trigger"]
         if chg < C.ENTRY_MIN_CHG:
-            miss.append(f"漲幅 {chg:+.1%} 不到 2%")
+            miss.append(f"今天{'漲' if chg >= 0 else '跌'} {abs(chg):.1%}，做多要漲 2% 以上")
         if price <= op:
             miss.append("不是紅K")
         if rng > 0 and (hi - max(op, price)) / rng > C.MAX_SHADOW:
@@ -84,7 +94,7 @@ def judge(r, q, elapsed):
         reached = price <= r["trigger"]
         touched = lo <= r["trigger"]
         if chg > -C.ENTRY_MIN_CHG:
-            miss.append(f"跌幅 {chg:+.1%} 不到 2%")
+            miss.append(f"今天{'跌' if chg < 0 else '漲'} {abs(chg):.1%}，放空要跌 2% 以上")
         if price >= op:
             miss.append("不是黑K")
         if rng > 0 and (min(op, price) - lo) / rng > C.MAX_SHADOW:
@@ -117,7 +127,7 @@ def main():
     if cand["data_date"] >= now.strftime("%Y-%m-%d"):
         print("預備名單是今天收盤後才產生的，不是給今天用的，跳過。")
         return
-    slot = "預警" if now.hour < 12 else "確認"
+    slot = slot_of(now)
 
     path = os.path.join(DOCS, "checks.json")
     try:
@@ -127,7 +137,7 @@ def main():
         checks = {"runs": []}
     if checks.get("for_data_date") != cand["data_date"]:
         checks = {"for_data_date": cand["data_date"], "runs": []}
-    if not force and any(x.get("slot") == slot for x in checks["runs"]):
+    if not force and slot != "盤中" and any(x.get("slot") == slot for x in checks["runs"]):
         print(f"今天的「{slot}」已經推過了，跳過（避免重複通知）。要重跑請加 --force")
         return
 
@@ -159,13 +169,13 @@ def main():
         if status in groups:
             groups[status].append(row)
 
-    head = "⏰ {:%m/%d %H:%M} {}".format(now, "預警（還早，僅供參考）" if slot == "預警" else "確認（以 13:30 收盤為準）")
-    lines = [head]
-    mark = {"成形": "✅", "價到條件不足": "⚠️", "曾到拉回": "↩️"}
+    note = {"預警": "預警（還早，僅供參考）", "盤中": "盤中檢查", "確認": "確認（以 13:30 收盤為準）"}[slot]
+    lines = [f"⏰ {now:%m/%d %H:%M} {note}"]
+    label = {"成形": "✅ 可以進場（條件都符合）", "價到條件不足": "⚠️ 價格到了，但K棒不合格", "曾到拉回": "↩️ 曾經到過觸發價又彈回"}
     for status, rows in groups.items():
         if not rows:
             continue
-        lines.append(f"\n{mark[status]} {status}")
+        lines.append(f"\n{label[status]}")
         for x in rows:
             side = "多" if x["side"] == "long" else "空"
             extra = f"｜{'、'.join(x['miss'])}" if x["miss"] else ""
@@ -174,8 +184,7 @@ def main():
                 lines.append(f"  停損 {x['stop']:g}")
     if not any(groups.values()):
         lines.append("目前沒有預備股接近進場條件。")
-    lines.append("\n✅條件都符合 ⚠️價格到了但K線或量不合格 ↩️曾到觸發價又拉回")
-    lines.append("量能是依目前成交量推估全日量，早盤通常偏高")
+    lines.append("\n量能是用目前成交量推估全天，早盤通常偏高")
     url = line_push.dashboard_url()
     if url:
         lines.append(url)

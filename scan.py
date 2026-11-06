@@ -96,7 +96,7 @@ def message(res, mkt, last_date):
     for side in sides:
         items = res[side]
         name = "多方" if side == "long" else "空方"
-        lines.append(f"\n【{name}預備】{len(items)} 檔｜明天 11:00 預警、13:10 確認")
+        lines.append(f"\n【{name}預備】{len(items)} 檔｜明天 10:55 預警、13:00 確認")
         if not items:
             lines.append("今天沒有符合的股票")
         for i, r in enumerate(items[:config.LINE_TOP_N], 1):
