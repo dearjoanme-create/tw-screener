@@ -1,6 +1,7 @@
 """盤中執行：抓前一晚預備名單的即時報價，看今天是不是正在走出合格的進場 K。
   10:55 → 預警（還早，僅供參考）＋持股提醒，只推給你
-  13:00 → 確認（離收盤 30 分鐘，可以準備下單），也推給 LINE_SHARE_IDS 裡的人
+  13:00 → 確認（離收盤 30 分鐘，可以準備下單），也推給 LINE_SHARE_IDS 裡的人；
+          持股有出場／警示時，另外推一則只給你
   12:00～12:59 執行的（測試或手動補跑）算「盤中」，不會影響 13:00 的確認
 進場以「收盤確認」為準，盤中結果仍要看 13:30 收盤價。
 
@@ -182,7 +183,7 @@ def main():
     mkt = cand.get("market") or {}
     sides = [s for s in ("long", "short") if mkt.get(f"allow_{s}", True)]
     items = [r for s in sides for r in cand.get(s, [])]
-    held = holdings.fetch() if slot != "確認" else None  # 持股放在 10:55 預警（只推給你），13:00 會推給朋友所以不放
+    held = holdings.fetch()  # 持股只推給你：10:55 併入預警；13:00 另發一則（只在有出場／警示時）
     if not items and not held:
         print("沒有預備股，也沒有持股要檢查。")
         return
@@ -211,34 +212,44 @@ def main():
         if status in groups:
             groups[status].append(row)
 
-    lines = message(now, slot, groups, len(run["results"]))
-    if held:
-        alerts = []
-        for h in held:
-            q = quotes.get(h["code"])
-            if q and q["price"]:
-                got = holdings.live_check(h, q["price"])
-                if got:
-                    alerts.append((got, h, q["price"]))
-        run["holdings"] = [{"code": h["code"], "level": g[0], "text": g[1]} for g, h, _ in alerts]
-        block = [f"\n📋 持股提醒（{len(held)} 檔）"]
-        if not alerts:
-            block.append("都沒有碰到停損、停利條件，續抱")
-        for (level, text), h, price in sorted(alerts, key=lambda x: x[0][0] != "出場"):
+    alerts = []
+    for h in held or []:
+        q = quotes.get(h["code"])
+        if q and q["price"]:
+            got = holdings.live_check(h, q["price"])
+            if got:
+                alerts.append((got, h, q["price"]))
+    alerts.sort(key=lambda x: x[0][0] != "出場")
+
+    def hold_lines():
+        out = []
+        for (level, text), h, price in alerts:
             side = "多" if h.get("side", "long") == "long" else "空"
-            block.append(f"{holdings.ICON[level]}{h['code']} {h.get('name', '')} {side} 現{price:g}｜{text}")
+            out.append(f"{holdings.ICON[level]}{h['code']} {h.get('name', '')} {side} 現{price:g}｜{text}")
+        return out
+
+    share = slot == "確認"  # 13:00 確認也推給 LINE_SHARE_IDS，所以不放持股
+    lines = message(now, slot, groups, len(run["results"])) if (items or not share) else None
+    if lines and held and not share:
+        block = [f"\n📋 持股提醒（{len(held)} 檔）"] + (hold_lines() or ["都沒有碰到停損、停利條件，續抱"])
         lines[2:2] = block  # 放在結論下面
     url = line_push.dashboard_url()
-    if url:
+    if lines and url:
         lines.append(url)
 
+    # 持股是私人資料，不寫進 checks.json（網頁是公開的）
     checks["runs"].append(run)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(checks, f, ensure_ascii=False, indent=1)
 
-    if not line_push.push("\n".join(lines), share=(slot == "確認")):  # 13:00 確認也推給 LINE_SHARE_IDS
+    ok = True
+    if lines:
+        ok = line_push.push("\n".join(lines), share=share)
+    if share and alerts:
+        private = [f"📋 持股提醒 {now:%H:%M}（只有你收到）", "收盤 13:30 前還來得及處理："] + hold_lines()
+        ok = line_push.push("\n".join(private), share=False) and ok
+    if not ok:
         sys.exit(1)  # 讓 GitHub 顯示紅叉提醒你，但結果已經存好了
-
 
 if __name__ == "__main__":
     main()
