@@ -1,1 +1,10 @@
-{"for_data_date": "2026-11-06", "runs": []}
+{
+ "for_data_date": "2026-11-06",
+ "runs": [
+  {
+   "time": "13:14",
+   "slot": "確認",
+   "results": []
+  }
+ ]
+}
