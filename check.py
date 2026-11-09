@@ -137,7 +137,7 @@ def message(now, slot, groups, total, why=""):
         verdict = "今天沒有需要檢查的股票，不用動作"
     lines = [f"⏰ {now:%m/%d %H:%M} {title}", f"📌 結論：{verdict}"]
     if total == 0:
-        return lines + ([why] if why else []) + ["（每天都會推這則，沒收到才代表系統出問題）"]
+        return lines + ([why] if why else [])
 
     def head(x):
         return f"{x['code']} {x['name']}｜{'做多' if x['side'] == 'long' else '放空'}｜{x['title']}"
