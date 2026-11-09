@@ -121,7 +121,7 @@ def judge(r, q, elapsed):
     return status, miss, proj
 
 
-def message(now, slot, groups, total):
+def message(now, slot, groups, total, why=""):
     """盤中通知：第一行就寫結論，原因用白話。"""
     ok, near, back = groups["成形"], groups["價到條件不足"], groups["曾到拉回"]
     title = {"預警": "盤中預警", "盤中": "盤中檢查", "確認": "收盤前確認"}[slot]
@@ -133,7 +133,11 @@ def message(now, slot, groups, total):
         verdict = (f"目前 {len(ok)} 檔符合條件，13:00 再確認，先不用下單" if ok
                    else "目前沒有符合條件的股票，13:00 再看")
         ok_head = "✅ 目前符合（13:00 再確認）"
+    if total == 0:
+        verdict = "今天沒有需要檢查的股票，不用動作"
     lines = [f"⏰ {now:%m/%d %H:%M} {title}", f"📌 結論：{verdict}"]
+    if total == 0:
+        return lines + ([why] if why else []) + ["（每天都會推這則，沒收到才代表系統出問題）"]
 
     def head(x):
         return f"{x['code']} {x['name']}｜{'做多' if x['side'] == 'long' else '放空'}｜{x['title']}"
@@ -184,11 +188,21 @@ def main():
     sides = [s for s in ("long", "short") if mkt.get(f"allow_{s}", True)]
     items = [r for s in sides for r in cand.get(s, [])]
     held = holdings.fetch()  # 持股只推給你：10:55 併入預警；13:00 另發一則（只在有出場／警示時）
-    if not items and not held:
-        print("沒有預備股，也沒有持股要檢查。")
-        return
+    why = ""
+    if not items:  # 沒有股票要檢查也照樣推一則，才分得出「沒事」和「壞掉」
+        side_name = {"long": "多方", "short": "空方"}
+        if len(sides) == 1:
+            other = "short" if sides[0] == "long" else "long"
+            why = (f"大盤在月線{'上只看多方' if sides[0] == 'long' else '下只看空方'}，"
+                   f"{side_name[sides[0]]}預備 0 檔")
+            n = len(cand.get(other, []))
+            if n:
+                why += f"（{side_name[other]} {n} 檔逆大盤，未檢查）"
+        else:
+            why = "多方、空方預備都是 0 檔"
 
     want = {r["code"]: r["market"] for r in items}
+    want.setdefault("t00", "tse")  # 加權指數，用來判斷今天有沒有開盤
     for h in held or []:
         want.setdefault(h["code"], h.get("market") or "tse")
     quotes = fetch_quotes(list(want.items()))
@@ -229,7 +243,9 @@ def main():
         return out
 
     share = slot == "確認"  # 13:00 確認也推給 LINE_SHARE_IDS，所以不放持股
-    lines = message(now, slot, groups, len(run["results"])) if (items or not share) else None
+    if items and not run["results"]:
+        why = "抓不到即時報價，請到網頁或 GitHub Actions 看看"
+    lines = message(now, slot, groups, len(run["results"]), why)
     if lines and held and not share:
         block = [f"\n📋 持股提醒（{len(held)} 檔）"] + (hold_lines() or ["都沒有碰到停損、停利條件，續抱"])
         lines[2:2] = block  # 放在結論下面
