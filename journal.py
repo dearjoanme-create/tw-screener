@@ -21,8 +21,11 @@ SCAN_SHEET = "選股紀錄"
 SCAN_HEAD = ["日期", "代號", "名稱", "市場", "多空", "型態", "位階", "趨勢", "分數", "強度", "類股",
              "收盤", "觸發價", "距觸發%", "需量倍數", "停損", "大盤", "逆大盤", "id",
              "隔日收盤", "隔日漲跌%", "隔日達觸發", "5日報酬%", "10日報酬%", "期間最高%", "期間最低%",
-             "碰停損", "更新日"]
+             "碰停損", "更新日",
+             "13:00結果", "原因", "進場價", "出場日", "出場價", "報酬%", "勝負", "出場原因"]
 OUTCOME_COLS = SCAN_HEAD[SCAN_HEAD.index("隔日收盤"):]
+ENTERED = ("✅ 可進場", "KD 擋下", "其他條件擋下")  # 這三種模擬買賣（擋下的算「如果進場會怎樣」）
+MAX_HOLD = 60  # 最多追蹤 60 個交易日
 CHECK_SHEET = "盤中紀錄"
 CHECK_HEAD = ["日期", "時段", "時間", "代號", "名稱", "多空", "型態", "觸發價", "現價", "狀態", "原因",
               "推估量(張)", "停損", "名單日期"]
@@ -82,6 +85,7 @@ def scan_rows(cand):
                 "觸發價": r.get("trigger", ""), "距觸發%": r.get("gap_pct", ""),
                 "需量倍數": r.get("need_vol", ""), "停損": stop.get("fixed", ""),
                 "大盤": label, "逆大盤": "是" if against else "",
+                "13:00結果": "逆大盤" if against else "",
                 "id": f"{cand['data_date']}|{r['code']}|{side}",
             })
     return out
@@ -159,7 +163,69 @@ def outcome(g, date, side, trigger, stop):
     return out
 
 
-def update_outcomes(df, pending=None):
+def classify(status, miss):
+    if status == "成形":
+        return "✅ 可進場"
+    if status == "價到條件不足":
+        miss = miss or []
+        return "KD 擋下" if miss and all(m.startswith(("KD", "K值")) for m in miss) else "其他條件擋下"
+    if status == "曾到拉回":
+        return "拉回"
+    return "未到"
+
+
+def verdicts(runs_by_date):
+    """{名單日期: 13:00 確認那次的 run} → {id: (結果, 原因)}"""
+    out = {}
+    for dd, r in runs_by_date.items():
+        for x in r.get("results", []):
+            out[f"{dd}|{x['code']}|{x.get('side')}"] = (classify(x.get("status"), x.get("miss")),
+                                                          "、".join(x.get("miss") or []))
+    return out
+
+
+def confirm_runs():
+    """從 GitHub 歷史找每個名單日期最後一次 13:00 確認的結果。"""
+    out = {}
+    for _, c in history("docs/checks.json", deepen=0):  # 由新到舊
+        dd = c.get("for_data_date")
+        for r in c.get("runs", []):
+            if r.get("slot") == "確認" and isinstance(r.get("results"), list) and dd not in out:
+                last = [x for x in c["runs"] if x.get("slot") == "確認"][-1]
+                out[dd] = last
+    return out
+
+
+def trade(g, date, side):
+    """照持股的短線規則模擬：訊號隔天收盤買進，之後每天收盤判斷，出現「出場」就用當天收盤賣出。"""
+    from indicators import analyze
+
+    dates = g["date"].dt.strftime("%Y-%m-%d").tolist()
+    if date not in dates:
+        return None
+    i1 = dates.index(date) + 1
+    if i1 >= len(g):
+        return None
+    entry = float(g["close"].iloc[i1])
+    out = {"進場價": entry, "出場日": "", "出場價": "", "報酬%": "", "勝負": "持有中", "出場原因": ""}
+    h = {"code": "", "side": side, "price": entry, "date": dates[i1], "mode": "短"}
+    for t in range(i1 + 1, min(len(g), i1 + 1 + MAX_HOLD)):
+        ev = holdings.evaluate(analyze(g.iloc[:t + 1]), h)
+        if ev["level"] == "出場":
+            px = float(g["close"].iloc[t])
+            r = (px / entry - 1) if side == "long" else (entry / px - 1)
+            out.update({"出場日": dates[t], "出場價": px, "報酬%": _pct(r), "勝負": "賺" if r > 0 else "賠",
+                        "出場原因": ev["text"]})
+            return out
+    if len(g) - i1 - 1 >= MAX_HOLD:
+        px = float(g["close"].iloc[i1 + MAX_HOLD])
+        r = (px / entry - 1) if side == "long" else (entry / px - 1)
+        out.update({"出場日": dates[i1 + MAX_HOLD], "出場價": px, "報酬%": _pct(r),
+                    "勝負": "賺" if r > 0 else "賠", "出場原因": f"持有滿 {MAX_HOLD} 天"})
+    return out
+
+
+def update_outcomes(df, pending=None, judged=None):
     pending = pending if pending is not None else (_get("signals") or {}).get("items", [])
     if not pending:
         return 0
@@ -167,13 +233,29 @@ def update_outcomes(df, pending=None):
     sub = df[df["code"].astype(str).isin(codes)].sort_values(["code", "date"])
     groups = {k: g.reset_index(drop=True) for k, g in sub.groupby(sub["code"].astype(str))}
     today = dt.date.today().isoformat()
+    if judged is None:
+        try:
+            judged = verdicts(confirm_runs())
+        except Exception as e:  # noqa: BLE001
+            print(f"讀 13:00 結果失敗：{type(e).__name__} {e}")
+            judged = {}
     items = []
     for p in pending:
         g = groups.get(str(p["code"]).lstrip("'"))
         if g is None:
             continue
         side = "long" if p.get("side") in ("多", "long") else "short"
-        o = outcome(g, str(p["date"])[:10], side, p.get("trigger"), p.get("stop"))
+        date = str(p["date"])[:10]
+        o = outcome(g, date, side, p.get("trigger"), p.get("stop")) or {}
+        res = p.get("result") or ""
+        if res != "逆大盤" and p["id"] in judged:
+            res, why = judged[p["id"]]
+            o.update({"13:00結果": res, "原因": why})
+        if res in ENTERED:
+            try:
+                o.update(trade(g, date, side) or {})
+            except Exception as e:  # noqa: BLE001
+                print(f"{p['id']} 模擬買賣失敗：{type(e).__name__} {e}")
         if o:
             items.append({"id": p["id"], "values": {**o, "更新日": today}})
     if items:
@@ -191,7 +273,8 @@ def _git(*args):
 def history(path, deepen=300):
     """回傳 [(commit 標題, 檔案內容 dict)]，由新到舊。"""
     try:
-        _git("fetch", "--quiet", f"--deepen={deepen}", "origin")
+        if deepen:
+            _git("fetch", "--quiet", f"--deepen={deepen}", "origin")
     except Exception:  # noqa: BLE001
         pass  # 不是 shallow clone 或沒網路，就用現有的歷史
     out = []
@@ -237,6 +320,10 @@ def nightly(cand, df):
     info = _get("signals")
     if info is None:
         return
+    try:
+        _git("fetch", "--quiet", "--deepen=300", "origin")  # 要讀以前的 13:00 結果
+    except Exception:  # noqa: BLE001
+        pass
     if info.get("total", 0) == 0:
         try:
             backfill(skip_date=cand["data_date"])
