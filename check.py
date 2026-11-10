@@ -19,6 +19,7 @@ import requests
 
 import config as C
 import holdings
+import journal
 import line_push
 from indicators import next_k
 
@@ -257,6 +258,11 @@ def main():
     checks["runs"].append(run)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(checks, f, ensure_ascii=False, indent=1)
+
+    try:
+        journal.log_check(now.strftime("%Y-%m-%d"), run, cand["data_date"])  # 寫進你的 Google 試算表
+    except Exception as e:  # noqa: BLE001
+        print(f"紀錄表更新失敗（不影響通知）：{type(e).__name__} {e}")
 
     ok = True
     if lines:

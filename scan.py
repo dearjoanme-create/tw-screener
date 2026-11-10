@@ -14,6 +14,7 @@ import pandas as pd
 import config
 import data
 import holdings
+import journal
 import line_push
 import market
 from indicators import analyze
@@ -343,6 +344,10 @@ def main():
         json.dump({"for_data_date": payload["data_date"], "runs": []}, f, ensure_ascii=False)
 
     print(f"多方 {len(res['long'])} 檔、空方 {len(res['short'])} 檔、今日確認 {len(res['confirmed'])} 檔")
+    try:
+        journal.nightly(payload, df)  # 寫進你的 Google 試算表（選股紀錄＋事後結果）
+    except Exception as e:  # noqa: BLE001
+        print(f"紀錄表更新失敗（不影響選股）：{type(e).__name__} {e}")
     if not line_push.push(message(res, mkt, last_date, short_ok)):
         sys.exit(1)  # 讓 GitHub 顯示紅叉提醒你，但資料已經存好了
 
