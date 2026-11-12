@@ -34,6 +34,8 @@ quotes = {
     "3301": {"price": 30.4, "open": 30.1, "high": 31.2, "low": 30, "prev": 30, "vol": 3000, "date": "20261105", "time": "13:10:00"},
     # 做空：實體黑K、跌 3%
     "4401": {"price": 77.6, "open": 80.2, "high": 80.4, "low": 77.4, "prev": 80, "vol": 900, "date": "20261105", "time": "13:10:00"},
+    # 加權指數（只用來判斷有沒有開盤）
+    "t00": {"price": 40000, "open": 40000, "high": 40100, "low": 39900, "prev": 40000, "vol": 0, "date": "20261105", "time": "13:10:00"},
 }
 
 
@@ -105,8 +107,41 @@ def test():
         print(msg)
         assert run_at.fetched and "持股提醒" in msg and "跌破停損" in msg and shares[-1] is False
         assert msg.index("持股提醒") < msg.index("目前符合")
-        msg = run_at(d, 13, 0, held=held)[0]
-        assert not run_at.fetched and "持股" not in msg and shares[-1] is True
+        assert "1101" not in json.dumps(json.load(open(os.path.join(d, "checks.json"))).get("runs")[-1].get("holdings", ""))
+        # 13:00：確認推給你和朋友（不含持股）；持股有狀況另推一則只給你
+        shares.clear()
+        sent = run_at(d, 13, 0, held=held)
+        print(sent[-1])
+        assert len(sent) == 2 and "持股" not in sent[0] and shares == [True, False]
+        assert "只有你收到" in sent[1] and "跌破停損" in sent[1]
+        # 持股都沒事：13:00 不多推
+        os.remove(os.path.join(d, "checks.json"))
+        calm = [{**held[1], "advice": {"stop": 1, "sum4": 1}}]
+        shares.clear()
+        sent = run_at(d, 13, 0, held=calm)
+        assert len(sent) == 1 and shares == [True]
+        # 沒有預備股、只有持股出狀況：13:00 只推給你
+        with open(os.path.join(d, "candidates.json"), "w") as f:
+            json.dump({**cand, "long": [], "short": []}, f)
+        os.remove(os.path.join(d, "checks.json"))
+        shares.clear()
+        sent = run_at(d, 13, 0, held=held)
+        print(sent[0])
+        assert len(sent) == 2 and shares == [True, False] and "今天沒有需要檢查" in sent[0] and "只有你收到" in sent[1]
+        # 大盤在月線下、空方 0 檔、沒有持股：也要推一則說明，不能安靜跳過
+        with open(os.path.join(d, "candidates.json"), "w") as f:
+            json.dump({**cand, "market": {"allow_long": False, "allow_short": True}, "short": []}, f)
+        for hm in ((10, 55), (13, 0)):
+            os.remove(os.path.join(d, "checks.json"))
+            shares.clear()
+            sent = run_at(d, *hm, held=[])
+            print(sent[0])
+            assert len(sent) == 1 and "空方預備 0 檔" in sent[0] and "多方 3 檔逆大盤" in sent[0]
+            assert shares == [hm[0] == 13]
+        # 假日（報價日期不是今天）：不推
+        os.remove(os.path.join(d, "checks.json"))
+        with mock.patch.dict(quotes, {k: {**v, "date": "20261104"} for k, v in quotes.items()}):
+            assert run_at(d, 13, 0, held=[]) == []
     print("\n盤中檢查測試通過 ✅")
 
 

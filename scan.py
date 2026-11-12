@@ -119,8 +119,9 @@ def record(a, base, res, rs, ch, sec, sec_rank, basic_ok):
     for x in [res["long"], res["short"]] + res["excluded"]:
         if x and len(setups) < 3:
             setups.append({"side": x["side"], "title": x["title"], "trigger": x["trigger"],
-                           "stop": x["stop"]["fixed"], "trend_stop": x["stop"]["trend"],
-                           "need_vol": x["need_vol"], "why": x.get("why", [])})
+                           "stop": x["stop"].get("use") or x["stop"]["fixed"], "trend_stop": x["stop"]["trend"],
+                           "stop_method": x["stop"].get("method", ""), "term": x.get("term", ""),
+                           "vol_ref": x.get("vol_ref"), "need_vol": x["need_vol"], "why": x.get("why", [])})
     rank = sec_rank.get(sec, (None, None))[0] if sec else None
     return {
         **base,
@@ -228,10 +229,13 @@ def message(res, mkt, last_date, short_ok=None, hold_lines=None):
             lines.append("今天沒有符合的股票")
         for i, r in enumerate(items[:config.LINE_TOP_N], 1):
             arrow = "≥" if side == "long" else "≤"
-            vol = (f"、量≥{r['need_vol']}倍" if r["need_vol"] > 1 else "、量要平常以上") if r["need_vol"] else ""
-            lines.append(f"{i}. {r['code']} {r['name']}｜{r['title']}｜{r['position']}｜{r['score']}分")
+            vol = (f"、量≥{int(r['need_vol'] * r['vol_ref']):,}張（昨量{r['need_vol']}倍）"
+                   if r["need_vol"] and r.get("vol_ref") else "")
+            lines.append(f"{i}. {r['code']} {r['name']}｜{r['title']}｜{r['position']}｜{r['score']}分"
+                         + (f"｜{r['term']}" if r.get("term") else ""))
             lines.append(f"  收{_n(r['close'])}→收盤要{arrow}{_n(r['trigger'])}（{r['gap_pct']:.1f}%）{vol}")
-            lines.append(f"  停損{_n(r['stop']['fixed'])}" + (f"／趨勢{_n(r['stop']['trend'])}" if r["stop"]["trend"] else ""))
+            st = r["stop"]
+            lines.append(f"  停損{_n(st.get('use') or st['fixed'])}" + (f"（{st['method']}）" if st.get("method") else ""))
         if len(items) > config.LINE_TOP_N:
             lines.append(f"…其餘 {len(items) - config.LINE_TOP_N} 檔看網頁")
     conf = [r for r in res["confirmed"] if not mkt or mkt[f"allow_{r['side']}"]]
@@ -240,7 +244,7 @@ def message(res, mkt, last_date, short_ok=None, hold_lines=None):
         for r in conf[:config.LINE_CONFIRMED_N]:
             side = "多" if r["side"] == "long" else "空"
             lines.append(f"✅{r['code']} {r['name']} {side}・{r['title']} 收{_n(r['close'])}（{r['chg_pct']:+.1f}%）"
-                         f" 停損{_n(r['stop']['fixed'])}")
+                         f" 停損{_n(r['stop'].get('use') or r['stop']['fixed'])}")
     lines += hold_lines or []
     url = line_push.dashboard_url()
     if url:

@@ -64,7 +64,7 @@ def top_formation():
 
 def tangle():
     """均線糾結的一字底：長期橫盤。"""
-    return build(flat(60, amp=0.03) + flat(40, seed=5, amp=0.004))
+    return build(flat(60, amp=0.03) + flat(50, seed=5, amp=0.004))
 
 
 def big_black():

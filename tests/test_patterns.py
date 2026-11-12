@@ -11,6 +11,9 @@ import market
 import patterns as P
 import scan
 from indicators import BEAR, BULL, RANGE, analyze, kd, next_k, turning_waves, sma
+# 人工走勢的回檔段，5 日線通常會掉到 10 日線下面；測型態本身時先略過「3 線多排」這一關，另外單獨測
+SKIP_ALIGN = mock.patch.object(P, "aligned_tomorrow", lambda *a: (True, False))
+
 from tests.charts import (add_bar, big_black, bottom_base, build, bull_box, downtrend_rebound, flat, mirror,
                           tangle, uptrend_pullback)
 
@@ -57,13 +60,14 @@ def test_kd_and_next_k():
     print("KD(9,3) 與盤中 K 值推算 OK")
 
 
+@SKIP_ALIGN
 def test_long_setups():
     cases = {
         "L2": (uptrend_pullback(), "回後買上漲"),
         "L3": (bull_box(), "突破盤整上頸線"),
         "L1": (bottom_base(), "打底完成突破"),
         "L5": (big_black(), "突破大量黑K"),
-        "L4": (tangle(), "一字底突破"),
+        "L4": (tangle(), "底部狹幅盤整突破"),
     }
     for key, (df, name) in cases.items():
         a = analyze(df)
@@ -77,9 +81,13 @@ def test_long_setups():
     need = max(a.h[t], a.c[t - 3:t + 1].mean(), a.c[t] * 1.02)
     assert r["trigger"] >= need and r["trigger"] - need < P.tick(need) + 1e-9
     assert r["stop"]["fixed"] <= r["trigger"] * 0.95 and r["stop"]["trend"] > 0
+    # 回後買上漲：停損設在轉折波低點（不超過 10% 才用）
+    assert r["stop"]["method"] == "轉折低點" and r["stop"]["use"] <= r["stop"]["trend"] + 1e-9
+    assert r["need_vol"] == 1.3 and r["vol_ref"] == int(round(a.v[t]))
     print("多方進場位置 OK：", r["title"], r["trigger"], r["note"])
 
 
+@SKIP_ALIGN
 def test_short_setups_on_mirrored_charts():
     cases = {"S2": uptrend_pullback(), "S3": bull_box(), "S1": bottom_base(), "S5": big_black()}
     for key, df in cases.items():
@@ -92,6 +100,7 @@ def test_short_setups_on_mirrored_charts():
     print("空方進場位置 OK（多方圖上下翻轉）")
 
 
+@SKIP_ALIGN
 def test_rules():
     # 已經連漲 2 天，明天是第 3 根 → 勿追高
     df = bottom_base()
@@ -121,6 +130,7 @@ def test_rules():
     print("排除條件 OK")
 
 
+@SKIP_ALIGN
 def test_entry_bar_and_confirmed_today():
     df = uptrend_pullback()
     a = analyze(df)
@@ -188,6 +198,7 @@ def test_random_charts_do_not_crash():
     print(f"150 檔隨機走勢：多方 {n_long}、空方 {n_short}")
 
 
+@SKIP_ALIGN
 def test_screen_end_to_end():
     frames = []
     for code, df in [("1101", uptrend_pullback()), ("2201", mirror(uptrend_pullback())),
@@ -208,6 +219,7 @@ def test_screen_end_to_end():
     json.dumps(res, ensure_ascii=False)
 
 
+@SKIP_ALIGN
 def test_shortable():
     # 證交所格式：融資、融券各有一欄「次一營業日限額」，最後是註記
     f = ["代號", "名稱", "買進", "賣出", "現金償還", "前日餘額", "今日餘額", "次一營業日限額",
@@ -290,6 +302,7 @@ def test_holdings_rules():
     print("持股規則 OK")
 
 
+@SKIP_ALIGN
 def test_screen_with_context():
     frames = []
     for code, df in [("1101", uptrend_pullback()), ("1102", bull_box()), ("1103", bottom_base()),
@@ -313,7 +326,88 @@ def test_screen_with_context():
     print("籌碼、類股、個股摘要 OK")
 
 
+def test_holdings_new_rules():
+    import holdings as HD
+    df = uptrend_pullback()
+    a = analyze(df)
+    t = a.t
+    entry_day = df["date"].iloc[t - 25].strftime("%Y-%m-%d")
+    # 自訂停損（依型態）優先於固定 5%
+    r = HD.evaluate(a, {"code": "1", "side": "long", "price": a.c[t] * 1.02, "date": entry_day, "mode": "短",
+                        "stop": a.c[t] * 1.01})
+    assert r["level"] == "出場" and r["stop"] == round(a.c[t] * 1.01, 2), r
+    # 中線：守 10 日線，漲超過 10% 且跌破 10 日線才停利
+    m10 = a.ma[10][t]
+    r = HD.evaluate(a, {"code": "1", "side": "long", "price": a.c[t] / 1.15, "date": entry_day, "mode": "中"})
+    if a.c[t] < m10:
+        assert r["level"] == "出場" and "10 日線" in r["text"], r
+    else:
+        assert r["level"] != "出場" or "10 日線" not in r["text"], r
+    # 放空停利門檻 10%：獲利 6% 站上 5 日線 → 續抱，不回補
+    am = analyze(mirror(df))
+    tm = am.t
+    if am.c[tm] > am.ma[5][tm]:
+        r = HD.evaluate(am, {"code": "1", "side": "short", "price": am.c[tm] * 1.06, "date": entry_day, "mode": "短"})
+        assert not any("停利回補" in x for x in [r["text"]] + r["notes"]), r
+    # 盤中：放空獲利 6% 站上 5 日線不提醒、12% 才提醒；中線看 10 日線
+    h = {"code": "1", "side": "short", "price": 100, "mode": "短", "advice": {"stop": 105, "sum4": 350}}
+    assert HD.live_check(h, 94) is None
+    assert HD.live_check(h, 89)[0] == "出場"        # 獲利 12%，站上 5 日線 (350+89)/5=87.8
+    h = {"code": "1", "side": "long", "price": 100, "mode": "中", "advice": {"stop": 95, "sum4": 999, "sum9": 1035}}
+    assert HD.live_check(h, 112)[0] == "出場" and "10 日線" in HD.live_check(h, 112)[1]   # 10 日線 =(1035+112)/10=114.7
+    # 高檔爆量長黑（開高走低 5% 以上）→ 先賣一半；隔天再跌 → 全賣
+    up = build(flat(60) + [(30, 0.40)])
+    c0 = up["close"].iloc[-1]
+    up = add_bar(up, c0 * 1.03, c0 * 1.035, c0 * 0.97, c0 * 0.975, 9000)
+    a2 = analyze(up)
+    entry = a2.c[a2.t] / 1.25
+    r = HD.evaluate(a2, {"code": "1", "side": "long", "price": entry, "date": up["date"].iloc[-20].strftime("%Y-%m-%d"), "mode": "短"})
+    assert r["level"] in ("減碼", "出場"), r
+    c1 = up["close"].iloc[-1]
+    up2 = add_bar(up, c1 * 0.995, c1 * 1.0, c1 * 0.97, c1 * 0.975, 3000)
+    a3 = analyze(up2)
+    r = HD.evaluate(a3, {"code": "1", "side": "long", "price": entry, "date": up["date"].iloc[-20].strftime("%Y-%m-%d"), "mode": "短"})
+    assert r["level"] == "出場", r
+    # 獲利目標：上方第 1 個壓力
+    tgt = HD.pressure(a, t, a.c[t], 1)
+    assert tgt is None or tgt[0] > a.c[t]
+    print("持股新規則（自訂停損、中線、放空 10%、高檔爆量、目標）OK")
+
+
+def test_alignment_and_stop_plan():
+    # 均線 3 線多排：多頭一路上漲，明天收高 → 通過；回檔中 5 日線掉到 10 日線下 → 不通過
+    up = build(flat(60) + [(40, 0.30)])
+    a = analyze(up)
+    assert P.aligned_tomorrow(a, a.t, 1, a.c[a.t] * 1.02)[0]
+    down = analyze(mirror(up))
+    assert P.aligned_tomorrow(down, down.t, -1, down.c[down.t] * 0.98)[0]
+    assert not P.aligned_tomorrow(down, down.t, 1, down.c[down.t] * 1.02)[0]
+    a = analyze(uptrend_pullback())
+    bad = P.rules_long(a, a.t, "L2", P.trigger(a, a.t, 1, None))
+    assert any("3 線多排" in x for x in bad), bad
+    # 停損：依型態，超過 10% 改固定 5%
+    assert P.stop_plan(1, 100, 95, "轉折低點") == (95, "轉折低點")
+    assert P.stop_plan(1, 100, 85, "轉折低點")[1] == "固定 5%"
+    assert P.stop_plan(-1, 100, 104, "轉折高點") == (104, "轉折高點")
+    print("均線排列、停損設法 OK")
+
+
+def test_merge_flat_pivots():
+    # K 線橫盤：5 日線上下穿越，小頭小底（差 3% 以內）只取 1 點
+    df = build(flat(30) + [(8, 0.15)] + [(2, -0.012), (2, 0.012)] * 4 + [(6, 0.10)])
+    h, l, c = (df[k].to_numpy(float) for k in ("high", "low", "close"))
+    raw, _, _ = turning_waves(h, l, c, sma(c, 5))
+    merged, _, _ = turning_waves(h, l, c, sma(c, 5), merge=0.03)
+    assert len(merged) < len(raw), (len(raw), len(merged))
+    kinds = [p.kind for p in merged]
+    assert all(x != y for x, y in zip(kinds, kinds[1:])), "合併後頭、底仍要交錯"
+    print("橫盤轉折合併 OK：", len(raw), "→", len(merged))
+
+
 if __name__ == "__main__":
+    test_alignment_and_stop_plan()
+    test_merge_flat_pivots()
+    test_holdings_new_rules()
     test_chips()
     test_holdings_rules()
     test_screen_with_context()

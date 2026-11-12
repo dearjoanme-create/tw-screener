@@ -73,7 +73,8 @@ def group(a, t):
     if not last:
         return None, 0
     p = last[-1]
-    return (1 if p.kind == "L" else -1), p.conf
+    start = p.cross if 0 <= p.cross <= t else p.conf
+    return (1 if p.kind == "L" else -1), start
 
 
 def box(a, t, lookback=60):
@@ -158,13 +159,13 @@ def find_setups(a, t):
         if l1.price >= l0.price * 0.97 and neck and not a.ma_down(20, t):
             lvl = max(neck)
             if c[t] < lvl:
-                out.append(("L1", lvl, l1.price, C.BIG_VOL, f"頸線 {f2(lvl)}，底 {f2(l0.price)}→{f2(l1.price)}"))
+                out.append(("L1", lvl, lvl, C.ENTRY_VOL, f"頸線 {f2(lvl)}，底 {f2(l0.price)}→{f2(l1.price)}"))
 
     # L2 回後買上漲：多頭回檔，不破前低、不破月線，明天站回 5 日線
     if tr == BULL and st == -1 and c[t] < ma5 and L and a.ma_up(20, t):
         pull_low = float(l[gs:t + 1].min())
         if pull_low > L[-1].price and (c[gs:t + 1] >= a.ma[20][gs:t + 1]).all():
-            out.append(("L2", None, pull_low, 1.0, f"回檔低點 {f2(pull_low)}，前低 {f2(L[-1].price)}"))
+            out.append(("L2", None, pull_low, C.ENTRY_VOL, f"回檔低點 {f2(pull_low)}，前低 {f2(L[-1].price)}"))
 
     # L3 突破盤整上頸線／L7 假跌破真上漲
     if tr == RANGE and bx and not a.ma_down(20, t) and (c[t] > ma60 or a.ma_up(60, t)):
@@ -172,17 +173,17 @@ def find_setups(a, t):
         if lower <= c[t] < upper and not (had_trend(a, t, BEAR) and drawdown_from_high(a, t) >= 0.2):
             fake = (c[max(s, t - 10):t + 1] < lower).any()
             key = "L7" if fake else "L3"
-            out.append((key, upper, upper, C.BIG_VOL, f"上頸線 {f2(upper)}／下頸線 {f2(lower)}" + ("，曾假跌破" if fake else "")))
+            out.append((key, upper, upper, C.ENTRY_VOL, f"上頸線 {f2(upper)}／下頸線 {f2(lower)}" + ("，曾假跌破" if fake else "")))
 
     # L4 K 線橫盤（多頭中）或一字底（均線糾結）突破
     tw = tangle_window(a, t)
     fw = flat_window(a, t)
     if tw:
         n, hi, lo = tw
-        out.append(("L4", hi, lo, C.BIG_VOL, f"一字底 {n} 天，{f2(lo)}–{f2(hi)}"))
+        out.append(("L4", hi, hi, C.ENTRY_VOL, f"底部狹幅盤整 {n} 天，{f2(lo)}–{f2(hi)}"))
     elif fw and tr == BULL:
         n, hi, lo = fw
-        out.append(("L4", hi, lo, C.BIG_VOL, f"K線橫盤 {n} 天，{f2(lo)}–{f2(hi)}"))
+        out.append(("L4", hi, hi, C.ENTRY_VOL, f"K線橫盤 {n} 天，{f2(lo)}–{f2(hi)}"))
 
     # L5 突破大量黑K（3 日內）／強勢股回檔 1～2 天續攻
     if tr == BULL or (c[t] > ma20 and a.ma_up(20, t)):
@@ -193,7 +194,7 @@ def find_setups(a, t):
             big = a.vol_ratio(k) >= C.BIG_VOL and (l[k] < l[k - 1] or c[k] < a.ma[5][k])
             strong = c[k - 1] / c[max(0, k - 11)] - 1 >= 0.10
             if (big or strong) and (c[k:t + 1] <= h[k]).all():
-                out.append(("L5", float(h[k]), float(l[k:t + 1].min()), C.BIG_VOL,
+                out.append(("L5", float(h[k]), float(l[k:t + 1].min()), C.ENTRY_VOL,
                             f"{'大量' if big else ''}黑K高點 {f2(h[k])}（{'今天' if k == t else f'{t - k} 天前'}）"))
             break
 
@@ -211,7 +212,7 @@ def find_setups(a, t):
                     line = A.price + slope * (np.arange(t + 2) - A.idx)
                     if (c[A.idx + 1:t + 1] <= line[A.idx + 1:t + 1] * 1.01).all():
                         lvl = float(line[t + 1])
-                        out.append(("L6", lvl, lows_after[-1].price, C.BIG_VOL,
+                        out.append(("L6", lvl, lows_after[-1].price, C.ENTRY_VOL,
                                     f"切線 {f2(A.price)}→{f2(B.price)}，明天約 {lvl:.2f}"))
 
     # ---------- 空方 ----------
@@ -222,7 +223,7 @@ def find_setups(a, t):
         if h1.price <= h0.price * 1.03 and neck and not a.ma_up(20, t):
             lvl = min(neck)
             if c[t] > lvl:
-                out.append(("S1", lvl, h1.price, C.BIG_VOL, f"頸線 {f2(lvl)}，頭 {f2(h0.price)}→{f2(h1.price)}"))
+                out.append(("S1", lvl, lvl, 0, f"頸線 {f2(lvl)}，頭 {f2(h0.price)}→{f2(h1.price)}"))
 
     # S2 彈後空下跌：空頭反彈，不過前高、不過月線，明天跌破 5 日線
     if tr == BEAR and st == 1 and c[t] > ma5 and H and a.ma_down(20, t):
@@ -236,15 +237,15 @@ def find_setups(a, t):
         if lower < c[t] <= upper and not (had_trend(a, t, BULL) and rise_from_low(a, t) >= 0.2):
             fake = (c[max(s, t - 10):t + 1] > upper).any()
             key = "S6" if fake else "S3"
-            out.append((key, lower, lower, C.BIG_VOL, f"下頸線 {f2(lower)}／上頸線 {f2(upper)}" + ("，曾假突破" if fake else "")))
+            out.append((key, lower, lower, 0, f"下頸線 {f2(lower)}／上頸線 {f2(upper)}" + ("，曾假突破" if fake else "")))
 
     # S4 跌破一字底（均線糾結）／空頭中的 K 線橫盤
     if tw:
         n, hi, lo = tw
-        out.append(("S4", lo, hi, C.BIG_VOL, f"一字橫盤 {n} 天，{f2(lo)}–{f2(hi)}"))
+        out.append(("S4", lo, lo, 0, f"狹幅盤整 {n} 天，{f2(lo)}–{f2(hi)}"))
     elif fw and tr == BEAR:
         n, hi, lo = fw
-        out.append(("S4", lo, hi, C.BIG_VOL, f"K線橫盤 {n} 天，{f2(lo)}–{f2(hi)}"))
+        out.append(("S4", lo, lo, 0, f"K線橫盤 {n} 天，{f2(lo)}–{f2(hi)}"))
 
     # S5 空頭紅K反彈 1～2 天後，黑K跌破紅K低點
     if tr == BEAR:
@@ -274,6 +275,47 @@ def trigger(a, t, side, level):
 # ------------------------------------------------------------------
 # 排除條件
 # ------------------------------------------------------------------
+def next_ma(a, t, n, price):
+    """明天收盤＝price 時，明天的 n 日均線。"""
+    return (float(a.c[t - n + 2:t + 1].sum()) + price) / n
+
+
+def aligned_tomorrow(a, t, side, price):
+    """明天收盤＝price 時，5、10、20 日線是否 3 線多排（空排）且方向向上（向下）；
+    再加上季線也同向就是 4 線。回傳 (3線, 4線)。"""
+    m = {n: next_ma(a, t, n, price) for n in (5, 10, 20, 60)}
+    now = {n: float(a.ma[n][t]) for n in (5, 10, 20, 60)}
+    if side > 0:
+        three = m[5] > m[10] > m[20] and all(m[n] > now[n] for n in (5, 10, 20)) and price > m[20]
+        four = three and m[20] > m[60] and m[60] > now[60]
+    else:
+        three = m[5] < m[10] < m[20] and all(m[n] < now[n] for n in (5, 10, 20)) and price < m[20]
+        four = three and m[20] < m[60] and m[60] < now[60]
+    return three, four
+
+
+def stop_plan(side, trig, level, method):
+    """依型態設停損；離觸發價超過 STOP_MAX 就改用固定 STOP_PCT。回傳 (停損價, 說明)。"""
+    if level is not None and level > 0:
+        # 突破點剛好就是觸發價時，停損放在下面一檔（做空放上面一檔），避免收在進場價就出場
+        if side > 0 and level >= trig:
+            level = trig - tick(trig)
+        if side < 0 and level <= trig:
+            level = trig + tick(trig)
+        dist = (trig - level) / trig if side > 0 else (level - trig) / trig
+        if 0 <= dist <= C.STOP_MAX:
+            return (round_down(level) if side > 0 else round_up(level)), method
+    fixed = trig * (1 - C.STOP_PCT) if side > 0 else trig * (1 + C.STOP_PCT)
+    return (round_down(fixed) if side > 0 else round_up(fixed)), f"固定 {C.STOP_PCT:.0%}"
+
+
+STOP_METHOD = {
+    "L1": "頸線停損", "L2": "轉折低點", "L3": "突破點", "L4": "突破點", "L5": "回檔低點", "L6": "轉折低點",
+    "L7": "突破點", "S1": "頸線停損", "S2": "轉折高點", "S3": "跌破點", "S4": "跌破點", "S5": "反彈高點",
+    "S6": "跌破點",
+}
+
+
 def _divergence(a, t, side):
     """量價背離：價格 3 天往同方向走，量卻縮。"""
     c, v = a.c, a.v
@@ -303,6 +345,8 @@ def rules_long(a, t, key, trig):
         bad.append("回檔已跌破前低")
     if a.trend[t] == BEAR and key not in ("L1", "L4", "L6"):
         bad.append("一般空頭的反彈")
+    if not aligned_tomorrow(a, t, 1, trig)[0]:
+        bad.append("進場時均線還不是 3 線多排向上")
     if a.high_zone[t] and c[t] / c[t - 5] - 1 >= 0.15 and kb["long_red"] and a.vol_ratio(t) >= C.BIG_VOL:
         bad.append("連續急漲的大量長紅K高檔")
     # 高檔爆量長上影線是壓力，離高點不到 5% 先等
@@ -345,6 +389,8 @@ def rules_short(a, t, key, trig):
         bad.append("反彈已突破前高")
     if a.trend[t] == BULL and key not in ("S1", "S4"):
         bad.append("一般多頭的回檔")
+    if not aligned_tomorrow(a, t, -1, trig)[0]:
+        bad.append("進場時均線還不是 3 線空排向下")
     if a.low_zone[t] and 1 - c[t] / c[t - 5] >= 0.15 and kb["long_black"] and a.vol_ratio(t) >= C.BIG_VOL:
         bad.append("連續急跌的大量長黑K低檔")
     return bad
@@ -405,9 +451,7 @@ def _checks(a, t, side, key, pos, vol_today, vol_recent, bad):
             else ("月線上揚" if a.ma_up(20, t) else "月線下彎" if a.ma_down(20, t) else "月線走平")},
         {"step": "位階", "ok": not pos["late"], "text": f"{pos['name']}（第{pos['wave']}波，{pos['gain']:+.0%}）"},
         {"step": "成交量", "ok": True, "text": "、".join(tags) if tags else "量平"},
-        {"step": "指標", "ok": bool(a.k[t] > a.k[t - 1]) if side > 0 else bool(a.k[t] < a.k[t - 1]),
-         "text": f"K {a.k[t]:.0f} {k_dir}" + ("" if (a.k[t] > a.k[t - 1]) == (side > 0) else "（進場日要轉" + ("上" if side > 0 else "下") + "）")
-                 + f"，MACD柱{osc_dir}"},
+        {"step": "指標", "ok": True, "text": f"K {a.k[t]:.0f} {k_dir}，MACD柱{osc_dir}（參考）"},
         {"step": "排除條件", "ok": not bad, "text": "通過" if not bad else "；".join(bad)},
     ]
 
@@ -440,6 +484,9 @@ def evaluate(a, t, rs=None, vol_info=None):
         if rs is not None and side < 0 and rs > C.RS_MAX_SHORT:
             bad.append(f"強度 {rs} 太強，做空要弱勢股")
         fixed = trig * (1 - C.STOP_PCT) if side > 0 else trig * (1 + C.STOP_PCT)
+        use, method = stop_plan(side, trig, stop, STOP_METHOD.get(key, "型態停損"))
+        three, four = aligned_tomorrow(a, t, side, trig)
+        term = ("4 線" + ("多" if side > 0 else "空") + "排，可做長線") if four else "短線" if three else ""
         item = {
             "side": slot,
             "key": key,
@@ -449,7 +496,9 @@ def evaluate(a, t, rs=None, vol_info=None):
             "trigger": trig,
             "gap_pct": round(float(gap) * 100, 2),
             "need_vol": need_vol,
-            "vol5": int(round(float(a.v[t - 4:t + 1].mean()))),   # 明天的基本量
+            "vol5": int(round(float(a.v[t - 4:t + 1].mean()))),
+            "vol_ref": int(round(float(a.v[t]))),   # 明天的「昨日量」：做多要 >= need_vol 倍
+            "term": term,
             "ref": {  # 盤中檢查要用的數字
                 "k": round(float(a.k[t]), 2),
                 "low_n1": round(float(a.l[t - C.KD_N + 2:t + 1].min()), 2),
@@ -457,6 +506,8 @@ def evaluate(a, t, rs=None, vol_info=None):
                 "ma20": round(float(a.ma[20][t]), 2),
             },
             "stop": {
+                "use": use,          # 建議停損（依型態，超過 10% 改固定 5%）
+                "method": method,
                 "fixed": round_down(fixed) if side > 0 else round_up(fixed),
                 "trend": round(float(stop), 2) if stop else None,
             },
@@ -487,8 +538,6 @@ def entry_bar_ok(a, t, side, trig, need_vol):
             why.append("價漲的黑K")
         if kb["upper_ratio"] > C.MAX_SHADOW:
             why.append("上影線超過一半")
-        if a.k[t] <= a.k[t - 1]:
-            why.append("K值沒有向上")
     else:
         if a.c[t] > trig:
             why.append("收盤沒到觸發價")
@@ -498,10 +547,8 @@ def entry_bar_ok(a, t, side, trig, need_vol):
             why.append("價跌的紅K")
         if kb["lower_ratio"] > C.MAX_SHADOW:
             why.append("下影線超過一半")
-        if a.k[t] >= a.k[t - 1]:
-            why.append("K值沒有向下")
-    if need_vol and a.vol_ratio(t) < need_vol:
-        why.append(f"量 {a.vol_ratio(t):.1f} 倍，不到 {need_vol} 倍")
+    if need_vol and a.v[t] < need_vol * a.v[t - 1]:
+        why.append(f"量只有昨天的 {a.v[t] / max(a.v[t - 1], 1):.1f} 倍，要 {need_vol} 倍")
     return not why, why
 
 
@@ -510,8 +557,10 @@ def confirmed_today(a, rs=None):
     t = a.t
     if t < 2:
         return []
+    from indicators import analyze
+
     out = []
-    y = evaluate(a, t - 1, rs)
+    y = evaluate(analyze(a.df.iloc[:t]), t - 1, rs)  # 用到昨天為止的資料，跟昨晚的名單一致
     for slot in ("long", "short"):
         it = y[slot]
         if not it:
@@ -523,6 +572,6 @@ def confirmed_today(a, rs=None):
             fixed = a.c[t] * (1 - C.STOP_PCT) if side > 0 else a.c[t] * (1 + C.STOP_PCT)
             out.append({**it, "close": round(float(a.c[t]), 2), "entry": round(float(a.c[t]), 2),
                         "chg_pct": round((a.c[t] / a.c[t - 1] - 1) * 100, 2),
-                        "stop": {"fixed": round_down(fixed) if side > 0 else round_up(fixed),
-                                 "kline": round(stop_k, 2), "trend": it["stop"]["trend"]}})
+                        "stop": {**it["stop"], "fixed": round_down(fixed) if side > 0 else round_up(fixed),
+                                 "kline": round(stop_k, 2)}})
     return out

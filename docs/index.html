@@ -65,7 +65,7 @@
 <nav class="wrap" id="tabs"></nav>
 <main class="wrap"><div class="list" id="list"></div></main>
 <footer class="wrap">
-  「收盤要 ≥ / ≤」是明天收盤需要到的價位，另外還要是漲跌 2% 以上的實體 K 棒、量能足夠、K 值同方向。
+  「收盤要 ≥ / ≤」是明天收盤需要到的價位，另外還要是漲跌 2% 以上的實體 K 棒；做多量要大於昨天 1.3 倍，做空有量無量都可以。KD 只當參考。
   鎖股名單是當天漲跌 3.5% 以上、趨勢方向一致的股票，先鎖定觀察，等出現進場位置再動作。
   盤中狀態依最近一次檢查（10:55 預警／13:00 確認），仍以 13:30 收盤為準。僅供參考，不構成投資建議。
 </footer>
@@ -123,12 +123,13 @@ function card(r, mode, live) {
   const mk = r.market === "otc" ? "上櫃" : "上市";
   let nums;
   if (mode === "confirmed") {
-    nums = `收盤 <b>${fmt(r.close)}</b>（${r.chg_pct > 0 ? "+" : ""}${r.chg_pct}%）・停損 ${fmt(r.stop.fixed)}`
-         + `・K線停損 ${fmt(r.stop.kline)}` + (r.stop.trend ? `・趨勢停損 ${fmt(r.stop.trend)}` : "");
+    nums = `收盤 <b>${fmt(r.close)}</b>（${r.chg_pct > 0 ? "+" : ""}${r.chg_pct}%）・停損 ${fmt(r.stop.use || r.stop.fixed)}`
+         + (r.stop.method ? `（${esc(r.stop.method)}）` : "") + `・K線停損 ${fmt(r.stop.kline)}`;
   } else {
     nums = `收 ${fmt(r.close)} → 收盤要 ${side ? "≥" : "≤"} <b>${fmt(r.trigger)}</b>（${r.gap_pct.toFixed(1)}%）`
-         + (r.need_vol ? `・量 ≥ ${r.need_vol} 倍（${fmt(Math.round(r.vol5 * r.need_vol))} 張）` : "")
-         + `<br>停損 ${fmt(r.stop.fixed)}` + (r.stop.trend ? `・趨勢停損 ${fmt(r.stop.trend)}` : "");
+         + (r.need_vol ? `・量 ≥ ${fmt(Math.round((r.vol_ref || r.vol5) * r.need_vol))} 張（${r.vol_ref ? "昨量" : "均量"} ${r.need_vol} 倍）` : "")
+         + `<br>停損 ${fmt(r.stop.use || r.stop.fixed)}` + (r.stop.method ? `（${esc(r.stop.method)}）` : "")
+         + (r.term ? `・${esc(r.term)}` : "");
   }
   const chks = (r.checks || []).filter(c => !(mode === "excluded" && c.step === "排除條件")).map(c =>
     `<span class="chk ${c.ok ? "" : "bad"}">${c.ok ? "✓" : "✗"} ${esc(c.step)}：${esc(c.text)}</span>`).join("");
@@ -137,7 +138,8 @@ function card(r, mode, live) {
   if (s && mode !== "excluded") {
     const cls = s.status === "成形" ? (side ? "long" : "short") : s.status === "未到" ? "no" : "back";
     lv = `<div class="live"><span class="tag ${cls}">${esc(s.status)}</span> 現 ${fmt(s.price)}`
-       + (s.miss && s.miss.length ? `<span class="small">｜${esc(s.miss.join("、"))}</span>` : "") + `</div>`;
+       + (s.miss && s.miss.length ? `<span class="small">｜${esc(s.miss.join("、"))}</span>` : "")
+       + (s.note ? `<span class="small">｜參考：${esc(s.note)}</span>` : "") + `</div>`;
   }
   const why = mode === "excluded" && r.why ? `<div class="why">✗ ${esc(r.why.join("；"))}</div>` : "";
   return `<div class="card">

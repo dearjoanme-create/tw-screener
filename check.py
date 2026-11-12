@@ -75,7 +75,8 @@ def slot_of(now):
 
 
 def judge(r, q, elapsed):
-    """一檔預備股，用目前報價判斷今天的 K 棒是否合格。回傳 (狀態, 未符合的條件, 預估量)。"""
+    """一檔預備股，用目前報價判斷今天的 K 棒是否合格。回傳 (狀態, 未符合的條件, 預估量, 參考)。
+    KD 只當參考，不擋進場。"""
     side = 1 if r["side"] == "long" else -1
     price, op = q["price"], q["open"] or q["price"]
     hi, lo = q["high"] or price, q["low"] or price
@@ -102,15 +103,21 @@ def judge(r, q, elapsed):
             miss.append("目前收紅K（要收黑K）")
         if rng > 0 and (min(op, price) - lo) / rng > C.MAX_SHADOW:
             miss.append("下影線太長（跌下去又被買回來）")
+    notes = []
     ref = r.get("ref") or {}
     if "k" in ref:
         k2 = next_k(ref["k"], ref["low_n1"], ref["high_n1"], price, lo, hi)
         if side > 0 and k2 <= ref["k"]:
-            miss.append("KD 還沒轉強")
+            notes.append("KD 還沒轉強")
         if side < 0 and k2 >= ref["k"]:
-            miss.append("KD 還沒轉弱")
-    if r.get("need_vol") and proj < r["need_vol"] * r["vol5"]:
-        miss.append(f"量能不夠（預估只有平常的 {proj / max(r['vol5'], 1):.1f} 倍，要 {r['need_vol']} 倍）")
+            notes.append("KD 還沒轉弱")
+    base = r.get("vol_ref")  # 昨天的量（新版）；舊名單沒有就用 5 日均量
+    if r.get("need_vol"):
+        if base:
+            if proj < r["need_vol"] * base:
+                miss.append(f"量能不夠（預估 {int(proj):,} 張，要昨天的 {r['need_vol']} 倍 {int(r['need_vol'] * base):,} 張）")
+        elif proj < r["need_vol"] * r["vol5"]:
+            miss.append(f"量能不夠（預估只有平常的 {proj / max(r['vol5'], 1):.1f} 倍，要 {r['need_vol']} 倍）")
     if reached and not miss:
         status = "成形"
     elif reached:
@@ -119,7 +126,7 @@ def judge(r, q, elapsed):
         status = "曾到拉回"
     else:
         status = "未到"
-    return status, miss, proj
+    return status, miss, proj, notes
 
 
 def message(now, slot, groups, total, why=""):
@@ -147,7 +154,11 @@ def message(now, slot, groups, total, why=""):
         lines.append(f"\n{ok_head}")
         for x in ok:
             word = "突破" if x["side"] == "long" else "跌破"
-            lines += [head(x), f"  現價 {x['price']:g}，已{word}觸發價 {x['trigger']:g}", f"  停損 {x['stop']:g}"]
+            lines += [head(x), f"  現價 {x['price']:g}，已{word}觸發價 {x['trigger']:g}",
+                      f"  停損 {x['stop']:g}" + (f"（{x['stop_method']}）" if x.get("stop_method") else "")
+                      + (f"｜{x['term']}" if x.get("term") else "")]
+            if x.get("note"):
+                lines.append(f"  參考：{x['note']}")
     if near:
         lines.append("\n⚠️ 價格到了，但先不要進場")
         for x in near:
@@ -219,10 +230,11 @@ def main():
         q = quotes.get(r["code"])
         if not q or not q["price"]:
             continue
-        status, miss, proj = judge(r, q, elapsed)
+        status, miss, proj, notes = judge(r, q, elapsed)
         row = {"code": r["code"], "name": r["name"], "side": r["side"], "title": r["title"],
                "trigger": r["trigger"], "price": q["price"], "status": status, "miss": miss,
-               "proj_vol": int(proj), "stop": r["stop"]["fixed"]}
+               "proj_vol": int(proj), "stop": r["stop"].get("use") or r["stop"]["fixed"],
+               "stop_method": r["stop"].get("method", ""), "note": "、".join(notes), "term": r.get("term", "")}
         run["results"].append(row)
         if status in groups:
             groups[status].append(row)

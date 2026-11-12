@@ -15,6 +15,7 @@ import subprocess
 import pandas as pd
 import requests
 
+import config as C
 import holdings
 
 SCAN_SHEET = "選股紀錄"
@@ -83,7 +84,7 @@ def scan_rows(cand):
                 "位階": r.get("position", ""), "趨勢": r.get("trend", ""), "分數": r.get("score", ""),
                 "強度": r.get("rs", ""), "類股": r.get("sector", ""), "收盤": r.get("close", ""),
                 "觸發價": r.get("trigger", ""), "距觸發%": r.get("gap_pct", ""),
-                "需量倍數": r.get("need_vol", ""), "停損": stop.get("fixed", ""),
+                "需量倍數": r.get("need_vol", ""), "停損": stop.get("use") or stop.get("fixed", ""),
                 "大盤": label, "逆大盤": "是" if against else "",
                 "13:00結果": "逆大盤" if against else "",
                 "id": f"{cand['data_date']}|{r['code']}|{side}",
@@ -105,7 +106,8 @@ def check_rows(day, run, data_date):
             "日期": day, "時段": run.get("slot", ""), "時間": run.get("time", ""), "代號": x["code"],
             "名稱": x.get("name", ""), "多空": "多" if x.get("side") == "long" else "空",
             "型態": x.get("title", ""), "觸發價": x.get("trigger", ""), "現價": x.get("price", ""),
-            "狀態": x.get("status", ""), "原因": "、".join(x.get("miss") or []),
+            "狀態": x.get("status", ""),
+            "原因": "、".join((x.get("miss") or []) + ([f"參考：{x['note']}"] if x.get("note") else [])),
             "推估量(張)": x.get("proj_vol", ""), "停損": x.get("stop", ""), "名單日期": data_date,
         })
     return out
@@ -196,7 +198,7 @@ def confirm_runs():
     return out
 
 
-def trade(g, date, side):
+def trade(g, date, side, stop=None):
     """照持股的短線規則模擬：訊號隔天收盤買進，之後每天收盤判斷，出現「出場」就用當天收盤賣出。"""
     from indicators import analyze
 
@@ -209,6 +211,13 @@ def trade(g, date, side):
     entry = float(g["close"].iloc[i1])
     out = {"進場價": entry, "出場日": "", "出場價": "", "報酬%": "", "勝負": "持有中", "出場原因": ""}
     h = {"code": "", "side": side, "price": entry, "date": dates[i1], "mode": "短"}
+    try:
+        s = float(stop)
+        # 建議停損要在進場價的正確一側、而且不超過 10%，否則用固定 5%
+        if (side == "long" and 0 < (entry - s) / entry <= C.STOP_MAX) or (side == "short" and 0 < (s - entry) / entry <= C.STOP_MAX):
+            h["stop"] = s
+    except (TypeError, ValueError):
+        pass
     for t in range(i1 + 1, min(len(g), i1 + 1 + MAX_HOLD)):
         ev = holdings.evaluate(analyze(g.iloc[:t + 1]), h)
         if ev["level"] == "出場":
@@ -253,7 +262,7 @@ def update_outcomes(df, pending=None, judged=None):
             o.update({"13:00結果": res, "原因": why})
         if res in ENTERED:
             try:
-                o.update(trade(g, date, side) or {})
+                o.update(trade(g, date, side, p.get("stop")) or {})
             except Exception as e:  # noqa: BLE001
                 print(f"{p['id']} 模擬買賣失敗：{type(e).__name__} {e}")
         if o:

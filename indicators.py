@@ -65,9 +65,10 @@ class Pivot:
     kind: str     # "H" 頭、"L" 底
     price: float
     conf: int     # 在哪一根 K 棒確認（收盤跌破／突破均線那天）
+    cross: int = -1  # 合併過的點：最後一次穿越均線那天（目前這一群的起點）
 
 
-def turning_waves(h, l, c, ma):
+def turning_waves(h, l, c, ma, merge=0.0):
     """收盤在均線上方＝正價、下方＝負價。
     收盤跌破均線：正價群＋當天，取最高點（含上影線）當「頭」。
     收盤突破均線：負價群＋當天，取最低點（含下影線）當「底」。
@@ -88,7 +89,30 @@ def turning_waves(h, l, c, ma):
                 j = start + int(np.argmin(l[start:i + 1]))
                 pivots.append(Pivot(j, "L", float(l[j]), i))
             state, start = s, i
+            if merge:
+                _merge_flat(pivots, merge)
     return pivots, state, start
+
+
+def _merge_flat(pivots, width):
+    """K 線橫盤時，5 日線上上下下穿來穿去，只在反轉時取 1 點：
+    最後兩個轉折（一頭一底）高低差在 width 以內，就當作橫盤裡的小波動，
+    拿掉這兩點，前面同類的點保留比較極端的那個。"""
+    if len(pivots) < 3:
+        return
+    q, p = pivots[-2], pivots[-1]
+    hi, lo = max(p.price, q.price), min(p.price, q.price)
+    if lo <= 0 or hi / lo - 1 > width:
+        return
+    r = pivots[-3]  # 跟 p 同類
+    better = (p.price > r.price) if p.kind == "H" else (p.price < r.price)
+    del pivots[-2:]
+    pivots[-1] = Pivot(p.idx, p.kind, p.price, r.conf, p.conf) if better else Pivot(r.idx, r.kind, r.price, r.conf, p.conf)
+    # 底（或頭）也要留比較極端的：q 跟更前面的同類點比
+    if len(pivots) >= 2:
+        s = pivots[-2]
+        if s.kind == q.kind and ((q.price < s.price) if q.kind == "L" else (q.price > s.price)):
+            pivots[-2] = Pivot(q.idx, q.kind, q.price, s.conf)
 
 
 def trend_series(c, pivots):
@@ -346,7 +370,7 @@ def analyze(df, weekly=True):
     k, d = kd(h, l, c)
     dif, _, osc = macd(c)
     vbase = np.r_[np.nan, sma(v, 5)[:-1]]
-    pivots, ws, wst = turning_waves(h, l, c, ma[5])
+    pivots, ws, wst = turning_waves(h, l, c, ma[5], merge=C.MERGE_WIDTH)
     pivots20, _, _ = turning_waves(h, l, c, ma[20])
     trend = trend_series(c, pivots)
     hi60 = pd.Series(h).rolling(60, min_periods=20).max().to_numpy()
