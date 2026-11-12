@@ -400,6 +400,374 @@
      "stop": 14.1
     }
    ]
+  },
+  {
+   "time": "13:00",
+   "slot": "確認",
+   "results": [
+    {
+     "code": "2359",
+     "name": "所羅門",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 98.1,
+     "price": 98.0,
+     "status": "價到條件不足",
+     "miss": [
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 941,
+     "stop": 103.5
+    },
+    {
+     "code": "6166",
+     "name": "凌華",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 90.6,
+     "price": 91.0,
+     "status": "未到",
+     "miss": [
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 577,
+     "stop": 95.2
+    },
+    {
+     "code": "2421",
+     "name": "建準",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 132.5,
+     "price": 131.0,
+     "status": "價到條件不足",
+     "miss": [
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 1223,
+     "stop": 139.5
+    },
+    {
+     "code": "3702",
+     "name": "大聯大",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 89.8,
+     "price": 87.3,
+     "status": "成形",
+     "miss": [],
+     "proj_vol": 14096,
+     "stop": 94.3
+    },
+    {
+     "code": "1609",
+     "name": "大亞",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 31.35,
+     "price": 31.4,
+     "status": "未到",
+     "miss": [
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 2188,
+     "stop": 32.95
+    },
+    {
+     "code": "2302",
+     "name": "麗正",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 38.4,
+     "price": 38.85,
+     "status": "未到",
+     "miss": [
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 2219,
+     "stop": 40.35
+    },
+    {
+     "code": "2103",
+     "name": "台橡",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 23.0,
+     "price": 23.4,
+     "status": "未到",
+     "miss": [
+      "今天跌 1.9%，要跌 2% 以上",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 3598,
+     "stop": 24.15
+    },
+    {
+     "code": "6477",
+     "name": "安集",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 28.15,
+     "price": 29.1,
+     "status": "未到",
+     "miss": [
+      "今天漲 1.2%，要跌 2% 以上",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 779,
+     "stop": 29.6
+    },
+    {
+     "code": "1608",
+     "name": "華榮",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 30.35,
+     "price": 30.4,
+     "status": "未到",
+     "miss": [
+      "今天跌 1.9%，要跌 2% 以上",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 1949,
+     "stop": 31.9
+    },
+    {
+     "code": "3056",
+     "name": "富華新",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 11.1,
+     "price": 12.0,
+     "status": "未到",
+     "miss": [
+      "今天漲 5.7%，要跌 2% 以上",
+      "目前收紅K（要收黑K）",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 1601,
+     "stop": 11.7
+    },
+    {
+     "code": "2395",
+     "name": "研華",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 585.0,
+     "price": 601.0,
+     "status": "未到",
+     "miss": [
+      "今天跌 1.8%，要跌 2% 以上",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 2234,
+     "stop": 615.0
+    },
+    {
+     "code": "3227",
+     "name": "原相",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 171.5,
+     "price": 173.0,
+     "status": "未到",
+     "miss": [
+      "今天跌 1.4%，要跌 2% 以上",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 438,
+     "stop": 180.5
+    },
+    {
+     "code": "9938",
+     "name": "百和",
+     "side": "short",
+     "title": "跌破盤整下頸線",
+     "trigger": 34.0,
+     "price": 34.6,
+     "status": "未到",
+     "miss": [
+      "今天跌 1.8%，要跌 2% 以上",
+      "量能不夠（預估只有平常的 0.7 倍，要 1.2 倍）"
+     ],
+     "proj_vol": 1162,
+     "stop": 35.7
+    },
+    {
+     "code": "3481",
+     "name": "群創",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 38.85,
+     "price": 39.25,
+     "status": "未到",
+     "miss": [
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 267083,
+     "stop": 40.8
+    },
+    {
+     "code": "2634",
+     "name": "漢翔",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 53.2,
+     "price": 54.7,
+     "status": "未到",
+     "miss": [
+      "今天漲 0.2%，要跌 2% 以上",
+      "目前收紅K（要收黑K）",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 5591,
+     "stop": 55.9
+    },
+    {
+     "code": "1590",
+     "name": "亞德客-KY",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 1025.0,
+     "price": 1050.0,
+     "status": "未到",
+     "miss": [
+      "今天跌 0.9%，要跌 2% 以上",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 804,
+     "stop": 1080.0
+    },
+    {
+     "code": "3211",
+     "name": "順達",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 251.0,
+     "price": 249.0,
+     "status": "價到條件不足",
+     "miss": [
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 2053,
+     "stop": 264.0
+    },
+    {
+     "code": "2630",
+     "name": "亞航",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 32.85,
+     "price": 33.45,
+     "status": "未到",
+     "miss": [
+      "今天跌 0.3%，要跌 2% 以上",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 856,
+     "stop": 34.5
+    },
+    {
+     "code": "8932",
+     "name": "智通*",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 76.2,
+     "price": 75.3,
+     "status": "成形",
+     "miss": [],
+     "proj_vol": 1043,
+     "stop": 80.1
+    },
+    {
+     "code": "1717",
+     "name": "長興",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 61.4,
+     "price": 61.9,
+     "status": "未到",
+     "miss": [
+      "今天跌 1.7%，要跌 2% 以上",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 2732,
+     "stop": 64.5
+    },
+    {
+     "code": "2539",
+     "name": "櫻花建",
+     "side": "short",
+     "title": "跌破橫盤／一字底",
+     "trigger": 29.35,
+     "price": 31.15,
+     "status": "未到",
+     "miss": [
+      "今天漲 3.7%，要跌 2% 以上",
+      "目前收紅K（要收黑K）",
+      "KD 還沒轉弱",
+      "量能不夠（預估只有平常的 0.7 倍，要 1.2 倍）"
+     ],
+     "proj_vol": 801,
+     "stop": 30.85
+    },
+    {
+     "code": "3236",
+     "name": "千如",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 39.65,
+     "price": 39.5,
+     "status": "價到條件不足",
+     "miss": [
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 1481,
+     "stop": 41.65
+    },
+    {
+     "code": "8050",
+     "name": "廣積",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 50.7,
+     "price": 51.4,
+     "status": "未到",
+     "miss": [
+      "今天跌 0.8%，要跌 2% 以上",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 1294,
+     "stop": 53.3
+    },
+    {
+     "code": "6196",
+     "name": "帆宣",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 407.0,
+     "price": 396.5,
+     "status": "成形",
+     "miss": [],
+     "proj_vol": 2050,
+     "stop": 427.5
+    },
+    {
+     "code": "2405",
+     "name": "輔信",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 13.4,
+     "price": 14.15,
+     "status": "未到",
+     "miss": [
+      "今天漲 1.8%，要跌 2% 以上",
+      "KD 還沒轉弱"
+     ],
+     "proj_vol": 1502,
+     "stop": 14.1
+    }
+   ]
   }
  ]
 }
