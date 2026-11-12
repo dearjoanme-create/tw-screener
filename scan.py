@@ -218,7 +218,8 @@ def message(res, mkt, last_date, short_ok=None, hold_lines=None):
         lines.append(f"大盤 {_n(mkt['close'])}（{mkt['chg_pct']:+.2f}%）｜{mkt['label']}")
         lines.append(f"月線 {_n(mkt['ma20'])} {mkt['ma20_dir']}｜建議資金 {mkt['capital']}")
         sides = [s for s in sides if mkt[f"allow_{s}"]]
-        lines.append("今天只推" + ("多方" if sides == ["long"] else "空方" if sides == ["short"] else "多空"))
+        lines.append("今天只推" + ("多方" if sides == ["long"] else "空方" if sides == ["short"] else "多空")
+                     + ("（大盤在月線下，多方只做短線）" if mkt.get("long_counter") and "long" in sides else ""))
     for side in sides:
         items = res[side]
         name = "多方" if side == "long" else "空方"
@@ -315,6 +316,9 @@ def main():
     held = holdings.fetch()  # 沒設定持股功能 → None
     ctx = {"chips": data.chips_summary(chips), "industry": industry, "held": [h["code"] for h in held or []]}
     res = screen(df, last_date, short_ok, ctx)
+    if mkt and mkt.get("long_counter"):  # 大盤在月線下還推的多方：只做短線
+        for r in res["long"] + [x for x in res["confirmed"] if x["side"] == "long"]:
+            r["term"] = "逆大盤短多" + (f"・{r['term']}" if r.get("term") in ("月線下短多",) else "")
     records, analyses = res.pop("records"), res.pop("analyses")
     write_records(records, last_date)
 

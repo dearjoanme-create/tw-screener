@@ -85,7 +85,7 @@ def scan_rows(cand):
                 "強度": r.get("rs", ""), "類股": r.get("sector", ""), "收盤": r.get("close", ""),
                 "觸發價": r.get("trigger", ""), "距觸發%": r.get("gap_pct", ""),
                 "需量倍數": r.get("need_vol", ""), "停損": stop.get("use") or stop.get("fixed", ""),
-                "大盤": label, "逆大盤": "是" if against else "",
+                "大盤": label, "逆大盤": "是" if against else ("短多" if side == "long" and mkt.get("long_counter") else ""),
                 "13:00結果": "逆大盤" if against else "",
                 "id": f"{cand['data_date']}|{r['code']}|{side}",
             })

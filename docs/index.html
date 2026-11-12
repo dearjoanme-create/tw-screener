@@ -92,7 +92,7 @@ function liveMap() {
 function tabs() {
   const m = cand.market || {};
   const t = [
-    ["long", "多方預備" + (m.allow_long === false ? "・逆大盤" : ""), cand.long],
+    ["long", "多方預備" + (m.allow_long === false ? "・逆大盤" : m.long_counter ? "・逆大盤短多" : ""), cand.long],
     ["short", "空方預備" + (m.allow_short === false ? "・逆大盤" : ""), cand.short],
     ["confirmed", "今日已確認", cand.confirmed],
     ["watch", "鎖股名單", cand.watch || []],

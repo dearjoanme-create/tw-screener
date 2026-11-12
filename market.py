@@ -52,6 +52,7 @@ def status(idx_df):
         "label": label,
         "capital": cap,
         "above_ma20": bool(above),
-        "allow_long": bool(above) or not C.MARKET_FILTER,
+        "allow_long": bool(above) or not C.MARKET_FILTER or C.LONG_BELOW_MARKET,
+        "long_counter": bool(not above and C.MARKET_FILTER),  # 大盤在月線下還推的多方＝逆大盤短多
         "allow_short": (not above) or not C.MARKET_FILTER,
     }

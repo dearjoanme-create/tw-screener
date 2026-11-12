@@ -294,6 +294,11 @@ def aligned_tomorrow(a, t, side, price):
     return three, four
 
 
+def below_ma20(a, t, trig):
+    """明天收在觸發價時，仍在明天的月線下（個股月線下短多）。"""
+    return C.LONG_BELOW_MA20 and trig < next_ma(a, t, 20, trig)
+
+
 def stop_plan(side, trig, level, method):
     """依型態設停損；離觸發價超過 STOP_MAX 就改用固定 STOP_PCT。回傳 (停損價, 說明)。"""
     if level is not None and level > 0:
@@ -328,7 +333,8 @@ def rules_long(a, t, key, trig):
     bad = []
     c, ma20 = a.c, a.ma[20][t]
     kb = a.kbar(t)
-    if trig < ma20:
+    below = below_ma20(a, t, trig)
+    if trig < ma20 and not C.LONG_BELOW_MA20:
         bad.append("盤底還沒突破月線")
     if a.up_streak(t) >= 2:
         bad.append("明天是上漲第3根以上，勿追高")
@@ -339,13 +345,18 @@ def rules_long(a, t, key, trig):
     above = [x for x in a.w_heads if x > trig]
     if above and min(above) / trig - 1 <= C.WEEKLY_PRESSURE:
         bad.append(f"週線壓力 {f2(min(above))} 不到 5%")
-    if not bad and (c[t - 10:t + 1] < a.ma[20][t - 10:t + 1]).any() and c[t] < ma20 and trig < ma20:
+    if not C.LONG_BELOW_MA20 and not bad and (c[t - 10:t + 1] < a.ma[20][t - 10:t + 1]).any() and c[t] < ma20 and trig < ma20:
         bad.append("回檔跌破月線，還沒站回")
     if key in ("L2", "L5") and a.trend[t] != BULL:
         bad.append("回檔已跌破前低")
     if a.trend[t] == BEAR and key not in ("L1", "L4", "L6"):
         bad.append("一般空頭的反彈")
-    if not aligned_tomorrow(a, t, 1, trig)[0]:
+    if below:
+        # 月線下短多：5 日線要站上 10 日線、而且向上
+        m5, m10 = next_ma(a, t, 5, trig), next_ma(a, t, 10, trig)
+        if not (m5 > m10 and m5 > a.ma[5][t]):
+            bad.append("月線下短多：5 日線還沒站上 10 日線向上")
+    elif not aligned_tomorrow(a, t, 1, trig)[0]:
         bad.append("進場時均線還不是 3 線多排向上")
     if a.high_zone[t] and c[t] / c[t - 5] - 1 >= 0.15 and kb["long_red"] and a.vol_ratio(t) >= C.BIG_VOL:
         bad.append("連續急漲的大量長紅K高檔")
@@ -487,6 +498,8 @@ def evaluate(a, t, rs=None, vol_info=None):
         use, method = stop_plan(side, trig, stop, STOP_METHOD.get(key, "型態停損"))
         three, four = aligned_tomorrow(a, t, side, trig)
         term = ("4 線" + ("多" if side > 0 else "空") + "排，可做長線") if four else "短線" if three else ""
+        if side > 0 and below_ma20(a, t, trig):
+            term = "月線下短多"
         item = {
             "side": slot,
             "key": key,

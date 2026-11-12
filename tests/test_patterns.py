@@ -112,7 +112,12 @@ def test_rules():
     assert any("上漲第3根" in x for x in bad), bad
     # 觸發價在月線下 → 盤底還沒突破月線
     a = analyze(uptrend_pullback())
-    assert any("盤底還沒突破月線" in x for x in P.rules_long(a, a.t, "L2", a.ma[20][a.t] * 0.95))
+    with mock.patch.object(P.C, "LONG_BELOW_MA20", False):
+        assert any("盤底還沒突破月線" in x for x in P.rules_long(a, a.t, "L2", a.ma[20][a.t] * 0.95))
+    # 月線下短多：觸發價在月線下也可以，但 5 日線要站上 10 日線向上
+    bad = P.rules_long(a, a.t, "L2", a.ma[20][a.t] * 0.95)
+    assert not any("盤底還沒突破月線" in x for x in bad)
+    assert all("3 線多排" not in x for x in bad)
     # 上方有週線壓力
     a.w_heads = [a.c[a.t] * 1.06]
     trig = P.trigger(a, a.t, 1, None)
@@ -156,7 +161,7 @@ def test_market_status():
     m = market.status(idx)
     assert m["trend"] == "多頭" and m["allow_long"] and not m["allow_short"], m
     m = market.status(mirror(idx.assign(volume=1)).drop(columns="volume"))
-    assert m["trend"] == "空頭" and m["allow_short"] and not m["allow_long"], m
+    assert m["trend"] == "空頭" and m["allow_short"] and m["allow_long"] and m["long_counter"], m
     print("大盤狀態 OK：", m["label"], m["capital"])
 
 
@@ -374,6 +379,16 @@ def test_holdings_new_rules():
     print("持股新規則（自訂停損、中線、放空 10%、高檔爆量、目標）OK")
 
 
+def test_long_below_market():
+    import market
+    idx = mirror(build(flat(60) + [(30, 0.2)]))  # 大盤在月線下
+    m = market.status(idx)
+    assert not m["above_ma20"] and m["allow_long"] and m["long_counter"] and m["allow_short"]
+    with mock.patch.object(market.C, "LONG_BELOW_MARKET", False):
+        assert not market.status(idx)["allow_long"]
+    print("大盤月線下也推多方（逆大盤短多）OK")
+
+
 def test_alignment_and_stop_plan():
     # 均線 3 線多排：多頭一路上漲，明天收高 → 通過；回檔中 5 日線掉到 10 日線下 → 不通過
     up = build(flat(60) + [(40, 0.30)])
@@ -405,6 +420,7 @@ def test_merge_flat_pivots():
 
 
 if __name__ == "__main__":
+    test_long_below_market()
     test_alignment_and_stop_plan()
     test_merge_flat_pivots()
     test_holdings_new_rules()
