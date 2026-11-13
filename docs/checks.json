@@ -1,1 +1,205 @@
-{"for_data_date": "2026-11-12", "runs": []}
+{
+ "for_data_date": "2026-11-12",
+ "runs": [
+  {
+   "time": "10:55",
+   "slot": "預警",
+   "results": [
+    {
+     "code": "2254",
+     "name": "巨鎧精密-創",
+     "side": "long",
+     "title": "橫盤／一字底突破",
+     "trigger": 112.5,
+     "price": 111.5,
+     "status": "未到",
+     "miss": [
+      "今天漲 1.4%，要漲 2% 以上",
+      "量能不夠（預估 3,366 張，要昨天的 1.3 倍 4,443 張）"
+     ],
+     "proj_vol": 3366,
+     "stop": 112.0,
+     "stop_method": "突破點",
+     "note": "",
+     "term": "逆大盤短多"
+    },
+    {
+     "code": "2618",
+     "name": "長榮航",
+     "side": "long",
+     "title": "突破大量黑K",
+     "trigger": 47.85,
+     "price": 47.25,
+     "status": "未到",
+     "miss": [
+      "今天漲 0.7%，要漲 2% 以上"
+     ],
+     "proj_vol": 29608,
+     "stop": 46.5,
+     "stop_method": "回檔低點",
+     "note": "",
+     "term": "逆大盤短多"
+    },
+    {
+     "code": "6199",
+     "name": "天品",
+     "side": "long",
+     "title": "橫盤／一字底突破",
+     "trigger": 171.5,
+     "price": 168.5,
+     "status": "未到",
+     "miss": [
+      "今天漲 0.3%，要漲 2% 以上",
+      "目前收黑K（要收紅K）",
+      "上影線太長（衝上去又被賣下來）",
+      "量能不夠（預估 4,334 張，要昨天的 1.3 倍 12,095 張）"
+     ],
+     "proj_vol": 4334,
+     "stop": 169.5,
+     "stop_method": "突破點",
+     "note": "",
+     "term": "逆大盤短多"
+    },
+    {
+     "code": "1786",
+     "name": "科妍",
+     "side": "long",
+     "title": "突破大量黑K",
+     "trigger": 51.5,
+     "price": 51.1,
+     "status": "曾到拉回",
+     "miss": [
+      "量能不夠（預估 868 張，要昨天的 1.3 倍 1,124 張）"
+     ],
+     "proj_vol": 868,
+     "stop": 49.1,
+     "stop_method": "回檔低點",
+     "note": "",
+     "term": "逆大盤短多"
+    },
+    {
+     "code": "1718",
+     "name": "中纖",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 9.18,
+     "price": 9.6,
+     "status": "未到",
+     "miss": [
+      "今天漲 2.5%，要跌 2% 以上",
+      "目前收紅K（要收黑K）"
+     ],
+     "proj_vol": 9542,
+     "stop": 9.73,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "1227",
+     "name": "佳格",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 25.2,
+     "price": 25.6,
+     "status": "未到",
+     "miss": [
+      "今天跌 0.6%，要跌 2% 以上"
+     ],
+     "proj_vol": 3235,
+     "stop": 25.8,
+     "stop_method": "反彈高點",
+     "note": "",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "9941",
+     "name": "裕融",
+     "side": "short",
+     "title": "跌破橫盤／一字底",
+     "trigger": 71.3,
+     "price": 73.6,
+     "status": "未到",
+     "miss": [
+      "今天漲 1.1%，要跌 2% 以上",
+      "目前收紅K（要收黑K）",
+      "下影線太長（跌下去又被買回來）"
+     ],
+     "proj_vol": 668,
+     "stop": 72.0,
+     "stop_method": "跌破點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "5531",
+     "name": "鄉林",
+     "side": "short",
+     "title": "彈後空下跌",
+     "trigger": 6.02,
+     "price": 6.7,
+     "status": "未到",
+     "miss": [
+      "今天漲 6.9%，要跌 2% 以上",
+      "目前收紅K（要收黑K）"
+     ],
+     "proj_vol": 3129,
+     "stop": 6.3,
+     "stop_method": "轉折高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "1218",
+     "name": "泰山",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 12.6,
+     "price": 12.85,
+     "status": "未到",
+     "miss": [
+      "今天跌 1.2%，要跌 2% 以上"
+     ],
+     "proj_vol": 292,
+     "stop": 13.0,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "9921",
+     "name": "巨大",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 83.9,
+     "price": 84.9,
+     "status": "未到",
+     "miss": [],
+     "proj_vol": 1106,
+     "stop": 90.4,
+     "stop_method": "反彈高點",
+     "note": "",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "2539",
+     "name": "櫻花建",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 29.45,
+     "price": 31.3,
+     "status": "未到",
+     "miss": [
+      "今天漲 1.3%，要跌 2% 以上",
+      "目前收紅K（要收黑K）"
+     ],
+     "proj_vol": 977,
+     "stop": 31.25,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    }
+   ]
+  }
+ ]
+}
