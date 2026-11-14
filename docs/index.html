@@ -182,7 +182,9 @@ function render() {
       const push = m.allow_long && m.allow_short ? "多空都推" : m.allow_long ? "只推多方" : "只推空方";
       el.innerHTML = `<span>加權 <b>${fmt(m.close)}</b> ${m.chg_pct > 0 ? "+" : ""}${m.chg_pct}%</span>
         <span>${esc(m.label)}</span><span>月線 ${fmt(m.ma20)} ${esc(m.ma20_dir)}</span>
-        <span class="cap">建議資金 ${esc(m.capital)}</span><span class="small">${push}</span>`;
+        <span class="cap">建議資金 ${esc(m.capital)}</span><span class="small">${push}</span>`
+        + (m.margin ? `<span>融資 ${fmt(m.margin.amt)} 億${m.margin.chg5 != null ? `（5 日 ${m.margin.chg5 > 0 ? "+" : ""}${fmt(m.margin.chg5)}）` : ""}${m.margin.hot ? "・過熱" : ""}</span>
+        <span class="cap">${esc(m.margin.verdict)}</span>` : "");
     }
     render();
   } catch (e) {

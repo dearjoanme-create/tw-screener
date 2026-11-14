@@ -720,3 +720,70 @@ def update(today: dt.date):
 
     traded_today = len(df) > 0 and today in set(df["date"].dt.date)
     return df, traded_today
+
+
+# ------------------------------------------------------------------
+# 大盤融資（上市融資金額）：每天補到 data/margin_hist.csv，算濾網用
+# ------------------------------------------------------------------
+MARGIN_HIST = os.path.join(os.path.dirname(__file__), "data", "margin_hist.csv")
+
+
+def _summary_amount(tables):
+    """信用交易統計表裡「融資金額(仟元)」的今日餘額 → 億元。"""
+    for t in tables:
+        fields = [str(f).replace(" ", "") for f in (t.get("fields") or [])]
+        if "今日餘額" not in fields:
+            continue
+        col = fields.index("今日餘額")
+        for r in t.get("data") or []:
+            if "融資金額" in str(r[0]):
+                v = _num(r[col])
+                return None if v is None else v / 1e5
+    return None
+
+
+def fetch_margin_summary(day):
+    """回傳 (融資金額億元, {代號: (可融券, 融資張, 融券張)})；還沒公布回傳 (None, {})。"""
+    url = "https://www.twse.com.tw/rwd/zh/marginTrading/MI_MARGN"
+    j = requests.get(url, params={"date": day.strftime("%Y%m%d"), "selectType": "ALL", "response": "json"},
+                     headers=HEADERS, timeout=30).json()
+    if j.get("stat") not in (None, "OK"):
+        return None, {}
+    tables = j.get("tables") or [{"fields": j.get("fields"), "data": j.get("data")}]
+    per = {}
+    for t in tables:
+        if _find_col(t.get("fields") or [], "代號") is not None and len(t.get("data") or []) > 50:
+            per = _margin_table(t["fields"], t["data"])
+            break
+    return _summary_amount(tables), per
+
+
+def update_margin_hist(prices, dates, max_new=5):
+    """補最近幾天的上市融資金額、融資張數、估算維持率。抓不到（晚上還沒公布）下次再補。"""
+    old = pd.read_csv(MARGIN_HIST, parse_dates=["date"]) if os.path.exists(MARGIN_HIST) else pd.DataFrame(columns=["date"])
+    have = set(old["date"].dt.date) if len(old) else set()
+    want = [d for d in list(dates)[-15:] if d not in have][-max_new:]
+    rows = []
+    for d in want:
+        try:
+            amt, per = fetch_margin_summary(d)
+        except Exception as e:  # noqa: BLE001
+            print(f"{d} 大盤融資抓取失敗：{type(e).__name__}")
+            amt, per = None, {}
+        if amt is None:
+            print(f"{d} 大盤融資還沒公布，下次再補")
+            time.sleep(SLEEP)
+            continue
+        day = prices[prices["date"] == pd.Timestamp(d)].set_index("code")["close"]
+        mv = sum((v[1] or 0) * 1000 * day.get(c) for c, v in per.items() if v[1] and c in day.index)
+        rows.append({"date": pd.Timestamp(d), "margin_amt": round(amt, 2),
+                     "margin_lots": int(sum(v[1] or 0 for v in per.values())),
+                     "maint": round(mv / (amt * 1e8) * 100, 1) if mv else None})
+        time.sleep(SLEEP)
+    df = pd.concat([old, pd.DataFrame(rows)], ignore_index=True) if rows else old
+    if len(df):
+        df["date"] = pd.to_datetime(df["date"])
+        df = df.drop_duplicates("date", keep="last").sort_values("date")
+        if rows:
+            df.to_csv(MARGIN_HIST, index=False)
+    return df

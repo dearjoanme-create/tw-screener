@@ -23,7 +23,8 @@ SCAN_HEAD = ["日期", "代號", "名稱", "市場", "多空", "型態", "位階
              "收盤", "觸發價", "距觸發%", "需量倍數", "停損", "大盤", "逆大盤", "id",
              "隔日收盤", "隔日漲跌%", "隔日達觸發", "5日報酬%", "10日報酬%", "期間最高%", "期間最低%",
              "碰停損", "更新日",
-             "13:00結果", "原因", "進場價", "出場日", "出場價", "報酬%", "勝負", "出場原因"]
+             "13:00結果", "原因", "進場價", "出場日", "出場價", "報酬%", "勝負", "出場原因",
+             "大盤月線", "融資5日(億)", "融資過熱", "做多環境"]
 OUTCOME_COLS = SCAN_HEAD[SCAN_HEAD.index("隔日收盤"):]
 ENTERED = ("✅ 可進場", "KD 擋下", "其他條件擋下")  # 這三種模擬買賣（擋下的算「如果進場會怎樣」）
 MAX_HOLD = 60  # 最多追蹤 60 個交易日
@@ -72,6 +73,7 @@ def _log(sheet, head, match, rows):
 def scan_rows(cand):
     mkt = cand.get("market") or {}
     label = mkt.get("label", "")
+    mg = mkt.get("margin") or {}
     out = []
     for side in ("long", "short"):
         against = mkt.get(f"allow_{side}") is False
@@ -87,6 +89,8 @@ def scan_rows(cand):
                 "需量倍數": r.get("need_vol", ""), "停損": stop.get("use") or stop.get("fixed", ""),
                 "大盤": label, "逆大盤": "是" if against else ("短多" if side == "long" and mkt.get("long_counter") else ""),
                 "13:00結果": "逆大盤" if against else "",
+                "大盤月線": mkt.get("ma20_dir", ""), "融資5日(億)": mg.get("chg5", ""),
+                "融資過熱": ("是" if mg.get("hot") else "否") if mg else "", "做多環境": mg.get("verdict", ""),
                 "id": f"{cand['data_date']}|{r['code']}|{side}",
             })
     return out

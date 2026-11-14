@@ -217,6 +217,13 @@ def message(res, mkt, last_date, short_ok=None, hold_lines=None):
     if mkt:
         lines.append(f"大盤 {_n(mkt['close'])}（{mkt['chg_pct']:+.2f}%）｜{mkt['label']}")
         lines.append(f"月線 {_n(mkt['ma20'])} {mkt['ma20_dir']}｜建議資金 {mkt['capital']}")
+        mg = mkt.get("margin")
+        if mg:
+            chg = "" if mg["chg5"] is None else f"5 日 {mg['chg5']:+,.0f} 億"
+            lines.append(f"融資 {mg['amt']:,.0f} 億（{chg}{'・過熱' if mg['hot'] else ''}）"
+                         + (f"｜維持率 {mg['maint']:.0f}%" if mg.get("maint") else "")
+                         + (f"｜{mg['date'][5:].replace('-', '/')} 資料" if mg["date"] != f"{last_date:%Y-%m-%d}" else ""))
+            lines.append(f"{'🟢' if mg['level'] == 'good' else '🔴' if mg['level'] == 'bad' else '🟡' if mg['level'] == 'warn' else '⚪'} {mg['verdict']}")
         sides = [s for s in sides if mkt[f"allow_{s}"]]
         lines.append("今天只推" + ("多方" if sides == ["long"] else "空方" if sides == ["short"] else "多空")
                      + ("（大盤在月線下，多方只做短線）" if mkt.get("long_counter") and "long" in sides else ""))
@@ -312,6 +319,15 @@ def main():
     except Exception as e:  # noqa: BLE001
         print(f"產業分類有問題，這次不排類股：{e}")
         industry = {}
+
+    try:  # 大盤融資：只做標註（回測顯示月線上揚＋融資減少時做多最有利）
+        mh = data.update_margin_hist(df, sorted(df["date"].dt.date.unique()))
+        mg = market.margin_status(mh, idx, mkt) if mkt else None
+    except Exception as e:  # noqa: BLE001
+        print(f"大盤融資有問題，這次不標註：{type(e).__name__} {e}")
+        mg = None
+    if mkt is not None:
+        mkt["margin"] = mg
 
     held = holdings.fetch()  # 沒設定持股功能 → None
     ctx = {"chips": data.chips_summary(chips), "industry": industry, "held": [h["code"] for h in held or []]}

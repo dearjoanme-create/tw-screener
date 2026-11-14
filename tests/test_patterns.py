@@ -389,6 +389,18 @@ def test_long_below_market():
     print("大盤月線下也推多方（逆大盤短多）OK")
 
 
+def test_margin_status():
+    import market
+    days = pd.bdate_range("2026-01-01", periods=80)
+    idx = pd.DataFrame({"date": days, "close": np.linspace(100, 120, 80)})
+    amt = list(np.linspace(1000, 1100, 75)) + [1090, 1080, 1070, 1060, 1050]   # 最近 5 天融資減少
+    mh = pd.DataFrame({"date": days, "margin_amt": amt, "margin_lots": 0, "maint": 170.0})
+    r = market.margin_status(mh, idx, {"ma20_dir": "上揚"})
+    assert r["chg5"] < 0 and r["level"] == "good" and "洗盤" in r["verdict"], r
+    assert market.margin_status(mh, idx, {"ma20_dir": "下彎"})["level"] == "bad"
+    print("大盤融資狀態 OK")
+
+
 def test_alignment_and_stop_plan():
     # 均線 3 線多排：多頭一路上漲，明天收高 → 通過；回檔中 5 日線掉到 10 日線下 → 不通過
     up = build(flat(60) + [(40, 0.30)])
@@ -425,6 +437,7 @@ def test_merge_flat_pivots():
 
 if __name__ == "__main__":
     test_long_below_market()
+    test_margin_status()
     test_alignment_and_stop_plan()
     test_merge_flat_pivots()
     test_holdings_new_rules()
