@@ -66,6 +66,12 @@ class Pivot:
     price: float
     conf: int     # 在哪一根 K 棒確認（收盤跌破／突破均線那天）
     cross: int = -1  # 合併過的點：最後一次穿越均線那天（目前這一群的起點）
+    end: int = 10 ** 9  # 從第幾根 K 棒起被合併掉（之後就不算）；回測時才不會偷看到未來
+
+
+def visible(pivots, t):
+    """第 t 天看得到的轉折點（已確認、還沒被合併掉），依時間排序。"""
+    return sorted((p for p in pivots if p.conf <= t < p.end), key=lambda x: x.idx)
 
 
 def turning_waves(h, l, c, ma, merge=0.0):
@@ -73,7 +79,7 @@ def turning_waves(h, l, c, ma, merge=0.0):
     收盤跌破均線：正價群＋當天，取最高點（含上影線）當「頭」。
     收盤突破均線：負價群＋當天，取最低點（含下影線）當「底」。
     回傳 (轉折點清單, 目前狀態 1/-1, 目前這一群從第幾根開始)。"""
-    pivots, state, start = [], None, None
+    pivots, hist, state, start = [], [], None, None
     for i in range(len(c)):
         if np.isnan(ma[i]):
             continue
@@ -84,20 +90,22 @@ def turning_waves(h, l, c, ma, merge=0.0):
         if s is not None and s != state:
             if state == 1:
                 j = start + int(np.argmax(h[start:i + 1]))
-                pivots.append(Pivot(j, "H", float(h[j]), i))
+                pv = Pivot(j, "H", float(h[j]), i)
             else:
                 j = start + int(np.argmin(l[start:i + 1]))
-                pivots.append(Pivot(j, "L", float(l[j]), i))
+                pv = Pivot(j, "L", float(l[j]), i)
+            pivots.append(pv)
+            hist.append(pv)
             state, start = s, i
             if merge:
-                _merge_flat(pivots, merge)
-    return pivots, state, start
+                _merge_flat(pivots, hist, merge)
+    return (hist if merge else pivots), state, start
 
 
-def _merge_flat(pivots, width):
+def _merge_flat(pivots, hist, width):
     """K 線橫盤時，5 日線上上下下穿來穿去，只在反轉時取 1 點：
     最後兩個轉折（一頭一底）高低差在 width 以內，就當作橫盤裡的小波動，
-    拿掉這兩點，前面同類的點保留比較極端的那個。"""
+    拿掉這兩點，前面同類的點保留比較極端的那個（合併從當天起才生效，之前的日子看到的還是原本的點）。"""
     if len(pivots) < 3:
         return
     q, p = pivots[-2], pivots[-1]
@@ -105,14 +113,13 @@ def _merge_flat(pivots, width):
     if lo <= 0 or hi / lo - 1 > width:
         return
     r = pivots[-3]  # 跟 p 同類
+    now = p.conf
     better = (p.price > r.price) if p.kind == "H" else (p.price < r.price)
     del pivots[-2:]
-    pivots[-1] = Pivot(p.idx, p.kind, p.price, r.conf, p.conf) if better else Pivot(r.idx, r.kind, r.price, r.conf, p.conf)
-    # 底（或頭）也要留比較極端的：q 跟更前面的同類點比
-    if len(pivots) >= 2:
-        s = pivots[-2]
-        if s.kind == q.kind and ((q.price < s.price) if q.kind == "L" else (q.price > s.price)):
-            pivots[-2] = Pivot(q.idx, q.kind, q.price, s.conf)
+    q.end = p.end = r.end = now  # 從今天起這幾點不算，換成合併後的點
+    src = p if better else r
+    pivots[-1] = Pivot(src.idx, src.kind, src.price, now, now)
+    hist.append(pivots[-1])
 
 
 def trend_series(c, pivots):
@@ -123,12 +130,15 @@ def trend_series(c, pivots):
     n = len(c)
     out = np.zeros(n, dtype=int)
     heads, lows = [], []
-    p = 0
-    ps = sorted(pivots, key=lambda x: x.conf)
+    events = sorted({p.conf for p in pivots} | {p.end for p in pivots if p.end < n})
+    ei = 0
     for t in range(n):
-        while p < len(ps) and ps[p].conf <= t:
-            (heads if ps[p].kind == "H" else lows).append(ps[p].price)
-            p += 1
+        if ei < len(events) and events[ei] <= t:
+            while ei < len(events) and events[ei] <= t:
+                ei += 1
+            vis = visible(pivots, t)
+            heads = [x.price for x in vis if x.kind == "H"]
+            lows = [x.price for x in vis if x.kind == "L"]
         if len(heads) < 2 or len(lows) < 2:
             continue
         h1, h0, l1, l0 = heads[-1], heads[-2], lows[-1], lows[-2]
@@ -143,7 +153,7 @@ def trend_series(c, pivots):
 
 def confirmed(pivots, t, kind=None):
     """第 t 天為止已經確認的轉折點。"""
-    return [p for p in pivots if p.conf <= t and (kind is None or p.kind == kind)]
+    return [p for p in visible(pivots, t) if kind is None or p.kind == kind]
 
 
 # ------------------------------------------------------------------

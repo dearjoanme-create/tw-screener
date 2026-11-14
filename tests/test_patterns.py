@@ -10,7 +10,7 @@ import data
 import market
 import patterns as P
 import scan
-from indicators import BEAR, BULL, RANGE, analyze, kd, next_k, turning_waves, sma
+from indicators import visible, BEAR, BULL, RANGE, analyze, kd, next_k, turning_waves, sma
 # 人工走勢的回檔段，5 日線通常會掉到 10 日線下面；測型態本身時先略過「3 線多排」這一關，另外單獨測
 SKIP_ALIGN = mock.patch.object(P, "aligned_tomorrow", lambda *a: (True, False))
 
@@ -412,8 +412,12 @@ def test_merge_flat_pivots():
     df = build(flat(30) + [(8, 0.15)] + [(2, -0.012), (2, 0.012)] * 4 + [(6, 0.10)])
     h, l, c = (df[k].to_numpy(float) for k in ("high", "low", "close"))
     raw, _, _ = turning_waves(h, l, c, sma(c, 5))
-    merged, _, _ = turning_waves(h, l, c, sma(c, 5), merge=0.03)
+    hist, _, _ = turning_waves(h, l, c, sma(c, 5), merge=0.03)
+    merged = visible(hist, len(c) - 1)
     assert len(merged) < len(raw), (len(raw), len(merged))
+    # 回測不偷看未來：合併前的某一天，看到的轉折點跟沒合併時一樣
+    first = min(p.end for p in hist if p.end < 10 ** 9)
+    assert [(p.idx, p.price) for p in visible(hist, first - 1)] == [(p.idx, p.price) for p in raw if p.conf <= first - 1]
     kinds = [p.kind for p in merged]
     assert all(x != y for x, y in zip(kinds, kinds[1:])), "合併後頭、底仍要交錯"
     print("橫盤轉折合併 OK：", len(raw), "→", len(merged))

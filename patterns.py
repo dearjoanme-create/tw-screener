@@ -69,7 +69,8 @@ def round_down(p):
 
 def group(a, t):
     """第 t 天所在的轉折群：(狀態 1=均線上／-1=均線下, 群的第一根)。"""
-    last = [p for p in a.pivots if p.conf <= t]
+    from indicators import visible
+    last = visible(a.pivots, t)
     if not last:
         return None, 0
     p = last[-1]
