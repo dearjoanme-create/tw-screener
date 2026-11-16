@@ -239,14 +239,36 @@ def main():
         if status in groups:
             groups[status].append(row)
 
-    alerts = []
+    alerts, status = [], []
     for h in held or []:
         q = quotes.get(h["code"])
         if q and q["price"]:
             got = holdings.live_check(h, q["price"])
             if got:
                 alerts.append((got, h, q["price"]))
+            status.append((got or ("續抱", ""), h, q["price"]))
+        else:
+            status.append((("警示", "抓不到即時報價"), h, None))
     alerts.sort(key=lambda x: x[0][0] != "出場")
+    order = {"出場": 0, "減碼": 1, "警示": 2, "續抱": 3}
+    status.sort(key=lambda x: order.get(x[0][0], 9))
+
+    def daily_lines():
+        """13:00 每天的庫存狀況：每檔一行（現價、損益、停損），有狀況的排前面。"""
+        out = []
+        for (level, text), h, price in status:
+            side = 1 if h.get("side", "long") == "long" else -1
+            entry = float(h["price"])
+            adv = h.get("advice") or {}
+            stop = float(h.get("stop") or adv.get("stop") or entry * (1 - C.STOP_PCT * side))
+            head = f"{holdings.ICON.get(level, '')}{h['code']} {h.get('name', '')} {'多' if side > 0 else '空'}"
+            if price is None:
+                out.append(f"{head}｜{text}")
+                continue
+            g = (price / entry - 1) * side * 100
+            out.append(f"{head} 現{price:g}（{g:+.1f}%）停損 {stop:g}")
+            out.append(f"  {text or '續抱，沒有碰到停損、停利條件'}")
+        return out
 
     def hold_lines():
         out = []
@@ -277,9 +299,17 @@ def main():
         print(f"紀錄表更新失敗（不影響通知）：{type(e).__name__} {e}")
 
     ok = True
-    if lines:
+    quiet = slot == "預警" and not C.PUSH_WARNING and not force
+    if quiet:
+        print("10:55 預警不推 LINE（C.PUSH_WARNING = False），網頁和試算表已更新。")
+    elif lines:
         ok = line_push.push("\n".join(lines), share=share)
-    if share and alerts:
+    if share and held and C.PUSH_HOLDINGS_DAILY:
+        n_bad = sum(1 for (lv, _), _, _ in status if lv in ("出場", "減碼", "警示"))
+        private = [f"📋 庫存 {now:%m/%d %H:%M}（只有你收到）",
+                   (f"📌 {n_bad} 檔要注意，收盤 13:30 前處理" if n_bad else "📌 都沒有碰到停損、停利，續抱")] + daily_lines()
+        ok = line_push.push("\n".join(private), share=False) and ok
+    elif share and alerts:
         private = [f"📋 持股提醒 {now:%H:%M}（只有你收到）", "收盤 13:30 前還來得及處理："] + hold_lines()
         ok = line_push.push("\n".join(private), share=False) and ok
     if not ok:

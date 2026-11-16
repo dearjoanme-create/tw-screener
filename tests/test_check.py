@@ -57,6 +57,8 @@ def run_at(d, hour, minute, force=False, held=None):
     return sent
 
 
+@mock.patch.object(check.C, "PUSH_WARNING", True)     # 舊行為：10:55 也推
+@mock.patch.object(check.C, "PUSH_HOLDINGS_DAILY", False)
 def test():
     with tempfile.TemporaryDirectory() as d:
         with open(os.path.join(d, "candidates.json"), "w") as f:
@@ -145,5 +147,32 @@ def test():
     print("\n盤中檢查測試通過 ✅")
 
 
+def test_quiet_and_daily_holdings():
+    """新設定：10:55 不推；13:00 確認照推，有庫存就每天另推一則庫存（就算都沒事）。"""
+    held = [{"code": "1101", "name": "甲", "side": "long", "price": 110, "mode": "短", "advice": {"stop": 104.5}},
+            {"code": "2201", "name": "乙", "side": "long", "price": 70, "mode": "短", "advice": {"stop": 60, "sum4": 280}}]
+    with tempfile.TemporaryDirectory() as d:
+        with open(os.path.join(d, "candidates.json"), "w") as f:
+            json.dump(cand, f)
+        shares.clear()
+        assert run_at(d, 10, 55, held=held) == []           # 10:55 不推
+        assert json.load(open(os.path.join(d, "checks.json")))["runs"][-1]["slot"] == "預警"  # 但照樣有記錄
+        shares.clear()
+        sent = run_at(d, 13, 0, held=held)
+        print(sent[-1])
+        assert len(sent) == 2 and shares == [True, False]
+        assert "庫存" in sent[1] and "1101" in sent[1] and "2201" in sent[1] and "要注意" in sent[1]
+        os.remove(os.path.join(d, "checks.json"))
+        shares.clear()
+        calm = [{**held[1], "price": 52, "advice": {"stop": 45, "sum4": 200}}]
+        sent = run_at(d, 13, 0, held=calm)
+        assert len(sent) == 2 and "都沒有碰到停損" in sent[1]        # 沒事也發
+        os.remove(os.path.join(d, "checks.json"))
+        shares.clear()
+        assert len(run_at(d, 13, 0, held=[])) == 1                   # 沒庫存就不發庫存
+    print("10:55 不推、13:00 每天庫存 OK")
+
+
 if __name__ == "__main__":
+    test_quiet_and_daily_holdings()
     test()

@@ -68,6 +68,9 @@ LONG_BELOW_MA20 = True    # 個股在自己的月線下也可以做短多：5 �
 
 # ---------- 推播 ----------
 LINE_TOP_N = 8            # LINE 每邊最多推幾檔（依分數排序，完整清單看網頁）
+PUSH_EVENING = False      # 晚上選股名單要不要推 LINE（False：只更新網頁和試算表）
+PUSH_WARNING = False      # 10:55 盤中預警要不要推 LINE（False：只更新網頁和試算表）
+PUSH_HOLDINGS_DAILY = True  # 13:00 有庫存就另外推一則庫存狀況（每天都發，只給你）
 LINE_CONFIRMED_N = 5      # 「今日已確認」最多推幾檔
 
 # ---------- 網頁網址（設定好 GitHub Pages 後填入，推播訊息會附上） ----------

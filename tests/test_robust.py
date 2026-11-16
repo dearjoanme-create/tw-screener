@@ -164,6 +164,8 @@ def test_push_failure_still_saves():
              mock.patch.object(scan.data, "update_index", return_value=pd.DataFrame(columns=data.INDEX_COLS)), \
              mock.patch.object(scan.data, "update_chips", return_value=pd.DataFrame(columns=data.CHIPS_COLS)), \
              mock.patch.object(scan.data, "update_industry", return_value={}), \
+             mock.patch.object(scan.data, "update_margin_hist", return_value=None), \
+             mock.patch.object(scan.config, "PUSH_EVENING", True), \
              mock.patch.dict(os.environ, {"LINE_CHANNEL_ACCESS_TOKEN": "x", "LINE_USER_ID": "U1"}), \
              mock.patch.object(line_push.requests, "post", return_value=fake), \
              mock.patch("sys.argv", ["scan.py"]):

@@ -372,6 +372,9 @@ def main():
         journal.nightly(payload, df)  # 寫進你的 Google 試算表（選股紀錄＋事後結果）
     except Exception as e:  # noqa: BLE001
         print(f"紀錄表更新失敗（不影響選股）：{type(e).__name__} {e}")
+    if not config.PUSH_EVENING and not force:
+        print("晚上選股名單不推 LINE（config.PUSH_EVENING = False），網頁和試算表已更新。")
+        return
     if not line_push.push(message(res, mkt, last_date, short_ok)):
         sys.exit(1)  # 讓 GitHub 顯示紅叉提醒你，但資料已經存好了
 
