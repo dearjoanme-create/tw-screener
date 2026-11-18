@@ -147,6 +147,152 @@
      "term": "4 線空排，可做長線"
     }
    ]
+  },
+  {
+   "time": "13:00",
+   "slot": "確認",
+   "results": [
+    {
+     "code": "1476",
+     "name": "儒鴻",
+     "side": "long",
+     "title": "突破大量黑K",
+     "trigger": 395.0,
+     "price": 389.0,
+     "status": "未到",
+     "miss": [
+      "今天漲 1.0%，要漲 2% 以上",
+      "量能不夠（預估 3,304 張，要昨天的 1.3 倍 5,027 張）"
+     ],
+     "proj_vol": 3304,
+     "stop": 373.5,
+     "stop_method": "回檔低點",
+     "note": "",
+     "term": "逆大盤短多"
+    },
+    {
+     "code": "6199",
+     "name": "天品",
+     "side": "long",
+     "title": "橫盤／一字底突破",
+     "trigger": 173.5,
+     "price": 171.0,
+     "status": "未到",
+     "miss": [
+      "今天漲 0.6%，要漲 2% 以上",
+      "量能不夠（預估 9,172 張，要昨天的 1.3 倍 12,424 張）"
+     ],
+     "proj_vol": 9172,
+     "stop": 171.0,
+     "stop_method": "突破點",
+     "note": "",
+     "term": "逆大盤短多"
+    },
+    {
+     "code": "2618",
+     "name": "長榮航",
+     "side": "long",
+     "title": "突破大量黑K",
+     "trigger": 49.1,
+     "price": 46.4,
+     "status": "未到",
+     "miss": [
+      "今天跌 3.5%，要漲 2% 以上",
+      "目前收黑K（要收紅K）",
+      "量能不夠（預估 24,363 張，要昨天的 1.3 倍 42,718 張）"
+     ],
+     "proj_vol": 24363,
+     "stop": 45.9,
+     "stop_method": "回檔低點",
+     "note": "KD 還沒轉強",
+     "term": "逆大盤短多"
+    },
+    {
+     "code": "2548",
+     "name": "華固",
+     "side": "long",
+     "title": "打底完成突破",
+     "trigger": 98.6,
+     "price": 93.4,
+     "status": "未到",
+     "miss": [
+      "今天跌 1.4%，要漲 2% 以上",
+      "目前收黑K（要收紅K）",
+      "量能不夠（預估 799 張，要昨天的 1.3 倍 2,098 張）"
+     ],
+     "proj_vol": 799,
+     "stop": 98.5,
+     "stop_method": "頸線停損",
+     "note": "KD 還沒轉強",
+     "term": "逆大盤短多"
+    },
+    {
+     "code": "2103",
+     "name": "台橡",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 21.45,
+     "price": 21.75,
+     "status": "未到",
+     "miss": [],
+     "proj_vol": 2457,
+     "stop": 22.6,
+     "stop_method": "反彈高點",
+     "note": "",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "4763",
+     "name": "材料*-KY",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 38.45,
+     "price": 39.55,
+     "status": "未到",
+     "miss": [
+      "今天跌 0.9%，要跌 2% 以上"
+     ],
+     "proj_vol": 4538,
+     "stop": 40.5,
+     "stop_method": "反彈高點",
+     "note": "",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "1722",
+     "name": "台肥",
+     "side": "short",
+     "title": "跌破橫盤／一字底",
+     "trigger": 37.95,
+     "price": 38.15,
+     "status": "未到",
+     "miss": [
+      "今天跌 1.5%，要跌 2% 以上"
+     ],
+     "proj_vol": 2737,
+     "stop": 38.3,
+     "stop_method": "跌破點",
+     "note": "",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "1909",
+     "name": "榮成",
+     "side": "short",
+     "title": "跌破盤整下頸線",
+     "trigger": 8.77,
+     "price": 8.94,
+     "status": "未到",
+     "miss": [
+      "今天跌 1.0%，要跌 2% 以上"
+     ],
+     "proj_vol": 2443,
+     "stop": 8.78,
+     "stop_method": "跌破點",
+     "note": "",
+     "term": "4 線空排，可做長線"
+    }
+   ]
   }
  ]
 }
