@@ -1,12 +1,12 @@
 {
  "version": 2,
- "data_date": "2026-11-19",
- "generated_at": "2026-11-19 21:34",
+ "data_date": "2026-11-20",
+ "generated_at": "2026-11-20 21:31",
  "market": {
-  "date": "2026-11-19",
-  "close": 38426.89,
-  "chg_pct": -4.4,
-  "ma20": 43262.29,
+  "date": "2026-11-20",
+  "close": 36033.29,
+  "chg_pct": -6.23,
+  "ma20": 42719.57,
   "ma20_dir": "下彎",
   "trend": "空頭",
   "label": "長期空頭",
@@ -46,36 +46,36 @@
  },
  "long": [
   {
-   "code": "1476",
-   "name": "儒鴻",
-   "market": "tse",
+   "code": "6199",
+   "name": "天品",
+   "market": "otc",
    "side": "long",
-   "key": "L5",
-   "title": "突破大量黑K",
-   "note": "黑K高點 390（1 天前）",
-   "close": 384.5,
-   "trigger": 401.0,
-   "gap_pct": 4.29,
+   "key": "L4",
+   "title": "橫盤／一字底突破",
+   "note": "K線橫盤 8 天，167.5–172.5",
+   "close": 169.5,
+   "trigger": 173.0,
+   "gap_pct": 2.06,
    "need_vol": 1.3,
-   "vol5": 3902,
-   "vol_ref": 5237,
+   "vol5": 9731,
+   "vol_ref": 12910,
    "term": "逆大盤短多",
    "ref": {
-    "k": 82.58,
-    "low_n1": 345.0,
-    "high_n1": 401.0,
-    "ma20": 345.7
+    "k": 82.88,
+    "low_n1": 167.5,
+    "high_n1": 172.5,
+    "ma20": 164.03
    },
    "stop": {
-    "use": 373.5,
-    "method": "回檔低點",
-    "fixed": 380.5,
-    "trend": 373.5
+    "use": 172.5,
+    "method": "突破點",
+    "fixed": 164.0,
+    "trend": 172.5
    },
    "position": "主升段",
    "trend": "多頭",
-   "rs": 97,
-   "score": 84,
+   "rs": 99,
+   "score": 76,
    "checks": [
     {
      "step": "趨勢",
@@ -90,12 +90,12 @@
     {
      "step": "位階",
      "ok": true,
-     "text": "主升段（第2波，+42%）"
+     "text": "主升段（第2波，+95%）"
     },
     {
      "step": "成交量",
      "ok": true,
-     "text": "攻擊量、進貨量、換手量（8天前）"
+     "text": "出貨量、換手量（16天前）"
     },
     {
      "step": "指標",
@@ -109,125 +109,52 @@
     },
     {
      "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 +2,345張（外資 -1,448、投信 +3,808）、連買5天、融資 -17%"
+     "ok": false,
+     "text": "法人5日 -2,063張（外資 +0、投信 +0）、連賣2天、融資 -1%"
     },
     {
      "step": "類股",
      "ok": true,
-     "text": "紡織纖維（第 4 強／35 類）"
+     "text": "其他（第 14 強／35 類）"
     }
    ],
-   "sector": "紡織纖維 第 4 強"
-  },
-  {
-   "code": "2618",
-   "name": "長榮航",
-   "market": "tse",
-   "side": "long",
-   "key": "L5",
-   "title": "突破大量黑K",
-   "note": "大量黑K高點 48.05（今天）",
-   "close": 46.4,
-   "trigger": 48.05,
-   "gap_pct": 3.56,
-   "need_vol": 1.3,
-   "vol5": 32520,
-   "vol_ref": 36150,
-   "term": "逆大盤短多",
-   "ref": {
-    "k": 72.82,
-    "low_n1": 44.15,
-    "high_n1": 48.95,
-    "ma20": 44.77
-   },
-   "stop": {
-    "use": 46.15,
-    "method": "回檔低點",
-    "fixed": 45.6,
-    "trend": 46.15
-   },
-   "position": "主升段",
-   "trend": "多頭",
-   "rs": 93,
-   "score": 65,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "多頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線上揚"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主升段（第3波，+40%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、換手量（6天前）、調節量（10天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 73 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": true,
-     "text": "通過"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 +34,853張（外資 +29,768、投信 +1,483）、融資 -13%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "航運（第 8 強／35 類）"
-    }
-   ],
-   "sector": "航運 第 8 強"
+   "sector": "其他 第 14 強"
   }
  ],
- "short": [
+ "short": [],
+ "confirmed": [
   {
-   "code": "3653",
-   "name": "健策",
+   "code": "2347",
+   "name": "聯強",
    "market": "tse",
    "side": "short",
    "key": "S5",
    "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 4075",
-   "close": 4115.0,
-   "trigger": 4030.0,
-   "gap_pct": 2.07,
+   "note": "反彈紅K低點 72",
+   "close": 69.5,
+   "trigger": 72.0,
+   "gap_pct": 3.1,
    "need_vol": 0,
-   "vol5": 2868,
-   "vol_ref": 2837,
+   "vol5": 4608,
+   "vol_ref": 6040,
    "term": "4 線空排，可做長線",
    "ref": {
-    "k": 12.91,
-    "low_n1": 4075.0,
-    "high_n1": 6360.0,
-    "ma20": 5691.5
+    "k": 9.75,
+    "low_n1": 72.0,
+    "high_n1": 82.6,
+    "ma20": 86.98
    },
    "stop": {
-    "use": 4235.0,
-    "method": "固定 5%",
-    "fixed": 4235.0,
-    "trend": 4765.0
+    "use": 75.2,
+    "method": "反彈高點",
+    "fixed": 73.0,
+    "trend": 75.2,
+    "kline": 73.3
    },
    "position": "初跌段",
    "trend": "空頭",
-   "rs": 22,
-   "score": 79,
+   "rs": 48,
+   "score": 76,
    "checks": [
     {
      "step": "趨勢",
@@ -242,35 +169,160 @@
     {
      "step": "位階",
      "ok": true,
-     "text": "初跌段（第1波，-45%）"
+     "text": "初跌段（第1波，-29%）"
     },
     {
      "step": "成交量",
      "ok": true,
-     "text": "量平"
+     "text": "攻擊量、進貨量、換手量（17天前）"
     },
     {
      "step": "指標",
      "ok": true,
-     "text": "K 13 向下，MACD柱減少（參考）"
+     "text": "K 10 向上，MACD柱增加（參考）"
     },
     {
      "step": "排除條件",
      "ok": true,
      "text": "通過"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +2,071張（外資 +2,526、投信 -391）、連買5天、融資 -34%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電子零組件（倒數第 1／35 類）"
     }
    ],
-   "sector": "電子零組件 倒數第 1"
+   "entry": 69.5,
+   "chg_pct": -6.46
+  },
+  {
+   "code": "1503",
+   "name": "士電",
+   "market": "tse",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 159",
+   "close": 144.0,
+   "trigger": 156.0,
+   "gap_pct": 2.19,
+   "need_vol": 0,
+   "vol5": 1370,
+   "vol_ref": 1843,
+   "term": "4 線空排，可做長線",
+   "ref": {
+    "k": 31.94,
+    "low_n1": 159.0,
+    "high_n1": 178.0,
+    "ma20": 175.6
+   },
+   "stop": {
+    "use": 171.5,
+    "method": "反彈高點",
+    "fixed": 151.5,
+    "trend": 171.5,
+    "kline": 158.0
+   },
+   "position": "主跌段",
+   "trend": "空頭",
+   "rs": 30,
+   "score": 74,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-41%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、搶反彈量（9天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 32 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": true,
+     "text": "通過"
+    }
+   ],
+   "entry": 144.0,
+   "chg_pct": -9.72
+  },
+  {
+   "code": "1708",
+   "name": "東鹼",
+   "market": "tse",
+   "side": "short",
+   "key": "S3",
+   "title": "跌破盤整下頸線",
+   "note": "下頸線 42.2／上頸線 46.9",
+   "close": 40.0,
+   "trigger": 42.2,
+   "gap_pct": 2.65,
+   "need_vol": 0,
+   "vol5": 1479,
+   "vol_ref": 1551,
+   "term": "4 線空排，可做長線",
+   "ref": {
+    "k": 32.34,
+    "low_n1": 43.35,
+    "high_n1": 46.9,
+    "ma20": 46.88
+   },
+   "stop": {
+    "use": 42.25,
+    "method": "跌破點",
+    "fixed": 42.0,
+    "trend": 42.2,
+    "kline": 42.7
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 44,
+   "score": 72,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第2波，-32%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "搶反彈量（9天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 32 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": true,
+     "text": "通過"
+    }
+   ],
+   "entry": 40.0,
+   "chg_pct": -7.73
   },
   {
    "code": "5243",
@@ -280,7 +332,7 @@
    "key": "S3",
    "title": "跌破盤整下頸線",
    "note": "下頸線 71.6／上頸線 88.4",
-   "close": 72.0,
+   "close": 64.8,
    "trigger": 70.5,
    "gap_pct": 2.08,
    "need_vol": 0,
@@ -296,13 +348,14 @@
    "stop": {
     "use": 71.6,
     "method": "跌破點",
-    "fixed": 74.1,
-    "trend": 71.6
+    "fixed": 68.1,
+    "trend": 71.6,
+    "kline": 69.5
    },
    "position": "主跌段",
    "trend": "盤整",
-   "rs": 40,
-   "score": 76,
+   "rs": 35,
+   "score": 69,
    "checks": [
     {
      "step": "趨勢",
@@ -333,1894 +386,327 @@
      "step": "排除條件",
      "ok": true,
      "text": "通過"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -2,236張（外資 -2,264、投信 +0）、連賣5天、融資 +4%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "光電（倒數第 3／35 類）"
     }
    ],
-   "sector": "光電 倒數第 3"
-  },
-  {
-   "code": "8016",
-   "name": "矽創",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 234",
-   "close": 240.0,
-   "trigger": 234.0,
-   "gap_pct": 2.5,
-   "need_vol": 0,
-   "vol5": 1232,
-   "vol_ref": 2375,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 30.49,
-    "low_n1": 231.5,
-    "high_n1": 269.0,
-    "ma20": 267.02
-   },
-   "stop": {
-    "use": 246.0,
-    "method": "固定 5%",
-    "fixed": 246.0,
-    "trend": 262.5
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 42,
-   "score": 76,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-36%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "爆大量、出貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 30 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": true,
-     "text": "通過"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +37張（外資 -1,440、投信 +1,460）、連買3天、融資 -3%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "半導體（倒數第 2／35 類）"
-    }
-   ],
-   "sector": "半導體 倒數第 2"
-  },
-  {
-   "code": "1503",
-   "name": "士電",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 159",
-   "close": 159.5,
-   "trigger": 156.0,
-   "gap_pct": 2.19,
-   "need_vol": 0,
-   "vol5": 1370,
-   "vol_ref": 1843,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 31.94,
-    "low_n1": 159.0,
-    "high_n1": 178.0,
-    "ma20": 175.6
-   },
-   "stop": {
-    "use": 171.5,
-    "method": "反彈高點",
-    "fixed": 164.0,
-    "trend": 171.5
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 34,
-   "score": 72,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-41%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 32 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": true,
-     "text": "通過"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +652張（外資 -60、投信 +534）、連買5天、融資 -5%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電機機械（倒數第 12／35 類）"
-    }
-   ],
-   "sector": "電機機械 倒數第 12"
-  },
-  {
-   "code": "1708",
-   "name": "東鹼",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 42.2／上頸線 46.9",
-   "close": 43.35,
-   "trigger": 42.2,
-   "gap_pct": 2.65,
-   "need_vol": 0,
-   "vol5": 1479,
-   "vol_ref": 1551,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 32.34,
-    "low_n1": 43.35,
-    "high_n1": 46.9,
-    "ma20": 46.88
-   },
-   "stop": {
-    "use": 42.25,
-    "method": "跌破點",
-    "fixed": 44.35,
-    "trend": 42.2
-   },
-   "position": "主跌段",
-   "trend": "盤整",
-   "rs": 50,
-   "score": 68,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-32%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 32 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": true,
-     "text": "通過"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +504張（外資 +461、投信 +1）、融資 -2%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "化學（倒數第 8／35 類）"
-    }
-   ],
-   "sector": "化學 倒數第 8"
-  }
- ],
- "confirmed": [
-  {
-   "code": "2103",
-   "name": "台橡",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 21.45",
-   "close": 20.95,
-   "trigger": 21.3,
-   "gap_pct": 2.07,
-   "need_vol": 0,
-   "vol5": 5286,
-   "vol_ref": 2771,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 12.61,
-    "low_n1": 21.45,
-    "high_n1": 24.25,
-    "ma20": 25.18
-   },
-   "stop": {
-    "use": 22.6,
-    "method": "反彈高點",
-    "fixed": 22.0,
-    "trend": 22.6,
-    "kline": 21.95
-   },
-   "position": "初跌段",
-   "trend": "空頭",
-   "rs": 25,
-   "score": 84,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "初跌段（第1波，-32%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量縮"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 13 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": true,
-     "text": "通過"
-    }
-   ],
-   "entry": 20.95,
-   "chg_pct": -3.68
-  },
-  {
-   "code": "4763",
-   "name": "材料*-KY",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 38.45",
-   "close": 36.8,
-   "trigger": 38.45,
-   "gap_pct": 2.66,
-   "need_vol": 0,
-   "vol5": 4882,
-   "vol_ref": 5291,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 28.91,
-    "low_n1": 38.45,
-    "high_n1": 45.3,
-    "ma20": 43.65
-   },
-   "stop": {
-    "use": 41.0,
-    "method": "反彈高點",
-    "fixed": 38.65,
-    "trend": 41.0,
-    "kline": 39.7
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 22,
-   "score": 78,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-28%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 29 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": true,
-     "text": "通過"
-    }
-   ],
-   "entry": 36.8,
-   "chg_pct": -6.84
-  },
-  {
-   "code": "1722",
-   "name": "台肥",
-   "market": "tse",
-   "side": "short",
-   "key": "S4",
-   "title": "跌破橫盤／一字底",
-   "note": "K線橫盤 5 天，38.05–39.15",
-   "close": 37.05,
-   "trigger": 37.35,
-   "gap_pct": 2.1,
-   "need_vol": 0,
-   "vol5": 2483,
-   "vol_ref": 2889,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 6.95,
-    "low_n1": 38.05,
-    "high_n1": 40.1,
-    "ma20": 40.39
-   },
-   "stop": {
-    "use": 38.05,
-    "method": "跌破點",
-    "fixed": 38.95,
-    "trend": 38.05,
-    "kline": 38.3
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 37,
-   "score": 72,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第3波，-27%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 7 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": true,
-     "text": "通過"
-    }
-   ],
-   "entry": 37.05,
-   "chg_pct": -2.88
-  },
-  {
-   "code": "1905",
-   "name": "華紙",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 10.65",
-   "close": 10.45,
-   "trigger": 10.65,
-   "gap_pct": 4.91,
-   "need_vol": 0,
-   "vol5": 2534,
-   "vol_ref": 4454,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 36.31,
-    "low_n1": 10.65,
-    "high_n1": 11.9,
-    "ma20": 11.94
-   },
-   "stop": {
-    "use": 11.25,
-    "method": "反彈高點",
-    "fixed": 11.0,
-    "trend": 11.25,
-    "kline": 11.15
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 30,
-   "score": 71,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-40%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "爆大量、進貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 36 向上，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": true,
-     "text": "通過"
-    }
-   ],
-   "entry": 10.45,
-   "chg_pct": -6.7
-  },
-  {
-   "code": "2439",
-   "name": "美律",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 65.4",
-   "close": 64.1,
-   "trigger": 65.4,
-   "gap_pct": 3.11,
-   "need_vol": 0,
-   "vol5": 1112,
-   "vol_ref": 1169,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 31.66,
-    "low_n1": 64.6,
-    "high_n1": 71.4,
-    "ma20": 72.6
-   },
-   "stop": {
-    "use": 68.1,
-    "method": "反彈高點",
-    "fixed": 67.4,
-    "trend": 68.1,
-    "kline": 67.8
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 32,
-   "score": 70,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第4波，-29%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "搶反彈量（8天前）、換手量（16天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 32 向上，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": true,
-     "text": "通過"
-    }
-   ],
-   "entry": 64.1,
-   "chg_pct": -5.04
-  },
-  {
-   "code": "4967",
-   "name": "十銓",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 230",
-   "close": 226.5,
-   "trigger": 230.0,
-   "gap_pct": 4.17,
-   "need_vol": 0,
-   "vol5": 3254,
-   "vol_ref": 3681,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 25.71,
-    "low_n1": 230.0,
-    "high_n1": 284.5,
-    "ma20": 260.57
-   },
-   "stop": {
-    "use": 253.0,
-    "method": "反彈高點",
-    "fixed": 238.0,
-    "trend": 253.0,
-    "kline": 240.5
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 50,
-   "score": 68,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第3波，-26%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "換手量（15天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 26 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": true,
-     "text": "通過"
-    }
-   ],
-   "entry": 226.5,
-   "chg_pct": -5.63
-  },
-  {
-   "code": "2458",
-   "name": "義隆",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 114",
-   "close": 113.0,
-   "trigger": 114.0,
-   "gap_pct": 3.39,
-   "need_vol": 0,
-   "vol5": 1072,
-   "vol_ref": 1162,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 65.9,
-    "low_n1": 112.0,
-    "high_n1": 120.5,
-    "ma20": 122.17
-   },
-   "stop": {
-    "use": 118.0,
-    "method": "反彈高點",
-    "fixed": 119.0,
-    "trend": 118.0,
-    "kline": 119.0
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 30,
-   "score": 63,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-40%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 66 向上，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": true,
-     "text": "通過"
-    }
-   ],
-   "entry": 113.0,
-   "chg_pct": -4.24
+   "entry": 64.8,
+   "chg_pct": -10.0
   }
  ],
  "excluded": [
   {
-   "code": "6199",
-   "name": "天品",
-   "market": "otc",
-   "side": "long",
-   "key": "L4",
-   "title": "橫盤／一字底突破",
-   "note": "K線橫盤 7 天，167.5–172.5",
-   "close": 172.5,
-   "trigger": 176.0,
-   "gap_pct": 2.03,
-   "need_vol": 1.3,
-   "vol5": 8918,
-   "vol_ref": 8614,
-   "term": "4 線多排，可做長線",
-   "ref": {
-    "k": 94.32,
-    "low_n1": 165.0,
-    "high_n1": 172.5,
-    "ma20": 162.9
-   },
-   "stop": {
-    "use": 172.5,
-    "method": "突破點",
-    "fixed": 167.0,
-    "trend": 172.5
-   },
-   "position": "主升段",
-   "trend": "多頭",
-   "rs": 99,
-   "score": 86,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "多頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線多排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主升段（第2波，+98%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "換手量（15天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 94 向上，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "明天是上漲第3根以上，勿追高"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +1,707張（外資 +0、投信 +0）、融資 +0%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "其他（第 12 強／35 類）"
-    }
-   ],
-   "why": [
-    "明天是上漲第3根以上，勿追高"
-   ],
-   "sector": "其他 第 12 強"
-  },
-  {
-   "code": "1477",
-   "name": "聚陽",
+   "code": "2471",
+   "name": "資通",
    "market": "tse",
    "side": "long",
    "key": "L5",
    "title": "突破大量黑K",
-   "note": "黑K高點 226.5（1 天前）",
-   "close": 224.0,
-   "trigger": 230.0,
-   "gap_pct": 2.68,
+   "note": "大量黑K高點 62.8（1 天前）",
+   "close": 62.8,
+   "trigger": 64.1,
+   "gap_pct": 2.07,
    "need_vol": 1.3,
-   "vol5": 3024,
-   "vol_ref": 2966,
-   "term": "4 線多排，可做長線",
+   "vol5": 11325,
+   "vol_ref": 23100,
+   "term": "",
    "ref": {
-    "k": 78.78,
-    "low_n1": 211.5,
-    "high_n1": 230.0,
-    "ma20": 213.53
+    "k": 50.18,
+    "low_n1": 53.7,
+    "high_n1": 78.2,
+    "ma20": 57.25
    },
    "stop": {
-    "use": 220.5,
-    "method": "回檔低點",
-    "fixed": 218.5,
-    "trend": 220.5
+    "use": 60.8,
+    "method": "固定 5%",
+    "fixed": 60.8,
+    "trend": 53.7
    },
    "position": "主升段",
-   "trend": "多頭",
-   "rs": 94,
-   "score": 86,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "多頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線多排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主升段（第2波，+19%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "止跌量（6天前）、換手量（9天前）、調節量（10天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 79 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線壓力 232 不到 5%"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 +3,557張（外資 +3,426、投信 +215）、融資 -1%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "紡織纖維（第 4 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線壓力 232 不到 5%"
-   ],
-   "sector": "紡織纖維 第 4 強"
-  },
-  {
-   "code": "1477",
-   "name": "聚陽",
-   "market": "tse",
-   "side": "long",
-   "key": "L2",
-   "title": "回後買上漲",
-   "note": "回檔低點 222，前低 211.5",
-   "close": 224.0,
-   "trigger": 230.0,
-   "gap_pct": 2.68,
-   "need_vol": 1.3,
-   "vol5": 3024,
-   "vol_ref": 2966,
-   "term": "4 線多排，可做長線",
-   "ref": {
-    "k": 78.78,
-    "low_n1": 211.5,
-    "high_n1": 230.0,
-    "ma20": 213.53
-   },
-   "stop": {
-    "use": 222.0,
-    "method": "轉折低點",
-    "fixed": 218.5,
-    "trend": 222.0
-   },
-   "position": "主升段",
-   "trend": "多頭",
-   "rs": 94,
-   "score": 86,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "多頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線多排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主升段（第2波，+19%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "止跌量（6天前）、換手量（9天前）、調節量（10天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 79 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線壓力 232 不到 5%"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 +3,557張（外資 +3,426、投信 +215）、融資 -1%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "紡織纖維（第 4 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線壓力 232 不到 5%"
-   ],
-   "sector": "紡織纖維 第 4 強"
-  },
-  {
-   "code": "2855",
-   "name": "統一證",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 45.35／上頸線 52.5",
-   "close": 45.9,
-   "trigger": 44.35,
-   "gap_pct": 3.38,
-   "need_vol": 0,
-   "vol5": 4064,
-   "vol_ref": 5859,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 35.9,
-    "low_n1": 44.35,
-    "high_n1": 52.5,
-    "ma20": 51.46
-   },
-   "stop": {
-    "use": 45.35,
-    "method": "跌破點",
-    "fixed": 46.6,
-    "trend": 45.35
-   },
-   "position": "初跌段",
    "trend": "盤整",
-   "rs": 83,
-   "score": 80,
+   "rs": 98,
+   "score": 84,
    "checks": [
     {
      "step": "趨勢",
-     "ok": true,
+     "ok": false,
      "text": "盤整"
     },
     {
      "step": "均線",
      "ok": true,
-     "text": "四線空排"
+     "text": "月線上揚"
     },
     {
      "step": "位階",
      "ok": true,
-     "text": "初跌段（第1波，-24%）"
+     "text": "主升段（第3波，+35%）"
     },
     {
      "step": "成交量",
      "ok": true,
-     "text": "出貨量"
+     "text": "爆大量、進貨量、換手量（5天前）、調節量（11天前）"
     },
     {
      "step": "指標",
      "ok": true,
-     "text": "K 36 向下，MACD柱減少（參考）"
+     "text": "K 50 向下，MACD柱減少（參考）"
     },
     {
      "step": "排除條件",
      "ok": false,
-     "text": "強度 83 太強，做空要弱勢股"
+     "text": "回檔已跌破前低；進場時均線還不是 3 線多排向上"
     },
     {
      "step": "籌碼",
+     "ok": true,
+     "text": "法人5日 +2,062張（外資 +2,070、投信 +0）、連買2天、融資 -18%"
+    },
+    {
+     "step": "類股",
+     "ok": true,
+     "text": "資訊服務（第 1 強／35 類）"
+    }
+   ],
+   "why": [
+    "回檔已跌破前低",
+    "進場時均線還不是 3 線多排向上"
+   ],
+   "sector": "資訊服務 第 1 強"
+  },
+  {
+   "code": "6614",
+   "name": "資拓宏宇",
+   "market": "tse",
+   "side": "long",
+   "key": "L5",
+   "title": "突破大量黑K",
+   "note": "大量黑K高點 41.5（1 天前）",
+   "close": 40.7,
+   "trigger": 41.55,
+   "gap_pct": 2.09,
+   "need_vol": 1.3,
+   "vol5": 1881,
+   "vol_ref": 1797,
+   "term": "4 線多排，可做長線",
+   "ref": {
+    "k": 63.17,
+    "low_n1": 31.4,
+    "high_n1": 44.0,
+    "ma20": 35.45
+   },
+   "stop": {
+    "use": 39.45,
+    "method": "固定 5%",
+    "fixed": 39.45,
+    "trend": 34.5
+   },
+   "position": "初升段",
+   "trend": "多頭",
+   "rs": 96,
+   "score": 82,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初升段（第1波，+31%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "調節量（4天前）、換手量（5天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 63 向上，MACD柱增加（參考）"
+    },
+    {
+     "step": "排除條件",
      "ok": false,
-     "text": "法人5日 +836張（外資 -342、投信 +1,178）、連賣4天、融資 +10%"
+     "text": "週線壓力 41.95 不到 5%"
+    },
+    {
+     "step": "籌碼",
+     "ok": true,
+     "text": "法人5日 +83張（外資 +72、投信 +0）、融資 +38%（融資大增，散戶追價）"
     },
     {
      "step": "類股",
      "ok": false,
-     "text": "金融保險（第 11 強／35 類）"
+     "text": "數位雲端（倒數第 16／35 類）"
     }
    ],
    "why": [
-    "強度 83 太強，做空要弱勢股"
+    "週線壓力 41.95 不到 5%"
    ],
-   "sector": "金融保險 第 11 強"
+   "sector": "數位雲端 倒數第 16"
   },
   {
-   "code": "2347",
-   "name": "聯強",
+   "code": "2468",
+   "name": "華經",
    "market": "tse",
-   "side": "short",
-   "key": "S2",
-   "title": "彈後空下跌",
-   "note": "反彈高點 75.2，前高 103",
-   "close": 74.3,
-   "trigger": 72.8,
-   "gap_pct": 2.02,
-   "need_vol": 0,
-   "vol5": 4608,
-   "vol_ref": 6040,
-   "term": "4 線空排，可做長線",
+   "side": "long",
+   "key": "L2",
+   "title": "回後買上漲",
+   "note": "回檔低點 59.5，前低 49.6",
+   "close": 69.1,
+   "trigger": 70.5,
+   "gap_pct": 2.03,
+   "need_vol": 1.3,
+   "vol5": 41512,
+   "vol_ref": 88710,
+   "term": "",
    "ref": {
-    "k": 9.75,
-    "low_n1": 72.0,
-    "high_n1": 82.6,
-    "ma20": 86.98
+    "k": 47.9,
+    "low_n1": 59.5,
+    "high_n1": 82.1,
+    "ma20": 62.79
    },
    "stop": {
-    "use": 75.2,
-    "method": "轉折高點",
-    "fixed": 76.5,
-    "trend": 75.2
+    "use": 66.9,
+    "method": "固定 5%",
+    "fixed": 66.9,
+    "trend": 59.5
    },
-   "position": "初跌段",
-   "trend": "空頭",
-   "rs": 51,
+   "position": "末升段",
+   "trend": "多頭",
+   "rs": 100,
    "score": 79,
    "checks": [
     {
      "step": "趨勢",
      "ok": true,
-     "text": "空頭"
+     "text": "多頭"
     },
     {
      "step": "均線",
      "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "初跌段（第1波，-29%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "攻擊量、進貨量、換手量（17天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 10 向上，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "強度 51 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -6,700張（外資 -7,196、投信 -897）、連賣5天、融資 -9%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電子通路（倒數第 10／35 類）"
-    }
-   ],
-   "why": [
-    "強度 51 太強，做空要弱勢股"
-   ],
-   "sector": "電子通路 倒數第 10"
-  },
-  {
-   "code": "6176",
-   "name": "瑞儀",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 76.1／上頸線 83.7",
-   "close": 76.6,
-   "trigger": 75.0,
-   "gap_pct": 2.09,
-   "need_vol": 0,
-   "vol5": 2033,
-   "vol_ref": 2488,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 28.07,
-    "low_n1": 76.5,
-    "high_n1": 83.7,
-    "ma20": 82.97
-   },
-   "stop": {
-    "use": 76.1,
-    "method": "跌破點",
-    "fixed": 78.8,
-    "trend": 76.1
-   },
-   "position": "末跌段",
-   "trend": "盤整",
-   "rs": 73,
-   "score": 78,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
+     "text": "月線上揚"
     },
     {
      "step": "位階",
      "ok": false,
-     "text": "末跌段（第4波，-34%）"
+     "text": "末升段（第3波，+121%）"
     },
     {
      "step": "成交量",
      "ok": true,
-     "text": "出貨量"
+     "text": "爆大量、進貨量、換手量（7天前）、調節量（18天前）"
     },
     {
      "step": "指標",
      "ok": true,
-     "text": "K 28 向下，MACD柱減少（參考）"
+     "text": "K 48 向下，MACD柱減少（參考）"
     },
     {
      "step": "排除條件",
      "ok": false,
-     "text": "位階：末跌段不做；強度 73 太強，做空要弱勢股"
+     "text": "進場時均線還不是 3 線多排向上；位階：末升段不做"
     },
     {
      "step": "籌碼",
      "ok": true,
-     "text": "法人5日 -425張（外資 -852、投信 +352）、融資 -7%"
+     "text": "法人5日 +2,902張（外資 +2,878、投信 +0）、融資 -8%"
     },
     {
      "step": "類股",
      "ok": true,
-     "text": "光電（倒數第 3／35 類）"
+     "text": "資訊服務（第 1 強／35 類）"
     }
    ],
    "why": [
-    "位階：末跌段不做",
-    "強度 73 太強，做空要弱勢股"
+    "進場時均線還不是 3 線多排向上",
+    "位階：末升段不做"
    ],
-   "sector": "光電 倒數第 3"
+   "sector": "資訊服務 第 1 強"
   },
   {
-   "code": "2316",
-   "name": "楠梓電",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 99",
-   "close": 101.5,
-   "trigger": 99.0,
-   "gap_pct": 2.46,
-   "need_vol": 0,
-   "vol5": 3398,
-   "vol_ref": 3189,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 26.25,
-    "low_n1": 99.0,
-    "high_n1": 136.0,
-    "ma20": 124.22
-   },
-   "stop": {
-    "use": 104.0,
-    "method": "固定 5%",
-    "fixed": 104.0,
-    "trend": 112.0
-   },
-   "position": "末跌段",
-   "trend": "空頭",
-   "rs": 10,
-   "score": 78,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第2波，-59%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 26 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 96 不到 5%；位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -369張（外資 -357、投信 +0）、連賣3天、融資 -6%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電子零組件（倒數第 1／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 96 不到 5%",
-    "位階：末跌段不做"
-   ],
-   "sector": "電子零組件 倒數第 1"
-  },
-  {
-   "code": "2347",
-   "name": "聯強",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 72",
-   "close": 74.3,
-   "trigger": 72.0,
-   "gap_pct": 3.1,
-   "need_vol": 0,
-   "vol5": 4608,
-   "vol_ref": 6040,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 9.75,
-    "low_n1": 72.0,
-    "high_n1": 82.6,
-    "ma20": 86.98
-   },
-   "stop": {
-    "use": 75.2,
-    "method": "反彈高點",
-    "fixed": 75.6,
-    "trend": 75.2
-   },
-   "position": "初跌段",
-   "trend": "空頭",
-   "rs": 51,
-   "score": 78,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "初跌段（第1波，-29%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "攻擊量、進貨量、換手量（17天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 10 向上，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "強度 51 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -6,700張（外資 -7,196、投信 -897）、連賣5天、融資 -9%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電子通路（倒數第 10／35 類）"
-    }
-   ],
-   "why": [
-    "強度 51 太強，做空要弱勢股"
-   ],
-   "sector": "電子通路 倒數第 10"
-  },
-  {
-   "code": "1409",
-   "name": "新纖",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 20／上頸線 23.85",
-   "close": 20.1,
-   "trigger": 19.65,
-   "gap_pct": 2.24,
-   "need_vol": 0,
-   "vol5": 6750,
-   "vol_ref": 7306,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 28.93,
-    "low_n1": 20.05,
-    "high_n1": 23.85,
-    "ma20": 22.9
-   },
-   "stop": {
-    "use": 20.0,
-    "method": "跌破點",
-    "fixed": 20.65,
-    "trend": 20.0
-   },
-   "position": "主跌段",
-   "trend": "盤整",
-   "rs": 42,
-   "score": 77,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-41%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 29 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "明天是下跌第3根以上，勿殺低"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -2,842張（外資 -2,677、投信 -443）、融資 -4%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "紡織纖維（第 4 強／35 類）"
-    }
-   ],
-   "why": [
-    "明天是下跌第3根以上，勿殺低"
-   ],
-   "sector": "紡織纖維 第 4 強"
-  },
-  {
-   "code": "3044",
-   "name": "健鼎",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 430",
-   "close": 433.5,
-   "trigger": 424.5,
-   "gap_pct": 2.08,
-   "need_vol": 0,
-   "vol5": 7336,
-   "vol_ref": 8319,
-   "term": "",
-   "ref": {
-    "k": 34.46,
-    "low_n1": 430.0,
-    "high_n1": 582.0,
-    "ma20": 497.07
-   },
-   "stop": {
-    "use": 446.0,
-    "method": "固定 5%",
-    "fixed": 446.0,
-    "trend": 481.5
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 61,
-   "score": 76,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-28%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 34 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "進場時均線還不是 3 線空排向下；強度 61 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -2,448張（外資 -5,611、投信 +2,666）、連賣5天、融資 +4%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電子零組件（倒數第 1／35 類）"
-    }
-   ],
-   "why": [
-    "進場時均線還不是 3 線空排向下",
-    "強度 61 太強，做空要弱勢股"
-   ],
-   "sector": "電子零組件 倒數第 1"
-  },
-  {
-   "code": "9933",
-   "name": "中鼎",
+   "code": "2468",
+   "name": "華經",
    "market": "tse",
    "side": "long",
    "key": "L5",
    "title": "突破大量黑K",
-   "note": "黑K高點 58.4（今天）",
-   "close": 56.6,
-   "trigger": 58.4,
-   "gap_pct": 3.18,
+   "note": "大量黑K高點 71（1 天前）",
+   "close": 69.1,
+   "trigger": 71.0,
+   "gap_pct": 2.75,
    "need_vol": 1.3,
-   "vol5": 34015,
-   "vol_ref": 28390,
-   "term": "4 線多排，可做長線",
+   "vol5": 41512,
+   "vol_ref": 88710,
+   "term": "",
    "ref": {
-    "k": 86.79,
-    "low_n1": 45.8,
-    "high_n1": 59.3,
-    "ma20": 48.71
+    "k": 47.9,
+    "low_n1": 59.5,
+    "high_n1": 82.1,
+    "ma20": 62.79
    },
    "stop": {
-    "use": 55.1,
-    "method": "回檔低點",
-    "fixed": 55.4,
-    "trend": 55.1
+    "use": 67.4,
+    "method": "固定 5%",
+    "fixed": 67.4,
+    "trend": 59.5
    },
    "position": "末升段",
-   "trend": "盤整",
-   "rs": 98,
-   "score": 76,
+   "trend": "多頭",
+   "rs": 100,
+   "score": 78,
    "checks": [
     {
      "step": "趨勢",
-     "ok": false,
-     "text": "盤整"
+     "ok": true,
+     "text": "多頭"
     },
     {
      "step": "均線",
      "ok": true,
-     "text": "四線多排"
+     "text": "月線上揚"
     },
     {
      "step": "位階",
      "ok": false,
-     "text": "末升段（第4波，+64%）"
+     "text": "末升段（第3波，+121%）"
     },
     {
      "step": "成交量",
      "ok": true,
-     "text": "換手量（2天前）、止跌量（3天前）、調節量（6天前）"
+     "text": "爆大量、進貨量、換手量（7天前）、調節量（18天前）"
     },
     {
      "step": "指標",
      "ok": true,
-     "text": "K 87 向下，MACD柱減少（參考）"
+     "text": "K 48 向下，MACD柱減少（參考）"
     },
     {
      "step": "排除條件",
      "ok": false,
-     "text": "回檔已跌破前低；位階：末升段不做"
+     "text": "進場時均線還不是 3 線多排向上；位階：末升段不做"
     },
     {
      "step": "籌碼",
      "ok": true,
-     "text": "法人5日 +38,435張（外資 +41,877、投信 -2,986）、連買5天、融資 +18%（融資大增，散戶追價）"
+     "text": "法人5日 +2,902張（外資 +2,878、投信 +0）、融資 -8%"
     },
     {
      "step": "類股",
      "ok": true,
-     "text": "其他（第 12 強／35 類）"
+     "text": "資訊服務（第 1 強／35 類）"
     }
    ],
    "why": [
-    "回檔已跌破前低",
+    "進場時均線還不是 3 線多排向上",
     "位階：末升段不做"
    ],
-   "sector": "其他 第 12 強"
-  },
-  {
-   "code": "1210",
-   "name": "大成",
-   "market": "tse",
-   "side": "long",
-   "key": "L4",
-   "title": "橫盤／一字底突破",
-   "note": "底部狹幅盤整 40 天，48.95–52.9",
-   "close": 51.1,
-   "trigger": 52.9,
-   "gap_pct": 3.52,
-   "need_vol": 1.3,
-   "vol5": 1760,
-   "vol_ref": 1781,
-   "term": "短線",
-   "ref": {
-    "k": 57.06,
-    "low_n1": 49.1,
-    "high_n1": 52.9,
-    "ma20": 50.9
-   },
-   "stop": {
-    "use": 52.8,
-    "method": "突破點",
-    "fixed": 50.2,
-    "trend": 52.9
-   },
-   "position": "初升段",
-   "trend": "空頭",
-   "rs": 80,
-   "score": 76,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": false,
-     "text": "月線走平"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "初升段（第1波，+4%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "換手量（8天前）、調節量（9天前）、搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 57 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線壓力 53 不到 5%"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 +4,738張（外資 +4,591、投信 +27）、連買5天、融資 -14%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "食品（第 9 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線壓力 53 不到 5%"
-   ],
-   "sector": "食品 第 9 強"
-  },
-  {
-   "code": "2441",
-   "name": "超豐",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 92.7／上頸線 115",
-   "close": 96.4,
-   "trigger": 92.7,
-   "gap_pct": 3.84,
-   "need_vol": 0,
-   "vol5": 4528,
-   "vol_ref": 7226,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 33.26,
-    "low_n1": 92.6,
-    "high_n1": 115.0,
-    "ma20": 107.4
-   },
-   "stop": {
-    "use": 92.8,
-    "method": "跌破點",
-    "fixed": 97.4,
-    "trend": 92.7
-   },
-   "position": "末跌段",
-   "trend": "盤整",
-   "rs": 48,
-   "score": 75,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第3波，-38%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 33 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 92 不到 5%；位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -1,077張（外資 -4,508、投信 +3,593）、融資 +1%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "半導體（倒數第 2／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 92 不到 5%",
-    "位階：末跌段不做"
-   ],
-   "sector": "半導體 倒數第 2"
-  },
-  {
-   "code": "2845",
-   "name": "遠東銀",
-   "market": "tse",
-   "side": "short",
-   "key": "S4",
-   "title": "跌破橫盤／一字底",
-   "note": "K線橫盤 3 天，12.25–12.6",
-   "close": 12.25,
-   "trigger": 12.0,
-   "gap_pct": 2.04,
-   "need_vol": 0,
-   "vol5": 6512,
-   "vol_ref": 10510,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 20.09,
-    "low_n1": 12.25,
-    "high_n1": 12.8,
-    "ma20": 12.83
-   },
-   "stop": {
-    "use": 12.25,
-    "method": "跌破點",
-    "fixed": 12.6,
-    "trend": 12.25
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 63,
-   "score": 74,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-12%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "爆大量、出貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 20 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "明天是下跌第3根以上，勿殺低；週線支撐 11.85 不到 5%；強度 63 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -659張（外資 -1,352、投信 -50）、融資 -4%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "金融保險（第 11 強／35 類）"
-    }
-   ],
-   "why": [
-    "明天是下跌第3根以上，勿殺低",
-    "週線支撐 11.85 不到 5%",
-    "強度 63 太強，做空要弱勢股"
-   ],
-   "sector": "金融保險 第 11 強"
-  },
-  {
-   "code": "3231",
-   "name": "緯創",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 155",
-   "close": 156.0,
-   "trigger": 152.5,
-   "gap_pct": 2.24,
-   "need_vol": 0,
-   "vol5": 31510,
-   "vol_ref": 23820,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 26.58,
-    "low_n1": 153.0,
-    "high_n1": 181.0,
-    "ma20": 174.68
-   },
-   "stop": {
-    "use": 164.0,
-    "method": "反彈高點",
-    "fixed": 160.5,
-    "trend": 164.0
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 54,
-   "score": 74,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-24%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 27 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "強度 54 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -7,496張（外資 -11,813、投信 +1,243）、融資 +7%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電腦及週邊（倒數第 5／35 類）"
-    }
-   ],
-   "why": [
-    "強度 54 太強，做空要弱勢股"
-   ],
-   "sector": "電腦及週邊 倒數第 5"
+   "sector": "資訊服務 第 1 強"
   },
   {
    "code": "2254",
@@ -2229,24 +715,24 @@
    "side": "long",
    "key": "L4",
    "title": "橫盤／一字底突破",
-   "note": "K線橫盤 5 天，109–111.5",
-   "close": 110.0,
-   "trigger": 112.5,
-   "gap_pct": 2.27,
+   "note": "K線橫盤 6 天，109–111.5",
+   "close": 109.5,
+   "trigger": 112.0,
+   "gap_pct": 2.28,
    "need_vol": 1.3,
-   "vol5": 3150,
-   "vol_ref": 3588,
+   "vol5": 3096,
+   "vol_ref": 2787,
    "term": "",
    "ref": {
-    "k": 49.48,
+    "k": 37.75,
     "low_n1": 109.0,
     "high_n1": 112.5,
-    "ma20": 106.38
+    "ma20": 107.11
    },
    "stop": {
     "use": 111.5,
     "method": "突破點",
-    "fixed": 106.5,
+    "fixed": 106.0,
     "trend": 111.5
    },
    "position": "主升段",
@@ -2267,17 +753,17 @@
     {
      "step": "位階",
      "ok": true,
-     "text": "主升段（第2波，+98%）"
+     "text": "主升段（第2波，+97%）"
     },
     {
      "step": "成交量",
      "ok": true,
-     "text": "換手量（12天前）"
+     "text": "換手量（13天前）"
     },
     {
      "step": "指標",
      "ok": true,
-     "text": "K 49 向下，MACD柱減少（參考）"
+     "text": "K 38 向下，MACD柱減少（參考）"
     },
     {
      "step": "排除條件",
@@ -2287,7 +773,7 @@
     {
      "step": "籌碼",
      "ok": false,
-     "text": "法人5日 -224張（外資 -205、投信 +0）、融資 +3%"
+     "text": "法人5日 -344張（外資 -322、投信 +0）、融資 +2%"
     },
     {
      "step": "類股",
@@ -2301,1450 +787,36 @@
    "sector": "汽車 倒數第 14"
   },
   {
-   "code": "2464",
-   "name": "盟立",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 128.5",
-   "close": 130.5,
-   "trigger": 127.5,
-   "gap_pct": 2.3,
-   "need_vol": 0,
-   "vol5": 5935,
-   "vol_ref": 7591,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 27.16,
-    "low_n1": 128.5,
-    "high_n1": 167.0,
-    "ma20": 156.25
-   },
-   "stop": {
-    "use": 134.0,
-    "method": "固定 5%",
-    "fixed": 134.0,
-    "trend": 144.5
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 20,
-   "score": 73,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-42%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 27 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "連續急跌的大量長黑K低檔"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +1,794張（外資 +1,941、投信 -65）、連買2天、融資 -6%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "其他電子（倒數第 4／35 類）"
-    }
-   ],
-   "why": [
-    "連續急跌的大量長黑K低檔"
-   ],
-   "sector": "其他電子 倒數第 4"
-  },
-  {
-   "code": "2610",
-   "name": "華航",
+   "code": "2254",
+   "name": "巨鎧精密-創",
    "market": "tse",
    "side": "long",
-   "key": "L5",
-   "title": "突破大量黑K",
-   "note": "黑K高點 23.5（今天）",
-   "close": 22.5,
-   "trigger": 23.5,
-   "gap_pct": 4.44,
+   "key": "L2",
+   "title": "回後買上漲",
+   "note": "回檔低點 109，前低 89.2",
+   "close": 109.5,
+   "trigger": 112.0,
+   "gap_pct": 2.28,
    "need_vol": 1.3,
-   "vol5": 40986,
-   "vol_ref": 42220,
-   "term": "4 線多排，可做長線",
-   "ref": {
-    "k": 70.85,
-    "low_n1": 21.9,
-    "high_n1": 23.7,
-    "ma20": 21.59
-   },
-   "stop": {
-    "use": 22.5,
-    "method": "回檔低點",
-    "fixed": 22.3,
-    "trend": 22.5
-   },
-   "position": "主升段",
-   "trend": "盤整",
-   "rs": 94,
-   "score": 73,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": false,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線上揚"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主升段（第3波，+27%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "換手量（7天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 71 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "回檔已跌破前低"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 +47,999張（外資 +42,496、投信 +5,442）、連買5天、融資 -5%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "航運（第 8 強／35 類）"
-    }
-   ],
-   "why": [
-    "回檔已跌破前低"
-   ],
-   "sector": "航運 第 8 強"
-  },
-  {
-   "code": "5871",
-   "name": "中租-KY",
-   "market": "tse",
-   "side": "short",
-   "key": "S4",
-   "title": "跌破橫盤／一字底",
-   "note": "K線橫盤 3 天，97.9–100.5",
-   "close": 99.5,
-   "trigger": 97.5,
-   "gap_pct": 2.01,
-   "need_vol": 0,
-   "vol5": 10980,
-   "vol_ref": 7721,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 25.09,
-    "low_n1": 97.9,
-    "high_n1": 106.0,
-    "ma20": 103.83
-   },
-   "stop": {
-    "use": 97.9,
-    "method": "跌破點",
-    "fixed": 102.5,
-    "trend": 97.9
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 61,
-   "score": 72,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第3波，-20%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 25 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 97.1 不到 5%；強度 61 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -11,035張（外資 -11,176、投信 -80）、連買2天、融資 +8%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "其他（第 12 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 97.1 不到 5%",
-    "強度 61 太強，做空要弱勢股"
-   ],
-   "sector": "其他 第 12 強"
-  },
-  {
-   "code": "5871",
-   "name": "中租-KY",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 98.3",
-   "close": 99.5,
-   "trigger": 97.5,
-   "gap_pct": 2.01,
-   "need_vol": 0,
-   "vol5": 10980,
-   "vol_ref": 7721,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 25.09,
-    "low_n1": 97.9,
-    "high_n1": 106.0,
-    "ma20": 103.83
-   },
-   "stop": {
-    "use": 100.5,
-    "method": "反彈高點",
-    "fixed": 102.5,
-    "trend": 100.5
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 61,
-   "score": 72,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第3波，-20%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 25 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 97.1 不到 5%；強度 61 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -11,035張（外資 -11,176、投信 -80）、連買2天、融資 +8%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "其他（第 12 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 97.1 不到 5%",
-    "強度 61 太強，做空要弱勢股"
-   ],
-   "sector": "其他 第 12 強"
-  },
-  {
-   "code": "4971",
-   "name": "IET-KY",
-   "market": "otc",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 316.5",
-   "close": 318.0,
-   "trigger": 311.5,
-   "gap_pct": 2.04,
-   "need_vol": 0,
-   "vol5": 1301,
-   "vol_ref": 804,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 23.59,
-    "low_n1": 316.5,
-    "high_n1": 431.0,
-    "ma20": 399.8
-   },
-   "stop": {
-    "use": 327.5,
-    "method": "固定 5%",
-    "fixed": 327.5,
-    "trend": 365.0
-   },
-   "position": "末跌段",
-   "trend": "空頭",
-   "rs": 5,
-   "score": 72,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第4波，-67%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 24 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +63張（外資 +0、投信 +0）、連賣2天、融資 -4%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "半導體（倒數第 2／35 類）"
-    }
-   ],
-   "why": [
-    "位階：末跌段不做"
-   ],
-   "sector": "半導體 倒數第 2"
-  },
-  {
-   "code": "2345",
-   "name": "智邦",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 1320",
-   "close": 1350.0,
-   "trigger": 1320.0,
-   "gap_pct": 2.22,
-   "need_vol": 0,
-   "vol5": 6220,
-   "vol_ref": 8373,
+   "vol5": 3096,
+   "vol_ref": 2787,
    "term": "",
    "ref": {
-    "k": 31.63,
-    "low_n1": 1290.0,
-    "high_n1": 1665.0,
-    "ma20": 1541.75
+    "k": 37.75,
+    "low_n1": 109.0,
+    "high_n1": 112.5,
+    "ma20": 107.11
    },
    "stop": {
-    "use": 1390.0,
-    "method": "固定 5%",
-    "fixed": 1390.0,
-    "trend": 1535.0
-   },
-   "position": "末跌段",
-   "trend": "空頭",
-   "rs": 9,
-   "score": 72,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第2波，-52%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 32 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "進場時均線還不是 3 線空排向下；位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +952張（外資 -1,182、投信 +1,658）、連買4天、融資 -10%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "通信網路（倒數第 7／35 類）"
-    }
-   ],
-   "why": [
-    "進場時均線還不是 3 線空排向下",
-    "位階：末跌段不做"
-   ],
-   "sector": "通信網路 倒數第 7"
-  },
-  {
-   "code": "6442",
-   "name": "光聖",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 920",
-   "close": 959.0,
-   "trigger": 920.0,
-   "gap_pct": 4.07,
-   "need_vol": 0,
-   "vol5": 2753,
-   "vol_ref": 2536,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 30.12,
-    "low_n1": 920.0,
-    "high_n1": 1215.0,
-    "ma20": 1177.4
-   },
-   "stop": {
-    "use": 966.0,
-    "method": "固定 5%",
-    "fixed": 966.0,
-    "trend": 1065.0
-   },
-   "position": "末跌段",
-   "trend": "空頭",
-   "rs": 6,
-   "score": 72,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第3波，-61%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 30 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -101張（外資 -92、投信 +7）、連賣2天、融資 -8%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "通信網路（倒數第 7／35 類）"
-    }
-   ],
-   "why": [
-    "位階：末跌段不做"
-   ],
-   "sector": "通信網路 倒數第 7"
-  },
-  {
-   "code": "2454",
-   "name": "聯發科",
-   "market": "tse",
-   "side": "short",
-   "key": "S1",
-   "title": "盤頭確認",
-   "note": "頸線 3695，頭 4235→4075",
-   "close": 3720.0,
-   "trigger": 3645.0,
-   "gap_pct": 2.02,
-   "need_vol": 0,
-   "vol5": 16074,
-   "vol_ref": 19610,
-   "term": "",
-   "ref": {
-    "k": 57.66,
-    "low_n1": 3660.0,
-    "high_n1": 4235.0,
-    "ma20": 3866.25
-   },
-   "stop": {
-    "use": 3695.0,
-    "method": "頸線停損",
-    "fixed": 3830.0,
-    "trend": 3695.0
-   },
-   "position": "主跌段",
-   "trend": "盤整",
-   "rs": 86,
-   "score": 71,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整（轉折中）"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-32%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 58 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "進場時均線還不是 3 線空排向下；強度 86 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -1,845張（外資 -4,488、投信 +1,518）、連賣4天、融資 -4%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "半導體（倒數第 2／35 類）"
-    }
-   ],
-   "why": [
-    "進場時均線還不是 3 線空排向下",
-    "強度 86 太強，做空要弱勢股"
-   ],
-   "sector": "半導體 倒數第 2"
-  },
-  {
-   "code": "3017",
-   "name": "奇鋐",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 2440",
-   "close": 2445.0,
-   "trigger": 2395.0,
-   "gap_pct": 2.04,
-   "need_vol": 0,
-   "vol5": 4488,
-   "vol_ref": 4658,
-   "term": "",
-   "ref": {
-    "k": 39.42,
-    "low_n1": 2440.0,
-    "high_n1": 3060.0,
-    "ma20": 2858.5
-   },
-   "stop": {
-    "use": 2515.0,
-    "method": "固定 5%",
-    "fixed": 2515.0,
-    "trend": 2715.0
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 41,
-   "score": 71,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-34%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 39 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 2310 不到 5%；進場時均線還不是 3 線空排向下"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +1,104張（外資 -442、投信 +1,168）、連買2天、融資 -6%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電腦及週邊（倒數第 5／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 2310 不到 5%",
-    "進場時均線還不是 3 線空排向下"
-   ],
-   "sector": "電腦及週邊 倒數第 5"
-  },
-  {
-   "code": "3033",
-   "name": "威健",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 35.1／上頸線 40.1",
-   "close": 35.5,
-   "trigger": 34.75,
-   "gap_pct": 2.11,
-   "need_vol": 0,
-   "vol5": 4388,
-   "vol_ref": 3305,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 29.4,
-    "low_n1": 35.35,
-    "high_n1": 40.1,
-    "ma20": 39.2
-   },
-   "stop": {
-    "use": 35.1,
-    "method": "跌破點",
-    "fixed": 36.5,
-    "trend": 35.1
-   },
-   "position": "末跌段",
-   "trend": "盤整",
-   "rs": 32,
-   "score": 70,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第3波，-40%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 29 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "明天是下跌第3根以上，勿殺低；位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -6,400張（外資 -6,266、投信 +27）、連賣5天、融資 -4%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電子通路（倒數第 10／35 類）"
-    }
-   ],
-   "why": [
-    "明天是下跌第3根以上，勿殺低",
-    "位階：末跌段不做"
-   ],
-   "sector": "電子通路 倒數第 10"
-  },
-  {
-   "code": "3062",
-   "name": "建漢",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 16.6",
-   "close": 16.6,
-   "trigger": 16.25,
-   "gap_pct": 2.11,
-   "need_vol": 0,
-   "vol5": 1940,
-   "vol_ref": 2246,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 17.58,
-    "low_n1": 16.6,
-    "high_n1": 20.2,
-    "ma20": 19.69
-   },
-   "stop": {
-    "use": 17.1,
-    "method": "固定 5%",
-    "fixed": 17.1,
-    "trend": 18.0
-   },
-   "position": "末跌段",
-   "trend": "空頭",
-   "rs": 39,
-   "score": 70,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第3波，-50%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 18 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -512張（外資 -627、投信 +10）、融資 -4%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "通信網路（倒數第 7／35 類）"
-    }
-   ],
-   "why": [
-    "位階：末跌段不做"
-   ],
-   "sector": "通信網路 倒數第 7"
-  },
-  {
-   "code": "4938",
-   "name": "和碩",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 81.1",
-   "close": 81.9,
-   "trigger": 80.2,
-   "gap_pct": 2.08,
-   "need_vol": 0,
-   "vol5": 14320,
-   "vol_ref": 13190,
-   "term": "短線",
-   "ref": {
-    "k": 13.22,
-    "low_n1": 81.0,
-    "high_n1": 97.5,
-    "ma20": 96.5
-   },
-   "stop": {
-    "use": 87.0,
-    "method": "反彈高點",
-    "fixed": 84.3,
-    "trend": 87.0
-   },
-   "position": "初跌段",
-   "trend": "空頭",
-   "rs": 67,
-   "score": 69,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "初跌段（第1波，-28%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 13 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 80 不到 5%；強度 67 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -2,311張（外資 -478、投信 -4,201）、融資 -16%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電腦及週邊（倒數第 5／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 80 不到 5%",
-    "強度 67 太強，做空要弱勢股"
-   ],
-   "sector": "電腦及週邊 倒數第 5"
-  },
-  {
-   "code": "4551",
-   "name": "智伸科",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 119／上頸線 147.5",
-   "close": 119.5,
-   "trigger": 117.0,
-   "gap_pct": 2.09,
-   "need_vol": 0,
-   "vol5": 1154,
-   "vol_ref": 910,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 27.64,
-    "low_n1": 118.0,
-    "high_n1": 147.5,
-    "ma20": 141.35
-   },
-   "stop": {
-    "use": 119.0,
-    "method": "跌破點",
-    "fixed": 123.0,
-    "trend": 119.0
-   },
-   "position": "末跌段",
-   "trend": "盤整",
-   "rs": 23,
-   "score": 69,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第2波，-59%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 28 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +421張（外資 +223、投信 +220）、融資 +3%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "汽車（倒數第 14／35 類）"
-    }
-   ],
-   "why": [
-    "位階：末跌段不做"
-   ],
-   "sector": "汽車 倒數第 14"
-  },
-  {
-   "code": "6139",
-   "name": "亞翔",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 541",
-   "close": 549.0,
-   "trigger": 538.0,
-   "gap_pct": 2.0,
-   "need_vol": 0,
-   "vol5": 2424,
-   "vol_ref": 2777,
-   "term": "",
-   "ref": {
-    "k": 40.34,
-    "low_n1": 541.0,
-    "high_n1": 637.0,
-    "ma20": 610.25
-   },
-   "stop": {
-    "use": 565.0,
-    "method": "固定 5%",
-    "fixed": 565.0,
-    "trend": 596.0
-   },
-   "position": "末跌段",
-   "trend": "空頭",
-   "rs": 19,
-   "score": 68,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第3波，-44%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 40 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 513 不到 5%；進場時均線還不是 3 線空排向下；位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +747張（外資 +112、投信 +733）、連買5天、融資 -3%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "其他電子（倒數第 4／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 513 不到 5%",
-    "進場時均線還不是 3 線空排向下",
-    "位階：末跌段不做"
-   ],
-   "sector": "其他電子 倒數第 4"
-  },
-  {
-   "code": "5608",
-   "name": "四維航",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 14／上頸線 16.85",
-   "close": 14.2,
-   "trigger": 13.9,
-   "gap_pct": 2.11,
-   "need_vol": 0,
-   "vol5": 2365,
-   "vol_ref": 2717,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 38.48,
-    "low_n1": 14.15,
-    "high_n1": 16.85,
-    "ma20": 15.84
-   },
-   "stop": {
-    "use": 14.0,
-    "method": "跌破點",
-    "fixed": 14.6,
-    "trend": 14.0
-   },
-   "position": "主跌段",
-   "trend": "盤整",
-   "rs": 44,
-   "score": 68,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第3波，-27%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 38 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "明天是下跌第3根以上，勿殺低"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +2,220張（外資 +2,375、投信 +0）、連買2天、融資 -2%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "航運（第 8 強／35 類）"
-    }
-   ],
-   "why": [
-    "明天是下跌第3根以上，勿殺低"
-   ],
-   "sector": "航運 第 8 強"
-  },
-  {
-   "code": "8050",
-   "name": "廣積",
-   "market": "otc",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 47.95／上頸線 52.9",
-   "close": 49.5,
-   "trigger": 47.95,
-   "gap_pct": 3.13,
-   "need_vol": 0,
-   "vol5": 1050,
-   "vol_ref": 1115,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 31.35,
-    "low_n1": 47.95,
-    "high_n1": 54.0,
-    "ma20": 55.93
-   },
-   "stop": {
-    "use": 48.0,
-    "method": "跌破點",
-    "fixed": 50.4,
-    "trend": 47.95
-   },
-   "position": "主跌段",
-   "trend": "盤整",
-   "rs": 56,
-   "score": 68,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-30%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 31 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "強度 56 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +365張（外資 +0、投信 +0）、連買3天、融資 -0%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電腦及週邊（倒數第 5／35 類）"
-    }
-   ],
-   "why": [
-    "強度 56 太強，做空要弱勢股"
-   ],
-   "sector": "電腦及週邊 倒數第 5"
-  },
-  {
-   "code": "2027",
-   "name": "大成鋼",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 43.6／上頸線 51.7",
-   "close": 45.8,
-   "trigger": 43.6,
-   "gap_pct": 4.8,
-   "need_vol": 0,
-   "vol5": 36970,
-   "vol_ref": 33490,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 29.64,
-    "low_n1": 43.6,
-    "high_n1": 51.7,
-    "ma20": 48.38
-   },
-   "stop": {
-    "use": 43.65,
-    "method": "跌破點",
-    "fixed": 45.8,
-    "trend": 43.6
-   },
-   "position": "主跌段",
-   "trend": "盤整",
-   "rs": 64,
-   "score": 67,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-12%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "調節量（11天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 30 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "強度 64 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -23,876張（外資 -79,331、投信 +54,519）、連買4天、融資 -12%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "鋼鐵（第 14 強／35 類）"
-    }
-   ],
-   "why": [
-    "強度 64 太強，做空要弱勢股"
-   ],
-   "sector": "鋼鐵 第 14 強"
-  },
-  {
-   "code": "6223",
-   "name": "旺矽",
-   "market": "otc",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 3880",
-   "close": 3955.0,
-   "trigger": 3875.0,
-   "gap_pct": 2.02,
-   "need_vol": 0,
-   "vol5": 1418,
-   "vol_ref": 911,
-   "term": "",
-   "ref": {
-    "k": 46.15,
-    "low_n1": 3880.0,
-    "high_n1": 5100.0,
-    "ma20": 4384.5
-   },
-   "stop": {
-    "use": 4070.0,
-    "method": "固定 5%",
-    "fixed": 4070.0,
-    "trend": 4390.0
-   },
-   "position": "末跌段",
-   "trend": "空頭",
-   "rs": 25,
-   "score": 66,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第4波，-49%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 46 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "進場時均線還不是 3 線空排向下；位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +248張（外資 +0、投信 +0）、融資 -19%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "半導體（倒數第 2／35 類）"
-    }
-   ],
-   "why": [
-    "進場時均線還不是 3 線空排向下",
-    "位階：末跌段不做"
-   ],
-   "sector": "半導體 倒數第 2"
-  },
-  {
-   "code": "2891",
-   "name": "中信金",
-   "market": "tse",
-   "side": "long",
-   "key": "L5",
-   "title": "突破大量黑K",
-   "note": "大量黑K高點 76.6（今天）",
-   "close": 73.1,
-   "trigger": 76.6,
-   "gap_pct": 4.79,
-   "need_vol": 1.3,
-   "vol5": 62256,
-   "vol_ref": 67510,
-   "term": "",
-   "ref": {
-    "k": 50.52,
-    "low_n1": 71.5,
-    "high_n1": 80.6,
-    "ma20": 75.0
-   },
-   "stop": {
-    "use": 71.5,
-    "method": "回檔低點",
-    "fixed": 72.7,
-    "trend": 71.5
+    "use": 109.0,
+    "method": "轉折低點",
+    "fixed": 106.0,
+    "trend": 109.0
    },
    "position": "主升段",
    "trend": "多頭",
-   "rs": 95,
-   "score": 66,
+   "rs": 99,
+   "score": 73,
    "checks": [
     {
      "step": "趨勢",
@@ -3759,17 +831,17 @@
     {
      "step": "位階",
      "ok": true,
-     "text": "主升段（第4波，+40%）"
+     "text": "主升段（第2波，+97%）"
     },
     {
      "step": "成交量",
      "ok": true,
-     "text": "出貨量、調節量（8天前）、換手量（9天前）"
+     "text": "換手量（13天前）"
     },
     {
      "step": "指標",
      "ok": true,
-     "text": "K 51 向下，MACD柱減少（參考）"
+     "text": "K 38 向下，MACD柱減少（參考）"
     },
     {
      "step": "排除條件",
@@ -3778,51 +850,365 @@
     },
     {
      "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 +47,406張（外資 -8,216、投信 +37,045）、連買5天、融資 +40%（融資大增，散戶追價）"
+     "ok": false,
+     "text": "法人5日 -344張（外資 -322、投信 +0）、融資 +2%"
     },
     {
      "step": "類股",
-     "ok": true,
-     "text": "金融保險（第 11 強／35 類）"
+     "ok": false,
+     "text": "汽車（倒數第 14／35 類）"
     }
    ],
    "why": [
     "進場時均線還不是 3 線多排向上"
    ],
-   "sector": "金融保險 第 11 強"
+   "sector": "汽車 倒數第 14"
   },
   {
-   "code": "9907",
-   "name": "統一實",
+   "code": "6148",
+   "name": "驊宏資",
+   "market": "otc",
+   "side": "long",
+   "key": "L2",
+   "title": "回後買上漲",
+   "note": "回檔低點 45.6，前低 37.85",
+   "close": 52.5,
+   "trigger": 54.0,
+   "gap_pct": 2.86,
+   "need_vol": 1.3,
+   "vol5": 27857,
+   "vol_ref": 53700,
+   "term": "",
+   "ref": {
+    "k": 49.5,
+    "low_n1": 45.6,
+    "high_n1": 66.4,
+    "ma20": 47.53
+   },
+   "stop": {
+    "use": 51.3,
+    "method": "固定 5%",
+    "fixed": 51.3,
+    "trend": 45.6
+   },
+   "position": "末升段",
+   "trend": "多頭",
+   "rs": 100,
+   "score": 73,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末升段（第4波，+113%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、進貨量、換手量（11天前）、調節量（12天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 50 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": false,
+     "text": "進場時均線還不是 3 線多排向上；位階：末升段不做"
+    },
+    {
+     "step": "籌碼",
+     "ok": false,
+     "text": "法人5日 +1,047張（外資 +0、投信 +0）、融資 +0%"
+    },
+    {
+     "step": "類股",
+     "ok": true,
+     "text": "資訊服務（第 1 強／35 類）"
+    }
+   ],
+   "why": [
+    "進場時均線還不是 3 線多排向上",
+    "位階：末升段不做"
+   ],
+   "sector": "資訊服務 第 1 強"
+  },
+  {
+   "code": "1477",
+   "name": "聚陽",
+   "market": "tse",
+   "side": "long",
+   "key": "L5",
+   "title": "突破大量黑K",
+   "note": "大量黑K高點 226.5（今天）",
+   "close": 220.0,
+   "trigger": 226.5,
+   "gap_pct": 2.95,
+   "need_vol": 1.3,
+   "vol5": 3013,
+   "vol_ref": 4420,
+   "term": "4 線多排，可做長線",
+   "ref": {
+    "k": 67.84,
+    "low_n1": 211.5,
+    "high_n1": 230.0,
+    "ma20": 214.07
+   },
+   "stop": {
+    "use": 219.0,
+    "method": "回檔低點",
+    "fixed": 215.0,
+    "trend": 219.0
+   },
+   "position": "主升段",
+   "trend": "多頭",
+   "rs": 95,
+   "score": 73,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+17%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、止跌量（7天前）、換手量（10天前）、調節量（11天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 68 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": false,
+     "text": "週線壓力 229.5 不到 5%"
+    },
+    {
+     "step": "籌碼",
+     "ok": true,
+     "text": "法人5日 +2,760張（外資 +1,647、投信 +1,162）、連買2天、融資 -6%"
+    },
+    {
+     "step": "類股",
+     "ok": true,
+     "text": "紡織纖維（第 3 強／35 類）"
+    }
+   ],
+   "why": [
+    "週線壓力 229.5 不到 5%"
+   ],
+   "sector": "紡織纖維 第 3 強"
+  },
+  {
+   "code": "1477",
+   "name": "聚陽",
+   "market": "tse",
+   "side": "long",
+   "key": "L2",
+   "title": "回後買上漲",
+   "note": "回檔低點 219，前低 211.5",
+   "close": 220.0,
+   "trigger": 226.5,
+   "gap_pct": 2.95,
+   "need_vol": 1.3,
+   "vol5": 3013,
+   "vol_ref": 4420,
+   "term": "4 線多排，可做長線",
+   "ref": {
+    "k": 67.84,
+    "low_n1": 211.5,
+    "high_n1": 230.0,
+    "ma20": 214.07
+   },
+   "stop": {
+    "use": 219.0,
+    "method": "轉折低點",
+    "fixed": 215.0,
+    "trend": 219.0
+   },
+   "position": "主升段",
+   "trend": "多頭",
+   "rs": 95,
+   "score": 73,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+17%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、止跌量（7天前）、換手量（10天前）、調節量（11天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 68 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": false,
+     "text": "週線壓力 229.5 不到 5%"
+    },
+    {
+     "step": "籌碼",
+     "ok": true,
+     "text": "法人5日 +2,760張（外資 +1,647、投信 +1,162）、連買2天、融資 -6%"
+    },
+    {
+     "step": "類股",
+     "ok": true,
+     "text": "紡織纖維（第 3 強／35 類）"
+    }
+   ],
+   "why": [
+    "週線壓力 229.5 不到 5%"
+   ],
+   "sector": "紡織纖維 第 3 強"
+  },
+  {
+   "code": "6148",
+   "name": "驊宏資",
+   "market": "otc",
+   "side": "long",
+   "key": "L5",
+   "title": "突破大量黑K",
+   "note": "大量黑K高點 54.9（1 天前）",
+   "close": 52.5,
+   "trigger": 54.9,
+   "gap_pct": 4.57,
+   "need_vol": 1.3,
+   "vol5": 27857,
+   "vol_ref": 53700,
+   "term": "",
+   "ref": {
+    "k": 49.5,
+    "low_n1": 45.6,
+    "high_n1": 66.4,
+    "ma20": 47.53
+   },
+   "stop": {
+    "use": 52.1,
+    "method": "固定 5%",
+    "fixed": 52.1,
+    "trend": 45.6
+   },
+   "position": "末升段",
+   "trend": "多頭",
+   "rs": 100,
+   "score": 71,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末升段（第4波，+113%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、進貨量、換手量（11天前）、調節量（12天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 50 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": false,
+     "text": "進場時均線還不是 3 線多排向上；位階：末升段不做"
+    },
+    {
+     "step": "籌碼",
+     "ok": false,
+     "text": "法人5日 +1,047張（外資 +0、投信 +0）、融資 +0%"
+    },
+    {
+     "step": "類股",
+     "ok": true,
+     "text": "資訊服務（第 1 強／35 類）"
+    }
+   ],
+   "why": [
+    "進場時均線還不是 3 線多排向上",
+    "位階：末升段不做"
+   ],
+   "sector": "資訊服務 第 1 強"
+  },
+  {
+   "code": "2633",
+   "name": "台灣高鐵",
    "market": "tse",
    "side": "short",
    "key": "S4",
    "title": "跌破橫盤／一字底",
-   "note": "K線橫盤 3 天，13.45–13.8",
-   "close": 13.6,
-   "trigger": 13.3,
-   "gap_pct": 2.21,
+   "note": "狹幅盤整 40 天，25–26.65",
+   "close": 25.0,
+   "trigger": 24.5,
+   "gap_pct": 2.0,
    "need_vol": 0,
-   "vol5": 1435,
-   "vol_ref": 1654,
+   "vol5": 4350,
+   "vol_ref": 7910,
    "term": "4 線空排，可做長線",
    "ref": {
-    "k": 14.11,
-    "low_n1": 13.45,
-    "high_n1": 14.05,
-    "ma20": 14.25
+    "k": 26.41,
+    "low_n1": 25.0,
+    "high_n1": 26.0,
+    "ma20": 25.83
    },
    "stop": {
-    "use": 13.45,
+    "use": 25.0,
     "method": "跌破點",
-    "fixed": 14.0,
-    "trend": 13.45
+    "fixed": 25.75,
+    "trend": 25.0
    },
    "position": "主跌段",
    "trend": "空頭",
-   "rs": 61,
-   "score": 65,
+   "rs": 85,
+   "score": 68,
    "checks": [
     {
      "step": "趨勢",
@@ -3837,69 +1223,232 @@
     {
      "step": "位階",
      "ok": true,
-     "text": "主跌段（第3波，-25%）"
+     "text": "主跌段（第2波，-7%）"
     },
     {
      "step": "成交量",
      "ok": true,
-     "text": "攻擊量、進貨量"
+     "text": "爆大量、出貨量、換手量（8天前）、調節量（10天前）"
     },
     {
      "step": "指標",
      "ok": true,
-     "text": "K 14 向上，MACD柱增加（參考）"
+     "text": "K 26 向下，MACD柱減少（參考）"
     },
     {
      "step": "排除條件",
      "ok": false,
-     "text": "強度 61 太強，做空要弱勢股"
+     "text": "明天是下跌第3根以上，勿殺低；強度 85 太強，做空要弱勢股"
     },
     {
      "step": "籌碼",
      "ok": false,
-     "text": "法人5日 +1,551張（外資 +1,276、投信 +55）、連買2天、融資 -1%"
+     "text": "法人5日 +331張（外資 +757、投信 -453）、融資 +8%"
     },
     {
      "step": "類股",
      "ok": false,
-     "text": "其他（第 12 強／35 類）"
+     "text": "航運（第 11 強／35 類）"
     }
    ],
    "why": [
-    "強度 61 太強，做空要弱勢股"
+    "明天是下跌第3根以上，勿殺低",
+    "強度 85 太強，做空要弱勢股"
    ],
-   "sector": "其他 第 12 強"
+   "sector": "航運 第 11 強"
   },
   {
-   "code": "2034",
-   "name": "允強",
+   "code": "4105",
+   "name": "東洋",
+   "market": "otc",
+   "side": "short",
+   "key": "S3",
+   "title": "跌破盤整下頸線",
+   "note": "下頸線 77.1／上頸線 84.5",
+   "close": 77.5,
+   "trigger": 75.9,
+   "gap_pct": 2.06,
+   "need_vol": 0,
+   "vol5": 1098,
+   "vol_ref": 1652,
+   "term": "",
+   "ref": {
+    "k": 38.35,
+    "low_n1": 77.5,
+    "high_n1": 84.5,
+    "ma20": 81.0
+   },
+   "stop": {
+    "use": 77.1,
+    "method": "跌破點",
+    "fixed": 79.7,
+    "trend": 77.1
+   },
+   "position": "初跌段",
+   "trend": "盤整",
+   "rs": 89,
+   "score": 66,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "初跌段（第1波，-8%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、換手量（8天前）、調節量（15天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 38 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": false,
+     "text": "明天是下跌第3根以上，勿殺低；週線支撐 73.9 不到 5%；進場時均線還不是 3 線空排向下；強度 89 太強，做空要弱勢股"
+    },
+    {
+     "step": "籌碼",
+     "ok": false,
+     "text": "法人5日 +1,191張（外資 +0、投信 +0）、融資 -5%"
+    },
+    {
+     "step": "類股",
+     "ok": false,
+     "text": "生技醫療（第 17 強／35 類）"
+    }
+   ],
+   "why": [
+    "明天是下跌第3根以上，勿殺低",
+    "週線支撐 73.9 不到 5%",
+    "進場時均線還不是 3 線空排向下",
+    "強度 89 太強，做空要弱勢股"
+   ],
+   "sector": "生技醫療 第 17 強"
+  },
+  {
+   "code": "6140",
+   "name": "訊達",
+   "market": "otc",
+   "side": "long",
+   "key": "L5",
+   "title": "突破大量黑K",
+   "note": "黑K高點 31（1 天前）",
+   "close": 29.6,
+   "trigger": 31.0,
+   "gap_pct": 4.73,
+   "need_vol": 1.3,
+   "vol5": 1934,
+   "vol_ref": 1350,
+   "term": "",
+   "ref": {
+    "k": 58.62,
+    "low_n1": 24.75,
+    "high_n1": 36.85,
+    "ma20": 25.64
+   },
+   "stop": {
+    "use": 29.45,
+    "method": "固定 5%",
+    "fixed": 29.45,
+    "trend": 24.75
+   },
+   "position": "末升段",
+   "trend": "盤整",
+   "rs": 99,
+   "score": 66,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": false,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末升段（第3波，+97%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "換手量（5天前）、調節量（12天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 59 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": false,
+     "text": "週線壓力 31.05 不到 5%；回檔已跌破前低；進場時均線還不是 3 線多排向上；位階：末升段不做"
+    },
+    {
+     "step": "籌碼",
+     "ok": false,
+     "text": "法人5日 +38張（外資 +0、投信 +0）、連買3天、融資 -6%"
+    },
+    {
+     "step": "類股",
+     "ok": true,
+     "text": "資訊服務（第 1 強／35 類）"
+    }
+   ],
+   "why": [
+    "週線壓力 31.05 不到 5%",
+    "回檔已跌破前低",
+    "進場時均線還不是 3 線多排向上",
+    "位階：末升段不做"
+   ],
+   "sector": "資訊服務 第 1 強"
+  },
+  {
+   "code": "2891",
+   "name": "中信金",
    "market": "tse",
    "side": "short",
    "key": "S3",
    "title": "跌破盤整下頸線",
-   "note": "下頸線 20.35／上頸線 25.2",
-   "close": 21.3,
-   "trigger": 20.35,
-   "gap_pct": 4.46,
+   "note": "下頸線 67.5／上頸線 80.6",
+   "close": 68.0,
+   "trigger": 66.3,
+   "gap_pct": 2.5,
    "need_vol": 0,
-   "vol5": 2184,
-   "vol_ref": 1906,
+   "vol5": 65244,
+   "vol_ref": 79320,
    "term": "短線",
    "ref": {
-    "k": 38.36,
-    "low_n1": 21.1,
-    "high_n1": 25.2,
-    "ma20": 23.18
+    "k": 37.64,
+    "low_n1": 66.3,
+    "high_n1": 80.6,
+    "ma20": 74.66
    },
    "stop": {
-    "use": 20.4,
+    "use": 67.5,
     "method": "跌破點",
-    "fixed": 21.4,
-    "trend": 20.35
+    "fixed": 69.7,
+    "trend": 67.5
    },
    "position": "初跌段",
    "trend": "盤整",
-   "rs": 90,
+   "rs": 94,
    "score": 65,
    "checks": [
     {
@@ -3920,7 +1469,7 @@
     {
      "step": "成交量",
      "ok": true,
-     "text": "換手量（20天前）"
+     "text": "出貨量、調節量（9天前）、換手量（10天前）"
     },
     {
      "step": "指標",
@@ -3930,1161 +1479,57 @@
     {
      "step": "排除條件",
      "ok": false,
-     "text": "明天是下跌第3根以上，勿殺低；週線支撐 20.05 不到 5%；強度 90 太強，做空要弱勢股"
+     "text": "明天是下跌第3根以上，勿殺低；週線支撐 63.1 不到 5%；強度 94 太強，做空要弱勢股"
     },
     {
      "step": "籌碼",
      "ok": false,
-     "text": "法人5日 +302張（外資 +1,166、投信 -880）、融資 -5%"
+     "text": "法人5日 +24,934張（外資 -9,600、投信 +10,289）、連買5天、融資 +26%"
     },
     {
      "step": "類股",
      "ok": false,
-     "text": "鋼鐵（第 14 強／35 類）"
+     "text": "金融保險（第 16 強／35 類）"
     }
    ],
    "why": [
     "明天是下跌第3根以上，勿殺低",
-    "週線支撐 20.05 不到 5%",
-    "強度 90 太強，做空要弱勢股"
+    "週線支撐 63.1 不到 5%",
+    "強度 94 太強，做空要弱勢股"
    ],
-   "sector": "鋼鐵 第 14 強"
+   "sector": "金融保險 第 16 強"
   },
   {
-   "code": "6743",
-   "name": "安普新",
+   "code": "2886",
+   "name": "兆豐金",
    "market": "tse",
-   "side": "long",
-   "key": "L5",
-   "title": "突破大量黑K",
-   "note": "黑K高點 36（今天）",
-   "close": 34.35,
-   "trigger": 36.0,
-   "gap_pct": 4.8,
-   "need_vol": 1.3,
-   "vol5": 2211,
-   "vol_ref": 1343,
-   "term": "4 線多排，可做長線",
-   "ref": {
-    "k": 75.25,
-    "low_n1": 27.8,
-    "high_n1": 37.75,
-    "ma20": 30.94
-   },
-   "stop": {
-    "use": 33.05,
-    "method": "回檔低點",
-    "fixed": 34.2,
-    "trend": 33.05
-   },
-   "position": "末升段",
-   "trend": "多頭",
-   "rs": 98,
-   "score": 65,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "多頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線多排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末升段（第5波，+55%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 75 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線壓力 37.45 不到 5%；上方 37.75 有爆量長上影線壓力；位階：末升段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 +1,174張（外資 +1,108、投信 +7）、連買5天、融資 +55%（融資大增，散戶追價）"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "其他電子（倒數第 4／35 類）"
-    }
-   ],
-   "why": [
-    "週線壓力 37.45 不到 5%",
-    "上方 37.75 有爆量長上影線壓力",
-    "位階：末升段不做"
-   ],
-   "sector": "其他電子 倒數第 4"
-  },
-  {
-   "code": "6743",
-   "name": "安普新",
-   "market": "tse",
-   "side": "long",
-   "key": "L2",
-   "title": "回後買上漲",
-   "note": "回檔低點 33.05，前低 27.8",
-   "close": 34.35,
-   "trigger": 36.0,
-   "gap_pct": 4.8,
-   "need_vol": 1.3,
-   "vol5": 2211,
-   "vol_ref": 1343,
-   "term": "4 線多排，可做長線",
-   "ref": {
-    "k": 75.25,
-    "low_n1": 27.8,
-    "high_n1": 37.75,
-    "ma20": 30.94
-   },
-   "stop": {
-    "use": 33.05,
-    "method": "轉折低點",
-    "fixed": 34.2,
-    "trend": 33.05
-   },
-   "position": "末升段",
-   "trend": "多頭",
-   "rs": 98,
-   "score": 65,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "多頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線多排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末升段（第5波，+55%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 75 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線壓力 37.45 不到 5%；上方 37.75 有爆量長上影線壓力；位階：末升段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 +1,174張（外資 +1,108、投信 +7）、連買5天、融資 +55%（融資大增，散戶追價）"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "其他電子（倒數第 4／35 類）"
-    }
-   ],
-   "why": [
-    "週線壓力 37.45 不到 5%",
-    "上方 37.75 有爆量長上影線壓力",
-    "位階：末升段不做"
-   ],
-   "sector": "其他電子 倒數第 4"
-  },
-  {
-   "code": "4527",
-   "name": "方土霖",
-   "market": "otc",
-   "side": "short",
-   "key": "S4",
-   "title": "跌破橫盤／一字底",
-   "note": "K線橫盤 3 天，41.85–42.8",
-   "close": 42.0,
-   "trigger": 41.15,
-   "gap_pct": 2.02,
-   "need_vol": 0,
-   "vol5": 1468,
-   "vol_ref": 16,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 20.18,
-    "low_n1": 41.85,
-    "high_n1": 44.1,
-    "ma20": 43.81
-   },
-   "stop": {
-    "use": 41.85,
-    "method": "跌破點",
-    "fixed": 43.25,
-    "trend": 41.85
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 69,
-   "score": 64,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-18%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量縮、止跌量（2天前）、換手量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 20 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "強度 69 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 -17張（外資 +0、投信 +0）、連買2天、融資 +0%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電機機械（倒數第 12／35 類）"
-    }
-   ],
-   "why": [
-    "強度 69 太強，做空要弱勢股"
-   ],
-   "sector": "電機機械 倒數第 12"
-  },
-  {
-   "code": "2474",
-   "name": "可成",
-   "market": "tse",
-   "side": "long",
-   "key": "L5",
-   "title": "突破大量黑K",
-   "note": "大量黑K高點 201.5（今天）",
-   "close": 197.5,
-   "trigger": 201.5,
-   "gap_pct": 2.03,
-   "need_vol": 1.3,
-   "vol5": 3483,
-   "vol_ref": 4366,
-   "term": "短線",
-   "ref": {
-    "k": 80.1,
-    "low_n1": 185.0,
-    "high_n1": 203.0,
-    "ma20": 192.7
-   },
-   "stop": {
-    "use": 196.5,
-    "method": "回檔低點",
-    "fixed": 191.0,
-    "trend": 196.5
-   },
-   "position": "初升段",
-   "trend": "空頭",
-   "rs": 79,
-   "score": 64,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": false,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線上揚"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "初升段（第1波，+16%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、搶反彈量（9天前）、換手量（17天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 80 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "回檔已跌破前低；一般空頭的反彈；上方 203 有爆量長上影線壓力"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 -1,247張（外資 -3,894、投信 +2,262）、連賣4天、融資 -2%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "其他電子（倒數第 4／35 類）"
-    }
-   ],
-   "why": [
-    "回檔已跌破前低",
-    "一般空頭的反彈",
-    "上方 203 有爆量長上影線壓力"
-   ],
-   "sector": "其他電子 倒數第 4"
-  },
-  {
-   "code": "6805",
-   "name": "富世達",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 1580",
-   "close": 1585.0,
-   "trigger": 1550.0,
-   "gap_pct": 2.21,
-   "need_vol": 0,
-   "vol5": 1455,
-   "vol_ref": 543,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 18.41,
-    "low_n1": 1580.0,
-    "high_n1": 2150.0,
-    "ma20": 2053.25
-   },
-   "stop": {
-    "use": 1630.0,
-    "method": "固定 5%",
-    "fixed": 1630.0,
-    "trend": 1795.0
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 52,
-   "score": 63,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-42%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量縮"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 18 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "量價背離＋KD低檔＋乖離過大＋均線開口大；強度 52 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +41張（外資 -169、投信 +228）、連賣2天、融資 -15%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電子零組件（倒數第 1／35 類）"
-    }
-   ],
-   "why": [
-    "量價背離＋KD低檔＋乖離過大＋均線開口大",
-    "強度 52 太強，做空要弱勢股"
-   ],
-   "sector": "電子零組件 倒數第 1"
-  },
-  {
-   "code": "2611",
-   "name": "志信",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 14.2／上頸線 16.6",
-   "close": 14.65,
-   "trigger": 14.2,
-   "gap_pct": 3.07,
-   "need_vol": 0,
-   "vol5": 1660,
-   "vol_ref": 712,
-   "term": "短線",
-   "ref": {
-    "k": 37.34,
-    "low_n1": 14.65,
-    "high_n1": 16.6,
-    "ma20": 15.71
-   },
-   "stop": {
-    "use": 14.25,
-    "method": "跌破點",
-    "fixed": 14.95,
-    "trend": 14.2
-   },
-   "position": "主跌段",
-   "trend": "盤整",
-   "rs": 67,
-   "score": 63,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-21%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量縮"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 37 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 13.85 不到 5%；強度 67 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -208張（外資 -226、投信 +0）、融資 -6%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "航運（第 8 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 13.85 不到 5%",
-    "強度 67 太強，做空要弱勢股"
-   ],
-   "sector": "航運 第 8 強"
-  },
-  {
-   "code": "3028",
-   "name": "增你強",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 51.3／上頸線 60",
-   "close": 53.9,
-   "trigger": 51.3,
-   "gap_pct": 4.82,
-   "need_vol": 0,
-   "vol5": 3763,
-   "vol_ref": 13390,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 42.18,
-    "low_n1": 51.3,
-    "high_n1": 60.0,
-    "ma20": 56.7
-   },
-   "stop": {
-    "use": 51.4,
-    "method": "跌破點",
-    "fixed": 53.9,
-    "trend": 51.3
-   },
-   "position": "末跌段",
-   "trend": "盤整",
-   "rs": 41,
-   "score": 63,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第4波，-39%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "爆大量、出貨量"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 42 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +234張（外資 -4,163、投信 +4,327）、融資 -4%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電子通路（倒數第 10／35 類）"
-    }
-   ],
-   "why": [
-    "位階：末跌段不做"
-   ],
-   "sector": "電子通路 倒數第 10"
-  },
-  {
-   "code": "2820",
-   "name": "華票",
-   "market": "tse",
-   "side": "short",
-   "key": "S4",
-   "title": "跌破橫盤／一字底",
-   "note": "K線橫盤 3 天，16.1–16.5",
-   "close": 16.2,
-   "trigger": 15.85,
-   "gap_pct": 2.16,
-   "need_vol": 0,
-   "vol5": 3059,
-   "vol_ref": 4673,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 39.09,
-    "low_n1": 16.1,
-    "high_n1": 16.7,
-    "ma20": 16.5
-   },
-   "stop": {
-    "use": 16.1,
-    "method": "跌破點",
-    "fixed": 16.65,
-    "trend": 16.1
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 85,
-   "score": 62,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-10%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、換手量（7天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 39 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "強度 85 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -259張（外資 -749、投信 +0）、融資 +13%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "金融保險（第 11 強／35 類）"
-    }
-   ],
-   "why": [
-    "強度 85 太強，做空要弱勢股"
-   ],
-   "sector": "金融保險 第 11 強"
-  },
-  {
-   "code": "2820",
-   "name": "華票",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 16.15",
-   "close": 16.2,
-   "trigger": 15.85,
-   "gap_pct": 2.16,
-   "need_vol": 0,
-   "vol5": 3059,
-   "vol_ref": 4673,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 39.09,
-    "low_n1": 16.1,
-    "high_n1": 16.7,
-    "ma20": 16.5
-   },
-   "stop": {
-    "use": 16.45,
-    "method": "反彈高點",
-    "fixed": 16.65,
-    "trend": 16.45
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 85,
-   "score": 62,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-10%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、換手量（7天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 39 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "強度 85 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -259張（外資 -749、投信 +0）、融資 +13%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "金融保險（第 11 強／35 類）"
-    }
-   ],
-   "why": [
-    "強度 85 太強，做空要弱勢股"
-   ],
-   "sector": "金融保險 第 11 強"
-  },
-  {
-   "code": "2382",
-   "name": "廣達",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 253",
-   "close": 262.5,
-   "trigger": 253.0,
-   "gap_pct": 3.62,
-   "need_vol": 0,
-   "vol5": 16898,
-   "vol_ref": 11400,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 18.62,
-    "low_n1": 253.0,
-    "high_n1": 304.0,
-    "ma20": 298.45
-   },
-   "stop": {
-    "use": 266.5,
-    "method": "反彈高點",
-    "fixed": 266.0,
-    "trend": 266.5
-   },
-   "position": "末跌段",
-   "trend": "空頭",
-   "rs": 37,
-   "score": 61,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "四線空排"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第3波，-40%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 19 向上，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +6,204張（外資 -459、投信 +2,875）、連買4天、融資 -9%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電腦及週邊（倒數第 5／35 類）"
-    }
-   ],
-   "why": [
-    "位階：末跌段不做"
-   ],
-   "sector": "電腦及週邊 倒數第 5"
-  },
-  {
-   "code": "8054",
-   "name": "安國",
-   "market": "otc",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 63.1",
-   "close": 63.4,
-   "trigger": 62.1,
-   "gap_pct": 2.05,
-   "need_vol": 0,
-   "vol5": 2607,
-   "vol_ref": 2748,
-   "term": "",
-   "ref": {
-    "k": 46.88,
-    "low_n1": 61.2,
-    "high_n1": 72.5,
-    "ma20": 68.53
-   },
-   "stop": {
-    "use": 65.3,
-    "method": "固定 5%",
-    "fixed": 65.3,
-    "trend": 70.4
-   },
-   "position": "末跌段",
-   "trend": "空頭",
-   "rs": 37,
-   "score": 60,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第3波，-54%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 47 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "進場時均線還不是 3 線空排向下；位階：末跌段不做"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 -558張（外資 +0、投信 +0）、融資 +0%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "半導體（倒數第 2／35 類）"
-    }
-   ],
-   "why": [
-    "進場時均線還不是 3 線空排向下",
-    "位階：末跌段不做"
-   ],
-   "sector": "半導體 倒數第 2"
-  },
-  {
-   "code": "2897",
-   "name": "王道銀行",
-   "market": "tse",
-   "side": "short",
-   "key": "S4",
-   "title": "跌破橫盤／一字底",
-   "note": "K線橫盤 4 天，10.2–10.5",
-   "close": 10.3,
-   "trigger": 10.05,
-   "gap_pct": 2.43,
-   "need_vol": 0,
-   "vol5": 3342,
-   "vol_ref": 3829,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 34.26,
-    "low_n1": 10.2,
-    "high_n1": 10.55,
-    "ma20": 10.6
-   },
-   "stop": {
-    "use": 10.2,
-    "method": "跌破點",
-    "fixed": 10.6,
-    "trend": 10.2
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 86,
-   "score": 60,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-9%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 34 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 10 不到 5%；強度 86 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -100張（外資 -394、投信 +4）、融資 +16%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "金融保險（第 11 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 10 不到 5%",
-    "強度 86 太強，做空要弱勢股"
-   ],
-   "sector": "金融保險 第 11 強"
-  },
-  {
-   "code": "2897",
-   "name": "王道銀行",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 10.25",
-   "close": 10.3,
-   "trigger": 10.05,
-   "gap_pct": 2.43,
-   "need_vol": 0,
-   "vol5": 3342,
-   "vol_ref": 3829,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 34.26,
-    "low_n1": 10.2,
-    "high_n1": 10.55,
-    "ma20": 10.6
-   },
-   "stop": {
-    "use": 10.45,
-    "method": "反彈高點",
-    "fixed": 10.6,
-    "trend": 10.45
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 86,
-   "score": 60,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-9%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 34 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 10 不到 5%；強度 86 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -100張（外資 -394、投信 +4）、融資 +16%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "金融保險（第 11 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 10 不到 5%",
-    "強度 86 太強，做空要弱勢股"
-   ],
-   "sector": "金融保險 第 11 強"
-  },
-  {
-   "code": "2633",
-   "name": "台灣高鐵",
-   "market": "tse",
-   "side": "long",
-   "key": "L4",
-   "title": "橫盤／一字底突破",
-   "note": "底部狹幅盤整 40 天，25.2–26.65",
-   "close": 25.5,
-   "trigger": 26.65,
-   "gap_pct": 4.51,
-   "need_vol": 1.3,
-   "vol5": 3072,
-   "vol_ref": 3684,
-   "term": "",
-   "ref": {
-    "k": 39.61,
-    "low_n1": 25.2,
-    "high_n1": 26.0,
-    "ma20": 25.9
-   },
-   "stop": {
-    "use": 26.6,
-    "method": "突破點",
-    "fixed": 25.3,
-    "trend": 26.65
-   },
-   "position": "主升段",
-   "trend": "空頭",
-   "rs": 82,
-   "score": 60,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": false,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主升段（第2波，+3%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、換手量（7天前）、調節量（9天前）、搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 40 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線壓力 26.9 不到 5%；進場時均線還不是 3 線多排向上"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 +2,014張（外資 +2,099、投信 -349）、連買2天、融資 -0%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "航運（第 8 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線壓力 26.9 不到 5%",
-    "進場時均線還不是 3 線多排向上"
-   ],
-   "sector": "航運 第 8 強"
-  },
-  {
-   "code": "6190",
-   "name": "萬泰科",
-   "market": "otc",
    "side": "short",
    "key": "S1",
    "title": "盤頭確認",
-   "note": "頸線 59.3，頭 70.4→66.5",
-   "close": 59.9,
-   "trigger": 58.7,
-   "gap_pct": 2.0,
+   "note": "頸線 50.4，頭 56→56.3",
+   "close": 51.8,
+   "trigger": 50.4,
+   "gap_pct": 2.7,
    "need_vol": 0,
-   "vol5": 8525,
-   "vol_ref": 10250,
-   "term": "",
+   "vol5": 43404,
+   "vol_ref": 61750,
+   "term": "短線",
    "ref": {
-    "k": 59.73,
-    "low_n1": 55.2,
-    "high_n1": 70.4,
-    "ma20": 60.65
+    "k": 38.2,
+    "low_n1": 51.0,
+    "high_n1": 56.5,
+    "ma20": 53.94
    },
    "stop": {
-    "use": 59.3,
+    "use": 50.5,
     "method": "頸線停損",
-    "fixed": 61.7,
-    "trend": 59.3
+    "fixed": 53.0,
+    "trend": 50.4
    },
-   "position": "末跌段",
+   "position": "初跌段",
    "trend": "盤整",
-   "rs": 69,
-   "score": 58,
+   "rs": 96,
+   "score": 65,
    "checks": [
     {
      "step": "趨勢",
@@ -5098,8 +1543,402 @@
     },
     {
      "step": "位階",
+     "ok": true,
+     "text": "初跌段（第1波，-8%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、換手量（9天前）、調節量（10天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 38 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
      "ok": false,
-     "text": "末跌段（第4波，-40%）"
+     "text": "週線支撐 48.35 不到 5%；強度 96 太強，做空要弱勢股"
+    },
+    {
+     "step": "籌碼",
+     "ok": false,
+     "text": "法人5日 +22,493張（外資 +16,509、投信 -11,118）、連買2天、融資 +34%"
+    },
+    {
+     "step": "類股",
+     "ok": false,
+     "text": "金融保險（第 16 強／35 類）"
+    }
+   ],
+   "why": [
+    "週線支撐 48.35 不到 5%",
+    "強度 96 太強，做空要弱勢股"
+   ],
+   "sector": "金融保險 第 16 強"
+  },
+  {
+   "code": "5314",
+   "name": "世紀*",
+   "market": "otc",
+   "side": "short",
+   "key": "S5",
+   "title": "反彈後跌破紅K低點",
+   "note": "反彈紅K低點 18.8",
+   "close": 19.75,
+   "trigger": 18.8,
+   "gap_pct": 4.81,
+   "need_vol": 0,
+   "vol5": 50834,
+   "vol_ref": 50720,
+   "term": "4 線空排，可做長線",
+   "ref": {
+    "k": 24.72,
+    "low_n1": 18.8,
+    "high_n1": 26.4,
+    "ma20": 22.6
+   },
+   "stop": {
+    "use": 19.75,
+    "method": "固定 5%",
+    "fixed": 19.75,
+    "trend": 21.0
+   },
+   "position": "末跌段",
+   "trend": "空頭",
+   "rs": 59,
+   "score": 64,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "空頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "四線空排"
+    },
+    {
+     "step": "位階",
+     "ok": false,
+     "text": "末跌段（第2波，-58%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "量平"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 25 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": false,
+     "text": "位階：末跌段不做；強度 59 太強，做空要弱勢股"
+    },
+    {
+     "step": "籌碼",
+     "ok": false,
+     "text": "法人5日 -10,529張（外資 +0、投信 +0）、連買2天、融資 +3%"
+    },
+    {
+     "step": "類股",
+     "ok": false,
+     "text": "其他（第 14 強／35 類）"
+    }
+   ],
+   "why": [
+    "位階：末跌段不做",
+    "強度 59 太強，做空要弱勢股"
+   ],
+   "sector": "其他 第 14 強"
+  },
+  {
+   "code": "2412",
+   "name": "中華電",
+   "market": "tse",
+   "side": "long",
+   "key": "L5",
+   "title": "突破大量黑K",
+   "note": "大量黑K高點 167.5（今天）",
+   "close": 162.5,
+   "trigger": 167.5,
+   "gap_pct": 3.08,
+   "need_vol": 1.3,
+   "vol5": 23838,
+   "vol_ref": 40370,
+   "term": "4 線多排，可做長線",
+   "ref": {
+    "k": 57.85,
+    "low_n1": 156.5,
+    "high_n1": 171.0,
+    "ma20": 161.15
+   },
+   "stop": {
+    "use": 160.0,
+    "method": "回檔低點",
+    "fixed": 159.0,
+    "trend": 160.0
+   },
+   "position": "主升段",
+   "trend": "多頭",
+   "rs": 97,
+   "score": 62,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+23%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、出貨量、調節量（10天前）、換手量（12天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 58 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": false,
+     "text": "上方 171 有爆量長上影線壓力"
+    },
+    {
+     "step": "籌碼",
+     "ok": true,
+     "text": "法人5日 +10,724張（外資 +1,874、投信 +5,598）、連買2天、融資 +279%（融資大增，散戶追價）"
+    },
+    {
+     "step": "類股",
+     "ok": false,
+     "text": "通信網路（倒數第 6／35 類）"
+    }
+   ],
+   "why": [
+    "上方 171 有爆量長上影線壓力"
+   ],
+   "sector": "通信網路 倒數第 6"
+  },
+  {
+   "code": "2412",
+   "name": "中華電",
+   "market": "tse",
+   "side": "long",
+   "key": "L2",
+   "title": "回後買上漲",
+   "note": "回檔低點 160，前低 156.5",
+   "close": 162.5,
+   "trigger": 167.5,
+   "gap_pct": 3.08,
+   "need_vol": 1.3,
+   "vol5": 23838,
+   "vol_ref": 40370,
+   "term": "4 線多排，可做長線",
+   "ref": {
+    "k": 57.85,
+    "low_n1": 156.5,
+    "high_n1": 171.0,
+    "ma20": 161.15
+   },
+   "stop": {
+    "use": 160.0,
+    "method": "轉折低點",
+    "fixed": 159.0,
+    "trend": 160.0
+   },
+   "position": "主升段",
+   "trend": "多頭",
+   "rs": 97,
+   "score": 62,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "多頭"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線上揚"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主升段（第2波，+23%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "爆大量、出貨量、調節量（10天前）、換手量（12天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 58 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": false,
+     "text": "上方 171 有爆量長上影線壓力"
+    },
+    {
+     "step": "籌碼",
+     "ok": true,
+     "text": "法人5日 +10,724張（外資 +1,874、投信 +5,598）、連買2天、融資 +279%（融資大增，散戶追價）"
+    },
+    {
+     "step": "類股",
+     "ok": false,
+     "text": "通信網路（倒數第 6／35 類）"
+    }
+   ],
+   "why": [
+    "上方 171 有爆量長上影線壓力"
+   ],
+   "sector": "通信網路 倒數第 6"
+  },
+  {
+   "code": "5521",
+   "name": "工信",
+   "market": "tse",
+   "side": "short",
+   "key": "S3",
+   "title": "跌破盤整下頸線",
+   "note": "下頸線 10.1／上頸線 11.65",
+   "close": 10.6,
+   "trigger": 10.1,
+   "gap_pct": 4.72,
+   "need_vol": 0,
+   "vol5": 3506,
+   "vol_ref": 4699,
+   "term": "短線",
+   "ref": {
+    "k": 31.87,
+    "low_n1": 10.55,
+    "high_n1": 11.65,
+    "ma20": 11.12
+   },
+   "stop": {
+    "use": 10.15,
+    "method": "跌破點",
+    "fixed": 10.65,
+    "trend": 10.1
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 87,
+   "score": 60,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第3波，-16%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、換手量（10天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 32 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": false,
+     "text": "明天是下跌第3根以上，勿殺低；週線支撐 9.65 不到 5%；強度 87 太強，做空要弱勢股"
+    },
+    {
+     "step": "籌碼",
+     "ok": true,
+     "text": "法人5日 -2,092張（外資 -2,130、投信 +0）、連賣4天、融資 +11%"
+    },
+    {
+     "step": "類股",
+     "ok": false,
+     "text": "建材營造（第 6 強／35 類）"
+    }
+   ],
+   "why": [
+    "明天是下跌第3根以上，勿殺低",
+    "週線支撐 9.65 不到 5%",
+    "強度 87 太強，做空要弱勢股"
+   ],
+   "sector": "建材營造 第 6 強"
+  },
+  {
+   "code": "2501",
+   "name": "國建",
+   "market": "tse",
+   "side": "short",
+   "key": "S3",
+   "title": "跌破盤整下頸線",
+   "note": "下頸線 19.8／上頸線 21.7",
+   "close": 20.1,
+   "trigger": 19.65,
+   "gap_pct": 2.24,
+   "need_vol": 0,
+   "vol5": 3187,
+   "vol_ref": 3669,
+   "term": "",
+   "ref": {
+    "k": 43.95,
+    "low_n1": 20.0,
+    "high_n1": 21.7,
+    "ma20": 20.52
+   },
+   "stop": {
+    "use": 19.8,
+    "method": "跌破點",
+    "fixed": 20.65,
+    "trend": 19.8
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 67,
+   "score": 56,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第3波，-29%）"
     },
     {
      "step": "成交量",
@@ -5109,986 +1948,30 @@
     {
      "step": "指標",
      "ok": true,
-     "text": "K 60 向下，MACD柱減少（參考）"
+     "text": "K 44 向下，MACD柱減少（參考）"
     },
     {
      "step": "排除條件",
      "ok": false,
-     "text": "週線支撐 56.2 不到 5%；進場時均線還不是 3 線空排向下；位階：末跌段不做；強度 69 太強，做空要弱勢股"
+     "text": "明天是下跌第3根以上，勿殺低；進場時均線還不是 3 線空排向下；強度 67 太強，做空要弱勢股"
     },
     {
      "step": "籌碼",
      "ok": false,
-     "text": "法人5日 -1,714張（外資 +0、投信 +0）、融資 -1%"
+     "text": "法人5日 +4,288張（外資 +4,136、投信 -17）、連買5天、融資 -10%"
     },
     {
      "step": "類股",
-     "ok": true,
-     "text": "通信網路（倒數第 7／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 56.2 不到 5%",
-    "進場時均線還不是 3 線空排向下",
-    "位階：末跌段不做",
-    "強度 69 太強，做空要弱勢股"
-   ],
-   "sector": "通信網路 倒數第 7"
-  },
-  {
-   "code": "1303",
-   "name": "南亞",
-   "market": "tse",
-   "side": "short",
-   "key": "S1",
-   "title": "盤頭確認",
-   "note": "頸線 224.5，頭 325→325.5",
-   "close": 228.5,
-   "trigger": 223.5,
-   "gap_pct": 2.19,
-   "need_vol": 0,
-   "vol5": 99930,
-   "vol_ref": 58810,
-   "term": "短線",
-   "ref": {
-    "k": 29.85,
-    "low_n1": 228.5,
-    "high_n1": 325.5,
-    "ma20": 283.12
-   },
-   "stop": {
-    "use": 224.5,
-    "method": "頸線停損",
-    "fixed": 235.0,
-    "trend": 224.5
-   },
-   "position": "主跌段",
-   "trend": "盤整",
-   "rs": 97,
-   "score": 58,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整（轉折中）"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-35%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量縮"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 30 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
      "ok": false,
-     "text": "明天是下跌第3根以上，勿殺低；強度 97 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": true,
-     "text": "法人5日 -47,192張（外資 -54,946、投信 +4,004）、連賣4天、融資 -1%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "塑膠（倒數第 13／35 類）"
+     "text": "建材營造（第 6 強／35 類）"
     }
    ],
    "why": [
     "明天是下跌第3根以上，勿殺低",
-    "強度 97 太強，做空要弱勢股"
-   ],
-   "sector": "塑膠 倒數第 13"
-  },
-  {
-   "code": "2542",
-   "name": "興富發",
-   "market": "tse",
-   "side": "short",
-   "key": "S4",
-   "title": "跌破橫盤／一字底",
-   "note": "K線橫盤 3 天，37.4–38.3",
-   "close": 37.6,
-   "trigger": 36.8,
-   "gap_pct": 2.13,
-   "need_vol": 0,
-   "vol5": 4745,
-   "vol_ref": 5450,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 41.93,
-    "low_n1": 36.9,
-    "high_n1": 39.25,
-    "ma20": 38.51
-   },
-   "stop": {
-    "use": 37.4,
-    "method": "跌破點",
-    "fixed": 38.65,
-    "trend": 37.4
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 31,
-   "score": 57,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第3波，-23%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 42 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "明天是下跌第3根以上，勿殺低；週線支撐 36.4 不到 5%"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +8,227張（外資 +8,262、投信 -249）、連買5天、融資 -7%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "建材營造（第 3 強／35 類）"
-    }
-   ],
-   "why": [
-    "明天是下跌第3根以上，勿殺低",
-    "週線支撐 36.4 不到 5%"
-   ],
-   "sector": "建材營造 第 3 強"
-  },
-  {
-   "code": "9904",
-   "name": "寶成",
-   "market": "tse",
-   "side": "short",
-   "key": "S3",
-   "title": "跌破盤整下頸線",
-   "note": "下頸線 24.6／上頸線 27.75",
-   "close": 25.15,
-   "trigger": 24.6,
-   "gap_pct": 2.19,
-   "need_vol": 0,
-   "vol5": 25036,
-   "vol_ref": 21210,
-   "term": "",
-   "ref": {
-    "k": 37.81,
-    "low_n1": 25.05,
-    "high_n1": 27.75,
-    "ma20": 25.88
-   },
-   "stop": {
-    "use": 24.65,
-    "method": "跌破點",
-    "fixed": 25.85,
-    "trend": 24.6
-   },
-   "position": "主跌段",
-   "trend": "盤整",
-   "rs": 86,
-   "score": 57,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第3波，-11%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "換手量（9天前）、調節量（10天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 38 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "明天是下跌第3根以上，勿殺低；週線支撐 24 不到 5%；進場時均線還不是 3 線空排向下；強度 86 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +23,814張（外資 +38,311、投信 -16,737）、連賣2天、融資 -3%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "運動休閒（第 16 強／35 類）"
-    }
-   ],
-   "why": [
-    "明天是下跌第3根以上，勿殺低",
-    "週線支撐 24 不到 5%",
     "進場時均線還不是 3 線空排向下",
-    "強度 86 太強，做空要弱勢股"
+    "強度 67 太強，做空要弱勢股"
    ],
-   "sector": "運動休閒 第 16 強"
-  },
-  {
-   "code": "4916",
-   "name": "事欣科",
-   "market": "tse",
-   "side": "short",
-   "key": "S1",
-   "title": "盤頭確認",
-   "note": "頸線 96.7，頭 121→111",
-   "close": 99.9,
-   "trigger": 96.7,
-   "gap_pct": 3.2,
-   "need_vol": 0,
-   "vol5": 22720,
-   "vol_ref": 12440,
-   "term": "",
-   "ref": {
-    "k": 58.64,
-    "low_n1": 94.6,
-    "high_n1": 121.0,
-    "ma20": 100.19
-   },
-   "stop": {
-    "use": 96.8,
-    "method": "頸線停損",
-    "fixed": 102.0,
-    "trend": 96.7
-   },
-   "position": "主跌段",
-   "trend": "盤整",
-   "rs": 87,
-   "score": 55,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整（轉折中）"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第4波，-22%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量平"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 59 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 96.3 不到 5%；進場時均線還不是 3 線空排向下；強度 87 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +1,201張（外資 +1,550、投信 +0）、連賣3天、融資 +3%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "電腦及週邊（倒數第 5／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 96.3 不到 5%",
-    "進場時均線還不是 3 線空排向下",
-    "強度 87 太強，做空要弱勢股"
-   ],
-   "sector": "電腦及週邊 倒數第 5"
-  },
-  {
-   "code": "3293",
-   "name": "鈊象",
-   "market": "otc",
-   "side": "long",
-   "key": "L3",
-   "title": "突破盤整上頸線",
-   "note": "上頸線 812／下頸線 698",
-   "close": 792.0,
-   "trigger": 816.0,
-   "gap_pct": 3.03,
-   "need_vol": 1.3,
-   "vol5": 2301,
-   "vol_ref": 3074,
-   "term": "4 線多排，可做長線",
-   "ref": {
-    "k": 77.1,
-    "low_n1": 750.0,
-    "high_n1": 816.0,
-    "ma20": 780.7
-   },
-   "stop": {
-    "use": 812.0,
-    "method": "突破點",
-    "fixed": 775.0,
-    "trend": 812.0
-   },
-   "position": "主升段",
-   "trend": "盤整",
-   "rs": 91,
-   "score": 53,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線上揚"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主升段（第2波，+16%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 77 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線壓力 819 不到 5%"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +1,194張（外資 +0、投信 +0）、連買2天、融資 -7%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "文化創意（第 7 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線壓力 819 不到 5%"
-   ],
-   "sector": "文化創意 第 7 強"
-  },
-  {
-   "code": "3293",
-   "name": "鈊象",
-   "market": "otc",
-   "side": "long",
-   "key": "L5",
-   "title": "突破大量黑K",
-   "note": "大量黑K高點 816（今天）",
-   "close": 792.0,
-   "trigger": 816.0,
-   "gap_pct": 3.03,
-   "need_vol": 1.3,
-   "vol5": 2301,
-   "vol_ref": 3074,
-   "term": "4 線多排，可做長線",
-   "ref": {
-    "k": 77.1,
-    "low_n1": 750.0,
-    "high_n1": 816.0,
-    "ma20": 780.7
-   },
-   "stop": {
-    "use": 789.0,
-    "method": "回檔低點",
-    "fixed": 775.0,
-    "trend": 789.0
-   },
-   "position": "主升段",
-   "trend": "盤整",
-   "rs": 91,
-   "score": 53,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": false,
-     "text": "盤整"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線上揚"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主升段（第2波，+16%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 77 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線壓力 819 不到 5%；回檔已跌破前低"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +1,194張（外資 +0、投信 +0）、連買2天、融資 -7%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "文化創意（第 7 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線壓力 819 不到 5%",
-    "回檔已跌破前低"
-   ],
-   "sector": "文化創意 第 7 強"
-  },
-  {
-   "code": "2504",
-   "name": "國產",
-   "market": "tse",
-   "side": "short",
-   "key": "S4",
-   "title": "跌破橫盤／一字底",
-   "note": "K線橫盤 3 天，30.5–31.4",
-   "close": 30.85,
-   "trigger": 30.2,
-   "gap_pct": 2.11,
-   "need_vol": 0,
-   "vol5": 1722,
-   "vol_ref": 1388,
-   "term": "",
-   "ref": {
-    "k": 56.86,
-    "low_n1": 30.1,
-    "high_n1": 31.85,
-    "ma20": 31.43
-   },
-   "stop": {
-    "use": 30.5,
-    "method": "跌破點",
-    "fixed": 31.75,
-    "trend": 30.5
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 84,
-   "score": 51,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-18%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "換手量（18天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 57 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 30.15 不到 5%；進場時均線還不是 3 線空排向下；強度 84 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +2,092張（外資 +1,029、投信 +42）、融資 -18%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "建材營造（第 3 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 30.15 不到 5%",
-    "進場時均線還不是 3 線空排向下",
-    "強度 84 太強，做空要弱勢股"
-   ],
-   "sector": "建材營造 第 3 強"
-  },
-  {
-   "code": "2504",
-   "name": "國產",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 30.55",
-   "close": 30.85,
-   "trigger": 30.2,
-   "gap_pct": 2.11,
-   "need_vol": 0,
-   "vol5": 1722,
-   "vol_ref": 1388,
-   "term": "",
-   "ref": {
-    "k": 56.86,
-    "low_n1": 30.1,
-    "high_n1": 31.85,
-    "ma20": 31.43
-   },
-   "stop": {
-    "use": 31.1,
-    "method": "反彈高點",
-    "fixed": 31.75,
-    "trend": 31.1
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 84,
-   "score": 51,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-18%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "換手量（18天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 57 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 30.15 不到 5%；進場時均線還不是 3 線空排向下；強度 84 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +2,092張（外資 +1,029、投信 +42）、融資 -18%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "建材營造（第 3 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 30.15 不到 5%",
-    "進場時均線還不是 3 線空排向下",
-    "強度 84 太強，做空要弱勢股"
-   ],
-   "sector": "建材營造 第 3 強"
-  },
-  {
-   "code": "3491",
-   "name": "昇達科",
-   "market": "otc",
-   "side": "short",
-   "key": "S1",
-   "title": "盤頭確認",
-   "note": "頸線 1315，頭 1575→1585",
-   "close": 1360.0,
-   "trigger": 1315.0,
-   "gap_pct": 3.31,
-   "need_vol": 0,
-   "vol5": 4019,
-   "vol_ref": 1203,
-   "term": "",
-   "ref": {
-    "k": 67.99,
-    "low_n1": 1250.0,
-    "high_n1": 1585.0,
-    "ma20": 1326.75
-   },
-   "stop": {
-    "use": 1320.0,
-    "method": "頸線停損",
-    "fixed": 1385.0,
-    "trend": 1315.0
-   },
-   "position": "末跌段",
-   "trend": "多頭",
-   "rs": 94,
-   "score": 50,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": false,
-     "text": "多頭（轉折中）"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第3波，-38%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "量縮"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 68 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 1310 不到 5%；進場時均線還不是 3 線空排向下；位階：末跌段不做；強度 94 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +158張（外資 +0、投信 +0）、融資 -8%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "通信網路（倒數第 7／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 1310 不到 5%",
-    "進場時均線還不是 3 線空排向下",
-    "位階：末跌段不做",
-    "強度 94 太強，做空要弱勢股"
-   ],
-   "sector": "通信網路 倒數第 7"
-  },
-  {
-   "code": "2633",
-   "name": "台灣高鐵",
-   "market": "tse",
-   "side": "short",
-   "key": "S4",
-   "title": "跌破橫盤／一字底",
-   "note": "狹幅盤整 40 天，25.2–26.65",
-   "close": 25.5,
-   "trigger": 24.95,
-   "gap_pct": 2.16,
-   "need_vol": 0,
-   "vol5": 3072,
-   "vol_ref": 3684,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 39.61,
-    "low_n1": 25.2,
-    "high_n1": 26.0,
-    "ma20": 25.9
-   },
-   "stop": {
-    "use": 25.2,
-    "method": "跌破點",
-    "fixed": 26.2,
-    "trend": 25.2
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 82,
-   "score": 49,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-6%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、換手量（7天前）、調節量（9天前）、搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 40 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 24.8 不到 5%；強度 82 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +2,014張（外資 +2,099、投信 -349）、連買2天、融資 -0%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "航運（第 8 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 24.8 不到 5%",
-    "強度 82 太強，做空要弱勢股"
-   ],
-   "sector": "航運 第 8 強"
-  },
-  {
-   "code": "2633",
-   "name": "台灣高鐵",
-   "market": "tse",
-   "side": "short",
-   "key": "S5",
-   "title": "反彈後跌破紅K低點",
-   "note": "反彈紅K低點 25.5",
-   "close": 25.5,
-   "trigger": 24.95,
-   "gap_pct": 2.16,
-   "need_vol": 0,
-   "vol5": 3072,
-   "vol_ref": 3684,
-   "term": "4 線空排，可做長線",
-   "ref": {
-    "k": 39.61,
-    "low_n1": 25.2,
-    "high_n1": 26.0,
-    "ma20": 25.9
-   },
-   "stop": {
-    "use": 25.75,
-    "method": "反彈高點",
-    "fixed": 26.2,
-    "trend": 25.75
-   },
-   "position": "主跌段",
-   "trend": "空頭",
-   "rs": 82,
-   "score": 49,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "空頭"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": true,
-     "text": "主跌段（第2波，-6%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、換手量（7天前）、調節量（9天前）、搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 40 向下，MACD柱增加（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "週線支撐 24.8 不到 5%；強度 82 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +2,014張（外資 +2,099、投信 -349）、連買2天、融資 -0%"
-    },
-    {
-     "step": "類股",
-     "ok": false,
-     "text": "航運（第 8 強／35 類）"
-    }
-   ],
-   "why": [
-    "週線支撐 24.8 不到 5%",
-    "強度 82 太強，做空要弱勢股"
-   ],
-   "sector": "航運 第 8 強"
-  },
-  {
-   "code": "3661",
-   "name": "世芯-KY",
-   "market": "tse",
-   "side": "short",
-   "key": "S1",
-   "title": "盤頭確認",
-   "note": "頸線 3440，頭 4085→4020",
-   "close": 3600.0,
-   "trigger": 3440.0,
-   "gap_pct": 4.44,
-   "need_vol": 0,
-   "vol5": 4796,
-   "vol_ref": 6002,
-   "term": "",
-   "ref": {
-    "k": 68.5,
-    "low_n1": 3360.0,
-    "high_n1": 4085.0,
-    "ma20": 3489.5
-   },
-   "stop": {
-    "use": 3445.0,
-    "method": "頸線停損",
-    "fixed": 3615.0,
-    "trend": 3440.0
-   },
-   "position": "末跌段",
-   "trend": "盤整",
-   "rs": 78,
-   "score": 49,
-   "checks": [
-    {
-     "step": "趨勢",
-     "ok": true,
-     "text": "盤整（轉折中）"
-    },
-    {
-     "step": "均線",
-     "ok": true,
-     "text": "月線下彎"
-    },
-    {
-     "step": "位階",
-     "ok": false,
-     "text": "末跌段（第4波，-36%）"
-    },
-    {
-     "step": "成交量",
-     "ok": true,
-     "text": "出貨量、搶反彈量（9天前）"
-    },
-    {
-     "step": "指標",
-     "ok": true,
-     "text": "K 68 向下，MACD柱減少（參考）"
-    },
-    {
-     "step": "排除條件",
-     "ok": false,
-     "text": "進場時均線還不是 3 線空排向下；位階：末跌段不做；強度 78 太強，做空要弱勢股"
-    },
-    {
-     "step": "籌碼",
-     "ok": false,
-     "text": "法人5日 +1,449張（外資 +478、投信 +950）、連買2天、融資 -4%"
-    },
-    {
-     "step": "類股",
-     "ok": true,
-     "text": "半導體（倒數第 2／35 類）"
-    }
-   ],
-   "why": [
-    "進場時均線還不是 3 線空排向下",
-    "位階：末跌段不做",
-    "強度 78 太強，做空要弱勢股"
-   ],
-   "sector": "半導體 倒數第 2"
+   "sector": "建材營造 第 6 強"
   },
   {
    "code": "1210",
@@ -6098,29 +1981,29 @@
    "key": "S4",
    "title": "跌破橫盤／一字底",
    "note": "狹幅盤整 40 天，48.95–52.9",
-   "close": 51.1,
-   "trigger": 48.95,
-   "gap_pct": 4.21,
+   "close": 49.65,
+   "trigger": 48.65,
+   "gap_pct": 2.01,
    "need_vol": 0,
-   "vol5": 1760,
-   "vol_ref": 1781,
-   "term": "",
+   "vol5": 1685,
+   "vol_ref": 1955,
+   "term": "4 線空排，可做長線",
    "ref": {
-    "k": 57.06,
+    "k": 42.86,
     "low_n1": 49.1,
     "high_n1": 52.9,
-    "ma20": 50.9
+    "ma20": 50.83
    },
    "stop": {
-    "use": 49.0,
+    "use": 48.95,
     "method": "跌破點",
-    "fixed": 51.4,
+    "fixed": 51.1,
     "trend": 48.95
    },
    "position": "主跌段",
    "trend": "空頭",
-   "rs": 80,
-   "score": 46,
+   "rs": 81,
+   "score": 51,
    "checks": [
     {
      "step": "趨勢",
@@ -6129,887 +2012,967 @@
     },
     {
      "step": "均線",
-     "ok": false,
-     "text": "月線走平"
+     "ok": true,
+     "text": "月線下彎"
     },
     {
      "step": "位階",
      "ok": true,
-     "text": "主跌段（第4波，-14%）"
+     "text": "主跌段（第4波，-17%）"
     },
     {
      "step": "成交量",
      "ok": true,
-     "text": "換手量（8天前）、調節量（9天前）、搶反彈量（9天前）"
+     "text": "換手量（9天前）、調節量（10天前）、搶反彈量（10天前）"
     },
     {
      "step": "指標",
      "ok": true,
-     "text": "K 57 向下，MACD柱減少（參考）"
+     "text": "K 43 向下，MACD柱減少（參考）"
     },
     {
      "step": "排除條件",
      "ok": false,
-     "text": "進場時均線還不是 3 線空排向下；強度 80 太強，做空要弱勢股"
+     "text": "強度 81 太強，做空要弱勢股"
     },
     {
      "step": "籌碼",
      "ok": false,
-     "text": "法人5日 +4,738張（外資 +4,591、投信 +27）、連買5天、融資 -14%"
+     "text": "法人5日 +3,046張（外資 +2,993、投信 +30）、融資 +0%"
     },
     {
      "step": "類股",
      "ok": false,
-     "text": "食品（第 9 強／35 類）"
+     "text": "食品（第 7 強／35 類）"
     }
    ],
    "why": [
-    "進場時均線還不是 3 線空排向下",
-    "強度 80 太強，做空要弱勢股"
+    "強度 81 太強，做空要弱勢股"
    ],
-   "sector": "食品 第 9 強"
+   "sector": "食品 第 7 強"
+  },
+  {
+   "code": "2453",
+   "name": "凌群",
+   "market": "tse",
+   "side": "short",
+   "key": "S3",
+   "title": "跌破盤整下頸線",
+   "note": "下頸線 51.3／上頸線 62.8",
+   "close": 53.0,
+   "trigger": 50.5,
+   "gap_pct": 4.72,
+   "need_vol": 0,
+   "vol5": 3121,
+   "vol_ref": 4134,
+   "term": "",
+   "ref": {
+    "k": 41.51,
+    "low_n1": 50.5,
+    "high_n1": 62.8,
+    "ma20": 55.14
+   },
+   "stop": {
+    "use": 51.3,
+    "method": "跌破點",
+    "fixed": 53.1,
+    "trend": 51.3
+   },
+   "position": "主跌段",
+   "trend": "盤整",
+   "rs": 92,
+   "score": 50,
+   "checks": [
+    {
+     "step": "趨勢",
+     "ok": true,
+     "text": "盤整"
+    },
+    {
+     "step": "均線",
+     "ok": true,
+     "text": "月線下彎"
+    },
+    {
+     "step": "位階",
+     "ok": true,
+     "text": "主跌段（第3波，-19%）"
+    },
+    {
+     "step": "成交量",
+     "ok": true,
+     "text": "出貨量、換手量（6天前）、調節量（11天前）"
+    },
+    {
+     "step": "指標",
+     "ok": true,
+     "text": "K 42 向下，MACD柱減少（參考）"
+    },
+    {
+     "step": "排除條件",
+     "ok": false,
+     "text": "明天是下跌第3根以上，勿殺低；週線支撐 49.7 不到 5%；進場時均線還不是 3 線空排向下；強度 92 太強，做空要弱勢股"
+    },
+    {
+     "step": "籌碼",
+     "ok": false,
+     "text": "法人5日 +1,099張（外資 +1,093、投信 +0）、融資 -11%"
+    },
+    {
+     "step": "類股",
+     "ok": false,
+     "text": "資訊服務（第 1 強／35 類）"
+    }
+   ],
+   "why": [
+    "明天是下跌第3根以上，勿殺低",
+    "週線支撐 49.7 不到 5%",
+    "進場時均線還不是 3 線空排向下",
+    "強度 92 太強，做空要弱勢股"
+   ],
+   "sector": "資訊服務 第 1 強"
   }
  ],
  "watch": [
   {
-   "code": "2485",
-   "name": "兆赫",
+   "code": "2308",
+   "name": "台達電",
    "market": "tse",
-   "close": 26.55,
+   "close": 900.0,
    "chg": -10.0,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "末跌段（第3波，-69%）",
+   "pos": "末跌段（第2波，-65%）",
    "vol": "量平",
-   "chips": "法人5日 +650張（外資 +569、投信 +0）、融資 -8%",
-   "sector": "通信網路（第 29 強／35 類）",
-   "rs": 10
-  },
-  {
-   "code": "3105",
-   "name": "穩懋",
-   "market": "otc",
-   "close": 423.0,
-   "chg": -10.0,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "末跌段（第4波，-34%）",
-   "vol": "量平",
-   "chips": "法人5日 -2,703張（外資 +0、投信 +0）、連賣3天、融資 -9%",
-   "sector": "半導體（第 34 強／35 類）",
-   "rs": 95
-  },
-  {
-   "code": "3406",
-   "name": "玉晶光",
-   "market": "tse",
-   "close": 720.0,
-   "chg": -10.0,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "初跌段（第1波，-46%）",
-   "vol": "量縮、換手量（18天前）",
-   "chips": "法人5日 +805張（外資 +1,171、投信 -235）、連賣3天、融資 -8%",
-   "sector": "光電（第 33 強／35 類）",
-   "rs": 93
-  },
-  {
-   "code": "4903",
-   "name": "聯光通",
-   "market": "otc",
-   "close": 38.25,
-   "chg": -10.0,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "主跌段（第2波，-36%）",
-   "vol": "量平",
-   "chips": "法人5日 -820張（外資 +0、投信 +0）、融資 +0%",
-   "sector": "通信網路（第 29 強／35 類）",
-   "rs": 93
-  },
-  {
-   "code": "4931",
-   "name": "新盛力",
-   "market": "otc",
-   "close": 139.5,
-   "chg": -10.0,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第2波，-52%）",
-   "vol": "出貨量",
-   "chips": "法人5日 +476張（外資 +0、投信 +0）、連買5天、融資 -8%",
-   "sector": "電腦及週邊（第 31 強／35 類）",
-   "rs": 2
-  },
-  {
-   "code": "4989",
-   "name": "榮科",
-   "market": "tse",
-   "close": 45.45,
-   "chg": -10.0,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第4波，-64%）",
-   "vol": "量平",
-   "chips": "法人5日 -423張（外資 -416、投信 +0）、連買2天、融資 -11%",
+   "chips": "法人5日 -12,390張（外資 -12,676、投信 -2,279）、連賣5天、融資 +1%",
    "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 4
+  },
+  {
+   "code": "2360",
+   "name": "致茂",
+   "market": "tse",
+   "close": 927.0,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-67%）",
+   "vol": "量縮",
+   "chips": "法人5日 +1,843張（外資 +2,733、投信 -1,065）、連買5天、融資 -22%",
+   "sector": "其他電子（第 31 強／35 類）",
+   "rs": 1
+  },
+  {
+   "code": "2368",
+   "name": "金像電",
+   "market": "tse",
+   "close": 711.0,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-55%）",
+   "vol": "量縮",
+   "chips": "法人5日 -652張（外資 -3,358、投信 +2,303）、融資 -20%",
+   "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 35
+  },
+  {
+   "code": "2449",
+   "name": "京元電子",
+   "market": "tse",
+   "close": 157.5,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-57%）",
+   "vol": "量縮",
+   "chips": "法人5日 -6,795張（外資 -208、投信 -6,909）、連賣3天、融資 -16%",
+   "sector": "半導體（第 34 強／35 類）",
    "rs": 22
   },
   {
-   "code": "5013",
-   "name": "強新",
-   "market": "otc",
-   "close": 56.7,
-   "chg": -10.0,
-   "trend": "空頭",
-   "ma": "月線上揚，在月線下",
-   "pos": "初跌段（第1波，-24%）",
-   "vol": "量縮、調節量（12天前）、換手量（13天前）",
-   "chips": "法人5日 -150張（外資 +0、投信 +0）、連賣2天、融資 +39%",
-   "sector": "鋼鐵（第 14 強／35 類）",
-   "rs": 100
-  },
-  {
-   "code": "6168",
-   "name": "宏齊",
+   "code": "3026",
+   "name": "禾伸堂",
    "market": "tse",
-   "close": 24.3,
+   "close": 324.0,
    "chg": -10.0,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "末跌段（第1波，-52%）",
-   "vol": "量平",
-   "chips": "法人5日 -183張（外資 -205、投信 +3）、融資 -8%",
-   "sector": "光電（第 33 強／35 類）",
-   "rs": 80
-  },
-  {
-   "code": "6217",
-   "name": "中探針",
-   "market": "otc",
-   "close": 95.4,
-   "chg": -10.0,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第3波，-74%）",
-   "vol": "量平",
-   "chips": "法人5日 +803張（外資 +0、投信 +0）、融資 -7%",
+   "pos": "末跌段（第2波，-69%）",
+   "vol": "量縮",
+   "chips": "法人5日 +4,190張（外資 +9,822、投信 -5,744）、連買4天、融資 -27%",
    "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 7
+   "rs": 4
   },
   {
-   "code": "6672",
-   "name": "騰輝電子-KY",
-   "market": "tse",
-   "close": 364.5,
-   "chg": -10.0,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "初跌段（第1波，-46%）",
-   "vol": "量縮、換手量（20天前）",
-   "chips": "法人5日 +143張（外資 +338、投信 +2）、融資 -14%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 97
-  },
-  {
-   "code": "6706",
-   "name": "惠特",
+   "code": "3055",
+   "name": "蔚華科",
    "market": "tse",
    "close": 97.2,
    "chg": -10.0,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "末跌段（第2波，-57%）",
-   "vol": "量平",
-   "chips": "法人5日 -403張（外資 -157、投信 +2）、融資 -6%",
-   "sector": "光電（第 33 強／35 類）",
-   "rs": 43
-  },
-  {
-   "code": "8021",
-   "name": "尖點",
-   "market": "tse",
-   "close": 274.5,
-   "chg": -10.0,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第2波，-56%）",
+   "pos": "末跌段（第1波，-57%）",
    "vol": "量縮",
-   "chips": "法人5日 -1,897張（外資 -1,390、投信 -509）、融資 -16%",
-   "sector": "其他電子（第 32 強／35 類）",
-   "rs": 12
-  },
-  {
-   "code": "8064",
-   "name": "東捷",
-   "market": "otc",
-   "close": 74.7,
-   "chg": -10.0,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第3波，-61%）",
-   "vol": "量平",
-   "chips": "法人5日 +94張（外資 +0、投信 +0）、連買3天、融資 -16%",
-   "sector": "光電（第 33 強／35 類）",
-   "rs": 25
-  },
-  {
-   "code": "3094",
-   "name": "聯傑",
-   "market": "tse",
-   "close": 35.6,
-   "chg": -9.99,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第1波，-52%）",
-   "vol": "量平",
-   "chips": "法人5日 -18張（外資 -27、投信 +1）、連賣4天、融資 -7%",
-   "sector": "半導體（第 34 強／35 類）",
-   "rs": 84
-  },
-  {
-   "code": "5498",
-   "name": "凱崴",
-   "market": "otc",
-   "close": 38.3,
-   "chg": -9.99,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第4波，-56%）",
-   "vol": "量平",
-   "chips": "法人5日 -437張（外資 +0、投信 +0）、連賣3天、融資 -8%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 31
-  },
-  {
-   "code": "6182",
-   "name": "合晶",
-   "market": "otc",
-   "close": 63.1,
-   "chg": -9.99,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第2波，-68%）",
-   "vol": "量平",
-   "chips": "法人5日 +7,509張（外資 +0、投信 +0）、融資 -13%",
-   "sector": "半導體（第 34 強／35 類）",
-   "rs": 4
-  },
-  {
-   "code": "6187",
-   "name": "萬潤",
-   "market": "otc",
-   "close": 694.0,
-   "chg": -9.99,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第1波，-59%）",
-   "vol": "量平",
-   "chips": "法人5日 -622張（外資 +0、投信 +0）、連買2天、融資 -15%",
-   "sector": "半導體（第 34 強／35 類）",
-   "rs": 3
-  },
-  {
-   "code": "6269",
-   "name": "台郡",
-   "market": "tse",
-   "close": 61.3,
-   "chg": -9.99,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "主跌段（第2波，-34%）",
-   "vol": "量平",
-   "chips": "法人5日 -2,275張（外資 -3,671、投信 +0）、連賣3天、融資 -19%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 79
-  },
-  {
-   "code": "3379",
-   "name": "彬台",
-   "market": "otc",
-   "close": 27.05,
-   "chg": -9.98,
-   "trend": "空頭",
-   "ma": "月線上揚，在月線下",
-   "pos": "末跌段（第4波，-38%）",
-   "vol": "量縮、調節量（11天前）、換手量（12天前）",
-   "chips": "法人5日 +24張（外資 +0、投信 +0）、融資 -2%",
-   "sector": "電機機械（第 24 強／35 類）",
-   "rs": 71
-  },
-  {
-   "code": "8240",
-   "name": "華宏",
-   "market": "otc",
-   "close": 37.9,
-   "chg": -9.98,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第4波，-54%）",
-   "vol": "量平",
-   "chips": "法人5日 -486張（外資 +0、投信 +0）、連賣4天、融資 -6%",
-   "sector": "光電（第 33 強／35 類）",
-   "rs": 67
-  },
-  {
-   "code": "2367",
-   "name": "燿華",
-   "market": "tse",
-   "close": 32.95,
-   "chg": -9.97,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第3波，-57%）",
-   "vol": "搶反彈量（9天前）",
-   "chips": "法人5日 -1,661張（外資 -2,108、投信 +8）、融資 -4%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 30
-  },
-  {
-   "code": "2426",
-   "name": "鼎元",
-   "market": "tse",
-   "close": 60.5,
-   "chg": -9.97,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "初跌段（第1波，-49%）",
-   "vol": "量平",
-   "chips": "法人5日 +577張（外資 +616、投信 +0）、融資 -14%",
-   "sector": "光電（第 33 強／35 類）",
-   "rs": 39
-  },
-  {
-   "code": "3037",
-   "name": "欣興",
-   "market": "tse",
-   "close": 596.0,
-   "chg": -9.97,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第1波，-58%）",
-   "vol": "量平",
-   "chips": "法人5日 -12,336張（外資 -6,748、投信 -6,571）、連賣2天、融資 -3%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 2
-  },
-  {
-   "code": "3044",
-   "name": "健鼎",
-   "market": "tse",
-   "close": 433.5,
-   "chg": -9.97,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "主跌段（第2波，-28%）",
-   "vol": "搶反彈量（9天前）",
-   "chips": "法人5日 -2,448張（外資 -5,611、投信 +2,666）、連賣5天、融資 +4%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 61
-  },
-  {
-   "code": "3363",
-   "name": "上詮",
-   "market": "otc",
-   "close": 284.5,
-   "chg": -9.97,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第3波，-73%）",
-   "vol": "量平",
-   "chips": "法人5日 +1,108張（外資 +0、投信 +0）、連買4天、融資 -18%",
-   "sector": "通信網路（第 29 強／35 類）",
-   "rs": 1
-  },
-  {
-   "code": "3455",
-   "name": "由田",
-   "market": "otc",
-   "close": 135.5,
-   "chg": -9.97,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第3波，-58%）",
-   "vol": "量平",
-   "chips": "法人5日 +640張（外資 +0、投信 +0）、融資 -29%",
-   "sector": "光電（第 33 強／35 類）",
-   "rs": 3
-  },
-  {
-   "code": "3518",
-   "name": "柏騰",
-   "market": "tse",
-   "close": 25.75,
-   "chg": -9.97,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第1波，-50%）",
-   "vol": "出貨量",
-   "chips": "法人5日 -556張（外資 -543、投信 +0）、連賣4天、融資 -4%",
-   "sector": "其他電子（第 32 強／35 類）",
-   "rs": 62
-  },
-  {
-   "code": "6141",
-   "name": "柏承",
-   "market": "tse",
-   "close": 30.25,
-   "chg": -9.97,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第1波，-53%）",
-   "vol": "出貨量",
-   "chips": "法人5日 +614張（外資 +585、投信 +0）、連買2天、融資 +0%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 14
-  },
-  {
-   "code": "6226",
-   "name": "光鼎",
-   "market": "tse",
-   "close": 26.2,
-   "chg": -9.97,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "初跌段（第1波，-49%）",
-   "vol": "量平",
-   "chips": "法人5日 +837張（外資 +822、投信 +2）、融資 -10%",
-   "sector": "光電（第 33 強／35 類）",
-   "rs": 96
-  },
-  {
-   "code": "6727",
-   "name": "亞泰金屬",
-   "market": "otc",
-   "close": 271.0,
-   "chg": -9.97,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第3波，-61%）",
-   "vol": "量縮",
-   "chips": "法人5日 +739張（外資 +0、投信 +0）、連買4天、融資 -18%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 6
-  },
-  {
-   "code": "6830",
-   "name": "汎銓",
-   "market": "tse",
-   "close": 347.5,
-   "chg": -9.97,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第3波，-65%）",
-   "vol": "量平",
-   "chips": "法人5日 +45張（外資 +251、投信 +0）、融資 -8%",
-   "sector": "其他電子（第 32 強／35 類）",
-   "rs": 42
-  },
-  {
-   "code": "2383",
-   "name": "台光電",
-   "market": "tse",
-   "close": 3120.0,
-   "chg": -9.96,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第2波，-52%）",
-   "vol": "量平",
-   "chips": "法人5日 +702張（外資 +1,047、投信 -555）、連賣2天、融資 -17%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 2
-  },
-  {
-   "code": "2402",
-   "name": "毅嘉",
-   "market": "tse",
-   "close": 40.25,
-   "chg": -9.96,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第4波，-53%）",
-   "vol": "出貨量",
-   "chips": "法人5日 -1,348張（外資 -1,168、投信 +8）、融資 -6%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 26
-  },
-  {
-   "code": "2492",
-   "name": "華新科",
-   "market": "tse",
-   "close": 208.0,
-   "chg": -9.96,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第2波，-68%）",
-   "vol": "調節量（19天前）",
-   "chips": "法人5日 -6,174張（外資 +4,177、投信 -10,584）、融資 -10%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 28
-  },
-  {
-   "code": "3653",
-   "name": "健策",
-   "market": "tse",
-   "close": 4115.0,
-   "chg": -9.96,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "初跌段（第1波，-45%）",
-   "vol": "量平",
-   "chips": "法人5日 +2,071張（外資 +2,526、投信 -391）、連買5天、融資 -34%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 22
-  },
-  {
-   "code": "5309",
-   "name": "系統電",
-   "market": "otc",
-   "close": 41.6,
-   "chg": -9.96,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "末跌段（第3波，-51%）",
-   "vol": "出貨量",
-   "chips": "法人5日 +1,031張（外資 +0、投信 +0）、連買2天、融資 -18%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 34
-  },
-  {
-   "code": "6209",
-   "name": "今國光",
-   "market": "tse",
-   "close": 60.6,
-   "chg": -9.96,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "初跌段（第1波，-50%）",
-   "vol": "量平",
-   "chips": "法人5日 -4,818張（外資 -4,362、投信 +0）、連賣4天、融資 +1%",
-   "sector": "光電（第 33 強／35 類）",
-   "rs": 57
-  },
-  {
-   "code": "6426",
-   "name": "統新",
-   "market": "tse",
-   "close": 226.0,
-   "chg": -9.96,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "主跌段（第2波，-45%）",
-   "vol": "量縮",
-   "chips": "法人5日 +68張（外資 +32、投信 +56）、融資 -10%",
-   "sector": "通信網路（第 29 強／35 類）",
-   "rs": 64
-  },
-  {
-   "code": "6526",
-   "name": "達發",
-   "market": "tse",
-   "close": 606.0,
-   "chg": -9.96,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "末跌段（第3波，-32%）",
-   "vol": "量平",
-   "chips": "法人5日 +182張（外資 +23、投信 +266）、融資 -13%",
-   "sector": "半導體（第 34 強／35 類）",
-   "rs": 90
-  },
-  {
-   "code": "7610",
-   "name": "聯友金屬-創",
-   "market": "tse",
-   "close": 805.0,
-   "chg": -9.96,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第2波，-70%）",
-   "vol": "量平",
-   "chips": "法人5日 +848張（外資 +901、投信 +0）、連買5天",
-   "sector": "綠能環保（第 27 強／35 類）",
-   "rs": 3
-  },
-  {
-   "code": "8227",
-   "name": "巨有科技",
-   "market": "otc",
-   "close": 208.0,
-   "chg": -9.96,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "初跌段（第1波，-46%）",
-   "vol": "量平",
-   "chips": "法人5日 -833張（外資 +0、投信 +0）、融資 +10%",
-   "sector": "半導體（第 34 強／35 類）",
-   "rs": 98
-  },
-  {
-   "code": "2455",
-   "name": "全新",
-   "market": "tse",
-   "close": 294.0,
-   "chg": -9.95,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第1波，-52%）",
-   "vol": "量平",
-   "chips": "法人5日 +989張（外資 +2,542、投信 -1,305）、融資 -4%",
-   "sector": "通信網路（第 29 強／35 類）",
-   "rs": 18
-  },
-  {
-   "code": "3016",
-   "name": "嘉晶",
-   "market": "tse",
-   "close": 94.1,
-   "chg": -9.95,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第1波，-52%）",
-   "vol": "量平",
-   "chips": "法人5日 -251張（外資 -236、投信 +5）、連賣2天、融資 -9%",
-   "sector": "半導體（第 34 強／35 類）",
-   "rs": 67
+   "chips": "法人5日 +834張（外資 +905、投信 +0）、融資 -9%",
+   "sector": "電子通路（第 27 強／35 類）",
+   "rs": 73
   },
   {
    "code": "3163",
    "name": "波若威",
    "market": "otc",
-   "close": 380.0,
-   "chg": -9.95,
+   "close": 342.0,
+   "chg": -10.0,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "末跌段（第4波，-66%）",
+   "pos": "末跌段（第4波，-69%）",
+   "vol": "量縮",
+   "chips": "法人5日 +144張（外資 +0、投信 +0）、融資 -11%",
+   "sector": "通信網路（第 30 強／35 類）",
+   "rs": 2
+  },
+  {
+   "code": "3211",
+   "name": "順達",
+   "market": "otc",
+   "close": 171.0,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-66%）",
    "vol": "量平",
-   "chips": "法人5日 -175張（外資 +0、投信 +0）、融資 -10%",
-   "sector": "通信網路（第 29 強／35 類）",
+   "chips": "法人5日 -329張（外資 +0、投信 +0）、融資 -17%",
+   "sector": "電腦及週邊（第 32 強／35 類）",
    "rs": 3
   },
   {
-   "code": "3219",
-   "name": "倚強科",
-   "market": "otc",
-   "close": 88.7,
-   "chg": -9.95,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "主跌段（第2波，-41%）",
-   "vol": "量平",
-   "chips": "法人5日 -423張（外資 +0、投信 +0）、融資 +1%",
-   "sector": "其他電子（第 32 強／35 類）",
-   "rs": 98
-  },
-  {
-   "code": "3580",
-   "name": "友威科",
-   "market": "otc",
-   "close": 75.1,
-   "chg": -9.95,
+   "code": "3406",
+   "name": "玉晶光",
+   "market": "tse",
+   "close": 648.0,
+   "chg": -10.0,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "主跌段（第2波，-41%）",
+   "pos": "末跌段（第1波，-51%）",
+   "vol": "量縮、換手量（19天前）",
+   "chips": "法人5日 +898張（外資 +890、投信 +199）、融資 -7%",
+   "sector": "光電（第 33 強／35 類）",
+   "rs": 90
+  },
+  {
+   "code": "3661",
+   "name": "世芯-KY",
+   "market": "tse",
+   "close": 3240.0,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "月線下彎，在月線下",
+   "pos": "末跌段（第4波，-43%）",
+   "vol": "搶反彈量（10天前）",
+   "chips": "法人5日 +309張（外資 -566、投信 +1,064）、連買3天、融資 -5%",
+   "sector": "半導體（第 34 強／35 類）",
+   "rs": 69
+  },
+  {
+   "code": "4722",
+   "name": "國精化",
+   "market": "tse",
+   "close": 96.3,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-69%）",
+   "vol": "量縮",
+   "chips": "法人5日 +2,092張（外資 +2,104、投信 +0）、融資 -47%",
+   "sector": "化學（第 29 強／35 類）",
+   "rs": 2
+  },
+  {
+   "code": "4906",
+   "name": "正文",
+   "market": "tse",
+   "close": 26.1,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第4波，-53%）",
+   "vol": "爆大量、出貨量",
+   "chips": "法人5日 +785張（外資 +1,240、投信 +10）、連買3天、融資 -22%",
+   "sector": "通信網路（第 30 強／35 類）",
+   "rs": 38
+  },
+  {
+   "code": "4956",
+   "name": "光鋐",
+   "market": "tse",
+   "close": 26.55,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第4波，-56%）",
+   "vol": "量縮",
+   "chips": "法人5日 -1,791張（外資 -1,796、投信 +0）、連賣2天、融資 -3%",
+   "sector": "光電（第 33 強／35 類）",
+   "rs": 48
+  },
+  {
+   "code": "5243",
+   "name": "乙盛-KY",
+   "market": "tse",
+   "close": 64.8,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-55%）",
+   "vol": "量平",
+   "chips": "法人5日 -2,356張（外資 -2,353、投信 +0）、連賣5天、融資 -7%",
+   "sector": "光電（第 33 強／35 類）",
+   "rs": 35
+  },
+  {
+   "code": "6173",
+   "name": "信昌電",
+   "market": "otc",
+   "close": 135.0,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-65%）",
+   "vol": "量縮",
+   "chips": "法人5日 -410張（外資 +0、投信 +0）、融資 -21%",
+   "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 24
+  },
+  {
+   "code": "6213",
+   "name": "聯茂",
+   "market": "tse",
+   "close": 355.5,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第1波，-60%）",
+   "vol": "量縮",
+   "chips": "法人5日 +1,007張（外資 +2,962、投信 -1,628）、融資 -14%",
+   "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 25
+  },
+  {
+   "code": "6443",
+   "name": "元晶",
+   "market": "tse",
+   "close": 22.5,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "月線下彎，在月線下",
+   "pos": "末跌段（第3波，-51%）",
+   "vol": "量縮",
+   "chips": "法人5日 -1,379張（外資 -1,313、投信 +0）、連賣2天、融資 -10%",
+   "sector": "光電（第 33 強／35 類）",
+   "rs": 67
+  },
+  {
+   "code": "6614",
+   "name": "資拓宏宇",
+   "market": "tse",
+   "close": 40.7,
+   "chg": 10.0,
+   "trend": "多頭",
+   "ma": "月線上揚，站上月線",
+   "pos": "初升段（第1波，+31%）",
+   "vol": "調節量（4天前）、換手量（5天前）",
+   "chips": "法人5日 +83張（外資 +72、投信 +0）、融資 +38%",
+   "sector": "數位雲端（第 20 強／35 類）",
+   "rs": 96
+  },
+  {
+   "code": "8027",
+   "name": "鈦昇",
+   "market": "otc",
+   "close": 99.0,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-67%）",
+   "vol": "量平",
+   "chips": "法人5日 +410張（外資 +0、投信 +0）、融資 -16%",
+   "sector": "電機機械（第 24 強／35 類）",
+   "rs": 7
+  },
+  {
+   "code": "8096",
+   "name": "擎亞",
+   "market": "otc",
+   "close": 53.1,
+   "chg": -10.0,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-70%）",
    "vol": "出貨量",
-   "chips": "法人5日 -252張（外資 +0、投信 +0）、融資 -15%",
-   "sector": "其他電子（第 32 強／35 類）",
-   "rs": 79
+   "chips": "法人5日 +2,168張（外資 +0、投信 +0）、連買5天、融資 -23%",
+   "sector": "電子通路（第 27 強／35 類）",
+   "rs": 3
+  },
+  {
+   "code": "3016",
+   "name": "嘉晶",
+   "market": "tse",
+   "close": 84.7,
+   "chg": -9.99,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第1波，-57%）",
+   "vol": "量縮",
+   "chips": "法人5日 -712張（外資 -638、投信 +2）、連賣3天、融資 -5%",
+   "sector": "半導體（第 34 強／35 類）",
+   "rs": 66
   },
   {
    "code": "3691",
    "name": "碩禾",
    "market": "otc",
-   "close": 94.1,
-   "chg": -9.95,
+   "close": 84.7,
+   "chg": -9.99,
    "trend": "空頭",
    "ma": "月線下彎，在月線下",
-   "pos": "末跌段（第4波，-47%）",
-   "vol": "量縮、調節量（14天前）、換手量（15天前）",
-   "chips": "法人5日 +1,046張（外資 +0、投信 +0）、融資 -52%",
+   "pos": "末跌段（第4波，-52%）",
+   "vol": "量縮、調節量（15天前）、換手量（16天前）",
+   "chips": "法人5日 +1,512張（外資 +0、投信 +0）、連賣2天、融資 -39%",
    "sector": "光電（第 33 強／35 類）",
-   "rs": 70
+   "rs": 59
   },
   {
-   "code": "4958",
-   "name": "臻鼎-KY",
+   "code": "6223",
+   "name": "旺矽",
+   "market": "otc",
+   "close": 3560.0,
+   "chg": -9.99,
+   "trend": "空頭",
+   "ma": "月線下彎，在月線下",
+   "pos": "末跌段（第4波，-54%）",
+   "vol": "量縮",
+   "chips": "法人5日 +352張（外資 +0、投信 +0）、連買2天、融資 -16%",
+   "sector": "半導體（第 34 強／35 類）",
+   "rs": 14
+  },
+  {
+   "code": "1560",
+   "name": "中砂",
    "market": "tse",
-   "close": 344.0,
-   "chg": -9.95,
+   "close": 523.0,
+   "chg": -9.98,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "末跌段（第3波，-48%）",
+   "pos": "末跌段（第1波，-51%）",
    "vol": "量平",
-   "chips": "法人5日 -1,971張（外資 -1,907、投信 -447）、融資 -9%",
+   "chips": "法人5日 +151張（外資 +216、投信 -32）、連買2天、融資 -6%",
+   "sector": "電機機械（第 24 強／35 類）",
+   "rs": 42
+  },
+  {
+   "code": "2241",
+   "name": "艾姆勒",
+   "market": "tse",
+   "close": 26.15,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第1波，-54%）",
+   "vol": "出貨量",
+   "chips": "法人5日 -257張（外資 -276、投信 +0）、連買2天、融資 -13%",
+   "sector": "汽車（第 22 強／35 類）",
+   "rs": 36
+  },
+  {
+   "code": "2484",
+   "name": "希華",
+   "market": "tse",
+   "close": 43.3,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-57%）",
+   "vol": "量平",
+   "chips": "法人5日 +416張（外資 +430、投信 +0）、融資 -12%",
    "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 24
-  },
-  {
-   "code": "6442",
-   "name": "光聖",
-   "market": "tse",
-   "close": 959.0,
-   "chg": -9.95,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第3波，-61%）",
-   "vol": "量平",
-   "chips": "法人5日 -101張（外資 -92、投信 +7）、連賣2天、融資 -8%",
-   "sector": "通信網路（第 29 強／35 類）",
    "rs": 6
   },
   {
-   "code": "6620",
-   "name": "漢達",
-   "market": "otc",
-   "close": 91.4,
-   "chg": -9.95,
-   "trend": "空頭",
-   "ma": "月線下彎，在月線下",
-   "pos": "末跌段（第3波，-41%）",
-   "vol": "出貨量",
-   "chips": "法人5日 -659張（外資 +0、投信 +0）、融資 -8%",
-   "sector": "生技醫療（第 17 強／35 類）",
-   "rs": 97
-  },
-  {
-   "code": "8155",
-   "name": "博智",
-   "market": "otc",
-   "close": 199.0,
-   "chg": -9.95,
+   "code": "2485",
+   "name": "兆赫",
+   "market": "tse",
+   "close": 23.9,
+   "chg": -9.98,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "末跌段（第5波，-58%）",
+   "pos": "末跌段（第3波，-72%）",
    "vol": "量平",
-   "chips": "法人5日 -160張（外資 +0、投信 +0）、融資 -16%",
-   "sector": "電子零組件（第 35 強／35 類）",
+   "chips": "法人5日 +501張（外資 +378、投信 +0）、融資 -15%",
+   "sector": "通信網路（第 30 強／35 類）",
    "rs": 8
   },
   {
-   "code": "2478",
-   "name": "大毅",
+   "code": "3031",
+   "name": "佰鴻",
    "market": "tse",
-   "close": 79.7,
-   "chg": -9.94,
+   "close": 21.65,
+   "chg": -9.98,
    "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "末跌段（第2波，-69%）",
-   "vol": "量平",
-   "chips": "法人5日 +753張（外資 +808、投信 -4）、連買3天、融資 -10%",
-   "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 7
+   "ma": "月線下彎，在月線下",
+   "pos": "主跌段（第2波，-41%）",
+   "vol": "換手量（20天前）",
+   "chips": "法人5日 +25張（外資 +5、投信 +0）、融資 -12%",
+   "sector": "光電（第 33 強／35 類）",
+   "rs": 77
   },
   {
-   "code": "3017",
-   "name": "奇鋐",
-   "market": "tse",
-   "close": 2445.0,
-   "chg": -9.94,
-   "trend": "空頭",
-   "ma": "四線空排",
-   "pos": "主跌段（第2波，-34%）",
-   "vol": "量平",
-   "chips": "法人5日 +1,104張（外資 -442、投信 +1,168）、連買2天、融資 -6%",
-   "sector": "電腦及週邊（第 31 強／35 類）",
-   "rs": 41
-  },
-  {
-   "code": "3236",
-   "name": "千如",
+   "code": "3324",
+   "name": "雙鴻",
    "market": "otc",
-   "close": 29.9,
-   "chg": -9.94,
+   "close": 794.0,
+   "chg": -9.98,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "末跌段（第2波，-60%）",
-   "vol": "量平",
-   "chips": "法人5日 -98張（外資 +0、投信 +0）、連買2天、融資 -9%",
+   "pos": "末跌段（第1波，-55%）",
+   "vol": "量縮",
+   "chips": "法人5日 +943張（外資 +0、投信 +0）、融資 -10%",
+   "sector": "其他電子（第 31 強／35 類）",
+   "rs": 50
+  },
+  {
+   "code": "3354",
+   "name": "律勝",
+   "market": "otc",
+   "close": 27.95,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "月線下彎，在月線下",
+   "pos": "主跌段（第2波，-50%）",
+   "vol": "量縮、換手量（20天前）",
+   "chips": "法人5日 +263張（外資 +0、投信 +0）、連賣2天、融資 -9%",
    "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 9
+   "rs": 99
+  },
+  {
+   "code": "3379",
+   "name": "彬台",
+   "market": "otc",
+   "close": 24.35,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "月線下彎，在月線下",
+   "pos": "末跌段（第4波，-44%）",
+   "vol": "量縮、調節量（12天前）、換手量（13天前）",
+   "chips": "法人5日 +40張（外資 +0、投信 +0）、連賣2天、融資 -6%",
+   "sector": "電機機械（第 24 強／35 類）",
+   "rs": 59
   },
   {
    "code": "3450",
    "name": "聯鈞",
    "market": "tse",
-   "close": 285.5,
-   "chg": -9.94,
+   "close": 257.0,
+   "chg": -9.98,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "末跌段（第2波，-56%）",
-   "vol": "量平",
-   "chips": "法人5日 +1,379張（外資 +1,601、投信 -180）、融資 -9%",
+   "pos": "末跌段（第2波，-61%）",
+   "vol": "量縮",
+   "chips": "法人5日 +1,166張（外資 +1,507、投信 -291）、融資 -11%",
    "sector": "半導體（第 34 強／35 類）",
    "rs": 2
   },
   {
-   "code": "3685",
-   "name": "元創精密",
+   "code": "3624",
+   "name": "光頡",
    "market": "otc",
-   "close": 23.1,
-   "chg": -9.94,
+   "close": 77.6,
+   "chg": -9.98,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "主跌段（第2波，-44%）",
-   "vol": "量平",
-   "chips": "法人5日 +291張（外資 +0、投信 +0）、融資 -67%",
-   "sector": "電機機械（第 24 強／35 類）",
-   "rs": 8
+   "pos": "末跌段（第2波，-57%）",
+   "vol": "量縮",
+   "chips": "法人5日 -1,256張（外資 +0、投信 +0）、連賣2天、融資 -20%",
+   "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 73
   },
   {
-   "code": "4716",
-   "name": "大立",
+   "code": "4707",
+   "name": "磐亞",
    "market": "otc",
-   "close": 14.95,
-   "chg": -9.94,
+   "close": 21.2,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-52%）",
+   "vol": "出貨量",
+   "chips": "法人5日 +179張（外資 +0、投信 +0）、連買2天、融資 -4%",
+   "sector": "化學（第 29 強／35 類）",
+   "rs": 20
+  },
+  {
+   "code": "4939",
+   "name": "亞電",
+   "market": "otc",
+   "close": 43.3,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-55%）",
+   "vol": "量縮",
+   "chips": "法人5日 +143張（外資 +0、投信 +0）、連賣2天、融資 -12%",
+   "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 25
+  },
+  {
+   "code": "4979",
+   "name": "華星光",
+   "market": "otc",
+   "close": 266.0,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-65%）",
+   "vol": "量縮",
+   "chips": "法人5日 +52張（外資 +0、投信 +0）、連賣3天、融資 -7%",
+   "sector": "通信網路（第 30 強／35 類）",
+   "rs": 2
+  },
+  {
+   "code": "5309",
+   "name": "系統電",
+   "market": "otc",
+   "close": 37.45,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-56%）",
+   "vol": "量平",
+   "chips": "法人5日 +237張（外資 +0、投信 +0）、融資 -20%",
+   "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 30
+  },
+  {
+   "code": "5425",
+   "name": "台半",
+   "market": "otc",
+   "close": 58.6,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-59%）",
+   "vol": "量平",
+   "chips": "法人5日 -2,879張（外資 +0、投信 +0）、連賣5天、融資 -8%",
+   "sector": "半導體（第 34 強／35 類）",
+   "rs": 17
+  },
+  {
+   "code": "6182",
+   "name": "合晶",
+   "market": "otc",
+   "close": 56.8,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-71%）",
+   "vol": "量平",
+   "chips": "法人5日 +8,484張（外資 +0、投信 +0）、連買2天、融資 -18%",
+   "sector": "半導體（第 34 強／35 類）",
+   "rs": 4
+  },
+  {
+   "code": "6531",
+   "name": "愛普*",
+   "market": "tse",
+   "close": 482.5,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-63%）",
+   "vol": "量縮",
+   "chips": "法人5日 +1,916張（外資 +1,470、投信 +703）、連買5天、融資 -39%",
+   "sector": "半導體（第 34 強／35 類）",
+   "rs": 5
+  },
+  {
+   "code": "6706",
+   "name": "惠特",
+   "market": "tse",
+   "close": 87.5,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-61%）",
+   "vol": "量平",
+   "chips": "法人5日 -484張（外資 -74、投信 +2）、連賣2天、融資 -7%",
+   "sector": "光電（第 33 強／35 類）",
+   "rs": 37
+  },
+  {
+   "code": "8210",
+   "name": "勤誠",
+   "market": "tse",
+   "close": 424.0,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-73%）",
+   "vol": "量平",
+   "chips": "法人5日 +1,482張（外資 +1,438、投信 +64）、連買5天、融資 -18%",
+   "sector": "電腦及週邊（第 32 強／35 類）",
+   "rs": 1
+  },
+  {
+   "code": "8932",
+   "name": "智通*",
+   "market": "otc",
+   "close": 51.4,
+   "chg": -9.98,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-53%）",
+   "vol": "出貨量",
+   "chips": "法人5日 +5,441張（外資 +0、投信 +0）、連買5天、融資 -27%",
+   "sector": "數位雲端（第 20 強／35 類）",
+   "rs": 5
+  },
+  {
+   "code": "2399",
+   "name": "映泰",
+   "market": "tse",
+   "close": 28.0,
+   "chg": -9.97,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-51%）",
+   "vol": "量平",
+   "chips": "法人5日 +1,510張（外資 +1,563、投信 +0）、連買3天、融資 -13%",
+   "sector": "電腦及週邊（第 32 強／35 類）",
+   "rs": 12
+  },
+  {
+   "code": "3094",
+   "name": "聯傑",
+   "market": "tse",
+   "close": 32.05,
+   "chg": -9.97,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第1波，-56%）",
+   "vol": "量縮",
+   "chips": "法人5日 -311張（外資 -322、投信 +0）、融資 -16%",
+   "sector": "半導體（第 34 強／35 類）",
+   "rs": 73
+  },
+  {
+   "code": "6274",
+   "name": "台燿",
+   "market": "otc",
+   "close": 623.0,
+   "chg": -9.97,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-68%）",
+   "vol": "量縮",
+   "chips": "法人5日 +3,840張（外資 +0、投信 +0）、連買4天、融資 -27%",
+   "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 0
+  },
+  {
+   "code": "6472",
+   "name": "保瑞",
+   "market": "tse",
+   "close": 280.0,
+   "chg": -9.97,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-41%）",
+   "vol": "出貨量",
+   "chips": "法人5日 +410張（外資 +439、投信 -9）、連買2天、融資 -20%",
+   "sector": "生技醫療（第 17 強／35 類）",
+   "rs": 12
+  },
+  {
+   "code": "6668",
+   "name": "中揚光",
+   "market": "tse",
+   "close": 33.4,
+   "chg": -9.97,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-51%）",
+   "vol": "量平",
+   "chips": "法人5日 -59張（外資 -62、投信 +0）、融資 -14%",
+   "sector": "光電（第 33 強／35 類）",
+   "rs": 78
+  },
+  {
+   "code": "8042",
+   "name": "金山電",
+   "market": "otc",
+   "close": 77.7,
+   "chg": -9.97,
    "trend": "空頭",
    "ma": "月線下彎，在月線下",
-   "pos": "主跌段（第2波，-43%）",
-   "vol": "量平",
-   "chips": "法人5日 -358張（外資 +0、投信 +0）、連賣4天、融資 -5%",
-   "sector": "化學（第 28 強／35 類）",
-   "rs": 59
+   "pos": "末跌段（第2波，-66%）",
+   "vol": "量縮",
+   "chips": "法人5日 +542張（外資 +0、投信 +0）、融資 -16%",
+   "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 41
   },
   {
-   "code": "5443",
-   "name": "均豪",
-   "market": "otc",
-   "close": 69.8,
-   "chg": -9.94,
+   "code": "2464",
+   "name": "盟立",
+   "market": "tse",
+   "close": 117.5,
+   "chg": -9.96,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "末跌段（第4波，-51%）",
-   "vol": "出貨量",
-   "chips": "法人5日 -638張（外資 +0、投信 +0）、連賣5天、融資 -2%",
+   "pos": "主跌段（第2波，-48%）",
+   "vol": "量平",
+   "chips": "法人5日 +1,646張（外資 +2,443、投信 -549）、連買3天、融資 -17%",
+   "sector": "其他電子（第 31 強／35 類）",
+   "rs": 18
+  },
+  {
+   "code": "2472",
+   "name": "立隆電",
+   "market": "tse",
+   "close": 117.5,
+   "chg": -9.96,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-76%）",
+   "vol": "量平",
+   "chips": "法人5日 +1,712張（外資 +1,753、投信 +0）、連買4天、融資 -14%",
+   "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 5
+  },
+  {
+   "code": "3189",
+   "name": "景碩",
+   "market": "tse",
+   "close": 470.0,
+   "chg": -9.96,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-59%）",
+   "vol": "量縮",
+   "chips": "法人5日 -9,322張（外資 -6,400、投信 -1,259）、融資 +14%",
+   "sector": "半導體（第 34 強／35 類）",
+   "rs": 7
+  },
+  {
+   "code": "3265",
+   "name": "台星科",
+   "market": "otc",
+   "close": 108.5,
+   "chg": -9.96,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第1波，-63%）",
+   "vol": "量縮",
+   "chips": "法人5日 -371張（外資 +0、投信 +0）、融資 -16%",
    "sector": "半導體（第 34 強／35 類）",
    "rs": 12
   },
   {
-   "code": "6451",
-   "name": "訊芯-KY",
-   "market": "tse",
-   "close": 208.5,
-   "chg": -9.94,
+   "code": "3455",
+   "name": "由田",
+   "market": "otc",
+   "close": 122.0,
+   "chg": -9.96,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "末跌段（第3波，-72%）",
-   "vol": "量平",
-   "chips": "法人5日 +678張（外資 +700、投信 +0）、融資 -14%",
-   "sector": "半導體（第 34 強／35 類）",
-   "rs": 1
+   "pos": "末跌段（第3波，-62%）",
+   "vol": "量縮",
+   "chips": "法人5日 +680張（外資 +0、投信 +0）、融資 -28%",
+   "sector": "光電（第 33 強／35 類）",
+   "rs": 3
   },
   {
-   "code": "6805",
-   "name": "富世達",
+   "code": "3653",
+   "name": "健策",
    "market": "tse",
-   "close": 1585.0,
-   "chg": -9.94,
+   "close": 3705.0,
+   "chg": -9.96,
    "trend": "空頭",
    "ma": "四線空排",
-   "pos": "主跌段（第2波，-42%）",
+   "pos": "末跌段（第1波，-50%）",
    "vol": "量縮",
-   "chips": "法人5日 +41張（外資 -169、投信 +228）、連賣2天、融資 -15%",
+   "chips": "法人5日 +1,781張（外資 +2,172、投信 -288）、連買5天、融資 -34%",
    "sector": "電子零組件（第 35 強／35 類）",
-   "rs": 52
+   "rs": 24
+  },
+  {
+   "code": "4540",
+   "name": "全球傳動",
+   "market": "tse",
+   "close": 37.95,
+   "chg": -9.96,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-54%）",
+   "vol": "出貨量、換手量（18天前）",
+   "chips": "法人5日 -585張（外資 -591、投信 +0）、融資 -20%",
+   "sector": "電機機械（第 24 強／35 類）",
+   "rs": 18
+  },
+  {
+   "code": "6217",
+   "name": "中探針",
+   "market": "otc",
+   "close": 85.9,
+   "chg": -9.96,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-77%）",
+   "vol": "量縮",
+   "chips": "法人5日 +793張（外資 +0、投信 +0）、融資 -12%",
+   "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 6
+  },
+  {
+   "code": "6426",
+   "name": "統新",
+   "market": "tse",
+   "close": 203.5,
+   "chg": -9.96,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第2波，-51%）",
+   "vol": "量縮",
+   "chips": "法人5日 -20張（外資 +8、投信 +0）、連賣2天、融資 -12%",
+   "sector": "通信網路（第 30 強／35 類）",
+   "rs": 62
+  },
+  {
+   "code": "6620",
+   "name": "漢達",
+   "market": "otc",
+   "close": 82.3,
+   "chg": -9.96,
+   "trend": "空頭",
+   "ma": "月線下彎，在月線下",
+   "pos": "末跌段（第3波，-47%）",
+   "vol": "量平",
+   "chips": "法人5日 +84張（外資 +0、投信 +0）、連買2天、融資 -14%",
+   "sector": "生技醫療（第 17 強／35 類）",
+   "rs": 95
+  },
+  {
+   "code": "6727",
+   "name": "亞泰金屬",
+   "market": "otc",
+   "close": 244.0,
+   "chg": -9.96,
+   "trend": "空頭",
+   "ma": "四線空排",
+   "pos": "末跌段（第3波，-65%）",
+   "vol": "量縮",
+   "chips": "法人5日 +788張（外資 +0、投信 +0）、融資 -19%",
+   "sector": "電子零組件（第 35 強／35 類）",
+   "rs": 4
   }
  ]
 }
