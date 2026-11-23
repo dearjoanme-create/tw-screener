@@ -1,1 +1,29 @@
-{"for_data_date": "2026-11-20", "runs": []}
+{
+ "for_data_date": "2026-11-20",
+ "runs": [
+  {
+   "time": "10:55",
+   "slot": "預警",
+   "results": [
+    {
+     "code": "6199",
+     "name": "天品",
+     "side": "long",
+     "title": "橫盤／一字底突破",
+     "trigger": 173.0,
+     "price": 172.0,
+     "status": "未到",
+     "miss": [
+      "今天漲 1.5%，要漲 2% 以上",
+      "目前收黑K（要收紅K）"
+     ],
+     "proj_vol": 22375,
+     "stop": 172.5,
+     "stop_method": "突破點",
+     "note": "",
+     "term": "逆大盤短多"
+    }
+   ]
+  }
+ ]
+}
