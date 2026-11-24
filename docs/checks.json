@@ -1,1 +1,226 @@
-{"for_data_date": "2026-11-23", "runs": []}
+{
+ "for_data_date": "2026-11-23",
+ "runs": [
+  {
+   "time": "10:55",
+   "slot": "預警",
+   "results": [
+    {
+     "code": "6199",
+     "name": "天品",
+     "side": "long",
+     "title": "橫盤／一字底突破",
+     "trigger": 176.0,
+     "price": 173.0,
+     "status": "未到",
+     "miss": [
+      "今天漲 0.3%，要漲 2% 以上",
+      "目前收黑K（要收紅K）",
+      "量能不夠（預估 8,980 張，要昨天的 1.3 倍 17,069 張）"
+     ],
+     "proj_vol": 8980,
+     "stop": 173.0,
+     "stop_method": "突破點",
+     "note": "KD 還沒轉強",
+     "term": "逆大盤短多"
+    },
+    {
+     "code": "8415",
+     "name": "大國鋼",
+     "side": "long",
+     "title": "突破大量黑K",
+     "trigger": 41.95,
+     "price": 42.75,
+     "status": "價到條件不足",
+     "miss": [
+      "目前收黑K（要收紅K）",
+      "上影線太長（衝上去又被賣下來）"
+     ],
+     "proj_vol": 10784,
+     "stop": 38.4,
+     "stop_method": "回檔低點",
+     "note": "",
+     "term": "逆大盤短多"
+    },
+    {
+     "code": "2254",
+     "name": "巨鎧精密-創",
+     "side": "long",
+     "title": "橫盤／一字底突破",
+     "trigger": 112.5,
+     "price": 110.5,
+     "status": "未到",
+     "miss": [
+      "今天漲 0.5%，要漲 2% 以上",
+      "目前收黑K（要收紅K）",
+      "上影線太長（衝上去又被賣下來）",
+      "量能不夠（預估 4,184 張，要昨天的 1.3 倍 4,520 張）"
+     ],
+     "proj_vol": 4184,
+     "stop": 111.5,
+     "stop_method": "突破點",
+     "note": "",
+     "term": "逆大盤短多"
+    },
+    {
+     "code": "2354",
+     "name": "鴻準",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 44.4,
+     "price": 48.9,
+     "status": "未到",
+     "miss": [
+      "今天漲 7.8%，要跌 2% 以上"
+     ],
+     "proj_vol": 10203,
+     "stop": 46.25,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "2442",
+     "name": "新美齊",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 10.1,
+     "price": 11.35,
+     "status": "未到",
+     "miss": [
+      "今天漲 7.1%，要跌 2% 以上",
+      "目前收紅K（要收黑K）"
+     ],
+     "proj_vol": 1543,
+     "stop": 10.75,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "1909",
+     "name": "榮成",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 7.95,
+     "price": 8.57,
+     "status": "未到",
+     "miss": [
+      "今天漲 3.6%，要跌 2% 以上",
+      "目前收紅K（要收黑K）"
+     ],
+     "proj_vol": 3839,
+     "stop": 8.3,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "2641",
+     "name": "正德",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 13.8,
+     "price": 15.35,
+     "status": "未到",
+     "miss": [
+      "今天漲 6.6%，要跌 2% 以上"
+     ],
+     "proj_vol": 1431,
+     "stop": 14.55,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "1319",
+     "name": "東陽",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 62.4,
+     "price": 68.0,
+     "status": "未到",
+     "miss": [
+      "今天漲 3.8%，要跌 2% 以上"
+     ],
+     "proj_vol": 3129,
+     "stop": 65.5,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "4114",
+     "name": "健喬",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 23.85,
+     "price": 25.6,
+     "status": "未到",
+     "miss": [
+      "今天漲 5.1%，要跌 2% 以上",
+      "目前收紅K（要收黑K）",
+      "下影線太長（跌下去又被買回來）"
+     ],
+     "proj_vol": 1364,
+     "stop": 24.5,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "1513",
+     "name": "中興電",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 127.0,
+     "price": 142.5,
+     "status": "未到",
+     "miss": [
+      "今天漲 7.5%，要跌 2% 以上"
+     ],
+     "proj_vol": 6438,
+     "stop": 136.0,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "1316",
+     "name": "上曜",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 7.71,
+     "price": 8.53,
+     "status": "未到",
+     "miss": [
+      "今天漲 6.0%，要跌 2% 以上",
+      "目前收紅K（要收黑K）"
+     ],
+     "proj_vol": 1590,
+     "stop": 8.1,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    },
+    {
+     "code": "2615",
+     "name": "萬海",
+     "side": "short",
+     "title": "反彈後跌破紅K低點",
+     "trigger": 91.4,
+     "price": 98.0,
+     "status": "未到",
+     "miss": [
+      "今天漲 2.0%，要跌 2% 以上"
+     ],
+     "proj_vol": 35692,
+     "stop": 96.7,
+     "stop_method": "反彈高點",
+     "note": "KD 還沒轉弱",
+     "term": "4 線空排，可做長線"
+    }
+   ]
+  }
+ ]
+}
